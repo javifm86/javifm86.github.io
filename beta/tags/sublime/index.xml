@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sublime on Frontend developer</title>
-    <link>http://javifm.com/beta/tags/sublime/</link>
+    <link>https://javifm.com/beta/tags/sublime/</link>
     <description>Recent content in sublime on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Tue, 11 Oct 2016 13:35:14 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Reemplazando atributos HTML con Sublime</title>
-      <link>http://javifm.com/beta/blog/reemplazando-atributos-html-con-sublime/</link>
+      <link>https://javifm.com/beta/blog/reemplazando-atributos-html-con-sublime/</link>
       <pubDate>Tue, 11 Oct 2016 13:35:14 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/reemplazando-atributos-html-con-sublime/</guid>
+      <guid>https://javifm.com/beta/blog/reemplazando-atributos-html-con-sublime/</guid>
       <description>Un tip rápido y fácil aplicable con Sublime o cualquier otro editor de texto que permita reemplazar con expresiones regulares. Me encontraba copiando a una entrada de Wordpess una tabla desde un fichero excel, en el cual había modificado el ancho de algunas celdas. Es una manera fácil de insertar una tabla sin necesidad de estar construyendo todo el código html.
 El problema era que había un montón de atributos width, cada uno con un número distinto.</description>
     </item>
     
     <item>
       <title>Trim trailing white space en un shortcut en Sublime</title>
-      <link>http://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/</link>
+      <link>https://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/</link>
       <pubDate>Tue, 02 Dec 2014 16:14:31 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/</guid>
+      <guid>https://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/</guid>
       <description>&lt;p&gt;Sublime permite definir por medio de sus ficheros de configuración, una opción que cuando trabajo solo suelo tener activada, pero que en ocasiones trabajando en equipo no es muy recomendable.&lt;/p&gt;
 
 &lt;p&gt;La opción es la de &lt;strong&gt;eliminar los espacios sobrantes en un archivo.&lt;/strong&gt; Por defecto en sublime viene desactivada, pero es posible activarla para que Sublime se encargue de eliminar esos innecesarios espacios al guardar un archivo. Si esto es lo que buscas, simplemente abre tu archivo de &lt;em&gt;&lt;strong&gt;Settings &amp;#8211; User,&lt;/strong&gt;&lt;/em&gt; y añade la siguiente opción: &lt;code&gt;&amp;quot;trim_trailing_white_space_on_save&amp;quot;: true&lt;/code&gt;&lt;/p&gt;
@@ -62,10 +62,10 @@ El problema era que había un montón de atributos width, cada uno con un númer
     
     <item>
       <title>Cambia el separador de palabras en Sublime Text</title>
-      <link>http://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/</link>
+      <link>https://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/</link>
       <pubDate>Sat, 12 Jul 2014 18:25:05 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/</guid>
+      <guid>https://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/</guid>
       <description>Una de las cosas más tontas, pero que descubrí hace poco. Por defecto, Sublime Text tiene definido determinados caráceteres como separador de palabras. El punto, la coma, el signo del dólar, etc. En determinadas ocasiones, para determinados lenguajes (o para todos), podemos querer modificar los carácteres considerados como separador de palabra. Por ejemplo, en CSS, es muy común utilizar en las clases nombres separando las palabras con guiones, es una convención bastante extendida.</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JSHint on Frontend developer</title>
-    <link>http://javifm.com/beta/tags/jshint/</link>
+    <link>https://javifm.com/beta/tags/jshint/</link>
     <description>Recent content in JSHint on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Thu, 02 Jul 2015 08:15:08 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/tags/jshint/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/tags/jshint/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JSHint y formateo de código al hacer commit con git (Git hooks)</title>
-      <link>http://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</link>
+      <link>https://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</link>
       <pubDate>Thu, 02 Jul 2015 08:15:08 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</guid>
+      <guid>https://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</guid>
       <description>&lt;p&gt;A la hora de trabajar en equipo, tener una guía de estilos definida es de vital importancia. Estoy trabajando en un proyecto en el cual por diversos motivos que no vienen al caso, se podría mejorar bastante en ese aspecto, y mediante el uso de &lt;a href=&#34;https://nodejs.org/&#34;&gt;Node.js&lt;/a&gt; disponemos de herramientas que nos pueden ayudar a tener en un equipo un código más uniforme y estandar.&lt;/p&gt;
 
 &lt;p&gt;Para nuestro proyecto he elegido un linter, en este caso &lt;a href=&#34;https://www.npmjs.com/package/jshint&#34;&gt;JSHint&lt;/a&gt;, y un formateador para el código Javascript, que representa el grueso de los desarrollos de nuestra aplicación, &lt;a href=&#34;https://www.npmjs.com/package/js-beautify&#34;&gt;js-beautify&lt;/a&gt;. Podría incorporarse además una tercera herramienta, muy potente a la hora de definir exactamente los estilos que deseamos aplicar de manera muy minuciosa, &lt;a href=&#34;https://www.npmjs.com/package/jscs&#34;&gt;JSCS&lt;/a&gt;, que se ocupa de muchas opciones de estilo que actualmente mantiene JSHint, pero que pronto &lt;strong&gt;pasarán a estar deprecadas.&lt;/strong&gt;  (Actualización: Parece que &lt;a href=&#34;http://eslint.org/&#34;&gt;ESLint&lt;/a&gt; es una alternativa equilibrada a JSHint y JSCS, tengo que probarlo más a fondo). Por el momento me limitaré a las 2 mencionadas.&lt;/p&gt;

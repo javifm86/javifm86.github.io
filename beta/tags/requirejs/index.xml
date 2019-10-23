@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RequireJS on Frontend developer</title>
-    <link>http://javifm.com/beta/tags/requirejs/</link>
+    <link>https://javifm.com/beta/tags/requirejs/</link>
     <description>Recent content in RequireJS on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Tue, 03 Nov 2015 12:56:17 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/tags/requirejs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/tags/requirejs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Evitar que jQuery sea global con RequireJS</title>
-      <link>http://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</link>
+      <link>https://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</link>
       <pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
+      <guid>https://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
       <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web. Por defecto se instancia en la variable global $, además de jQuery. Esto puede entrar en conflicto con otras librerías que hayan decidido utilizar el $ también. Si estás utilizando el popular cargador de módulos RequireJS, hay una manera muy fácil para evitar que jQuery se instancie globalmente.
 Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que Samsung incluye internamente su propia versión de jQuery, sobreescribiendo la que añadas.</description>
     </item>

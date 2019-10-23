@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jQuery on Frontend developer</title>
-    <link>http://javifm.com/beta/categories/jquery/</link>
+    <link>https://javifm.com/beta/categories/jquery/</link>
     <description>Recent content in jQuery on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Wed, 27 Apr 2016 14:54:10 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/categories/jquery/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/categories/jquery/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Suscribirse de manera segura a eventos con jQuery</title>
-      <link>http://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</link>
+      <link>https://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</link>
       <pubDate>Wed, 27 Apr 2016 14:54:10 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</guid>
+      <guid>https://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</guid>
       <description>Un truco del que me acabo de enterar, que seguro será de gran utilidad a la hora de desarrollar aplicaciones con Javascript. Sobre todo aplicaciones SPA (Single Page Application). A la hora de suscribirnos a eventos de manera global en nuestras ventanas, escenas, vistas (hay multitud de forma de llamarlas según el framework o el entorno en que trabajes) es algo muy normal suscribirnos a eventos en window.
 Un ejemplo sería el evento resize.</description>
     </item>

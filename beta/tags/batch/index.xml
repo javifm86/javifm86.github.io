@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>batch on Frontend developer</title>
-    <link>http://javifm.com/beta/tags/batch/</link>
+    <link>https://javifm.com/beta/tags/batch/</link>
     <description>Recent content in batch on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Tue, 27 Jan 2015 16:12:47 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/tags/batch/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/tags/batch/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lanzar fichero batch (.bat) sin mostrar la consola en Windows</title>
-      <link>http://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</link>
+      <link>https://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</link>
       <pubDate>Tue, 27 Jan 2015 16:12:47 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</guid>
+      <guid>https://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</guid>
       <description>En mi día a día suelo trabajar en entorno Windows, y hay ciertos atajos de teclado y acciones, como backups de algunos proyectos, que tengo automatizadas con un simple fichero .bat, que ejecuto a través de un comando a través de Autohotkey (algún día escribiré un poco sobre esta utilidad para mejorar la productividad en Windows).
 Por si te resulta molesto que esté la consola abierta mientras se ejecuta el script, hay una manera sencilla de impedirlo, como pude encontrar en esta pregunta de Superuser.</description>
     </item>

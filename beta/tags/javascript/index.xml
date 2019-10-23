@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>javascript on Frontend developer</title>
-    <link>http://javifm.com/beta/tags/javascript/</link>
+    <link>https://javifm.com/beta/tags/javascript/</link>
     <description>Recent content in javascript on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Fri, 09 Sep 2016 10:41:33 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Arbol de intervalos (interval tree) en Javascript</title>
-      <link>http://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</link>
+      <link>https://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</link>
       <pubDate>Fri, 09 Sep 2016 10:41:33 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</guid>
+      <guid>https://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</guid>
       <description>&lt;p&gt;Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para &lt;strong&gt;optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.&lt;/strong&gt; El problema es el siguiente, se han de encontrar los nodos que pertenecen a un intervalo dado. En este caso en concreto, se dispone de una lista de canales de televisión, para los cuales disponemos de todos los programas, relativos a varios días de programación.&lt;/p&gt;
 
 &lt;p&gt;En los navegadores de hoy en día, como Google Chrome o cualquier navegador medianamente moderno, &lt;strong&gt;no habría excesivos problemas en iterar por fuerza bruta&lt;/strong&gt; hasta encontrar todos los eventos cuya fecha de inicio y fin se encontrase dentro del intervalo (ojo, para nada digo que sea lo más óptimo ni recomendado). Los problemas pueden llegar cuando en el target del proyecto podemos encontrar televisiones Smart TV´s antiguas y/o de gama baja, que vienen &lt;strong&gt;más justas de memoria.&lt;/strong&gt;&lt;/p&gt;</description>
@@ -24,51 +24,51 @@
     
     <item>
       <title>Evitar que jQuery sea global con RequireJS</title>
-      <link>http://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</link>
+      <link>https://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</link>
       <pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
+      <guid>https://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
       <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web. Por defecto se instancia en la variable global $, además de jQuery. Esto puede entrar en conflicto con otras librerías que hayan decidido utilizar el $ también. Si estás utilizando el popular cargador de módulos RequireJS, hay una manera muy fácil para evitar que jQuery se instancie globalmente.
 Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que Samsung incluye internamente su propia versión de jQuery, sobreescribiendo la que añadas.</description>
     </item>
     
     <item>
       <title>Ellipsis de múltiples líneas con Javascript</title>
-      <link>http://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</link>
+      <link>https://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</link>
       <pubDate>Mon, 07 Sep 2015 09:00:57 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</guid>
+      <guid>https://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</guid>
       <description>Ellipsis es simplemente un cáracter compuesto por tres puntos: &amp;#8220;…&amp;#8221;. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis. Con el avance de los estándares css modernos, ya podemos aplicar una solución sin necesidad de echar mano de Javascript:
 .ellipsis {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;-o-text-overflow: ellipsis;} ¿Cual es la limitación?</description>
     </item>
     
     <item>
       <title>Concatenar llamadas a métodos en Javascript</title>
-      <link>http://javifm.com/beta/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</link>
+      <link>https://javifm.com/beta/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</link>
       <pubDate>Tue, 21 Apr 2015 09:10:23 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</guid>
+      <guid>https://javifm.com/beta/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</guid>
       <description>Vamos a ver de una manera rápida, como podemos concatenar llamadas a distintos métodos sobre un mismo objeto en Javascript (en inglés, Method Chaining in JavaScript). Este patrón, es utilizado en el popular framework jQuery, en el cual pueden llamarse a varios métodos sobre un selector jQuery. Por ejemplo:
 $(&amp;#34;#selector&amp;#34;).find(&amp;#34;.square&amp;#34;).css(&amp;#34;height&amp;#34;, &amp;#34;100px&amp;#34;).show();// En caso de concatenar muchos métodos$(&amp;#34;#selector&amp;#34;).find(&amp;#34;.square&amp;#34;).css(&amp;#34;height&amp;#34;, &amp;#34;100px&amp;#34;).show(); Que es más corto, o más legible (para gustos los colores) que esto:</description>
     </item>
     
     <item>
       <title>Width() de jQuery sin redondeo</title>
-      <link>http://javifm.com/beta/blog/width-de-jquery-sin-redondeo/</link>
+      <link>https://javifm.com/beta/blog/width-de-jquery-sin-redondeo/</link>
       <pubDate>Thu, 26 Feb 2015 10:36:01 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/width-de-jquery-sin-redondeo/</guid>
+      <guid>https://javifm.com/beta/blog/width-de-jquery-sin-redondeo/</guid>
       <description>Un tip muy rápido y muy sencillo, pero que no conocía. Por defecto si haces uso de los métodos .width() y .height() de jQuery, los valores devueltos se encuentran redondeados. Si en alguna ocasión necesitas con precisión conocer los decimales, puedes utilizar el método getBoundingClientRect() incorporado en ES4 y soportado por todos los navegadores. Por ejemplo el width se obtendría de la siguiente manera:
 $(&amp;#34;#selector&amp;#34;)[0].getBoundingClientRect().width  </description>
     </item>
     
     <item>
       <title>Depuración remota en Smart TV con console.io</title>
-      <link>http://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</link>
+      <link>https://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</link>
       <pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid>
-      <description>&lt;p&gt;Hace algún tiempo hablé de &lt;a href=&#34;http://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; como opción para &lt;strong&gt;depurar de forma remota nuestras aplicaciones Javascript.&lt;/strong&gt; Era una opción bastante buena para dispositivos Android y Smarts TV de LG, pero cuando fuí a depurar la aplicación que estamos desarrollando en una Smart TV de Samsung, me llevé la sorpresa de que las televisiones Samsung, deben hacer algo por dentro que sobreescribe el método console del navegador, y con Weinre no podía ver ninguno de los logs que había puesto en el código.&lt;/p&gt;
+      <guid>https://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid>
+      <description>&lt;p&gt;Hace algún tiempo hablé de &lt;a href=&#34;https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; como opción para &lt;strong&gt;depurar de forma remota nuestras aplicaciones Javascript.&lt;/strong&gt; Era una opción bastante buena para dispositivos Android y Smarts TV de LG, pero cuando fuí a depurar la aplicación que estamos desarrollando en una Smart TV de Samsung, me llevé la sorpresa de que las televisiones Samsung, deben hacer algo por dentro que sobreescribe el método console del navegador, y con Weinre no podía ver ninguno de los logs que había puesto en el código.&lt;/p&gt;
 
 &lt;p&gt;Rapidamente mis compañeros y yo pensamos en elaborar un propio debugger muy simple con un script en PHP, pero pronto comenzaron a surgir los inconvenientes y desechamos la idea. Fue de esta manera como nos topamos con &lt;a href=&#34;http://nkashyap.github.io/console.io/&#34; title=&#34;Console.io&#34;&gt;Console.io,&lt;/a&gt; una consola web remota que cumplía de largo con todas nuestras necesidades. Además &lt;strong&gt;es totalmente compatible con diferentes modelos de Smart TV&lt;/strong&gt; de distintos años, entre ellos la mencionada Samsung que usamos para pruebas. Según su página web:&lt;/p&gt;
 
@@ -88,29 +88,29 @@ $(&amp;#34;#selector&amp;#34;)[0].getBoundingClientRect().width  </description>
     
     <item>
       <title>Depurar maquetación CSS con una línea de código</title>
-      <link>http://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</link>
+      <link>https://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</link>
       <pubDate>Mon, 13 Oct 2014 11:03:44 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</guid>
+      <guid>https://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</guid>
       <description>Llevo aproximadamente 8 años trabajando como desarrollador Javascript principalmente, y la verdad es que cada día uno sigue descubriendo cosas que no dejan de sorprenderle. En este caso, un código de una línea, que sirve para visualizar el layout de todos los elementos CSS de una página.
 Es un código ideal para depurar, ver donde se te descuadra un div, donde se te ha colado un margen, controlar al milímetro todo.</description>
     </item>
     
     <item>
       <title>Detectar fin de una transición/animación CSS3 con Javascript</title>
-      <link>http://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</link>
+      <link>https://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</link>
       <pubDate>Sun, 29 Jun 2014 10:06:28 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</guid>
+      <guid>https://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</guid>
       <description>Nunca me había visto en la necesidad de detectar cuando una transición CSS3 termina, pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente. Para ello estamos utilizando eventos de teclado, si pulsamos flecha derecha va hacia la derecha, en caso de pulsar la flecha izquierda, hacia la izquierda, muy sencillito.</description>
     </item>
     
     <item>
       <title>Depurar remotamente aplicaciones HTML con Weinre</title>
-      <link>http://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</link>
+      <link>https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</link>
       <pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid>
+      <guid>https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid>
       <description>&lt;p&gt;Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para &lt;strong&gt;depurar el código Javascript&lt;/strong&gt; suelo utilizar las herramientas de desarrollador de Chrome. ¿En qué casos podemos necesitar &lt;strong&gt;depurar remotamente&lt;/strong&gt;? La respuesta es sencilla, en dispositivos en los cuales no podemos acceder a herramientas de depuración del navegador. Desde la llegada de HTML5 y sus funcionalidades, es posible desarrollar aplicaciones para móviles, Smart TV&amp;#8230; Actualmente estoy trabajando en desarrollo de aplicaciones para &lt;strong&gt;Smart TV,&lt;/strong&gt; y me ví en la necesidad de depurar remotamente al realizar pruebas en las teles directamente.&lt;/p&gt;
 
 &lt;p&gt;¿Como depurar remotamente? Para ellos podemos utilizar &lt;a href=&#34;http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; que se instala como un módulo de &lt;a href=&#34;http://nodejs.org/&#34; title=&#34;Node.js&#34;&gt;Node.js.&lt;/a&gt; Lo primero de todo, como es lógico será &lt;a href=&#34;http://nodejs.org/download/&#34; title=&#34;Descarga Node.js&#34;&gt;instalar Node.js&lt;/a&gt; si no lo tenemos ya instalado. Una vez lo tenemos, podremos instalar Weinre a través de &lt;a href=&#34;https://www.npmjs.org/doc/README.html&#34; title=&#34;Node Package Manager&#34;&gt;npm,&lt;/a&gt; tan solo debemos ir a la consola y ejecutar el siguiente comando:&lt;/p&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>node on Frontend developer</title>
-    <link>http://javifm.com/beta/tags/node/</link>
+    <link>https://javifm.com/beta/tags/node/</link>
     <description>Recent content in node on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <lastBuildDate>Wed, 09 Sep 2015 13:50:35 +0000</lastBuildDate>
     
-	<atom:link href="http://javifm.com/beta/tags/node/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://javifm.com/beta/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Compilando ficheros Sass con grunt</title>
-      <link>http://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</link>
+      <link>https://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</link>
       <pubDate>Wed, 09 Sep 2015 13:50:35 +0000</pubDate>
       
-      <guid>http://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</guid>
+      <guid>https://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</guid>
       <description>&lt;img
     class=&#39;mb-6 &#39;
     srcset=&#39;
@@ -27,7 +27,7 @@
     
     
     &#39;
-    src=&#34;http://javifm.com/beta/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png&#34;
+    src=&#34;https://javifm.com/beta/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png&#34;
     width=&#34;500&#34; height=&#34;260&#34;
     alt=&#39;Grunt y Sass&#39;&gt;
 
