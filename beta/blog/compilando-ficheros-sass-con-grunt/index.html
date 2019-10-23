@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Compilando ficheros Sass con grunt | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Compilando ficheros Sass con grunt</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2015-09-09">
+        Publicado el 9 Sep 2015</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 6min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/css">css</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/grunt">grunt</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/node">node</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/sass">sass</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png 500w
+    
+      ,/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass_hubefd48497ebd2d6fa2d470b69755af54_17529_500x0_resize_box_2.png 500w
+    
+    
+    
+    '
+    src="/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png"
+    width="500" height="260"
+    alt='Grunt y Sass'>
+
+
+<p>A lo largo de los 2 últimos años, he ido poco a poco <strong>mejorando mi nivel de productividad</strong> en el trabajo. Primero cambié mi editor de toda la vida, <a href="https://notepad-plus-plus.org/">Notepad++</a> por <a href="http://www.sublimetext.com/">Sublime Text</a>. Y posteriormente, he ido añadiendo diferentes herramientas que proporciona <strong>Node.js</strong>, para automatizar distintos procesos y tareas, como ejecución de tests, linters de código, minimizado de Javascript y CSS, etc&#8230;</p>
+
+<p>Para automatizar más aún todos estos procesos, está <a href="http://gruntjs.com/">Grunt</a>, que dispone de plugins fáciles de integrar en nuestros proyectos, para realizar todo tipo de tareas que precisemos en nuestro proyecto. En mi proyecto actual, surgió una necesidad a un compañero de proyecto, que se encarga de la maquetación de la aplicación que estamos desarrollando.</p>
+
+<p>Para ello está utilizando <a href="http://sass-lang.com/">Sass</a>, uno de los preprocesadores CSS más populares actualmente. Por motivos de simplicidad de código y maximizar la compatibilidad con navegadores no muy modernos (mantenemos soporte a navegadores webKit antiguos, que usan algunas Smart TV anteriores a 2013), a la hora de hacer los elementos reutilizables de la aplicación con Javascript, decidimos que en lugar de que cada widget cargue su hoja de estilos, <strong>tener todo el CSS de todos los widgets unificados en un mismo fichero que esté cargado desde el principio</strong> (controlar cuando se ha cargado una hoja de estilos, de manera simple y compatible con todos los navegadores es una tarea que <a href="http://requirejs.org/docs/faq-advanced.html#css">ni RequireJS ha incluido en su cargador de módulos</a>).</p>
+
+<p>Grunt y sus plugins son instalados y gestionados a través de <strong>NPM</strong>, el gestor de paquetes por consola para <a href="https://nodejs.org/">Node.js</a>. Asi que si no lo tienes ya, el primer paso es instalar <a href="https://nodejs.org/en/download/">Node.js</a>. Acto seguido, nos dirigiremos a la consola, e instalaramos Grunt globalmente (seguramente necesites sudo en Linux):</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g grunt-cli</code></pre></div>
+
+<p>Ya podemos ir a la carpeta donde está nuestro proyecto (<code>cd ruta/proyecto/</code>). Deberemos tener nuestro fichero <code>package.json</code> creado, con el nombre del proyecto, descripción y otros datos importantes. Si no lo tienes creado, desde consola, estando en el directorio raíz del proyecto, puedes ejecutar <code>npm init</code>, y se irán pidiendo datos para crear el fichero, o puedes crearlo directamente con tu editor de texto, con esto bastaría a priori:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Nombre del proyecto&#34;</span>,
+  <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span>
+}
+</code></pre></div>
+
+<p>Una vez hecho esto, ya podemos proceder a instalar grunt de manera local en nuestro proyecto. Simplemente iremos a la carpeta de nuestro proyecto, y en ella ejecutaremos el siguiente comando:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install grunt --save-dev</code></pre></div>
+
+<p>Observaremos que se instala correctamente, y veremos que en el fichero <code>package.json</code> aparece una nueva clave llamada <code>devDependencies</code>, y aparece grunt:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Nombre del proyecto&#34;</span>,
+  <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+  <span style="color:#e6db74">&#34;devDependencies&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;grunt&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;^0.4.5&#34;</span>
+  }
+}
+</code></pre></div>
+
+<p>Además, en la raíz, está la carpeta <code>node_modules</code>, donde se irán instalando todos los módulos que tenemos como dependencias para nuestro proyecto. Esto facilita que si nos llevamos el proyecto a otro ordenador, o se lo enviamos a alguien, simplemente situándonos en consola en la raíz del proyecto, podremos ejecutar <code>npm</code> e inmediatamente se instalarán todas las dependencias necesarias para el proyecto. ¿Interesante no?</p>
+
+<p>Una vez aclarado como instalar grunt, y como funcionan de manera básica las dependencias, procederemos a instalar dos plugins para grunt, <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a>, para compilar Sass y <a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a>, que nos permite tener una tarea activa, vigilando que determinados ficheros (en este caso los que tienen extensión <code>.scss</code>) cambien, para, en ese momento, ejecutar una determinada tarea. Ejecutamos, sin importar el orden estos comandos para instalar las nuevas dependencias:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install grunt-contrib-sass --save-dev
+npm install grunt-contrib-watch --save-dev</code></pre></div>
+
+<p>Ya está todo listo, ahora solo tenemos que crear nuestras tareas grunt. Para ello, en el raíz del proyecto, junto al fichero <code>package.json</code>, crearemos un fichero llamado <code>gruntfile.js</code>, donde definiremos la configuración de las distintas tareas, luego cargaremos los paquetes a usar en las tareas y por último registraremos las tareas. Para nuestro propósito, el fichero quedaría así:</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">// Función contenedora
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">grunt</span> ) {
+
+    <span style="color:#75715e">// Configuración de las tareas
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">initConfig</span>( {
+
+        <span style="color:#75715e">/*
+</span><span style="color:#75715e">         *  Se observan dentro de la carpeta source,
+</span><span style="color:#75715e">         *  todos los ficheros con extensión scss.
+</span><span style="color:#75715e">         *  Cuando se produzca un cambio en alguno de
+</span><span style="color:#75715e">         *  ellos se ejecutará la tarea sass, definida
+</span><span style="color:#75715e">         *  más abajo.
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#a6e22e">watch</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">scripts</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">files</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;source/**/*.scss&#39;</span>,
+                <span style="color:#a6e22e">tasks</span><span style="color:#f92672">:</span> [ <span style="color:#e6db74">&#39;sass&#39;</span> ],
+                <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">interrupt</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+
+                    <span style="color:#75715e">/*
+</span><span style="color:#75715e">                     *  Importante la opción spawn a false,
+</span><span style="color:#75715e">                     *  para permitir cambiar el contexto de
+</span><span style="color:#75715e">                     *  la tarea.
+</span><span style="color:#75715e">                     */</span>
+                    <span style="color:#a6e22e">spawn</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+                },
+            },
+        },
+
+        <span style="color:#75715e">/*
+</span><span style="color:#75715e">         *  Dentro de la tarea sass, tenemos dos subtareas:
+</span><span style="color:#75715e">         *  - dist: compila el fichero main.scss siempre
+</span><span style="color:#75715e">         *    que se produza un cambio en cualquier scss. El
+</span><span style="color:#75715e">         *    fichero main.scss, contiene imports del resto de
+</span><span style="color:#75715e">         *    ficheros, cada vez que se toca alguno debe de
+</span><span style="color:#75715e">         *    actualizarse este.
+</span><span style="color:#75715e">         *    
+</span><span style="color:#75715e">         *  - changed: Tal cual está definida, compilaría todos
+</span><span style="color:#75715e">         *    los ficheros del proyecto, pero posteriormente con
+</span><span style="color:#75715e">         *    un evento vamos a modificar el parámetro files, y
+</span><span style="color:#75715e">         *    es indiferente lo que contenga inicialmente.
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#a6e22e">sass</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">dist</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">files</span><span style="color:#f92672">:</span> {
+                    <span style="color:#e6db74">&#39;source/styles/main.css&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;source/styles/main.scss&#39;</span>
+                },
+                <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">noCache</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                }
+            },
+            <span style="color:#a6e22e">changed</span><span style="color:#f92672">:</span> {
+                <span style="color:#a6e22e">files</span><span style="color:#f92672">:</span> [ {
+                    <span style="color:#a6e22e">src</span><span style="color:#f92672">:</span> [ <span style="color:#e6db74">&#39;source/**/*.scss&#39;</span> ],
+                    <span style="color:#a6e22e">ext</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;.css&#39;</span>
+                } ],
+                <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">noCache</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                }
+            }
+
+        }
+
+    } );
+
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">     *  A continuación, podemos escuchar el evento watch, que recibe
+</span><span style="color:#75715e">     *  información acerca del fichero que ha sido modificado.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">on</span>( <span style="color:#e6db74">&#39;watch&#39;</span>, <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">filepath</span>, <span style="color:#a6e22e">target</span> ) {
+
+        <span style="color:#75715e">// Reemplazamos .scss por .css, para indicar el destino
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_destiny</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">filepath</span>.<span style="color:#a6e22e">replace</span>( <span style="color:#e6db74">&#34;.scss&#34;</span>, <span style="color:#e6db74">&#34;.css&#34;</span> ),
+            <span style="color:#a6e22e">_file</span> <span style="color:#f92672">=</span> {};
+
+        <span style="color:#75715e">/*
+</span><span style="color:#75715e">         *  Creamos un pobjeto, para sobreescribir el parámetro file de
+</span><span style="color:#75715e">         *  la subtarea changed.
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#a6e22e">_file</span>[ <span style="color:#a6e22e">_destiny</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">filepath</span>;
+
+        <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">writeln</span>( <span style="color:#e6db74">&#39;Compilando Sass del fichero cambiado: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">filepath</span> );
+
+        <span style="color:#75715e">/*
+</span><span style="color:#75715e">         *  Sobreescribimos el parámetro de configuración, para que solo
+</span><span style="color:#75715e">         *  se compile el fichero modificado.
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">config</span>( <span style="color:#e6db74">&#39;sass.changed.files&#39;</span>, <span style="color:#a6e22e">_file</span> );
+
+    } );
+
+    <span style="color:#75715e">// Cargamos los plugins grunts necesarios
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">loadNpmTasks</span>( <span style="color:#e6db74">&#39;grunt-contrib-watch&#39;</span> );
+    <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">loadNpmTasks</span>( <span style="color:#e6db74">&#39;grunt-contrib-sass&#39;</span> );
+
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">     *  Registramos como tarea por defecto la tarea watch. Cuando en la
+</span><span style="color:#75715e">     *  consola, estando en el proyecto, pongamos grunt, por defecto se
+</span><span style="color:#75715e">     *  lanzará la tarea que registremos como default. Podríamos registrar
+</span><span style="color:#75715e">     *  otra, en cuyo caso tendríamos que poner el comando grunt watch,
+</span><span style="color:#75715e">     *  para decirle a grunt que ejecuta la tarea watch.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">grunt</span>.<span style="color:#a6e22e">registerTask</span>( <span style="color:#e6db74">&#39;default&#39;</span>, [ <span style="color:#e6db74">&#39;watch&#39;</span> ] );
+
+};
+</code></pre></div>
+
+<p>Ya simplemento hemos de dirigirnos a la consola, y ejecutar <strong><code>grunt</code></strong>, ya que la tarea watch ha sido añadida por defecto, o bien <code>grunt watch</code> y se lanzará el proceso que estará observando los cambios producidos en los ficheros scss de nuestro proyecto, para acto seguido lanzar la tarea.</p>
+
+<p>De esta manera <strong>nuestros ficheros Sass son compilados automaticamente</strong>, muy útil si nuestro editor de texto no dispone de un plugin que automatice el proceso y queremos evitar tener que estar compilando manualmente desde la consola.</p>
+
+<ul>
+<li><a href="http://gruntjs.com/getting-started">Primeros pasos con grunt</a></li>
+<li><a href="http://gruntjs.com/configuring-tasks">Configurando tareas</a></li>
+</ul>
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/n%C3%BAmero-de-commits-en-git-por-usuario/">
+            &laquo; Número de commits en Git por usuario
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/">
+            Ellipsis de múltiples líneas con Javascript &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

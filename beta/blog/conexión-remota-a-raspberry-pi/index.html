@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Conexión remota a Raspberry Pi | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Conexión remota a Raspberry Pi</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2017-01-25">
+        Publicado el 25 Ene 2017</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 4min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/raspberry-pi">raspberry pi</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Una vez finalizada la configuración básica, vamos a ver la manera de <strong>conectarnos remotamente</strong>, sin necesidad de tener enchufado ratón y teclado a la Raspberry, ni tan siquiera un monitor HDMI (si no quieres). Por defecto raspbian Pixel trae instalado el paquete <strong>RealVNC</strong> para conexiones remotas. Este paquete es incompatible con <strong>xrdp</strong>, que es el protocolo que utiliza la herramienta de <em>Conexión a Escritorio remoto</em> que trae instalada Windows por defecto.</p>
+
+<p>Si no dispones de Windows no te preocupes, vamos a ver varias maneras distintas de conexión en remoto. Para continuar con la configuración instalaremos el paquete <strong>tightvncserver</strong>, que se encarga automaticamente de desinstalar RealVNC . Para instalar, desde la terminal simplemente ejecutamos:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install -y tightvncserver</code></pre></div>
+
+<p>La opción <em><strong>-y</strong></em> simplemente responde que sí a cualquier pregunta planteada. Finalmente instalamos xrdp:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install -y xrdp</code></pre></div>
+
+<p>Para poder acceder facilmente a nuestra Raspberry desde Windows, podemos instalar <strong>Samba</strong>. Así en lugar de recordar la IP, podemos recordar solamente el nombre que le hayamos puesto en el apartado <strong>hostname</strong> de la pestaña Sistema dentro de la configuración de la raspberry. Especialmente útil si tiene IP dinámica y no fija. En mi caso mi Raspbery se llama <em><strong>&#8220;rasp&#8221;</strong></em>. Para instalar samba:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install -y samba</code></pre></div>
+
+<p>Desde ahora, en una máquina Windows podremos acceder facilmente al miniordenador. Probamos desde cmd de Windows a hacer ping:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ping rasp</code></pre></div>
+
+<p>Para conectar remotamente, disponemos de 2 opciones:</p>
+
+<p><strong>Desde Windows</strong> no es necesario ningún paso adicional, simplemente abriremos la herramienta de <em>Conexión a Escritorio remoto</em>. Pondremos la IP o el hostname que le hayamos dado, podremos configurar una serie de opciones como Pantalla (tamaño del escritorio remoto, calidad del color&#8230;), y una vez esté a nuestro gusto pulsamos en Conectar.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/xrdp.png 410w
+    
+    
+    
+    '
+    src="/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/xrdp.png"
+    width="410" height="473"
+    alt='Conexión a escritorio remoto de Windows'>
+
+
+<p>Es posible que salte un aviso informando de que no se puede comprobar la identidad del equipo remoto, pulsaremos <em>Sí</em> para establecer la conexión. Si todo ha ido bien, veremos una pantalla donde introducir nuestras credenciales de acceso a la Raspberry.  Usuario pi y contraseña raspberry, si es que no la has cambiado aún(¡deberías!).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/login.png 799w
+    
+      ,/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/login_hu24685f04ee0c755451fb38a819c4061f_7844_500x0_resize_box_2.png 500w
+    
+    
+    
+    '
+    src="/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/login.png"
+    width="799" height="577"
+    alt='Login con xrdp'>
+
+
+<p>Después de escribir usuario y password, al dar OK veremos el escritorio de nuestra Raspberry, y podremos interactuar con ella desde la interfaz gráfica.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/conexion_remota.png 806w
+    
+      ,/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/conexion_remota_hue30d692a4720fcd452609df3f636c1ff_188925_500x0_resize_box_2.png 500w
+    
+    
+      , /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/conexion_remota_hue30d692a4720fcd452609df3f636c1ff_188925_800x0_resize_box_2.png 800w
+    
+    
+    '
+    src="/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/conexion_remota.png"
+    width="806" height="617"
+    alt='Interfaz gráfica de Raspbian'>
+
+
+<p>Para <strong>conectar desde cualquier plataforma</strong>, podemos utilizar <strong>VNC</strong>. Yo lo utilizo desde mi móvil android, con la aplicación <em>VNC Viewer</em>. Hay distintas aplicaciones para las distintas plataformas, incluso <a href="https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla">hay una extensión para Google Chrome.</a> Para ello deberemos dar algún paso más, nada complicado.</p>
+
+<p>En la consola de nuestra Raspberry, ejecutaremos el comando <code>vncpasswd</code>, y nos pedirá establecer una contraseña que será solicitada en el momento que accedamos por remoto. Además nos dará la posibilidad de crear una contraseña unicamente para ver la Raspberry pero sin manipular, le decimos que no pues no nos interesa.</p>
+
+<p>Ahora crearemos un escritorio remoto simplemente ejecutando <code>vncserver</code>, y en consola veremos <strong>el número de escritorio creado</strong>, la primera vez será <em>:1</em>, la siguiente <em>:2</em>, etc. Desde nuestra red local simplemente en nuestra herramienta VNC, ponemos la IP de la Raspberry, seguido del número de escritorio. Si es el escritorio 1, y nuestra IP es 192.168.1.50, deberemos conectar a 192.168.1.50:1.</p>
+
+<p>Si estamos conectando desde fuera de nuestra red, a través de internet, el número de escritorio correspondería con el puerto 5901 para el escritorio 1. 5902 para el 2, etc., ya que el puerto de VNC es el 5900. Pero esto lo explicaré con mayor detalle en otras entradas, para conectar remotamente desde fuera de casa.</p>
+
+<p>Tras pulsar conectar, nos solicitará la password y después de introducirla conectaremos remotamente. Puedes crear distintos tipos de escritorios remotos con VNC, para ver las distintas opciones lo mejor es consultar la ayuda con <code>vncserver --help</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/vnc_android.png 303w
+    
+    
+    
+    '
+    src="/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/vnc_android.png"
+    width="303" height="538"
+    alt='VNC desde Android'>
+
+
+<p>Hasta aquí la manera de conectar a través de interfaz gráfica, si bien no es la conexión que más amenudo uso, puntualmente me viene bien. La manera más habitual de conectar, como hacen muchos usuarios de Linux es a través de <a href="https://es.wikipedia.org/wiki/Secure_Shell">SSH</a>, conectaremos a la consola de nuestra Raspberry y dispondremos de la línea de comandos para ejecutar lo que queramos.</p>
+
+<p>Para ello se puede hacer uso de una herramienta llamada <a href="http://www.putty.org/">Putty</a>, o de cualquier línea de comandos. En Putty simplemente ponemos la dirección IP de la máquina a la que nos vamos a conectar, elegimos ssh y dejamos el puerto por defecto que es el 22. En consola normal, ejecutaremos el comando ssh seguido de la dirección IP: <code>ssh 192.168.1.50</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/putty.png 462w
+    
+    
+    
+    '
+    src="/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/putty.png"
+    width="462" height="444"
+    alt='Configuración de Putty'>
+
+
+<p>Elegimos Open, introducimos nuestras credenciales y ya estaremos en nuestra máquina.</p>
+
+<p>NOTA: Antes de intentar conectar por SSH o VNC, es importante <strong>comprobar en la configuración de la raspberry que dichos servicios están habilitados</strong>, recientemente Raspbian ha cambiado y por defecto trae ssh deshabilitado.</p>
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/">
+            &laquo; Configurar teclado conexión remota Raspberry Pi con XDRP – km-040a.ini
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/raspberry-pi-primeros-pasos-2/">
+            Raspberry pi, primeros pasos (2) &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

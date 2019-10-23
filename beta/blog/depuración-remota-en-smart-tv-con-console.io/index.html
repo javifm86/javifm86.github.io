@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Depuración remota en Smart TV con console.io | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Depuración remota en Smart TV con console.io</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2014-11-05">
+        Publicado el 5 Nov 2014</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 5min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/smart-tv">smart TV</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/javascript">javascript</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Hace algún tiempo hablé de <a href="/blog/depurar-remotamente-aplicaciones-html-con-weinre" title="Weinre">Weinre,</a> como opción para <strong>depurar de forma remota nuestras aplicaciones Javascript.</strong> Era una opción bastante buena para dispositivos Android y Smarts TV de LG, pero cuando fuí a depurar la aplicación que estamos desarrollando en una Smart TV de Samsung, me llevé la sorpresa de que las televisiones Samsung, deben hacer algo por dentro que sobreescribe el método console del navegador, y con Weinre no podía ver ninguno de los logs que había puesto en el código.</p>
+
+<p>Rapidamente mis compañeros y yo pensamos en elaborar un propio debugger muy simple con un script en PHP, pero pronto comenzaron a surgir los inconvenientes y desechamos la idea. Fue de esta manera como nos topamos con <a href="http://nkashyap.github.io/console.io/" title="Console.io">Console.io,</a> una consola web remota que cumplía de largo con todas nuestras necesidades. Además <strong>es totalmente compatible con diferentes modelos de Smart TV</strong> de distintos años, entre ellos la mencionada Samsung que usamos para pruebas. Según su página web:</p>
+
+<ul>
+<li>Toshiba TV (2011, 2012, 2013)</li>
+<li>LG NetCast TV (2011, 2012, 2013)</li>
+<li>Philips NetTV (2011, 2012, 2013)</li>
+<li>Samsung TV (2010, 2011, 2012, 2013)</li>
+<li>Panasonic TV (2012, 2013)</li>
+<li>Technika Avtrex STB</li>
+<li>Sony (BDP-S4100)</li>
+<li>Hopper Dish (Hopper)</li>
+<li>Firefox, Safari, Opera, Chrome, Maple, PhantomJS and IE</li>
+<li>iPhone, iPod, iPad, Android browser, windows 8 phone etc</li>
+</ul>
+
+<p>Vamos a ver en unos sencillos pasos como instalar Console.io rapidamente. Se instala como un módulo de <a href="http://nodejs.org/" title="Node.js">Node.js</a>, así que deberemos <a href="http://nodejs.org/download/" title="Descarga Node.js">instalar Node.js</a> si no lo tenemos ya instalado. Antes de nada, vamos a descargar todos los archivos necesarios, podéis descargarlo en formato <a href="https://github.com/nkashyap/console.io/tarball/master" title="Console.io en formato TAR">TAR</a>, <a href="https://github.com/nkashyap/console.io/zipball/master" title="Console.io en formato ZIP">ZIP</a> o descargarlo vía git desde la <a href="https://github.com/nkashyap/console.io" title="Console.io en github">página web de github del proyecto. </a> En principio no serán necesarios los archivos, ya que con el siguiente paso debería ser suficiente, pero por si acaso no lo es, luego explico como hacerlo funcionar. Una vez descargado, abrimos la consola e instalamos Console.io como paquete npm mediante el siguiente comando:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g xconsole.io</code></pre></div>
+
+<p>De esta manera una vez terminen de realizarse todas las operaciones en la consola, se habrá instalado correctamente y podremos comenzar a usarlo. Para ello simplemente abriremos la consola, y ejecutaremos el siguiente comando:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">consoleio</code></pre></div>
+
+<p>Y aparecerá en consola el siguiente mensaje:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Starting Console.IO
+Console.IO is run at http://localhost:8082</code></pre></div>
+
+<p>Con esto ya estaría instalado, simplemente abrimos la dirección del servidor y comprobamos que todo cargue correctamente. Deberíamos ver algo así:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/consoleio1.png 1362w
+    
+      ,/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/consoleio1_hua09adab482c72068854f227eb74ffe8a_18393_500x0_resize_box_2.png 500w
+    
+    
+      , /beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/consoleio1_hua09adab482c72068854f227eb74ffe8a_18393_800x0_resize_box_2.png 800w
+    
+    
+      , /beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/consoleio1_hua09adab482c72068854f227eb74ffe8a_18393_1200x0_resize_box_2.png 1200w
+    
+    '
+    src="/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/consoleio1.png"
+    width="1362" height="484"
+    alt='Interfaz de console.io'>
+
+
+<p>En mi portátil personal fue suficiente con estos pasos, en el del trabajo por alguna razón que no he investigado, no debió añadirse correctamente la ruta hasta el Console.io, y al abrir la url del servidor, me apareció un error de este tipo:</p>
+
+<p><code>Error: ENOENT, stat 'C:\Users\dist\app\index.html'</code></p>
+
+<p>Esto sucede porque se intenta buscar el Console.io en el directorio en el cual estoy situado actualmente en la consola, y no encuentra los archivos necesarios para ejecutarse. Lo que hice fue <strong>copiarme todas las carpetas del Console.io en mi servidor wamp</strong> (puede ser en cualquier directorio, Mis Documentos, en el escritorio). Y en la barra de tareas tengo un acceso directo a un .bat muy sencillo, que se coloca en dicha carpeta y una vez allí lanza el Console.io:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd C:<span style="color:#ae81ff">\w</span>amp<span style="color:#ae81ff">\w</span>ww<span style="color:#ae81ff">\j</span>sconsole
+consoleio</code></pre></div>
+
+<p>Una vez funcionando de la manera que sea, ya solo nos queda añadir un script a nuestra aplicación, para poder recibir en Console.io los mensajes de depuración. Siendo 192.168.1.15, nuestra máquina con nuestra ip (en vuestro caso deberéis usar la IP que tenga vuestro ordenador), añadiríamos lo siguiente:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://192.168.1.15:8082/console.io.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
+
+<p>Ya solo nos queda lanzar nuestra aplicación, desde el dispositivo que queramos, y podremos ver desde la url de Console.io todos los logs que van saliendo. Podemos ver la estructura de los objetos, y <strong>utilizar los distintos método de la consola,</strong> info, error, warning, hasta funciona <code>console.time</code> y <code>console.timeEnd</code>.</p>
+
+<p>En la parte superior izquierda, veremos los dispositivos conectados (los que podemos debuggear), en este caso tenemos una ejecución de una televisión LG Smart TV de 2013, que hemos abierto para depurar, y otra ejecución desde un ordenador con un chrome versión 38, que aparece con una bolita verde. Para conectar con la ejecución de un dispositivo, simplemente hacemos doble click sobre la bolita verde, y empezaremos a ver y recibir logs del dispositivo seleccionado.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/devices.png 606w
+    
+      ,/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/devices_hu182ebe1f4d0bb3d5398ada041865d387_18672_500x0_resize_box_2.png 500w
+    
+    
+    
+    '
+    src="/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/devices.png"
+    width="606" height="402"
+    alt='Interfaz de console.io mostrando Smart TV de LG y ordenador Chrome como dispositivos conectados'>
+
+
+<p>Se pueden guardar los logs, pausar la ejecución, filtrar los tipos de logs que queremos ver, podemos ver el código fuente de la página, realizar capturas de pantalla, recargar la aplicación sin tener que lanzarla de nuevo, ver las características del dispositivo, objeto navigator&#8230;</p>
+
+<p>En fin muchas cosas, es cuestión de investigar y trastear por su interfaz gráfica, que es  bastante intuitiva y nos iremos encontrando cosas que en un determinado momento pueden sernos de gran utilidad. En la siguiente imagen vemos algunos logs, un Hola mundo, el valor de un objeto, las propiedades de un array. Además <strong>desde el editor podemos ejecutar código Javascript,</strong> muy útil para conocer propiedades de elementos del DOM, manipularlos o lanzar cualquier función que nos haga falta de manera manual.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/logs.png 643w
+    
+      ,/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/logs_hu94a5ce43e40e9bef2ab6390033344ae1_23841_500x0_resize_box_2.png 500w
+    
+    
+    
+    '
+    src="/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/img/logs.png"
+    width="643" height="715"
+    alt='Consola de Javascript para ejecutar código en Console.io'>
+
+
+<p>En resumen Console.io es una herramienta muy potente, que nos puede arrojar luz cuando probamos en distintos tipos de dispositivo desde donde no es posible consultar una consola de errores, o en caso de poder consultarla ésta es muy limitada. A mí me ha sacado las castañas del fuego más de una vez, probando en las Smart TV. No dudéis en ampliar información en la documentación oficial.</p>
+
+<ul>
+<li><a href="http://nkashyap.github.io/console.io/" title="Console.io">Console.io</a></li>
+<li><a href="https://github.com/nkashyap/console.io" title="Console.io en Github">Página en Github</a></li>
+</ul>
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/">
+            &laquo; Trim trailing white space en un shortcut en Sublime
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/">
+            Depurar maquetación CSS con una línea de código &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

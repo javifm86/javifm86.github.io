@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Evitar que jQuery sea global con RequireJS | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Evitar que jQuery sea global con RequireJS</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2015-11-03">
+        Publicado el 3 Nov 2015</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 2min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/requirejs">RequireJS</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/jquery">jQuery</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/javascript">javascript</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>El popular framework de Javascript <a href="https://jquery.com/" title="jQuery">jQuery</a>, es utilizado ampliamente en el mundo del desarrollo web. Por defecto se instancia en la variable global <code>$</code>, además de <code>jQuery</code>. Esto puede entrar en conflicto con otras librerías que hayan decidido utilizar el $ también. Si estás utilizando el popular cargador de módulos <a href="http://requirejs.org/" title="RequireJS">RequireJS</a>, hay una manera muy fácil para <strong>evitar que jQuery se instancie globalmente.</strong></p>
+
+<p>Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que <strong>Samsung incluye internamente su propia versión de jQuery</strong>, sobreescribiendo la que añadas. De manera que haciendo uso del método <code>noConflict</code> de jQuery, junto con la opción <code>map</code> de RequireJS, podemos hacer que se guarde la referencia a jQuery, y que solo tengan acceso a ella los módulos que declaren nuestra versión de jQuery como dependencia.</p>
+
+<p>Veamos como quedaría nuestra configuración de RequireJS:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">config</span>( {
+
+    <span style="color:#a6e22e">baseUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./&#34;</span>,
+
+    <span style="color:#a6e22e">paths</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;jquery&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lib/jquery-1.11.2.min&#34;</span>,
+        <span style="color:#e6db74">&#34;noConflict&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lib/no-conflict&#34;</span>,
+    },
+
+    <span style="color:#a6e22e">map</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">:</span> {
+            <span style="color:#e6db74">&#34;jquery&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;noConflict&#34;</span>
+        },
+        <span style="color:#e6db74">&#34;noConflict&#34;</span><span style="color:#f92672">:</span> {
+            <span style="color:#e6db74">&#34;jquery&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;jquery&#34;</span>
+        }
+    }
+
+} );
+</code></pre></div>
+
+<p>Y luego simplemente añadiríamos el siguiente código en el módulo <strong>noConflict</strong>:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">define</span>( [ <span style="color:#e6db74">&#34;jquery&#34;</span> ], <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">$</span> ) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">noConflict</span>( <span style="color:#66d9ef">true</span> );
+} );
+</code></pre></div>
+
+<p>Pasándole true al método noConflict de jQuery, además de eliminar jQuery de la variable global <code>$</code>, se elimina además de la global <code>jQuery</code>. De esta manera, podríamos tener varias versiones de jQuery de manera privada, o una pública y otra solo usada como dependencia en los módulos que se necesite.</p>
+
+<p>Para usarlo, se require jQuery como una dependencia, y se le asigna a la variable que solo estará disponible en ese módulo el nombre que queramos:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">define</span>(
+
+    <span style="color:#75715e">// Módulos requeridos
+</span><span style="color:#75715e"></span>    [ <span style="color:#e6db74">&#34;jquery&#34;</span>, ],
+
+    <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">jQueryPrivado</span> ) {
+
+    }
+    
+);
+</code></pre></div>
+
+<p>Si aún no conoces RequireJS, o no utilizas un cargador de módulos en tus desarrollos Javascript, te recomiendo que aprendas, ya que ayuda a mantener separadas las distintas funcionalidades de una aplicación, evitando crear un monstruo que a la larga sea difícil de mantener.</p>
+
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/wordpress-no-carga-despu%C3%A9s-de-actualizar/">
+            &laquo; WordPress no carga después de actualizar
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/n%C3%BAmero-de-commits-en-git-por-usuario/">
+            Número de commits en Git por usuario &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

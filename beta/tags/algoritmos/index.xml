@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algoritmos on Frontend developer</title>
+    <link>http://javifm.com/beta/tags/algoritmos/</link>
+    <description>Recent content in algoritmos on Frontend developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <lastBuildDate>Fri, 09 Sep 2016 10:41:33 +0000</lastBuildDate>
+    
+	<atom:link href="http://javifm.com/beta/tags/algoritmos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Arbol de intervalos (interval tree) en Javascript</title>
+      <link>http://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</link>
+      <pubDate>Fri, 09 Sep 2016 10:41:33 +0000</pubDate>
+      
+      <guid>http://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</guid>
+      <description>&lt;p&gt;Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para &lt;strong&gt;optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.&lt;/strong&gt; El problema es el siguiente, se han de encontrar los nodos que pertenecen a un intervalo dado. En este caso en concreto, se dispone de una lista de canales de televisión, para los cuales disponemos de todos los programas, relativos a varios días de programación.&lt;/p&gt;
+
+&lt;p&gt;En los navegadores de hoy en día, como Google Chrome o cualquier navegador medianamente moderno, &lt;strong&gt;no habría excesivos problemas en iterar por fuerza bruta&lt;/strong&gt; hasta encontrar todos los eventos cuya fecha de inicio y fin se encontrase dentro del intervalo (ojo, para nada digo que sea lo más óptimo ni recomendado). Los problemas pueden llegar cuando en el target del proyecto podemos encontrar televisiones Smart TV´s antiguas y/o de gama baja, que vienen &lt;strong&gt;más justas de memoria.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

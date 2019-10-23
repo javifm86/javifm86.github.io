@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Obtener el valor de una propiedad CSS en porcentaje | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Obtener el valor de una propiedad CSS en porcentaje</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2016-03-18">
+        Publicado el 18 Mar 2016</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 1min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/jquery">jQuery</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/css">css</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Un tip rápido, trabajando con jQuery <strong>no es posible obtener</strong> de un nodo por ejemplo, el <strong>valor del ancho en porcentaje.</strong> Lo primero y más lógico que se nos ocurre sería invocar al método <code>css</code> y pedirle el <code>width</code> (equivalente sería a otras propiedades como top, left, height, etc):</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">$element</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;&lt;div id=&#39;nodo&#39; style=&#39;width: 50%&#39;&gt;&lt;/div&gt;&#34;</span>);
+
+<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;body&#34;</span>).<span style="color:#a6e22e">append</span>( <span style="color:#a6e22e">$element</span> );
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#nodo&#34;</span>).<span style="color:#a6e22e">css</span>(<span style="color:#e6db74">&#34;width&#34;</span>) ); <span style="color:#75715e">// 683px
+</span></code></pre></div>
+
+<p>Si quisieramos obtener el valor en porcentaje, habría que hacerlo de otra manera, directamente sin jQuery. Los selectores de jQuery devuelven un array con los elementos del DOM, asi que si tomamos la posición 0 tendremos el elemento del DOM (no la instancia jQuery) y podremos acceder directamente a la clave style:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">$element</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;&lt;div id=&#39;nodo&#39; style=&#39;width: 50%&#39;&gt;&lt;/div&gt;&#34;</span>);
+
+<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;body&#34;</span>).<span style="color:#a6e22e">append</span>( <span style="color:#a6e22e">$element</span> );
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>( <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#nodo&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> ); <span style="color:#75715e">// 50%
+</span></code></pre></div>
+
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/">
+            &laquo; Suscribirse de manera segura a eventos con jQuery
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/wordpress-no-carga-despu%C3%A9s-de-actualizar/">
+            WordPress no carga después de actualizar &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

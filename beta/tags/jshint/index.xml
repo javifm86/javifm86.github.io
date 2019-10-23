@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JSHint on Frontend developer</title>
+    <link>http://javifm.com/beta/tags/jshint/</link>
+    <description>Recent content in JSHint on Frontend developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <lastBuildDate>Thu, 02 Jul 2015 08:15:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://javifm.com/beta/tags/jshint/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JSHint y formateo de código al hacer commit con git (Git hooks)</title>
+      <link>http://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</link>
+      <pubDate>Thu, 02 Jul 2015 08:15:08 +0000</pubDate>
+      
+      <guid>http://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</guid>
+      <description>&lt;p&gt;A la hora de trabajar en equipo, tener una guía de estilos definida es de vital importancia. Estoy trabajando en un proyecto en el cual por diversos motivos que no vienen al caso, se podría mejorar bastante en ese aspecto, y mediante el uso de &lt;a href=&#34;https://nodejs.org/&#34;&gt;Node.js&lt;/a&gt; disponemos de herramientas que nos pueden ayudar a tener en un equipo un código más uniforme y estandar.&lt;/p&gt;
+
+&lt;p&gt;Para nuestro proyecto he elegido un linter, en este caso &lt;a href=&#34;https://www.npmjs.com/package/jshint&#34;&gt;JSHint&lt;/a&gt;, y un formateador para el código Javascript, que representa el grueso de los desarrollos de nuestra aplicación, &lt;a href=&#34;https://www.npmjs.com/package/js-beautify&#34;&gt;js-beautify&lt;/a&gt;. Podría incorporarse además una tercera herramienta, muy potente a la hora de definir exactamente los estilos que deseamos aplicar de manera muy minuciosa, &lt;a href=&#34;https://www.npmjs.com/package/jscs&#34;&gt;JSCS&lt;/a&gt;, que se ocupa de muchas opciones de estilo que actualmente mantiene JSHint, pero que pronto &lt;strong&gt;pasarán a estar deprecadas.&lt;/strong&gt;  (Actualización: Parece que &lt;a href=&#34;http://eslint.org/&#34;&gt;ESLint&lt;/a&gt; es una alternativa equilibrada a JSHint y JSCS, tengo que probarlo más a fondo). Por el momento me limitaré a las 2 mencionadas.&lt;/p&gt;
+
+&lt;p&gt;Como control de versiones, utilizamos &lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt;, y aunque la consola es muy completa, en el día a día para según que tareas, es mucho mejor a la hora de seguir un historial de commits, ver cambios y hacer mergeos una herramienta gráfica como &lt;a href=&#34;https://www.sourcetreeapp.com/&#34;&gt;SourceTree&lt;/a&gt;, que es la que uso y recomiendo.&lt;/p&gt;
+
+&lt;p&gt;Para estandarizar nuestro código, he decidido crear una serie de reglas a la hora de validar el código Javascript, y una vez validado, el archivo deberá ser formateado de acuerdo a otra serie de reglas, de manera que en el repositorio siempre dispongamos de archivos libres de errores, con un mismo formato y siguiendo el mismo estilo.&lt;/p&gt;
+
+&lt;p&gt;La idea es simple, quiero que cada vez que alguien vaya a hacer commit de sus cambios al repositorio, se validen los ficheros Javascript de acuerdo a unas reglas comunes de JSHint, y si el archivo no contiene errores será formateado automáticamente antes del commit al repositorio. La idea es hacerlo automático, así nadie tiene ninguna excusa. Veamos primero como instalar a nivel de proyecto las 2 herramientas.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

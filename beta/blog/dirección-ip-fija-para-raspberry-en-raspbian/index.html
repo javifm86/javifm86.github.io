@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Dirección IP fija para Raspberry en Raspbian | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Dirección IP fija para Raspberry en Raspbian</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2017-09-19">
+        Publicado el 19 Sep 2017</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 2min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/raspberry-pi">raspberry pi</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Por comodidad a la hora de disfrutar de nuestra Raspberry <strong>lo más conveniente es asignarle una IP fija.</strong> De esa manera siempre podremos conectarnos a la misma dirección y no dependeremos de que el servidor DHCP nos dé una distinta cada vez. Esta configuración es muy básica, sencilla y muy necesaria a la hora de conectarnos remotamente o configurar otra serie de servicios.</p>
+
+<p>Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian. Los pasos son para la interfaz ethernet, ya que en mi caso es la que veo que tiene mayor sentido, pues tengo conectada la raspberry al lado del router por cable.</p>
+
+<p>Editaremos el fichero <code>dhcpcd.conf</code> con nano u otro cualquier editor.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /etc/dhcpcd.conf</code></pre></div>
+
+<p>Y añadiremos al final del fichero las siguientes líneas (asegurate de poner una dirección dentro de tu red y la IP de tu router):</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">interface eth0
+static ip_address=192.168.1.50
+static routers=192.168.1.1
+static domain_name_servers=8.8.8.8
+static domain_search=8.8.4.4</code></pre></div>
+
+<p>Guardamos y salimos, para comprobar el fichero <code>interfaces</code>, que tendrá este aspecto:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and &#39;man dhcpcd.conf&#39;
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+auto lo
+iface lo inet loopback
+
+iface eth0 inet manual
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+allow-hotplug wlan1
+iface wlan1 inet manual
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</code></pre></div>
+
+<p>La parte importante es iface <code>eth0 inet manual</code>, donde indicamos que la IP sea manual. Lo más probable es que ya esté bien y no tengas que tocarlo. Guardando y reiniciando ya deberíamos disponer de nuestra IP fija.</p>
+
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/">
+            &laquo; Configuración servidor VPS en Digital Ocean I
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/">
+            Configurar teclado conexión remota Raspberry Pi con XDRP – km-040a.ini &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

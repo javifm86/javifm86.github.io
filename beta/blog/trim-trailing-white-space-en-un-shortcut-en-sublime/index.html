@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Trim trailing white space en un shortcut en Sublime | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Trim trailing white space en un shortcut en Sublime</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2014-12-02">
+        Publicado el 2 Dic 2014</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 3min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/sublime">sublime</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Sublime permite definir por medio de sus ficheros de configuración, una opción que cuando trabajo solo suelo tener activada, pero que en ocasiones trabajando en equipo no es muy recomendable.</p>
+
+<p>La opción es la de <strong>eliminar los espacios sobrantes en un archivo.</strong> Por defecto en sublime viene desactivada, pero es posible activarla para que Sublime se encargue de eliminar esos innecesarios espacios al guardar un archivo. Si esto es lo que buscas, simplemente abre tu archivo de <em><strong>Settings &#8211; User,</strong></em> y añade la siguiente opción: <code>&quot;trim_trailing_white_space_on_save&quot;: true</code></p>
+
+<p>¿Por qué no tenerlo siempre activado? Actualmente estoy trabajando en equipo, y cada persona trabaja con su editor favorito configurado a su gusto. De hecho en nuestro proyecto cada uno usamos un editor distinto (NetBeans, Brackets, Notepad++, Eclipse). Puede resultar bastante confuso tocar el fichero de un compañero, guardar y subir con los espacios en blancos eliminados. Quizás cuando ese compañero vaya a hacer commit de sus cambios y necesite mergear, no le haga mucha gracia ver cambios por todos lados y tener que revisar todas las líneas para ver si hay cambios. Hay mecanismos para que al comparar no salten esas diferencias, pero no todo el mundo las conoce ni las quiere conocer.</p>
+
+<p>Por eso me propuse poder ejecutar el limpiado de espacios, pero en lugar de al guardar, en un atajo de teclado, así podría limpiar mis archivos sin interferir en los del resto. La opción más fácil era instalar una extensión (<a href="https://github.com/SublimeText/TrailingSpaces" title="Trailing Spaces">Trailing Spaces</a>), pero ya tengo Sublime cargado de extensiones y me parecía innecesario cargarlo con una más, con muchas opciones que probablemente no use y un gasto innecesario de recursos.</p>
+
+<p>La solución es sencilla, Sublime tiene un plugin por default que realiza la acción, asi que solamente hay que modificarlo para que ejecute la acción en un atajo de teclado en lugar de al guardar el archivo. Podemos ver el plugin en la siguiente ruta: <code>\Sublime\Data\Packages\Default</code></p>
+
+<p>El archivo es _<strong>trim_trailing_white_space.py.</strong>_</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sublime<span style="color:#f92672">,</span> sublime_plugin
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace</span>(sublime_plugin<span style="color:#f92672">.</span>EventListener):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_pre_save</span>(self, view):
+        <span style="color:#66d9ef">if</span> view<span style="color:#f92672">.</span>settings()<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;trim_trailing_white_space_on_save&#34;</span>) <span style="color:#f92672">==</span> True:
+            trailing_white_space <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;[</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ]+$&#34;</span>)
+            trailing_white_space<span style="color:#f92672">.</span>reverse()
+            edit <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>begin_edit()
+            <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> trailing_white_space:
+                view<span style="color:#f92672">.</span>erase(edit, r)
+            view<span style="color:#f92672">.</span>end_edit(edit)
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EnsureNewlineAtEof</span>(sublime_plugin<span style="color:#f92672">.</span>EventListener):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_pre_save</span>(self, view):
+        <span style="color:#66d9ef">if</span> view<span style="color:#f92672">.</span>settings()<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;ensure_newline_at_eof_on_save&#34;</span>) <span style="color:#f92672">==</span> True:
+            <span style="color:#66d9ef">if</span> view<span style="color:#f92672">.</span>size() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> view<span style="color:#f92672">.</span>substr(view<span style="color:#f92672">.</span>size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>:
+                edit <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>begin_edit()
+                view<span style="color:#f92672">.</span>insert(edit, view<span style="color:#f92672">.</span>size(), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+                view<span style="color:#f92672">.</span>end_edit(edit)</code></pre></div>
+
+<p>Podéis modificar ese mismo fichero, yo preferí crearme otro distinto, por no tocar nada de lo que trae Sublime por defecto, y le puse un nombre super original: </p>
+
+<p>_<strong>trim_trailing_white_space2.py,</strong>_ en la misma carpeta. El código es el siguiente:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sublime<span style="color:#f92672">,</span> sublime_plugin
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">trim_trailing_white_space2</span>(view):
+    trailing_white_space2 <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;[</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ]+$&#34;</span>)
+    trailing_white_space2<span style="color:#f92672">.</span>reverse()
+    edit <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>begin_edit()
+    <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> trailing_white_space2:
+        view<span style="color:#f92672">.</span>erase(edit, r)
+    view<span style="color:#f92672">.</span>end_edit(edit)
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace2Command</span>(sublime_plugin<span style="color:#f92672">.</span>TextCommand):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, edit):
+        trim_trailing_white_space2(self<span style="color:#f92672">.</span>view)</code></pre></div>
+
+<p>Para terminar, abrimos el archivo <em><strong>Key Bindings &#8211; User</strong></em> y añadimos el siguiente shortcut:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{ <span style="color:#e6db74">&#34;keys&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;ctrl+alt+shift+t&#34;</span>], <span style="color:#e6db74">&#34;command&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;trim_trailing_white_space2&#34;</span> }
+</code></pre></div>
+
+<p>Con la combinación de teclas que os sea más cómoda. Et voilà! Eso es todo.</p>
+
+<p>Lo anterior para la versión 2 de Sublime, si lo queremos funcionando en la 3 el código es el siguiente:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sublime<span style="color:#f92672">,</span> sublime_plugin
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace2Command</span>(sublime_plugin<span style="color:#f92672">.</span>TextCommand):
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, edit):
+            trailing_white_space <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>view<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;[</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ]+$&#34;</span>)
+            trailing_white_space<span style="color:#f92672">.</span>reverse()
+            <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> trailing_white_space:
+                self<span style="color:#f92672">.</span>view<span style="color:#f92672">.</span>erase(edit, r)
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace2</span>(sublime_plugin<span style="color:#f92672">.</span>EventListener):
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, view):
+            view<span style="color:#f92672">.</span>run_command(<span style="color:#e6db74">&#34;trim_trailing_white_space2&#34;</span>)</code></pre></div>
+
+<p>Solución encontrada en: <a href="http://stackoverflow.com/questions/12297169/sublime-text-2-trim-trailing-white-space-on-demand" title="Stackoverflow">Stackoverflow (3ª respuesta)</a></p>
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/">
+            &laquo; Lanzar fichero batch (.bat) sin mostrar la consola en Windows
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/">
+            Depuración remota en Smart TV con console.io &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

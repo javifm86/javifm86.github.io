@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Detectar fin de una transición/animación CSS3 con Javascript | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Detectar fin de una transición/animación CSS3 con Javascript</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2014-06-29">
+        Publicado el 29 Jun 2014</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 2min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/css">css</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/javascript">javascript</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/jquery">jQuery</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Nunca me había visto en la necesidad de <strong>detectar cuando una transición CSS3 termina,</strong> pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente. Para ello estamos utilizando eventos de teclado, si pulsamos flecha derecha va hacia la derecha, en caso de pulsar la flecha izquierda, hacia la izquierda, muy sencillito.</p>
+
+<p>¿Y qué pasa si pulsamos varias veces antes de que la animación termine? Pues que parece que va a tirones, y lo que es un efecto de transición muy elegante se convierte en un efecto muy desagradable. No estaba al tanto, pero cuando un elemento presenta una animación puramente en CSS3, en función del navegador, <strong>podemos suscribirnos a un evento que nos informará cuando la transición ha terminado.</strong> En este proyecto estamos utilizando jQuery, asi que la solución es bien sencilla:</p>
+
+<p>Solución para transiciones:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ended</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#selector&#34;</span>).<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;transitionend
+</span><span style="color:#e6db74">                     webkitTransitionEnd 
+</span><span style="color:#e6db74">                     oTransitionEnd 
+</span><span style="color:#e6db74">                     MSTransitionEnd&#34;</span>, <span style="color:#66d9ef">function</span>(){ 
+                        <span style="color:#a6e22e">ended</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+                    });
+</code></pre></div>
+
+<p>Solución para animaciones:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ended</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#someSelector&#34;</span>).<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;animationend 
+</span><span style="color:#e6db74">                         webkitAnimationEnd 
+</span><span style="color:#e6db74">                         oAnimationEnd 
+</span><span style="color:#e6db74">                         MSAnimationEnd&#34;</span>, <span style="color:#66d9ef">function</span>(){
+                        <span style="color:#a6e22e">ended</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+                    });
+</code></pre></div>
+
+<p>Si no deseas usar jQuery, en Modernizr tienen esto:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">transitionEndEventName</span> () {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span>,
+        <span style="color:#66d9ef">undefined</span>,
+        <span style="color:#a6e22e">el</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>),
+        <span style="color:#a6e22e">transitions</span> <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74">&#39;transition&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;transitionend&#39;</span>,
+            <span style="color:#e6db74">&#39;OTransition&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;otransitionend&#39;</span>,  <span style="color:#75715e">// oTransitionEnd in very old Opera
+</span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#39;MozTransition&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;transitionend&#39;</span>,
+            <span style="color:#e6db74">&#39;WebkitTransition&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;webkitTransitionEnd&#39;</span>
+        };
+
+    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">transitions</span>) {
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">transitions</span>.<span style="color:#a6e22e">hasOwnProperty</span>(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">style</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">!==</span> <span style="color:#66d9ef">undefined</span>) {
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">transitions</span>[<span style="color:#a6e22e">i</span>];
+        }
+    }
+
+    <span style="color:#75715e">//TODO: throw &#39;TransitionEnd event is not supported in this browser&#39;; 
+</span><span style="color:#75715e"></span>}
+</code></pre></div>
+
+<p>Y se utiliza de la siguiente manera:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">transitionEnd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">transitionEndEventName</span>();
+<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#a6e22e">transitionEnd</span>, <span style="color:#a6e22e">theFunctionToInvoke</span>, <span style="color:#66d9ef">false</span>);
+</code></pre></div>
+
+<p>Encontré la solución en StackOverflow:</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes" title="Callback when CSS3 transition finishes">Callback when CSS3 transition finishes</a></li>
+<li><a href="http://stackoverflow.com/questions/5023514/how-do-i-normalize-css3-transition-functions-across-browsers" title="How do I normalize CSS3 Transition functions across browsers?">How do I normalize CSS3 Transition functions across browsers?</a></li>
+</ul>
+
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/">
+            &laquo; Cambia el separador de palabras en Sublime Text
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/">
+            Depurar remotamente aplicaciones HTML con Weinre &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

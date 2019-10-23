@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="stylesheet" href="http://javifm.com/beta/css/styles.css">
+    
+    
+    <title>Cambia el separador de palabras en Sublime Text | Frontend developer</title>
+    <style>
+    .testing {
+      max-width: 700px;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex p-6">
+            
+            
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
+            
+            
+            
+            
+            
+                
+            
+
+            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+            
+        </nav>
+    </div>
+</div>
+
+    
+      <main id="main">
+       
+
+<div class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Cambia el separador de palabras en Sublime Text</h1>
+        
+
+<div class="flex flex-wrap items-center text-gray-600">
+    <time datetime="2014-07-12">
+        Publicado el 12 Jul 2014</time>
+    
+    <span>
+        <span class="mx-2">&bull;</span>Tiempo de lectura: 2min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="http://javifm.com/beta/tags/sublime">sublime</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>Una de las cosas más tontas, pero que descubrí hace poco. Por defecto, Sublime Text tiene definido determinados caráceteres como separador de palabras. El punto, la coma, el signo del dólar, etc. En determinadas ocasiones, para determinados lenguajes (o para todos), podemos querer modificar los carácteres considerados como separador de palabra. Por ejemplo, en CSS, es muy común utilizar en las clases nombres separando las palabras con guiones, es una convención bastante extendida. Creas tu nuevo estilo en CSS, vas a copiarlo y te ves obligado a seleccionarlo ya que con doble click no se selecciona todo.</p>
+
+<p>Es una buena idea por tanto, al menos para CSS eliminar el carácter &#8220;-&#8221; como separador. Para ello, en Sublime vamos al menú  <em><strong>Preferences -&gt; Settings &#8211; Default.</strong></em> Y buscamos la siguiente propiedad:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">// Characters that are considered to separate words
+</span><span style="color:#75715e"></span><span style="color:#e6db74">&#34;word_separators&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./\\()\&#34;&#39;-:,.;&lt;&gt;~!@#$%^&amp;*|+=[]{}`~?&#34;</span>,
+</code></pre></div>
+
+<p>La copiamos, y podemos cambiarla globalmente en <em><strong>Preferences -&gt; Settings &#8211; User,</strong></em> o para un lenguaje en específico. En este caso optamos por esta última opción, abrimos un archivo CSS cualquiera, y vamos a <strong><em>Preferences -&gt; Settings &#8211; More -&gt; Syntax &#8211; Specific &#8211; User.</em></strong> Si no has definido ninguna preferencia para el lenguaje específico, aparecerá un archivo vacío. Pegaremos la propiedad y la encerraremos entre llaves de la siguiente manera, eliminando el carácter &#8220;<strong>&#8211;</strong>&#8220;:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+<span style="color:#e6db74">&#34;word_separators&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./\\()\&#34;&#39;:,.;&lt;&gt;~!@#$%^&amp;*|+=[]{}`~?&#34;</span>
+}
+</code></pre></div>
+
+<p>Puedes utilizar un proceso similar para otros lenguajes, por ejemplo si utilizas jQuery en Javascript y/o PHP, puede resultarnos interesante eliminar el carácter &#8220;<strong>$</strong>&#8221; como separador de palabra. Por este tipo de detalles personalizables son por los que me encanta Sublime.</p>
+
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-6 text-center max-w-3xl mx-auto">
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/">
+            &laquo; Depurar maquetación CSS con una línea de código
+        </a>
+        
+        
+        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="http://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/">
+            Detectar fin de una transición/animación CSS3 con Javascript &raquo;
+        </a>
+        
+    </div>
+
+</div>
+
+
+      </main>
+    
+    
+    
+  </body>
+</html>

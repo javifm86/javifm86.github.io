@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://javifm.com/beta/</loc>
+    <lastmod>2019-06-26T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/activar-https-con-lets-encrypt/</loc>
+    <lastmod>2019-06-26T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/</loc>
+    <lastmod>2019-06-26T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/linux/</loc>
+    <lastmod>2019-06-26T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/</loc>
+    <lastmod>2019-06-26T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/vps/</loc>
+    <lastmod>2019-06-26T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/search/</loc>
+    <lastmod>2019-06-07T20:22:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/</loc>
+    <lastmod>2018-05-01T10:10:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/direcci%C3%B3n-ip-fija-para-raspberry-en-raspbian/</loc>
+    <lastmod>2017-09-19T12:38:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/raspberry-pi/</loc>
+    <lastmod>2017-09-19T12:38:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/</loc>
+    <lastmod>2017-03-07T10:24:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/xdrp/</loc>
+    <lastmod>2017-03-07T10:24:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/</loc>
+    <lastmod>2017-01-25T15:41:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/raspberry-pi-primeros-pasos-2/</loc>
+    <lastmod>2016-12-21T15:07:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/raspberry-pi-primeros-pasos/</loc>
+    <lastmod>2016-11-24T10:41:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/reemplazando-atributos-html-con-sublime/</loc>
+    <lastmod>2016-10-11T13:35:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/sublime/</loc>
+    <lastmod>2016-10-11T13:35:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/algoritmos/</loc>
+    <lastmod>2016-09-09T10:41:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</loc>
+    <lastmod>2016-09-09T10:41:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/javascript/</loc>
+    <lastmod>2016-09-09T10:41:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/categories/</loc>
+    <lastmod>2016-04-27T14:54:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/categories/javascript/</loc>
+    <lastmod>2016-04-27T14:54:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/jquery/</loc>
+    <lastmod>2016-04-27T14:54:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/categories/jquery/</loc>
+    <lastmod>2016-04-27T14:54:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</loc>
+    <lastmod>2016-04-27T14:54:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/css/</loc>
+    <lastmod>2016-03-18T12:22:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/obtener-el-valor-de-una-propiedad-css-en-porcentaje/</loc>
+    <lastmod>2016-03-18T12:22:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/wordpress/</loc>
+    <lastmod>2016-03-15T16:15:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/wordpress-no-carga-despu%C3%A9s-de-actualizar/</loc>
+    <lastmod>2016-03-15T16:15:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</loc>
+    <lastmod>2015-11-03T12:56:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/requirejs/</loc>
+    <lastmod>2015-11-03T12:56:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/git/</loc>
+    <lastmod>2015-09-18T08:27:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/n%C3%BAmero-de-commits-en-git-por-usuario/</loc>
+    <lastmod>2015-09-18T08:27:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</loc>
+    <lastmod>2015-09-09T13:50:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/grunt/</loc>
+    <lastmod>2015-09-09T13:50:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/node/</loc>
+    <lastmod>2015-09-09T13:50:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/sass/</loc>
+    <lastmod>2015-09-09T13:50:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</loc>
+    <lastmod>2015-09-07T09:00:57+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/hook/</loc>
+    <lastmod>2015-07-02T08:15:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/jshint/</loc>
+    <lastmod>2015-07-02T08:15:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</loc>
+    <lastmod>2015-07-02T08:15:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/script/</loc>
+    <lastmod>2015-07-02T08:15:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</loc>
+    <lastmod>2015-04-21T09:10:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/width-de-jquery-sin-redondeo/</loc>
+    <lastmod>2015-02-26T10:36:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/batch/</loc>
+    <lastmod>2015-01-27T16:12:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</loc>
+    <lastmod>2015-01-27T16:12:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/</loc>
+    <lastmod>2014-12-02T16:14:31+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</loc>
+    <lastmod>2014-11-05T16:03:56+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/smart-tv/</loc>
+    <lastmod>2014-11-05T16:03:56+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</loc>
+    <lastmod>2014-10-13T11:03:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/</loc>
+    <lastmod>2014-07-12T18:25:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</loc>
+    <lastmod>2014-06-29T10:06:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/tags/debug/</loc>
+    <lastmod>2014-06-15T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</loc>
+    <lastmod>2014-06-15T17:43:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://javifm.com/beta/sobre-mi/</loc>
+  </url>
+  
+</urlset>
