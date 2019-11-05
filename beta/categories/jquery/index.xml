@@ -17,8 +17,7 @@
       <pubDate>Wed, 27 Apr 2016 14:54:10 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</guid>
-      <description>Un truco del que me acabo de enterar, que seguro será de gran utilidad a la hora de desarrollar aplicaciones con Javascript. Sobre todo aplicaciones SPA (Single Page Application). A la hora de suscribirnos a eventos de manera global en nuestras ventanas, escenas, vistas (hay multitud de forma de llamarlas según el framework o el entorno en que trabajes) es algo muy normal suscribirnos a eventos en window.
-Un ejemplo sería el evento resize.</description>
+      <description>Un truco del que me acabo de enterar, que seguro será de gran utilidad a la hora de desarrollar aplicaciones con Javascript.</description>
     </item>
     
   </channel>

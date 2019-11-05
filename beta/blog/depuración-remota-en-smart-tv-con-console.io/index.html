@@ -1,72 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Hugo 0.58.3" />
-    
-    <link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-    
-    
-    <title>Depuración remota en Smart TV con console.io | Frontend developer</title>
-    <style>
-    .testing {
-      max-width: 700px;
-    }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.58.3" />
 
-  </head>
+<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
 
-  <body>
+
+<title>Depuración remota en Smart TV con console.io | Frontend developer</title>
+
+    
+</head>
+
+<body>
     <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex p-6">
-            
-            
-            
-            
+        <nav class="flex flex-wrap justify-end py-6 px-4">
             
             
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+                
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
         </nav>
     </div>
 </div>
 
-    
-      <main id="main">
-       
+    <main id="main">
+        
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
@@ -115,15 +120,15 @@
 
 <p>Vamos a ver en unos sencillos pasos como instalar Console.io rapidamente. Se instala como un módulo de <a href="http://nodejs.org/" title="Node.js">Node.js</a>, así que deberemos <a href="http://nodejs.org/download/" title="Descarga Node.js">instalar Node.js</a> si no lo tenemos ya instalado. Antes de nada, vamos a descargar todos los archivos necesarios, podéis descargarlo en formato <a href="https://github.com/nkashyap/console.io/tarball/master" title="Console.io en formato TAR">TAR</a>, <a href="https://github.com/nkashyap/console.io/zipball/master" title="Console.io en formato ZIP">ZIP</a> o descargarlo vía git desde la <a href="https://github.com/nkashyap/console.io" title="Console.io en github">página web de github del proyecto. </a> En principio no serán necesarios los archivos, ya que con el siguiente paso debería ser suficiente, pero por si acaso no lo es, luego explico como hacerlo funcionar. Una vez descargado, abrimos la consola e instalamos Console.io como paquete npm mediante el siguiente comando:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g xconsole.io</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g xconsole.io</code></pre></div>
 
 <p>De esta manera una vez terminen de realizarse todas las operaciones en la consola, se habrá instalado correctamente y podremos comenzar a usarlo. Para ello simplemente abriremos la consola, y ejecutaremos el siguiente comando:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">consoleio</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">consoleio</code></pre></div>
 
 <p>Y aparecerá en consola el siguiente mensaje:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Starting Console.IO
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Starting Console.IO
 Console.IO is run at http://localhost:8082</code></pre></div>
 
 <p>Con esto ya estaría instalado, simplemente abrimos la dirección del servidor y comprobamos que todo cargue correctamente. Deberíamos ver algo así:</p>
@@ -184,12 +189,12 @@ Console.IO is run at http://localhost:8082</code></pre></div>
 
 <p>Esto sucede porque se intenta buscar el Console.io en el directorio en el cual estoy situado actualmente en la consola, y no encuentra los archivos necesarios para ejecutarse. Lo que hice fue <strong>copiarme todas las carpetas del Console.io en mi servidor wamp</strong> (puede ser en cualquier directorio, Mis Documentos, en el escritorio). Y en la barra de tareas tengo un acceso directo a un .bat muy sencillo, que se coloca en dicha carpeta y una vez allí lanza el Console.io:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd C:<span style="color:#ae81ff">\w</span>amp<span style="color:#ae81ff">\w</span>ww<span style="color:#ae81ff">\j</span>sconsole
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> C:<span class="se">\w</span>amp<span class="se">\w</span>ww<span class="se">\j</span>sconsole
 consoleio</code></pre></div>
 
 <p>Una vez funcionando de la manera que sea, ya solo nos queda añadir un script a nuestra aplicación, para poder recibir en Console.io los mensajes de depuración. Siendo 192.168.1.15, nuestra máquina con nuestra ip (en vuestro caso deberéis usar la IP que tenga vuestro ordenador), añadiríamos lo siguiente:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://192.168.1.15:8082/console.io.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;http://192.168.1.15:8082/console.io.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
 
 <p>Ya solo nos queda lanzar nuestra aplicación, desde el dispositivo que queramos, y podremos ver desde la url de Console.io todos los logs que van saliendo. Podemos ver la estructura de los objetos, y <strong>utilizar los distintos método de la consola,</strong> info, error, warning, hasta funciona <code>console.time</code> y <code>console.timeEnd</code>.</p>
 
@@ -289,6 +294,7 @@ consoleio</code></pre></div>
 <li><a href="http://nkashyap.github.io/console.io/" title="Console.io">Console.io</a></li>
 <li><a href="https://github.com/nkashyap/console.io" title="Console.io en Github">Página en Github</a></li>
 </ul>
+
     </div>
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-6 text-center max-w-3xl mx-auto">
@@ -307,9 +313,17 @@ consoleio</code></pre></div>
 </div>
 
 
-      </main>
+    </main>
     
+    <footer class="bg-gray-900 text-blue-100 p-4">
+    <div class="container">
+        <div class="text-center">
+            &copy; 2019 Sitio construido con Hugo alojado en Github.
+        </div>
+    </div>
+</footer>
+
     
-    
-  </body>
+</body>
+
 </html>

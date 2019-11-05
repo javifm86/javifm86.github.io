@@ -3,101 +3,105 @@
 // https://www.mattwalters.net/posts/hugo-and-lunr/#fnref:2
 // https://www.josephearl.co.uk/post/static-sites-search-hugo/
 
-// define globale variables
-var idx,
-    searchInput,
-    searchResults = null;
-var documents = [];
+(function() {
+    let idx;
+    let documents = [];
+    const URL_LIST_POSTS = '/beta/blog/index.json';
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
 
-function renderSearchResults(results) {
-    if (results.length > 0) {
-        // show max 10 results
-        if (results.length > 9) {
-            results = results.slice(0, 10);
-        }
-
-        // reset search results
-        searchResults.innerHTML = '';
-
-        // append results
-        results.forEach(result => {
-            // create result item
-            var article = document.createElement('article');
-            article.innerHTML = `
-            <a href="${result.ref}"><h3 class="title">${documents[result.ref].title}</h3></a>
-            <p><a href="${result.ref}">${result.ref}</a></p>
-            <br>
-            `;
-            searchResults.appendChild(article);
-        });
-
-        // if results are empty
-    } else {
-        searchResults.innerHTML = '<p>No results found.</p>';
-    }
-}
-
-function registerSearchHandler() {
-    // register on input event
-    searchInput.oninput = function(event) {
-        // remove search results if the user empties the search input field
-        if (searchInput.value == '') {
-            searchResults.innerHTML = '';
-        } else {
-            // get input value
-            var query = event.target.value;
-
-            // run fuzzy search
-            // var results = idx.search(query);
-            // var results = idx.search( lunr.tokenizer(query.trim()) );
-            // var results = idx.search(query + '*')
-            // console.warn(query.trim());
-            var results = idx.query(function(q) {
-                q.term(lunr.tokenizer(query.trim()), { usePipeline: true, boost: 100 });
-                q.term(lunr.tokenizer(query.trim()) + '*', { usePipeline: false, boost: 10 });
-                q.term(lunr.tokenizer(query.trim()), { usePipeline: false, editDistance: 1 });
-            });
-            console.warn(results);
-            // render results
-            renderSearchResults(results);
-        }
-    };
-
-    // set focus on search input and remove loading placeholder
-    searchInput.focus();
-    searchInput.placeholder = '';
-}
-
-window.onload = function() {
-    // get dom elements
-    searchInput = document.getElementById('search-input');
-    searchResults = document.getElementById('search-results');
-
-    // request and index documents
-    fetch('/blog/index.json', {
+    // Request and index documents
+    fetch(URL_LIST_POSTS, {
         method: 'get'
     })
         .then(res => res.json())
         .then(res => {
-            // index document
+            // Create index document with lunr
             idx = lunr(function() {
                 this.ref('url');
                 this.field('title');
                 this.field('content');
+                this.field('summary');
 
                 res.forEach(function(doc) {
                     this.add(doc);
                     documents[doc.url] = {
                         title: doc.title,
-                        content: doc.content
+                        content: doc.content,
+                        summary: doc.summary
                     };
                 }, this);
             });
 
-            // data is loaded, next register handler
+            // Once data is loaded we can register handler
             registerSearchHandler();
         })
         .catch(err => {
-            searchResults.innerHTML = `<p>${err}</p>`;
+            console.log({ err });
+            searchResults.innerHTML = `
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+                <p>Se ha producido un error.</p>
+            </div>`;
         });
-};
+
+    ///////////////////////////////////////////////////////////
+
+    function renderSearchResults(results) {
+        // If results are empty
+        if (results.length === 0) {
+            searchResults.innerHTML = `
+            <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4" role="alert">
+                <p>No se han encontrado coindidencias en la búsqueda.</p>
+            </div>
+            `;
+            return;
+        }
+
+        // Show max 10 results
+        if (results.length > 9) {
+            results = results.slice(0, 10);
+        }
+
+        // Reset search results
+        searchResults.innerHTML = '';
+
+        // Append results
+        results.forEach(result => {
+            // Create result item
+            let article = document.createElement('article');
+            article.classList.add('mb-8');
+            article.innerHTML = `
+                <a href="${result.ref}" class="group">
+                    <h2 class="article-title group-hover:text-green-500 pb-1">${documents[result.ref].title}</h2>
+                    <div class="text-gray-700"><p>${documents[result.ref].summary}</p></div>
+                </a>
+                `;
+            searchResults.appendChild(article);
+        });
+    }
+
+    function registerSearchHandler() {
+        // Register on input event
+        searchInput.oninput = function(event) {
+            if (searchInput.value === '') {
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            // Get input value
+            const query = event.target.value;
+
+            // Run fuzzy search
+            const results = idx.query(function(q) {
+                q.term(lunr.tokenizer(query.trim()), { usePipeline: true, boost: 100 });
+                q.term(lunr.tokenizer(query.trim()) + '*', { usePipeline: false, boost: 10 });
+                q.term(lunr.tokenizer(query.trim()), { usePipeline: false, editDistance: 1 });
+            });
+
+            // Render results
+            renderSearchResults(results);
+        };
+
+        searchInput.placeholder = '';
+    }
+})();

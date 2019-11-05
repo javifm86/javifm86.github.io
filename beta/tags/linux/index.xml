@@ -17,8 +17,7 @@
       <pubDate>Wed, 26 Jun 2019 17:43:44 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/activar-https-con-lets-encrypt/</guid>
-      <description>Let&amp;#8217;s Encrypt es un proveedor gratuito de certificados TLS/SSL que nos brinda la posibilidad de activar https en nuestro servidor para nuestros dominio.s El proceso está automatizado tanto para Apache como Nginx, en mi caso voy a utilizar Cerbot para instalarlo en mi servidor Nginx.
-Certbot es un software que es actualizado bastante amenudo por sus desarrolladores. Si queremos disfrutar de la versión más actualizada, deberemos añadir su repositorio ya que si tiramos de los de Ubuntu, lo más normal es que tengan versiones más antiguas.</description>
+      <description>Let&amp;#8217;s Encrypt es un proveedor gratuito de certificados TLS/SSL que nos brinda la posibilidad de activar https en nuestro servidor para nuestros dominios.</description>
     </item>
     
     <item>
@@ -27,42 +26,7 @@ Certbot es un software que es actualizado bastante amenudo por sus desarrollador
       <pubDate>Tue, 01 May 2018 10:10:39 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/</guid>
-      <description>&lt;p&gt;Me he decidido a contratar un VPS en Digital Ocean, a ver si de una vez por todas en mi escaso tiempo libre, puedo ir desarrollando un portfolio y aprendiendo cosas nuevas. Vamos a ver un listado de la configuración de un VPS desde cero, partiendo de una instalación limpia de Ubuntu 16.04. Vayamos por partes:&lt;/p&gt;
-
-&lt;h2 id=&#34;configuración-inicial-del-servidor&#34;&gt;Configuración inicial del servidor&lt;/h2&gt;
-
-&lt;p&gt;En este apartado hablaremos de la configuración incial básica para que nuestro VPS sea más seguro. Lo primero de todo es conectarnos a nuestro servidor, para ello utilizaremos ssh para establecer conexión remota por consola, con el usuario root, hasta que creemos otro usuario. Podemos conectarnos desde la consola de nuestro sistema operativo (Mac, Linux), o utilizar alguna utilidad como &lt;a href=&#34;http://www.putty.org/&#34;&gt;Putty&lt;/a&gt;, que es un cliente SSH gratuito y archiconocido para Windows. Para conectarnos deberemos saber la dirección IP pública de nuestro servidor y ejecutar el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh root@your_server_ip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Al ser la primera conexión, veremos un mensaje informándonos que no se puede asegurar la autenticidad de la conexión, escribiremos yes para establecer conexión:&lt;/p&gt;
-
-&lt;pre&gt;The authenticity of host &#39;1XX.XXX.XXX.XXX&#39; can&#39;t be established.
-ECDSA key fingerprint is SHA256:71mD5o12895hg7tu85lPFDY1khktRcuPnsfCQFrTaK0.
-Are you sure you want to continue connecting (yes/no)?&lt;/pre&gt;
-
-&lt;p&gt;Y se nos solicitará cambiar la contraseña root por seguridad. El usuario root tiene todos los privilegios y no es una buena idea hacer un uso regular de él ya que por accidente podemos ejecutar acciones destructivas e irreversibles. Por este motivo, el siguiente paso será crear otro usuario para conectarnos normalmente con él, para ello ejecutamos el siguiente comando y contestamos unas sencillas preguntas:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;adduser mike&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Tras crear nuestro nuevo usuario, le otorgaremos permisos de superusuario para poder ejecutar comandos con privilegios de root anteponiendo la palabra sudo.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;usermod -aG sudo mike&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Abriremos una nueva terminal, y probaremos a conectar con nuestro nuevo usuario para verificar que podemos hacer login correctamente:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh mike@your_server_ip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Todo servidor web que se precie debe contar con un Firewall, hay muchas opciones, una de las más sencillas y que viene ya incluida en Ubuntu es UFW. Con UFW podremos controlar qué servicios tienen acceso a la conexión. Para ver la lista de aplicaciones registradas en el firewall, ejecutamos el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ufw app list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Obteniendo como resultado:&lt;/p&gt;
-
-&lt;pre&gt;
-Available applications:
-  OpenSSH
-&lt;/pre&gt;</description>
+      <description>Me he decidido a contratar un VPS en Digital Ocean, a ver si de una vez por todas en mi escaso tiempo libre, puedo ir desarrollando un portfolio y aprendiendo cosas nuevas.</description>
     </item>
     
   </channel>

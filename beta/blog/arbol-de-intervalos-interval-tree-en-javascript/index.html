@@ -1,72 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Hugo 0.58.3" />
-    
-    <link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-    
-    
-    <title>Arbol de intervalos (interval tree) en Javascript | Frontend developer</title>
-    <style>
-    .testing {
-      max-width: 700px;
-    }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.58.3" />
 
-  </head>
+<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
 
-  <body>
+
+<title>Arbol de intervalos (interval tree) en Javascript | Frontend developer</title>
+
+    
+</head>
+
+<body>
     <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex p-6">
-            
-            
-            
-            
+        <nav class="flex flex-wrap justify-end py-6 px-4">
             
             
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+                
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
         </nav>
     </div>
 </div>
 
-    
-      <main id="main">
-       
+    <main id="main">
+        
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
@@ -104,7 +109,7 @@
 
 <p>Su uso es muy sencillo, tal y como describen en su sitio de Github. En nuestro proyecto utilizamos <strong>RequireJS</strong> como cargador de módulos, asi que adapté los distintos ficheros y los convertí en módulos. Si no tienes ni idea de <a href="http://coffeescript.org/">CoffeeScript</a> (lenguaje que compila a Javascript), ni de como compilarlo, puedes instalarte el paquete por npm, que es lo que hice yo y de ahí cogí los ficheros js.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install interval-tree2</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install interval-tree2</code></pre></div>
 
 <p>En la carpeta <em>dist</em> se encuentran los ficheros necesarios:</p>
 
@@ -119,39 +124,39 @@
 
 <p>Yo he cogido todos, los he modificado para usarlos en entorno web, pongo el código al final de la entrada. Siguiendo el ejemplo puesto por el autor. Para crear un árbol y añadir intervalos:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">itree</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">IntervalTree</span>(<span style="color:#ae81ff">300</span>); <span style="color:#75715e">// 300 : Centro del árbol
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// &#39;foo&#39; es el identificador del intervalo
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">itree</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">56</span>, <span style="color:#e6db74">&#39;foo&#39;</span>);
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">var</span> <span class="nx">itree</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntervalTree</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span> <span class="c1">// 300 : Centro del árbol
+</span><span class="c1"></span>
+<span class="c1">// &#39;foo&#39; es el identificador del intervalo
+</span><span class="c1"></span><span class="nx">itree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">);</span>
 
-<span style="color:#75715e">// &#39;bar&#39; es el identificador del intervalo
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">itree</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">199</span>, <span style="color:#e6db74">&#39;bar&#39;</span>);
+<span class="c1">// &#39;bar&#39; es el identificador del intervalo
+</span><span class="c1"></span><span class="nx">itree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
 
-<span style="color:#75715e">// Si no se pone id, se asigna automaticamente uno
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">itree</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">38</span>);
+<span class="c1">// Si no se pone id, se asigna automaticamente uno
+</span><span class="c1"></span><span class="nx">itree</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">38</span><span class="p">);</span>
 </code></pre></div>
 
 <p>Una vez insertados los intervalos, a la hora de buscar disponemos de 2 métodos:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">// Intervalos que coinciden con un punto
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">intervals</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">itree</span>.<span style="color:#a6e22e">pointSearch</span>(<span style="color:#ae81ff">103</span>);
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="c1">// Intervalos que coinciden con un punto
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">intervals</span> <span class="o">=</span> <span class="nx">itree</span><span class="p">.</span><span class="nx">pointSearch</span><span class="p">(</span><span class="mi">103</span><span class="p">);</span>
 
-<span style="color:#75715e">// Intervalos que entran en el rango solicitado
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">intervals2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">itree</span>.<span style="color:#a6e22e">rangeSearch</span>(<span style="color:#ae81ff">103</span>, <span style="color:#ae81ff">400</span>);
+<span class="c1">// Intervalos que entran en el rango solicitado
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">intervals2</span> <span class="o">=</span> <span class="nx">itree</span><span class="p">.</span><span class="nx">rangeSearch</span><span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
 </code></pre></div>
 
 <p>Una vez obtenidos, se pueden recorrer todos los intervalos:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">intervals2</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">interval</span>) {
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">start</span>); <span style="color:#75715e">// Posición de inicio
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">end</span>); <span style="color:#75715e">// Posición de fin
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">id</span>); <span style="color:#75715e">// ID
-</span><span style="color:#75715e"></span>});
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">intervals2</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">interval</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">interval</span><span class="p">.</span><span class="nx">start</span><span class="p">);</span> <span class="c1">// Posición de inicio
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">interval</span><span class="p">.</span><span class="nx">end</span><span class="p">);</span> <span class="c1">// Posición de fin
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">interval</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// ID
+</span><span class="c1"></span><span class="p">});</span>
 </code></pre></div>
 
 <p>Por último, se puede eliminar un intervalo dado su id:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">itree</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;foo&#39;</span>);
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">itree</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
 </code></pre></div>
 
 <p>En mi caso, encontré especialmente útil el id de cada intervalo, pues lo usaba para obtener información de la posición dentro del binario donde poder buscar la información de cada programa. Cada canal de televisión dispone de su árbol, y cada evento tenía un id de este estilo:</p>
@@ -162,747 +167,748 @@
 
 <p>Aquí está todo el código de seguido, en formato módulos de Javascript, listo para importar y comenzar a usarse en entorno web.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Node</span> <span style="color:#f92672">=</span> ( <span style="color:#66d9ef">function</span>() {
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       @constructor
-</span><span style="color:#75715e">       @param {Number} center center of the node
-</span><span style="color:#75715e">        */</span>
-       <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Node</span>( <span style="color:#a6e22e">center</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">center</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">center</span>;
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           another node whose center is less than this.center
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Node} left
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           another node whose center is greater than this.center
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Node} right
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           sorted list of Intervals, sorting them by their start property
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {SortedList(Interval)} starts
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SortedList</span>( <span style="color:#e6db74">&#39;start&#39;</span> );
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           sorted list of Intervals, sorting them by their end property
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {SortedList(Interval)} ends
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ends</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SortedList</span>( <span style="color:#e6db74">&#39;end&#39;</span> );
-       }
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       the number of intervals
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method count
-</span><span style="color:#75715e">       @return {Number}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span>.<span style="color:#a6e22e">length</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       insert an interval
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method insert
-</span><span style="color:#75715e">       @param {Interval} interval
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">insert</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">interval</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#a6e22e">interval</span> );
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ends</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#a6e22e">interval</span> );
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       get intervals whose start position is less than or equal to the given value
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method startPointSearch
-</span><span style="color:#75715e">       @param {Number} val
-</span><span style="color:#75715e">       @return {Array(Interval)}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">startPointSearch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span>;
-           <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span>.<span style="color:#a6e22e">lastPositionOf</span>( {
-               <span style="color:#a6e22e">start</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">val</span>
-           } );
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span>.<span style="color:#a6e22e">slice</span>( <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> );
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       get intervals whose end position is more than or equal to the given value
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method endPointSearch
-</span><span style="color:#75715e">       @param {Number} val
-</span><span style="color:#75715e">       @return {Array(Interval)}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">endPointSearch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span>;
-           <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ends</span>.<span style="color:#a6e22e">firstPositionOf</span>( {
-               <span style="color:#a6e22e">end</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">val</span>
-           } );
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ends</span>.<span style="color:#a6e22e">slice</span>( <span style="color:#a6e22e">index</span> );
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       gets all registered interval
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method getAllIntervals
-</span><span style="color:#75715e">       @return {Array(Interval)}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getAllIntervals</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span>.<span style="color:#a6e22e">toArray</span>();
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       remove the given interval
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method remove
-</span><span style="color:#75715e">       @param {Interval} interval
-</span><span style="color:#75715e">       @param {SortedList} list
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">remove</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">interval</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">removeFromList</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">starts</span> );
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">removeFromList</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ends</span> );
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       remove the given interval from the given list
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method removeFromList
-</span><span style="color:#75715e">       @private
-</span><span style="color:#75715e">       @param {Interval} interval
-</span><span style="color:#75715e">       @param {SortedList} list
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Node</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">removeFromList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#a6e22e">list</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">candidate</span>, <span style="color:#a6e22e">firstPos</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">idx</span>, <span style="color:#a6e22e">ref</span>, <span style="color:#a6e22e">ref1</span>, <span style="color:#a6e22e">results</span>;
-           <span style="color:#a6e22e">firstPos</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">firstPositionOf</span>( <span style="color:#a6e22e">interval</span> );
-           <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> [];
-           <span style="color:#66d9ef">for</span> ( <span style="color:#a6e22e">idx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstPos</span>, <span style="color:#a6e22e">ref1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">ref</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ref1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">ref1</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">ref1</span>; <span style="color:#a6e22e">idx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ref1</span> <span style="color:#f92672">?</span> <span style="color:#f92672">++</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">:</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">i</span> ) {
-               <span style="color:#a6e22e">candidate</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>[ <span style="color:#a6e22e">idx</span> ];
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">candidate</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">id</span> ) {
-                   <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">remove</span>( <span style="color:#a6e22e">idx</span> );
-                   <span style="color:#66d9ef">break</span>;
-               }
-               <span style="color:#66d9ef">else</span> {
-                   <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">push</span>( <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span> );
-               }
-           }
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">results</span>;
-       };
-
-       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Node</span>;
-
-   } )();
-
-   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Interval</span>;
-
-   <span style="color:#a6e22e">Interval</span> <span style="color:#f92672">=</span> ( <span style="color:#66d9ef">function</span>() {
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       @constructor
-</span><span style="color:#75715e">       @param {Number} start start of the interval
-</span><span style="color:#75715e">       @param {Number} end end of the interval
-</span><span style="color:#75715e">       @param {Number|String} id id of the interval
-</span><span style="color:#75715e">        */</span>
-       <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Interval</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">id</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">start</span>;
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">end</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">end</span>;
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">id</span>;
-       }
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       get center of the interval
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method center
-</span><span style="color:#75715e">       @return {Number} center
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">Interval</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">center</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-           <span style="color:#66d9ef">return</span> ( <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">end</span> ) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
-       };
-
-       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Interval</span>;
-
-   } )();
-
-   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">IntervalTree</span> <span style="color:#f92672">=</span> ( <span style="color:#66d9ef">function</span>() {
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       @constructor
-</span><span style="color:#75715e">       @param {Number} center center of the root node
-</span><span style="color:#75715e">        */</span>
-       <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">IntervalTree</span>( <span style="color:#a6e22e">center</span> ) {
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">center</span>, <span style="color:#e6db74">&#39;IntervalTree: center&#39;</span> );
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           center =&gt; node
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Object(Node)} nodesByCenter
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodesByCenter</span> <span style="color:#f92672">=</span> {};
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           root node
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Node} root
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">root</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createNode</span>( <span style="color:#a6e22e">center</span> );
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           interval id =&gt; interval
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Object(Interval)} intervalsById
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span> <span style="color:#f92672">=</span> {};
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           interval id =&gt; node
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Object(Node)} nodesById
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodesById</span> <span style="color:#f92672">=</span> {};
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           sorted list of whole point
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {SortedList(Point)} pointTree
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointTree</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SortedList</span>( <span style="color:#e6db74">&#39;val&#39;</span> );
-
-           <span style="color:#75715e">/**
-</span><span style="color:#75715e">           unique id candidate of interval without id to be added next time
-</span><span style="color:#75715e">    
-</span><span style="color:#75715e">           @property {Number} idCandidate
-</span><span style="color:#75715e">            */</span>
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">idCandidate</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-       }
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       add one interval
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method add
-</span><span style="color:#75715e">       @public
-</span><span style="color:#75715e">       @param {Number} start start of the interval to create
-</span><span style="color:#75715e">       @param {Number} end   end of the interval to create
-</span><span style="color:#75715e">       @param {String|Number} [id] identifier to distinguish intervals. Automatically defiend when not set.
-</span><span style="color:#75715e">       @return {Interval}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">id</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">interval</span>;
-           <span style="color:#66d9ef">if</span> ( <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span>[ <span style="color:#a6e22e">id</span> ] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error( <span style="color:#e6db74">&#39;id &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; is already registered.&#39;</span> );
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">id</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">while</span> ( <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">idCandidate</span> ] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> ) {
-                   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">idCandidate</span><span style="color:#f92672">++</span>;
-               }
-               <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">idCandidate</span>;
-           }
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">start</span>, <span style="color:#e6db74">&#39;1st argument of IntervalTree#add()&#39;</span> );
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">end</span>, <span style="color:#e6db74">&#39;2nd argument of IntervalTree#add()&#39;</span> );
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">start</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">end</span> ) {
-               <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertOrder</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#e6db74">&#39;start&#39;</span>, <span style="color:#e6db74">&#39;end&#39;</span> );
-           }
-           <span style="color:#a6e22e">interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Interval</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">id</span> );
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointTree</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>( <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">id</span> ) );
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointTree</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>( <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">id</span> ) );
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span>[ <span style="color:#a6e22e">id</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">interval</span>;
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">root</span> );
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       search intervals
-</span><span style="color:#75715e">       when only one argument is given, return intervals which contains the value
-</span><span style="color:#75715e">       when two arguments are given, ...
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method search
-</span><span style="color:#75715e">       @public
-</span><span style="color:#75715e">       @param {Number} val1
-</span><span style="color:#75715e">       @param {Number} val2
-</span><span style="color:#75715e">       @return {Array(Interval)} intervals
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">search</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val1</span>, <span style="color:#a6e22e">val2</span> ) {
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">val1</span>, <span style="color:#e6db74">&#39;1st argument at IntervalTree#search()&#39;</span> );
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">val2</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointSearch</span>( <span style="color:#a6e22e">val1</span> );
-           }
-           <span style="color:#66d9ef">else</span> {
-               <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">val2</span>, <span style="color:#e6db74">&#39;2nd argument at IntervalTree#search()&#39;</span> );
-               <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertOrder</span>( <span style="color:#a6e22e">val1</span>, <span style="color:#a6e22e">val2</span>, <span style="color:#e6db74">&#39;1st argument&#39;</span>, <span style="color:#e6db74">&#39;2nd argument&#39;</span>, <span style="color:#e6db74">&#39;IntervalTree#search()&#39;</span> );
-               <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">rangeSearch</span>( <span style="color:#a6e22e">val1</span>, <span style="color:#a6e22e">val2</span> );
-           }
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       removes an interval of the given id
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method remove
-</span><span style="color:#75715e">       @public
-</span><span style="color:#75715e">       @param {Number|String} id id of the interval to remove
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">remove</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">id</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">interval</span>, <span style="color:#a6e22e">node</span>;
-           <span style="color:#a6e22e">interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span>[ <span style="color:#a6e22e">id</span> ];
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">interval</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">return</span>;
-           }
-           <span style="color:#a6e22e">node</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodesById</span>[ <span style="color:#a6e22e">id</span> ];
-           <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">remove</span>( <span style="color:#a6e22e">interval</span> );
-           <span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodesById</span>[ <span style="color:#a6e22e">id</span> ];
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span>[ <span style="color:#a6e22e">id</span> ];
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       search intervals at the given node
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method pointSearch
-</span><span style="color:#75715e">       @public
-</span><span style="color:#75715e">       @param {Number} val
-</span><span style="color:#75715e">       @param {Node} [node] current node to search. default is this.root
-</span><span style="color:#75715e">       @return {Array(Interval)}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">pointSearch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">node</span>, <span style="color:#a6e22e">results</span> ) {
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">node</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#a6e22e">node</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">root</span>;
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">results</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> [];
-           }
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">val</span>, <span style="color:#e6db74">&#39;1st argument of IntervalTree#pointSearch()&#39;</span> );
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">center</span> ) {
-               <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">concat</span>( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">startPointSearch</span>( <span style="color:#a6e22e">val</span> ) );
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> ) {
-                   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointSearch</span>( <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">results</span> );
-               }
-               <span style="color:#66d9ef">else</span> {
-                   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">results</span>;
-               }
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">val</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">center</span> ) {
-               <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">concat</span>( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">endPointSearch</span>( <span style="color:#a6e22e">val</span> ) );
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> ) {
-                   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointSearch</span>( <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">right</span>, <span style="color:#a6e22e">results</span> );
-               }
-               <span style="color:#66d9ef">else</span> {
-                   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">results</span>;
-               }
-           }
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">concat</span>( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">getAllIntervals</span>() );
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       returns intervals which covers the given start-end interval
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method rangeSearch
-</span><span style="color:#75715e">       @public
-</span><span style="color:#75715e">       @param {Number} start start of the interval
-</span><span style="color:#75715e">       @param {Number} end end of the interval
-</span><span style="color:#75715e">       @return {Array(Interval)}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">rangeSearch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">firstPos</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">interval</span>, <span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">lastPos</span>, <span style="color:#a6e22e">len</span>, <span style="color:#a6e22e">len1</span>, <span style="color:#a6e22e">point</span>, <span style="color:#a6e22e">ref</span>, <span style="color:#a6e22e">ref1</span>, <span style="color:#a6e22e">resultsById</span>;
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">start</span>, <span style="color:#e6db74">&#39;1st argument at IntervalTree#rangeSearch()&#39;</span> );
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span>( <span style="color:#a6e22e">end</span>, <span style="color:#e6db74">&#39;2nd argument at IntervalTree#rangeSearch()&#39;</span> );
-           <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertOrder</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#e6db74">&#39;1st argument&#39;</span>, <span style="color:#e6db74">&#39;2nd argument&#39;</span>, <span style="color:#e6db74">&#39;IntervalTree#rangeSearch()&#39;</span> );
-           <span style="color:#a6e22e">resultsById</span> <span style="color:#f92672">=</span> {};
-           <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointSearch</span>( <span style="color:#a6e22e">start</span> );
-           <span style="color:#66d9ef">for</span> ( <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> ) {
-               <span style="color:#a6e22e">interval</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>[ <span style="color:#a6e22e">i</span> ];
-               <span style="color:#a6e22e">resultsById</span>[ <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">id</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">interval</span>;
-           }
-           <span style="color:#a6e22e">firstPos</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointTree</span>.<span style="color:#a6e22e">firstPositionOf</span>( <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>( <span style="color:#a6e22e">start</span> ) );
-           <span style="color:#a6e22e">lastPos</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointTree</span>.<span style="color:#a6e22e">lastPositionOf</span>( <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>( <span style="color:#a6e22e">end</span> ) );
-           <span style="color:#a6e22e">ref1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pointTree</span>.<span style="color:#a6e22e">slice</span>( <span style="color:#a6e22e">firstPos</span>, <span style="color:#a6e22e">lastPos</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> );
-           <span style="color:#66d9ef">for</span> ( <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">len1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref1</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len1</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> ) {
-               <span style="color:#a6e22e">point</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref1</span>[ <span style="color:#a6e22e">j</span> ];
-               <span style="color:#a6e22e">resultsById</span>[ <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">id</span> ] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intervalsById</span>[ <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">id</span> ];
-           }
-           <span style="color:#66d9ef">return</span> ( <span style="color:#66d9ef">function</span>() {
-               <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">results1</span>;
-               <span style="color:#a6e22e">results1</span> <span style="color:#f92672">=</span> [];
-               <span style="color:#66d9ef">for</span> ( <span style="color:#a6e22e">id</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">resultsById</span> ) {
-                   <span style="color:#a6e22e">interval</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">resultsById</span>[ <span style="color:#a6e22e">id</span> ];
-                   <span style="color:#a6e22e">results1</span>.<span style="color:#a6e22e">push</span>( <span style="color:#a6e22e">interval</span> );
-               }
-               <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">results1</span>;
-           } )();
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       insert interval to the given node
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method insert
-</span><span style="color:#75715e">       @private
-</span><span style="color:#75715e">       @param {Interval} interval
-</span><span style="color:#75715e">       @param {Node} node node to insert the interval
-</span><span style="color:#75715e">       @return {Interval} inserted interval
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">insert</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#a6e22e">node</span> ) {
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">end</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">center</span> ) {
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">left</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-                   <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createNode</span>( <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">end</span> );
-               }
-               <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">left</span> );
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">center</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">start</span> ) {
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">right</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-                   <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createNode</span>( <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">start</span> );
-               }
-               <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#a6e22e">interval</span>, <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">right</span> );
-           }
-           <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">insert</span>( <span style="color:#a6e22e">interval</span> );
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodesById</span>[ <span style="color:#a6e22e">interval</span>.<span style="color:#a6e22e">id</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>;
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">interval</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       create node by center
-</span><span style="color:#75715e">  
-</span><span style="color:#75715e">       @method createNode
-</span><span style="color:#75715e">       @private
-</span><span style="color:#75715e">       @param {Number} center
-</span><span style="color:#75715e">       @return {Node} node
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">IntervalTree</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">createNode</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">center</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">node</span>;
-           <span style="color:#a6e22e">node</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Node</span>( <span style="color:#a6e22e">center</span> );
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nodesByCenter</span>[ <span style="color:#a6e22e">center</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>;
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">node</span>;
-       };
-
-       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">IntervalTree</span>;
-
-   } )();
-
-
-   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Util</span>;
-
-   <span style="color:#a6e22e">Util</span> <span style="color:#f92672">=</span> ( <span style="color:#66d9ef">function</span>() {
-       <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Util</span>() {}
-
-       <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">desc</span> ) {
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">val</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error( <span style="color:#a6e22e">desc</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; is required.&#39;</span> );
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;number&#39;</span> ) {
-               <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error( <span style="color:#a6e22e">desc</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; must be a number.&#39;</span> );
-           }
-       };
-
-       <span style="color:#a6e22e">Util</span>.<span style="color:#a6e22e">assertOrder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">startName</span>, <span style="color:#a6e22e">endName</span>, <span style="color:#a6e22e">desc</span> ) {
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">start</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">end</span> ) {
-               <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error( <span style="color:#a6e22e">desc</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">startName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;(&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;) must be smaller than &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">endName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;(&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">end</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;).&#34;</span> );
-           }
-       };
-
-       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Util</span>;
-
-   } )();
-
-   <span style="color:#75715e">/**
-</span><span style="color:#75715e">   extended array of objects, always sorted
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">   @class SortedList
-</span><span style="color:#75715e">   @extends Array
-</span><span style="color:#75715e">   @module interval-tree2
-</span><span style="color:#75715e">    */</span>
-   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">SortedList</span>,
-       <span style="color:#a6e22e">extend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">child</span>, <span style="color:#a6e22e">parent</span> ) {
-           <span style="color:#66d9ef">for</span> ( <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">parent</span> ) {
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">hasProp</span>.<span style="color:#a6e22e">call</span>( <span style="color:#a6e22e">parent</span>, <span style="color:#a6e22e">key</span> ) ) <span style="color:#a6e22e">child</span>[ <span style="color:#a6e22e">key</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">parent</span>[ <span style="color:#a6e22e">key</span> ];
-           }
-
-           <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ctor</span>() {
-               <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">child</span>;
-           }
-           <span style="color:#a6e22e">ctor</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parent</span>.<span style="color:#a6e22e">prototype</span>;
-           <span style="color:#a6e22e">child</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ctor</span>();
-           <span style="color:#a6e22e">child</span>.<span style="color:#a6e22e">__super__</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parent</span>.<span style="color:#a6e22e">prototype</span>;
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">child</span>;
-       },
-       <span style="color:#a6e22e">hasProp</span> <span style="color:#f92672">=</span> {}.<span style="color:#a6e22e">hasOwnProperty</span>;
-
-   <span style="color:#a6e22e">SortedList</span> <span style="color:#f92672">=</span> ( <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">superClass</span> ) {
-       <span style="color:#a6e22e">extend</span>( <span style="color:#a6e22e">SortedList</span>, <span style="color:#a6e22e">superClass</span> );
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       @constructor
-</span><span style="color:#75715e">       @param {String} compareKey key name to compare objects. The value of the key must be a number.
-</span><span style="color:#75715e">        */</span>
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       key name to compare objects. The value of the key must be a number.
-</span><span style="color:#75715e">       @property {String} compareKey
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SortedList</span>( <span style="color:#a6e22e">compareKey</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">compareKey</span>;
-       }
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       insert a value
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method insert
-</span><span style="color:#75715e">       @param {any} val
-</span><span style="color:#75715e">       @return {Number} inserted position
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">insert</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pos</span>;
-           <span style="color:#a6e22e">pos</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bsearch</span>( <span style="color:#a6e22e">val</span> );
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">splice</span>( <span style="color:#a6e22e">pos</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">val</span> );
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">pos</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       remove the value in the given position
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method remove
-</span><span style="color:#75715e">       @param {Number} pos position
-</span><span style="color:#75715e">       @return {SortedList} self
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">remove</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">pos</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">splice</span>( <span style="color:#a6e22e">pos</span>, <span style="color:#ae81ff">1</span> );
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       get maximum value in the list
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method max
-</span><span style="color:#75715e">       @return {Number}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">max</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ref</span>;
-           <span style="color:#66d9ef">return</span> ( <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> ] ) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">ref</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ] <span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       get minimum value in the list
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method min
-</span><span style="color:#75715e">       @return {Number}
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ref</span>;
-           <span style="color:#66d9ef">return</span> ( <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>[ <span style="color:#ae81ff">0</span> ] ) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">ref</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ] <span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       binary search
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method bsearch
-</span><span style="color:#75715e">       @param {any} val
-</span><span style="color:#75715e">       @return {Number} position of the value
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">bsearch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">comp</span>, <span style="color:#a6e22e">epos</span>, <span style="color:#a6e22e">mpos</span>, <span style="color:#a6e22e">mval</span>, <span style="color:#a6e22e">spos</span>;
-           <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#a6e22e">mpos</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-           <span style="color:#a6e22e">mval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-           <span style="color:#a6e22e">spos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-           <span style="color:#a6e22e">epos</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span>;
-           <span style="color:#66d9ef">while</span> ( <span style="color:#a6e22e">epos</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">spos</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> ) {
-               <span style="color:#a6e22e">mpos</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>( ( <span style="color:#a6e22e">spos</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">epos</span> ) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> );
-               <span style="color:#a6e22e">mval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>[ <span style="color:#a6e22e">mpos</span> ];
-               <span style="color:#a6e22e">comp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compare</span>( <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">mval</span> );
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">comp</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> ) {
-                   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">mpos</span>;
-               }
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">comp</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> ) {
-                   <span style="color:#a6e22e">spos</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mpos</span>;
-               }
-               <span style="color:#66d9ef">else</span> {
-                   <span style="color:#a6e22e">epos</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mpos</span>;
-               }
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">spos</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compare</span>( <span style="color:#66d9ef">this</span>[ <span style="color:#ae81ff">0</span> ], <span style="color:#a6e22e">val</span> ) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#66d9ef">else</span> {
-               <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">spos</span>;
-           }
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       leftmost position of the given val
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method firstPositionOf
-</span><span style="color:#75715e">       @param {any} val
-</span><span style="color:#75715e">       @return {Number} leftmost position of the value
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">firstPositionOf</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">ref</span>;
-           <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bsearch</span>( <span style="color:#a6e22e">val</span> );
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">index</span> <span style="color:#f92672">===</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ];
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">num</span> <span style="color:#f92672">===</span> ( ( <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>[ <span style="color:#a6e22e">index</span> ] ) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">ref</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ] <span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span> ) ) {
-               <span style="color:#66d9ef">while</span> ( <span style="color:#66d9ef">true</span> ) {
-                   <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">index</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> ) {
-                       <span style="color:#66d9ef">break</span>;
-                   }
-                   <span style="color:#66d9ef">if</span> ( <span style="color:#66d9ef">this</span>[ <span style="color:#a6e22e">index</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> ][ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ] <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">num</span> ) {
-                       <span style="color:#66d9ef">break</span>;
-                   }
-                   <span style="color:#a6e22e">index</span><span style="color:#f92672">--</span>;
-               }
-           }
-           <span style="color:#66d9ef">else</span> {
-               <span style="color:#a6e22e">index</span><span style="color:#f92672">++</span>;
-           }
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">index</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       rightmost position of the given val
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method lastPositionOf
-</span><span style="color:#75715e">       @param {any} val
-</span><span style="color:#75715e">       @return {Number} rightmost position of the value
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">lastPositionOf</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">val</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">num</span>;
-           <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bsearch</span>( <span style="color:#a6e22e">val</span> );
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">index</span> <span style="color:#f92672">===</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ];
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">index</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">max</span>() ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#66d9ef">while</span> ( <span style="color:#66d9ef">true</span> ) {
-               <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> ) {
-                   <span style="color:#66d9ef">break</span>;
-               }
-               <span style="color:#66d9ef">if</span> ( <span style="color:#66d9ef">this</span>[ <span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> ][ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ] <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">num</span> ) {
-                   <span style="color:#66d9ef">break</span>;
-               }
-               <span style="color:#a6e22e">index</span><span style="color:#f92672">++</span>;
-           }
-           <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">index</span>;
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">        * sorted.toArray()
-</span><span style="color:#75715e">        * get raw array
-</span><span style="color:#75715e">        *
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">toArray</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-           <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">slice</span>();
-       };
-
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       comparison function. Compares two objects by this.compareKey
-</span><span style="color:#75715e">      
-</span><span style="color:#75715e">       @method compare
-</span><span style="color:#75715e">       @private
-</span><span style="color:#75715e">       @param {any} a
-</span><span style="color:#75715e">       @param {any} b
-</span><span style="color:#75715e">        */</span>
-
-       <span style="color:#a6e22e">SortedList</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">compare</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>( <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> ) {
-           <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span>;
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">b</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ] <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>[ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">compareKey</span> ];
-           <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">c</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-           }
-           <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> ) {
-               <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-           }
-           <span style="color:#66d9ef">else</span> {
-               <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-           }
-       };
-
-       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">SortedList</span>;
-
-   } )( Array );
-
-   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Point</span>;
-
-   <span style="color:#a6e22e">Point</span> <span style="color:#f92672">=</span> ( <span style="color:#66d9ef">function</span>() {
-
-       <span style="color:#75715e">/**
-</span><span style="color:#75715e">       @constructor
-</span><span style="color:#75715e">       @param {Number} val number
-</span><span style="color:#75715e">       @param {Number|String} id id
-</span><span style="color:#75715e">        */</span>
-       <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Point</span>( <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">id</span> ) {
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>;
-           <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">id</span>;
-       }
-
-       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Point</span>;
-
-   } )();
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">var</span> <span class="nx">Node</span> <span class="o">=</span> <span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+       <span class="cm">/**
+</span><span class="cm">       @constructor
+</span><span class="cm">       @param {Number} center center of the node
+</span><span class="cm">        */</span>
+       <span class="kd">function</span> <span class="nx">Node</span><span class="p">(</span> <span class="nx">center</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">center</span> <span class="o">=</span> <span class="nx">center</span><span class="p">;</span>
+
+           <span class="cm">/**
+</span><span class="cm">           another node whose center is less than this.center
+</span><span class="cm">    
+</span><span class="cm">           @property {Node} left
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+           <span class="cm">/**
+</span><span class="cm">           another node whose center is greater than this.center
+</span><span class="cm">    
+</span><span class="cm">           @property {Node} right
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+           <span class="cm">/**
+</span><span class="cm">           sorted list of Intervals, sorting them by their start property
+</span><span class="cm">    
+</span><span class="cm">           @property {SortedList(Interval)} starts
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">starts</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SortedList</span><span class="p">(</span> <span class="s1">&#39;start&#39;</span> <span class="p">);</span>
+
+           <span class="cm">/**
+</span><span class="cm">           sorted list of Intervals, sorting them by their end property
+</span><span class="cm">    
+</span><span class="cm">           @property {SortedList(Interval)} ends
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">ends</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SortedList</span><span class="p">(</span> <span class="s1">&#39;end&#39;</span> <span class="p">);</span>
+       <span class="p">}</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       the number of intervals
+</span><span class="cm">  
+</span><span class="cm">       @method count
+</span><span class="cm">       @return {Number}
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">starts</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       insert an interval
+</span><span class="cm">  
+</span><span class="cm">       @method insert
+</span><span class="cm">       @param {Interval} interval
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">starts</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">);</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">ends</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">);</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       get intervals whose start position is less than or equal to the given value
+</span><span class="cm">  
+</span><span class="cm">       @method startPointSearch
+</span><span class="cm">       @param {Number} val
+</span><span class="cm">       @return {Array(Interval)}
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">startPointSearch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">index</span><span class="p">;</span>
+           <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">starts</span><span class="p">.</span><span class="nx">lastPositionOf</span><span class="p">(</span> <span class="p">{</span>
+               <span class="nx">start</span><span class="o">:</span> <span class="nx">val</span>
+           <span class="p">}</span> <span class="p">);</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">starts</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">);</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       get intervals whose end position is more than or equal to the given value
+</span><span class="cm">  
+</span><span class="cm">       @method endPointSearch
+</span><span class="cm">       @param {Number} val
+</span><span class="cm">       @return {Array(Interval)}
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">endPointSearch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">index</span><span class="p">;</span>
+           <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">ends</span><span class="p">.</span><span class="nx">firstPositionOf</span><span class="p">(</span> <span class="p">{</span>
+               <span class="nx">end</span><span class="o">:</span> <span class="nx">val</span>
+           <span class="p">}</span> <span class="p">);</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">ends</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span> <span class="nx">index</span> <span class="p">);</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       gets all registered interval
+</span><span class="cm">  
+</span><span class="cm">       @method getAllIntervals
+</span><span class="cm">       @return {Array(Interval)}
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getAllIntervals</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">starts</span><span class="p">.</span><span class="nx">toArray</span><span class="p">();</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       remove the given interval
+</span><span class="cm">  
+</span><span class="cm">       @method remove
+</span><span class="cm">       @param {Interval} interval
+</span><span class="cm">       @param {SortedList} list
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">removeFromList</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">starts</span> <span class="p">);</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">removeFromList</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">ends</span> <span class="p">);</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       remove the given interval from the given list
+</span><span class="cm">  
+</span><span class="cm">       @method removeFromList
+</span><span class="cm">       @private
+</span><span class="cm">       @param {Interval} interval
+</span><span class="cm">       @param {SortedList} list
+</span><span class="cm">        */</span>
+
+       <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">removeFromList</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="nx">list</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">candidate</span><span class="p">,</span> <span class="nx">firstPos</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">ref1</span><span class="p">,</span> <span class="nx">results</span><span class="p">;</span>
+           <span class="nx">firstPos</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">firstPositionOf</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">);</span>
+           <span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+           <span class="k">for</span> <span class="p">(</span> <span class="nx">idx</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">ref</span> <span class="o">=</span> <span class="nx">firstPos</span><span class="p">,</span> <span class="nx">ref1</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">ref</span> <span class="o">&lt;=</span> <span class="nx">ref1</span> <span class="o">?</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ref1</span> <span class="o">:</span> <span class="nx">i</span> <span class="o">&gt;</span> <span class="nx">ref1</span><span class="p">;</span> <span class="nx">idx</span> <span class="o">=</span> <span class="nx">ref</span> <span class="o">&lt;=</span> <span class="nx">ref1</span> <span class="o">?</span> <span class="o">++</span><span class="nx">i</span> <span class="o">:</span> <span class="o">--</span><span class="nx">i</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">candidate</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span> <span class="nx">idx</span> <span class="p">];</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">candidate</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">id</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="nx">list</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span> <span class="nx">idx</span> <span class="p">);</span>
+                   <span class="k">break</span><span class="p">;</span>
+               <span class="p">}</span>
+               <span class="k">else</span> <span class="p">{</span>
+                   <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="k">void</span> <span class="mi">0</span> <span class="p">);</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+           <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+       <span class="p">};</span>
+
+       <span class="k">return</span> <span class="nx">Node</span><span class="p">;</span>
+
+   <span class="p">}</span> <span class="p">)();</span>
+
+   <span class="kd">var</span> <span class="nx">Interval</span><span class="p">;</span>
+
+   <span class="nx">Interval</span> <span class="o">=</span> <span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+       <span class="cm">/**
+</span><span class="cm">       @constructor
+</span><span class="cm">       @param {Number} start start of the interval
+</span><span class="cm">       @param {Number} end end of the interval
+</span><span class="cm">       @param {Number|String} id id of the interval
+</span><span class="cm">        */</span>
+       <span class="kd">function</span> <span class="nx">Interval</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">id</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">start</span> <span class="o">=</span> <span class="nx">start</span><span class="p">;</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">end</span> <span class="o">=</span> <span class="nx">end</span><span class="p">;</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
+       <span class="p">}</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       get center of the interval
+</span><span class="cm">      
+</span><span class="cm">       @method center
+</span><span class="cm">       @return {Number} center
+</span><span class="cm">        */</span>
+
+       <span class="nx">Interval</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">center</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">start</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">end</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+       <span class="p">};</span>
+
+       <span class="k">return</span> <span class="nx">Interval</span><span class="p">;</span>
+
+   <span class="p">}</span> <span class="p">)();</span>
+
+   <span class="kd">var</span> <span class="nx">IntervalTree</span> <span class="o">=</span> <span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+       <span class="cm">/**
+</span><span class="cm">       @constructor
+</span><span class="cm">       @param {Number} center center of the root node
+</span><span class="cm">        */</span>
+       <span class="kd">function</span> <span class="nx">IntervalTree</span><span class="p">(</span> <span class="nx">center</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">center</span><span class="p">,</span> <span class="s1">&#39;IntervalTree: center&#39;</span> <span class="p">);</span>
+
+           <span class="cm">/**
+</span><span class="cm">           center =&gt; node
+</span><span class="cm">    
+</span><span class="cm">           @property {Object(Node)} nodesByCenter
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">nodesByCenter</span> <span class="o">=</span> <span class="p">{};</span>
+
+           <span class="cm">/**
+</span><span class="cm">           root node
+</span><span class="cm">    
+</span><span class="cm">           @property {Node} root
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createNode</span><span class="p">(</span> <span class="nx">center</span> <span class="p">);</span>
+
+           <span class="cm">/**
+</span><span class="cm">           interval id =&gt; interval
+</span><span class="cm">    
+</span><span class="cm">           @property {Object(Interval)} intervalsById
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span> <span class="o">=</span> <span class="p">{};</span>
+
+           <span class="cm">/**
+</span><span class="cm">           interval id =&gt; node
+</span><span class="cm">    
+</span><span class="cm">           @property {Object(Node)} nodesById
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">nodesById</span> <span class="o">=</span> <span class="p">{};</span>
+
+           <span class="cm">/**
+</span><span class="cm">           sorted list of whole point
+</span><span class="cm">    
+</span><span class="cm">           @property {SortedList(Point)} pointTree
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">pointTree</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SortedList</span><span class="p">(</span> <span class="s1">&#39;val&#39;</span> <span class="p">);</span>
+
+           <span class="cm">/**
+</span><span class="cm">           unique id candidate of interval without id to be added next time
+</span><span class="cm">    
+</span><span class="cm">           @property {Number} idCandidate
+</span><span class="cm">            */</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">idCandidate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+       <span class="p">}</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       add one interval
+</span><span class="cm">  
+</span><span class="cm">       @method add
+</span><span class="cm">       @public
+</span><span class="cm">       @param {Number} start start of the interval to create
+</span><span class="cm">       @param {Number} end   end of the interval to create
+</span><span class="cm">       @param {String|Number} [id] identifier to distinguish intervals. Automatically defiend when not set.
+</span><span class="cm">       @return {Interval}
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">id</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">interval</span><span class="p">;</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">]</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span> <span class="s1">&#39;id &#39;</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39; is already registered.&#39;</span> <span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">id</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">while</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">idCandidate</span> <span class="p">]</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">this</span><span class="p">.</span><span class="nx">idCandidate</span><span class="o">++</span><span class="p">;</span>
+               <span class="p">}</span>
+               <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">idCandidate</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="s1">&#39;1st argument of IntervalTree#add()&#39;</span> <span class="p">);</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">end</span><span class="p">,</span> <span class="s1">&#39;2nd argument of IntervalTree#add()&#39;</span> <span class="p">);</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">start</span> <span class="o">&gt;=</span> <span class="nx">end</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">Util</span><span class="p">.</span><span class="nx">assertOrder</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span> <span class="p">);</span>
+           <span class="p">}</span>
+           <span class="nx">interval</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Interval</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">id</span> <span class="p">);</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">pointTree</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">start</span><span class="p">,</span> <span class="nx">id</span> <span class="p">)</span> <span class="p">);</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">pointTree</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">end</span><span class="p">,</span> <span class="nx">id</span> <span class="p">)</span> <span class="p">);</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">interval</span><span class="p">;</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="p">);</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       search intervals
+</span><span class="cm">       when only one argument is given, return intervals which contains the value
+</span><span class="cm">       when two arguments are given, ...
+</span><span class="cm">  
+</span><span class="cm">       @method search
+</span><span class="cm">       @public
+</span><span class="cm">       @param {Number} val1
+</span><span class="cm">       @param {Number} val2
+</span><span class="cm">       @return {Array(Interval)} intervals
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val1</span><span class="p">,</span> <span class="nx">val2</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">val1</span><span class="p">,</span> <span class="s1">&#39;1st argument at IntervalTree#search()&#39;</span> <span class="p">);</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">val2</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointSearch</span><span class="p">(</span> <span class="nx">val1</span> <span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="p">{</span>
+               <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">val2</span><span class="p">,</span> <span class="s1">&#39;2nd argument at IntervalTree#search()&#39;</span> <span class="p">);</span>
+               <span class="nx">Util</span><span class="p">.</span><span class="nx">assertOrder</span><span class="p">(</span> <span class="nx">val1</span><span class="p">,</span> <span class="nx">val2</span><span class="p">,</span> <span class="s1">&#39;1st argument&#39;</span><span class="p">,</span> <span class="s1">&#39;2nd argument&#39;</span><span class="p">,</span> <span class="s1">&#39;IntervalTree#search()&#39;</span> <span class="p">);</span>
+               <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">rangeSearch</span><span class="p">(</span> <span class="nx">val1</span><span class="p">,</span> <span class="nx">val2</span> <span class="p">);</span>
+           <span class="p">}</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       removes an interval of the given id
+</span><span class="cm">  
+</span><span class="cm">       @method remove
+</span><span class="cm">       @public
+</span><span class="cm">       @param {Number|String} id id of the interval to remove
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">id</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">interval</span><span class="p">,</span> <span class="nx">node</span><span class="p">;</span>
+           <span class="nx">interval</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">];</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">interval</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">nodesById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">];</span>
+           <span class="nx">node</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">);</span>
+           <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">nodesById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">];</span>
+           <span class="k">return</span> <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">];</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       search intervals at the given node
+</span><span class="cm">  
+</span><span class="cm">       @method pointSearch
+</span><span class="cm">       @public
+</span><span class="cm">       @param {Number} val
+</span><span class="cm">       @param {Node} [node] current node to search. default is this.root
+</span><span class="cm">       @return {Array(Interval)}
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">pointSearch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">node</span><span class="p">,</span> <span class="nx">results</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">node</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">results</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+           <span class="p">}</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="s1">&#39;1st argument of IntervalTree#pointSearch()&#39;</span> <span class="p">);</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">val</span> <span class="o">&lt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">center</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">results</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">startPointSearch</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">);</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointSearch</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">results</span> <span class="p">);</span>
+               <span class="p">}</span>
+               <span class="k">else</span> <span class="p">{</span>
+                   <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">val</span> <span class="o">&gt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">center</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">results</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">endPointSearch</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">);</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointSearch</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">results</span> <span class="p">);</span>
+               <span class="p">}</span>
+               <span class="k">else</span> <span class="p">{</span>
+                   <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+           <span class="k">return</span> <span class="nx">results</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">getAllIntervals</span><span class="p">()</span> <span class="p">);</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       returns intervals which covers the given start-end interval
+</span><span class="cm">  
+</span><span class="cm">       @method rangeSearch
+</span><span class="cm">       @public
+</span><span class="cm">       @param {Number} start start of the interval
+</span><span class="cm">       @param {Number} end end of the interval
+</span><span class="cm">       @return {Array(Interval)}
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">rangeSearch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">firstPos</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">interval</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">lastPos</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">len1</span><span class="p">,</span> <span class="nx">point</span><span class="p">,</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">ref1</span><span class="p">,</span> <span class="nx">resultsById</span><span class="p">;</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="s1">&#39;1st argument at IntervalTree#rangeSearch()&#39;</span> <span class="p">);</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span><span class="p">(</span> <span class="nx">end</span><span class="p">,</span> <span class="s1">&#39;2nd argument at IntervalTree#rangeSearch()&#39;</span> <span class="p">);</span>
+           <span class="nx">Util</span><span class="p">.</span><span class="nx">assertOrder</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="s1">&#39;1st argument&#39;</span><span class="p">,</span> <span class="s1">&#39;2nd argument&#39;</span><span class="p">,</span> <span class="s1">&#39;IntervalTree#rangeSearch()&#39;</span> <span class="p">);</span>
+           <span class="nx">resultsById</span> <span class="o">=</span> <span class="p">{};</span>
+           <span class="nx">ref</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointSearch</span><span class="p">(</span> <span class="nx">start</span> <span class="p">);</span>
+           <span class="k">for</span> <span class="p">(</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">interval</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">[</span> <span class="nx">i</span> <span class="p">];</span>
+               <span class="nx">resultsById</span><span class="p">[</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">id</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">interval</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">firstPos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointTree</span><span class="p">.</span><span class="nx">firstPositionOf</span><span class="p">(</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span> <span class="nx">start</span> <span class="p">)</span> <span class="p">);</span>
+           <span class="nx">lastPos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointTree</span><span class="p">.</span><span class="nx">lastPositionOf</span><span class="p">(</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span> <span class="nx">end</span> <span class="p">)</span> <span class="p">);</span>
+           <span class="nx">ref1</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">pointTree</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span> <span class="nx">firstPos</span><span class="p">,</span> <span class="nx">lastPos</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">);</span>
+           <span class="k">for</span> <span class="p">(</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len1</span> <span class="o">=</span> <span class="nx">ref1</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">len1</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">point</span> <span class="o">=</span> <span class="nx">ref1</span><span class="p">[</span> <span class="nx">j</span> <span class="p">];</span>
+               <span class="nx">resultsById</span><span class="p">[</span> <span class="nx">point</span><span class="p">.</span><span class="nx">id</span> <span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">intervalsById</span><span class="p">[</span> <span class="nx">point</span><span class="p">.</span><span class="nx">id</span> <span class="p">];</span>
+           <span class="p">}</span>
+           <span class="k">return</span> <span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+               <span class="kd">var</span> <span class="nx">results1</span><span class="p">;</span>
+               <span class="nx">results1</span> <span class="o">=</span> <span class="p">[];</span>
+               <span class="k">for</span> <span class="p">(</span> <span class="nx">id</span> <span class="k">in</span> <span class="nx">resultsById</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="nx">interval</span> <span class="o">=</span> <span class="nx">resultsById</span><span class="p">[</span> <span class="nx">id</span> <span class="p">];</span>
+                   <span class="nx">results1</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">);</span>
+               <span class="p">}</span>
+               <span class="k">return</span> <span class="nx">results1</span><span class="p">;</span>
+           <span class="p">}</span> <span class="p">)();</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       insert interval to the given node
+</span><span class="cm">  
+</span><span class="cm">       @method insert
+</span><span class="cm">       @private
+</span><span class="cm">       @param {Interval} interval
+</span><span class="cm">       @param {Node} node node to insert the interval
+</span><span class="cm">       @return {Interval} inserted interval
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="nx">node</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">end</span> <span class="o">&lt;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">center</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createNode</span><span class="p">(</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">end</span> <span class="p">);</span>
+               <span class="p">}</span>
+               <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">center</span> <span class="o">&lt;</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">start</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createNode</span><span class="p">(</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">start</span> <span class="p">);</span>
+               <span class="p">}</span>
+               <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="nx">interval</span><span class="p">,</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="p">);</span>
+           <span class="p">}</span>
+           <span class="nx">node</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span> <span class="nx">interval</span> <span class="p">);</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">nodesById</span><span class="p">[</span> <span class="nx">interval</span><span class="p">.</span><span class="nx">id</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+           <span class="k">return</span> <span class="nx">interval</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       create node by center
+</span><span class="cm">  
+</span><span class="cm">       @method createNode
+</span><span class="cm">       @private
+</span><span class="cm">       @param {Number} center
+</span><span class="cm">       @return {Node} node
+</span><span class="cm">        */</span>
+
+       <span class="nx">IntervalTree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">createNode</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">center</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">node</span><span class="p">;</span>
+           <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span> <span class="nx">center</span> <span class="p">);</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">nodesByCenter</span><span class="p">[</span> <span class="nx">center</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+           <span class="k">return</span> <span class="nx">node</span><span class="p">;</span>
+       <span class="p">};</span>
+
+       <span class="k">return</span> <span class="nx">IntervalTree</span><span class="p">;</span>
+
+   <span class="p">}</span> <span class="p">)();</span>
+
+
+   <span class="kd">var</span> <span class="nx">Util</span><span class="p">;</span>
+
+   <span class="nx">Util</span> <span class="o">=</span> <span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="kd">function</span> <span class="nx">Util</span><span class="p">()</span> <span class="p">{}</span>
+
+       <span class="nx">Util</span><span class="p">.</span><span class="nx">assertNumber</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">desc</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">val</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span> <span class="nx">desc</span> <span class="o">+</span> <span class="s1">&#39; is required.&#39;</span> <span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nx">val</span> <span class="o">!==</span> <span class="s1">&#39;number&#39;</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span> <span class="nx">desc</span> <span class="o">+</span> <span class="s1">&#39; must be a number.&#39;</span> <span class="p">);</span>
+           <span class="p">}</span>
+       <span class="p">};</span>
+
+       <span class="nx">Util</span><span class="p">.</span><span class="nx">assertOrder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">startName</span><span class="p">,</span> <span class="nx">endName</span><span class="p">,</span> <span class="nx">desc</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">start</span> <span class="o">&gt;=</span> <span class="nx">end</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span> <span class="nx">desc</span> <span class="o">+</span> <span class="s2">&#34;: &#34;</span> <span class="o">+</span> <span class="nx">startName</span> <span class="o">+</span> <span class="s2">&#34;(&#34;</span> <span class="o">+</span> <span class="nx">start</span> <span class="o">+</span> <span class="s2">&#34;) must be smaller than &#34;</span> <span class="o">+</span> <span class="nx">endName</span> <span class="o">+</span> <span class="s2">&#34;(&#34;</span> <span class="o">+</span> <span class="nx">end</span> <span class="o">+</span> <span class="s2">&#34;).&#34;</span> <span class="p">);</span>
+           <span class="p">}</span>
+       <span class="p">};</span>
+
+       <span class="k">return</span> <span class="nx">Util</span><span class="p">;</span>
+
+   <span class="p">}</span> <span class="p">)();</span>
+
+   <span class="cm">/**
+</span><span class="cm">   extended array of objects, always sorted
+</span><span class="cm">
+</span><span class="cm">   @class SortedList
+</span><span class="cm">   @extends Array
+</span><span class="cm">   @module interval-tree2
+</span><span class="cm">    */</span>
+   <span class="kd">var</span> <span class="nx">SortedList</span><span class="p">,</span>
+       <span class="nx">extend</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">child</span><span class="p">,</span> <span class="nx">parent</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">parent</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">hasProp</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">key</span> <span class="p">)</span> <span class="p">)</span> <span class="nx">child</span><span class="p">[</span> <span class="nx">key</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">[</span> <span class="nx">key</span> <span class="p">];</span>
+           <span class="p">}</span>
+
+           <span class="kd">function</span> <span class="nx">ctor</span><span class="p">()</span> <span class="p">{</span>
+               <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">child</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">ctor</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+           <span class="nx">child</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ctor</span><span class="p">();</span>
+           <span class="nx">child</span><span class="p">.</span><span class="nx">__super__</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+           <span class="k">return</span> <span class="nx">child</span><span class="p">;</span>
+       <span class="p">},</span>
+       <span class="nx">hasProp</span> <span class="o">=</span> <span class="p">{}.</span><span class="nx">hasOwnProperty</span><span class="p">;</span>
+
+   <span class="nx">SortedList</span> <span class="o">=</span> <span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">superClass</span> <span class="p">)</span> <span class="p">{</span>
+       <span class="nx">extend</span><span class="p">(</span> <span class="nx">SortedList</span><span class="p">,</span> <span class="nx">superClass</span> <span class="p">);</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       @constructor
+</span><span class="cm">       @param {String} compareKey key name to compare objects. The value of the key must be a number.
+</span><span class="cm">        */</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       key name to compare objects. The value of the key must be a number.
+</span><span class="cm">       @property {String} compareKey
+</span><span class="cm">        */</span>
+
+       <span class="kd">function</span> <span class="nx">SortedList</span><span class="p">(</span> <span class="nx">compareKey</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="o">=</span> <span class="nx">compareKey</span><span class="p">;</span>
+       <span class="p">}</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       insert a value
+</span><span class="cm">      
+</span><span class="cm">       @method insert
+</span><span class="cm">       @param {any} val
+</span><span class="cm">       @return {Number} inserted position
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">pos</span><span class="p">;</span>
+           <span class="nx">pos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bsearch</span><span class="p">(</span> <span class="nx">val</span> <span class="p">);</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span> <span class="nx">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">val</span> <span class="p">);</span>
+           <span class="k">return</span> <span class="nx">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       remove the value in the given position
+</span><span class="cm">      
+</span><span class="cm">       @method remove
+</span><span class="cm">       @param {Number} pos position
+</span><span class="cm">       @return {SortedList} self
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">pos</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span> <span class="nx">pos</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       get maximum value in the list
+</span><span class="cm">      
+</span><span class="cm">       @method max
+</span><span class="cm">       @return {Number}
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">ref</span><span class="p">;</span>
+           <span class="k">return</span> <span class="p">(</span> <span class="nx">ref</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">)</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="nx">ref</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">]</span> <span class="o">:</span> <span class="k">void</span> <span class="mi">0</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       get minimum value in the list
+</span><span class="cm">      
+</span><span class="cm">       @method min
+</span><span class="cm">       @return {Number}
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">min</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">ref</span><span class="p">;</span>
+           <span class="k">return</span> <span class="p">(</span> <span class="nx">ref</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">)</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="nx">ref</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">]</span> <span class="o">:</span> <span class="k">void</span> <span class="mi">0</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       binary search
+</span><span class="cm">      
+</span><span class="cm">       @method bsearch
+</span><span class="cm">       @param {any} val
+</span><span class="cm">       @return {Number} position of the value
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bsearch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">comp</span><span class="p">,</span> <span class="nx">epos</span><span class="p">,</span> <span class="nx">mpos</span><span class="p">,</span> <span class="nx">mval</span><span class="p">,</span> <span class="nx">spos</span><span class="p">;</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">mpos</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+           <span class="nx">mval</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+           <span class="nx">spos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+           <span class="nx">epos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+           <span class="k">while</span> <span class="p">(</span> <span class="nx">epos</span> <span class="o">-</span> <span class="nx">spos</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="nx">mpos</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="p">(</span> <span class="nx">spos</span> <span class="o">+</span> <span class="nx">epos</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">);</span>
+               <span class="nx">mval</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span> <span class="nx">mpos</span> <span class="p">];</span>
+               <span class="nx">comp</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">mval</span> <span class="p">);</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">comp</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">return</span> <span class="nx">mpos</span><span class="p">;</span>
+               <span class="p">}</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">comp</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="nx">spos</span> <span class="o">=</span> <span class="nx">mpos</span><span class="p">;</span>
+               <span class="p">}</span>
+               <span class="k">else</span> <span class="p">{</span>
+                   <span class="nx">epos</span> <span class="o">=</span> <span class="nx">mpos</span><span class="p">;</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">spos</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span> <span class="k">this</span><span class="p">[</span> <span class="mi">0</span> <span class="p">],</span> <span class="nx">val</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="nx">spos</span><span class="p">;</span>
+           <span class="p">}</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       leftmost position of the given val
+</span><span class="cm">      
+</span><span class="cm">       @method firstPositionOf
+</span><span class="cm">       @param {any} val
+</span><span class="cm">       @return {Number} leftmost position of the value
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">firstPositionOf</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">ref</span><span class="p">;</span>
+           <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bsearch</span><span class="p">(</span> <span class="nx">val</span> <span class="p">);</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">index</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">num</span> <span class="o">=</span> <span class="nx">val</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">];</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">num</span> <span class="o">===</span> <span class="p">(</span> <span class="p">(</span> <span class="nx">ref</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span> <span class="nx">index</span> <span class="p">]</span> <span class="p">)</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="nx">ref</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">]</span> <span class="o">:</span> <span class="k">void</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">while</span> <span class="p">(</span> <span class="kc">true</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">if</span> <span class="p">(</span> <span class="nx">index</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+                       <span class="k">break</span><span class="p">;</span>
+                   <span class="p">}</span>
+                   <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">[</span> <span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">][</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">]</span> <span class="o">&lt;</span> <span class="nx">num</span> <span class="p">)</span> <span class="p">{</span>
+                       <span class="k">break</span><span class="p">;</span>
+                   <span class="p">}</span>
+                   <span class="nx">index</span><span class="o">--</span><span class="p">;</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="p">{</span>
+               <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">return</span> <span class="nx">index</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       rightmost position of the given val
+</span><span class="cm">      
+</span><span class="cm">       @method lastPositionOf
+</span><span class="cm">       @param {any} val
+</span><span class="cm">       @return {Number} rightmost position of the value
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">lastPositionOf</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">val</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">num</span><span class="p">;</span>
+           <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bsearch</span><span class="p">(</span> <span class="nx">val</span> <span class="p">);</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">index</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">num</span> <span class="o">=</span> <span class="nx">val</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">];</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">index</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">num</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">max</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">while</span> <span class="p">(</span> <span class="kc">true</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">break</span><span class="p">;</span>
+               <span class="p">}</span>
+               <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">[</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">][</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">]</span> <span class="o">&gt;</span> <span class="nx">num</span> <span class="p">)</span> <span class="p">{</span>
+                   <span class="k">break</span><span class="p">;</span>
+               <span class="p">}</span>
+               <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">return</span> <span class="nx">index</span><span class="p">;</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">        * sorted.toArray()
+</span><span class="cm">        * get raw array
+</span><span class="cm">        *
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toArray</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">slice</span><span class="p">();</span>
+       <span class="p">};</span>
+
+
+       <span class="cm">/**
+</span><span class="cm">       comparison function. Compares two objects by this.compareKey
+</span><span class="cm">      
+</span><span class="cm">       @method compare
+</span><span class="cm">       @private
+</span><span class="cm">       @param {any} a
+</span><span class="cm">       @param {any} b
+</span><span class="cm">        */</span>
+
+       <span class="nx">SortedList</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">compare</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="kd">var</span> <span class="nx">c</span><span class="p">;</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">a</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">b</span> <span class="o">==</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">]</span> <span class="o">-</span> <span class="nx">b</span><span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">compareKey</span> <span class="p">];</span>
+           <span class="k">if</span> <span class="p">(</span> <span class="nx">c</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nx">c</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+           <span class="p">}</span>
+       <span class="p">};</span>
+
+       <span class="k">return</span> <span class="nx">SortedList</span><span class="p">;</span>
+
+   <span class="p">}</span> <span class="p">)(</span> <span class="nb">Array</span> <span class="p">);</span>
+
+   <span class="kd">var</span> <span class="nx">Point</span><span class="p">;</span>
+
+   <span class="nx">Point</span> <span class="o">=</span> <span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+       <span class="cm">/**
+</span><span class="cm">       @constructor
+</span><span class="cm">       @param {Number} val number
+</span><span class="cm">       @param {Number|String} id id
+</span><span class="cm">        */</span>
+       <span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">id</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">val</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
+           <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="k">return</span> <span class="nx">Point</span><span class="p">;</span>
+
+   <span class="p">}</span> <span class="p">)();</span>
 </code></pre></div>
 
 <p>&nbsp;</p>
+
     </div>
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-6 text-center max-w-3xl mx-auto">
@@ -921,9 +927,17 @@
 </div>
 
 
-      </main>
+    </main>
     
+    <footer class="bg-gray-900 text-blue-100 p-4">
+    <div class="container">
+        <div class="text-center">
+            &copy; 2019 Sitio construido con Hugo alojado en Github.
+        </div>
+    </div>
+</footer>
+
     
-    
-  </body>
+</body>
+
 </html>

@@ -17,8 +17,7 @@
       <pubDate>Tue, 15 Mar 2016 16:15:04 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/wordpress-no-carga-despu%C3%A9s-de-actualizar/</guid>
-      <description>Después de meses sin publicar ni tan siquiera una entrada, me dirigí a abrir el blog para escribir algo, realizar actualizaciones, plugins, temas, traducciones&amp;#8230; Tenía la versión de WordPress desactualizada, el propio WordPress te avisa que antes de actualizar realices un respaldo de la base de datos.
-Le dí a actualizar sin más, y de repente el blog comenzó a dar error 500, no cargaba. Comienza el pánico, a pesar de que tengo varios backups hechos del blog, tanto de manera manual desde el panel de administración del hosting, como con un plugin que os animo y recomiendo a probar, Updraftplus, que realiza backups y los envío a alojamientos externos como Dropbox o Google Drive.</description>
+      <description>Después de meses sin publicar ni tan siquiera una entrada, me dirigí a abrir el blog para escribir algo, realizar actualizaciones, plugins, temas, traducciones&amp;#8230; Tenía la versión de WordPress desactualizada, el propio WordPress te avisa que antes de actualizar realices un respaldo de la base de datos.</description>
     </item>
     
   </channel>

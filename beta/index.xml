@@ -17,8 +17,7 @@
       <pubDate>Wed, 26 Jun 2019 17:43:44 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/activar-https-con-lets-encrypt/</guid>
-      <description>Let&amp;#8217;s Encrypt es un proveedor gratuito de certificados TLS/SSL que nos brinda la posibilidad de activar https en nuestro servidor para nuestros dominio.s El proceso está automatizado tanto para Apache como Nginx, en mi caso voy a utilizar Cerbot para instalarlo en mi servidor Nginx.
-Certbot es un software que es actualizado bastante amenudo por sus desarrolladores. Si queremos disfrutar de la versión más actualizada, deberemos añadir su repositorio ya que si tiramos de los de Ubuntu, lo más normal es que tengan versiones más antiguas.</description>
+      <description>Let&amp;#8217;s Encrypt es un proveedor gratuito de certificados TLS/SSL que nos brinda la posibilidad de activar https en nuestro servidor para nuestros dominios.</description>
     </item>
     
     <item>
@@ -27,42 +26,7 @@ Certbot es un software que es actualizado bastante amenudo por sus desarrollador
       <pubDate>Tue, 01 May 2018 10:10:39 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/</guid>
-      <description>&lt;p&gt;Me he decidido a contratar un VPS en Digital Ocean, a ver si de una vez por todas en mi escaso tiempo libre, puedo ir desarrollando un portfolio y aprendiendo cosas nuevas. Vamos a ver un listado de la configuración de un VPS desde cero, partiendo de una instalación limpia de Ubuntu 16.04. Vayamos por partes:&lt;/p&gt;
-
-&lt;h2 id=&#34;configuración-inicial-del-servidor&#34;&gt;Configuración inicial del servidor&lt;/h2&gt;
-
-&lt;p&gt;En este apartado hablaremos de la configuración incial básica para que nuestro VPS sea más seguro. Lo primero de todo es conectarnos a nuestro servidor, para ello utilizaremos ssh para establecer conexión remota por consola, con el usuario root, hasta que creemos otro usuario. Podemos conectarnos desde la consola de nuestro sistema operativo (Mac, Linux), o utilizar alguna utilidad como &lt;a href=&#34;http://www.putty.org/&#34;&gt;Putty&lt;/a&gt;, que es un cliente SSH gratuito y archiconocido para Windows. Para conectarnos deberemos saber la dirección IP pública de nuestro servidor y ejecutar el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh root@your_server_ip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Al ser la primera conexión, veremos un mensaje informándonos que no se puede asegurar la autenticidad de la conexión, escribiremos yes para establecer conexión:&lt;/p&gt;
-
-&lt;pre&gt;The authenticity of host &#39;1XX.XXX.XXX.XXX&#39; can&#39;t be established.
-ECDSA key fingerprint is SHA256:71mD5o12895hg7tu85lPFDY1khktRcuPnsfCQFrTaK0.
-Are you sure you want to continue connecting (yes/no)?&lt;/pre&gt;
-
-&lt;p&gt;Y se nos solicitará cambiar la contraseña root por seguridad. El usuario root tiene todos los privilegios y no es una buena idea hacer un uso regular de él ya que por accidente podemos ejecutar acciones destructivas e irreversibles. Por este motivo, el siguiente paso será crear otro usuario para conectarnos normalmente con él, para ello ejecutamos el siguiente comando y contestamos unas sencillas preguntas:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;adduser mike&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Tras crear nuestro nuevo usuario, le otorgaremos permisos de superusuario para poder ejecutar comandos con privilegios de root anteponiendo la palabra sudo.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;usermod -aG sudo mike&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Abriremos una nueva terminal, y probaremos a conectar con nuestro nuevo usuario para verificar que podemos hacer login correctamente:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh mike@your_server_ip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Todo servidor web que se precie debe contar con un Firewall, hay muchas opciones, una de las más sencillas y que viene ya incluida en Ubuntu es UFW. Con UFW podremos controlar qué servicios tienen acceso a la conexión. Para ver la lista de aplicaciones registradas en el firewall, ejecutamos el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ufw app list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Obteniendo como resultado:&lt;/p&gt;
-
-&lt;pre&gt;
-Available applications:
-  OpenSSH
-&lt;/pre&gt;</description>
+      <description>Me he decidido a contratar un VPS en Digital Ocean, a ver si de una vez por todas en mi escaso tiempo libre, puedo ir desarrollando un portfolio y aprendiendo cosas nuevas.</description>
     </item>
     
     <item>
@@ -71,8 +35,7 @@ Available applications:
       <pubDate>Tue, 19 Sep 2017 12:38:28 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/direcci%C3%B3n-ip-fija-para-raspberry-en-raspbian/</guid>
-      <description>Por comodidad a la hora de disfrutar de nuestra Raspberry lo más conveniente es asignarle una IP fija. De esa manera siempre podremos conectarnos a la misma dirección y no dependeremos de que el servidor DHCP nos dé una distinta cada vez. Esta configuración es muy básica, sencilla y muy necesaria a la hora de conectarnos remotamente o configurar otra serie de servicios.
-Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian.</description>
+      <description>Por comodidad a la hora de disfrutar de nuestra Raspberry lo más conveniente es asignarle una IP fija.</description>
     </item>
     
     <item>
@@ -81,8 +44,7 @@ Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian.</description>
       <pubDate>Tue, 07 Mar 2017 10:24:28 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/</guid>
-      <description>Si te conectas de manera remota a tu raspberry, a través de la aplicación de Conexión a escritorio remoto de Windows por ejemplo, tarde o temprano te darás cuentas que si no utilizas un teclado inglés, muchos de los símbolos y teclas están cambiados, y puede convertirse en una odisea el simple hecho de introducir el password de conexión si este tiene algún caracter especial.
-¿Pero cómo es esto posible? Si al configurar mi raspberry me preocupé de cambiar la configuración de teclado a español (o el idioma que sea).</description>
+      <description>Si te conectas de manera remota a tu raspberry, a través de la aplicación de Conexión a escritorio remoto de Windows por ejemplo, tarde o temprano te darás cuentas que si no utilizas un teclado inglés, muchos de los símbolos y teclas están cambiados.</description>
     </item>
     
     <item>
@@ -91,64 +53,7 @@ Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian.</description>
       <pubDate>Wed, 25 Jan 2017 15:41:09 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/</guid>
-      <description>&lt;p&gt;Una vez finalizada la configuración básica, vamos a ver la manera de &lt;strong&gt;conectarnos remotamente&lt;/strong&gt;, sin necesidad de tener enchufado ratón y teclado a la Raspberry, ni tan siquiera un monitor HDMI (si no quieres). Por defecto raspbian Pixel trae instalado el paquete &lt;strong&gt;RealVNC&lt;/strong&gt; para conexiones remotas. Este paquete es incompatible con &lt;strong&gt;xrdp&lt;/strong&gt;, que es el protocolo que utiliza la herramienta de &lt;em&gt;Conexión a Escritorio remoto&lt;/em&gt; que trae instalada Windows por defecto.&lt;/p&gt;
-
-&lt;p&gt;Si no dispones de Windows no te preocupes, vamos a ver varias maneras distintas de conexión en remoto. Para continuar con la configuración instalaremos el paquete &lt;strong&gt;tightvncserver&lt;/strong&gt;, que se encarga automaticamente de desinstalar RealVNC . Para instalar, desde la terminal simplemente ejecutamos:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install -y tightvncserver&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;La opción &lt;em&gt;&lt;strong&gt;-y&lt;/strong&gt;&lt;/em&gt; simplemente responde que sí a cualquier pregunta planteada. Finalmente instalamos xrdp:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install -y xrdp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Para poder acceder facilmente a nuestra Raspberry desde Windows, podemos instalar &lt;strong&gt;Samba&lt;/strong&gt;. Así en lugar de recordar la IP, podemos recordar solamente el nombre que le hayamos puesto en el apartado &lt;strong&gt;hostname&lt;/strong&gt; de la pestaña Sistema dentro de la configuración de la raspberry. Especialmente útil si tiene IP dinámica y no fija. En mi caso mi Raspbery se llama &lt;em&gt;&lt;strong&gt;&amp;#8220;rasp&amp;#8221;&lt;/strong&gt;&lt;/em&gt;. Para instalar samba:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install -y samba&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Desde ahora, en una máquina Windows podremos acceder facilmente al miniordenador. Probamos desde cmd de Windows a hacer ping:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ping rasp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Para conectar remotamente, disponemos de 2 opciones:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Desde Windows&lt;/strong&gt; no es necesario ningún paso adicional, simplemente abriremos la herramienta de &lt;em&gt;Conexión a Escritorio remoto&lt;/em&gt;. Pondremos la IP o el hostname que le hayamos dado, podremos configurar una serie de opciones como Pantalla (tamaño del escritorio remoto, calidad del color&amp;#8230;), y una vez esté a nuestro gusto pulsamos en Conectar.&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  &lt;img
-    class=&#39;mb-6 &#39;
-    srcset=&#39;
-    /beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/xrdp.png 410w
-    
-    
-    
-    &#39;
-    src=&#34;https://javifm.com/beta/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/img/xrdp.png&#34;
-    width=&#34;410&#34; height=&#34;473&#34;
-    alt=&#39;Conexión a escritorio remoto de Windows&#39;&gt;</description>
+      <description>Una vez finalizada la configuración básica, vamos a ver la manera de conectarnos remotamente, sin necesidad de tener enchufado ratón y teclado a la Raspberry, ni tan siquiera un monitor HDMI (si no quieres).</description>
     </item>
     
     <item>
@@ -157,106 +62,7 @@ Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian.</description>
       <pubDate>Wed, 21 Dec 2016 15:07:46 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/raspberry-pi-primeros-pasos-2/</guid>
-      <description>&lt;p&gt;Una vez tenemos arrancada nuestra Raspberry con Raspbian aparece el escritorio. Lo primero que deberemos hacer será aplicar una configuración básica, para ello la última versión de Raspbian cuenta con una herramienta visual llamada &lt;em&gt;&amp;#8220;Configuración de Raspberry pi&amp;#8221;&lt;/em&gt;, que encuentras en &lt;code&gt;Menú / Preferencias&lt;/code&gt;.&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  &lt;img
-    class=&#39;mb-6 &#39;
-    srcset=&#39;
-    /beta/blog/raspberry-pi-primeros-pasos-2/img/Screenshot_1.png 659w
-    
-      ,/beta/blog/raspberry-pi-primeros-pasos-2/img/Screenshot_1_hu6905023220bf4e5d9cd9d1623605e4ca_89427_500x0_resize_box_2.png 500w
-    
-    
-    
-    &#39;
-    src=&#34;https://javifm.com/beta/beta/blog/raspberry-pi-primeros-pasos-2/img/Screenshot_1.png&#34;
-    width=&#34;659&#34; height=&#34;590&#34;
-    alt=&#39;Selección de menu en interfaz visual de Raspbian: Preferencias - Configuración de Raspberry Pi&#39;&gt;
-
-
-&lt;p&gt;&lt;strong&gt;NOTA:&lt;/strong&gt; He tomado los pantallazos después de configurar mi raspberry, inicialmente todo se encuentra en inglés.&lt;/p&gt;
-
-&lt;p&gt;Una vez arrancamos la aplicación, nos aparecerá la siguiente pantalla:&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  &lt;img
-    class=&#39;mb-6 &#39;
-    srcset=&#39;
-    /beta/blog/raspberry-pi-primeros-pasos-2/img/Screenshot_2.png 754w
-    
-      ,/beta/blog/raspberry-pi-primeros-pasos-2/img/Screenshot_2_hub2b451dbef36b5f34a5a0e4f0cbdfd74_54598_500x0_resize_box_2.png 500w
-    
-    
-    
-    &#39;
-    src=&#34;https://javifm.com/beta/beta/blog/raspberry-pi-primeros-pasos-2/img/Screenshot_2.png&#34;
-    width=&#34;754&#34; height=&#34;499&#34;
-    alt=&#39;Configuración de Raspberry Pi - Sistema&#39;&gt;
-
-
-&lt;p&gt;Dentro de la pestaña sistema.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Clave:&lt;/strong&gt; Muy importante &lt;strong&gt;cambiar la contraseña por defecto&lt;/strong&gt; para el usuario &lt;strong&gt;pi&lt;/strong&gt;, que es &lt;em&gt;&lt;strong&gt;raspberry&lt;/strong&gt;&lt;/em&gt;. Cabe destacar que hace poco los desarrolladores de Raspbian optaron por deshabilitar SSH por defecto, ya que se producen bastantes ataques que logran acceder a raspberries que no han cambiado la contraseña por defecto. Parece de sentido común por seguridad cambiar esta contraseña por otra. Puedes ampliar la información sobre gestión de usuarios en la &lt;a href=&#34;https://www.raspberrypi.org/documentation/linux/usage/users.md&#34;&gt;documentación oficial&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hostname:&lt;/strong&gt; Para acceder remotamente, en lugar de teclear la ip. Puedes poner lo que más te guste, en mi caso acorté a rasp.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Iniciar en:&lt;/strong&gt; Poco que explicar, para arrancar en escritorio o línea de comandos. Si arrancas en consola siempre puedes iniciar la interfaz gráfica con el comando &lt;code&gt;startx&lt;/code&gt;. Como para casi todo me conecto desde remoto, yo he elegido consola.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Red al iniciar:&lt;/strong&gt; Lo he marcado, inicialmente no es necesario, pero para algunos servicios como el servidor web que inicia Transmission (cliente de torrent), es necesario.&lt;/li&gt;
-&lt;li&gt;El resto de parámetros no necesitan explicación.&lt;/li&gt;
-&lt;li&gt;En la imagen no aparece la opción &lt;strong&gt;Expandir sistema de ficheros&lt;/strong&gt;, supongo que es porque ya lo hice. Esta opción es para que se utilice toda la capacidad de la tarjeta microSD en el sistema, si cambias de tarjeta por una de mayor capacidad, no olvides aplicar la expansión para aprovechar todo el espacio.&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>Una vez tenemos arrancada nuestra Raspberry con Raspbian aparece el escritorio.</description>
     </item>
     
     <item>
@@ -265,26 +71,7 @@ Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian.</description>
       <pubDate>Thu, 24 Nov 2016 10:41:20 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/raspberry-pi-primeros-pasos/</guid>
-      <description>&lt;img
-    class=&#39;mb-6 &#39;
-    srcset=&#39;
-    /beta/blog/raspberry-pi-primeros-pasos/img/497149-raspberry-pi-3-model-b-ports.jpg 630w
-    
-      ,/beta/blog/raspberry-pi-primeros-pasos/img/497149-raspberry-pi-3-model-b-ports_hu1e4189f039624a90d2ef88c2a2140760_62491_500x0_resize_q75_box.jpg 500w
-    
-    
-    
-    &#39;
-    src=&#34;https://javifm.com/beta/beta/blog/raspberry-pi-primeros-pasos/img/497149-raspberry-pi-3-model-b-ports.jpg&#34;
-    width=&#34;630&#34; height=&#34;354&#34;
-    alt=&#39;Raspberry Pi, fuente de alimentación, tarjeta SD y carcasa&#39;&gt;
-
-
-&lt;p&gt;Recientemente me he animado a adquirir el mini ordenador más famoso actualmente, la archiconocida &lt;a href=&#34;https://www.raspberrypi.org/&#34;&gt;Raspberry Pi&lt;/a&gt;. Seguramente hayas oído hablar de ella, lleva muchos años y dispone de varios modelos. Hay multitud de información en la red, yo actualmente no conozco mucho, pero buscando por internet puedes encontrar de todo, y cada persona va adaptando su Raspberry Pi a sus necesidades. En mi caso tan solo quiero trastear, automatizar ciertas tareas cotidianas y poner en marcha cualquier idea que se me pase por la mente.&lt;/p&gt;
-
-&lt;p&gt;Hay multitud de distribuciones, tanto oficiales como no oficiales, yo en mi caso me he decantado por la más completa, &lt;strong&gt;Raspbian&lt;/strong&gt;.  Vamos a ver una serie de pasos básicos para instalar Raspbian y arrancar nuestra Raspberry.&lt;/p&gt;
-
-&lt;p&gt;Si aún no tienes tu Raspberry, vamos a repasar brevemente el material necesario.&lt;/p&gt;</description>
+      <description>Recientemente me he animado a adquirir el mini ordenador más famoso actualmente, la archiconocida Raspberry Pi.</description>
     </item>
     
     <item>
@@ -293,8 +80,7 @@ Vamos a ver como en unos sencillos pasos lo hacemos en Raspbian.</description>
       <pubDate>Tue, 11 Oct 2016 13:35:14 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/reemplazando-atributos-html-con-sublime/</guid>
-      <description>Un tip rápido y fácil aplicable con Sublime o cualquier otro editor de texto que permita reemplazar con expresiones regulares. Me encontraba copiando a una entrada de Wordpess una tabla desde un fichero excel, en el cual había modificado el ancho de algunas celdas. Es una manera fácil de insertar una tabla sin necesidad de estar construyendo todo el código html.
-El problema era que había un montón de atributos width, cada uno con un número distinto.</description>
+      <description>Un tip rápido y fácil aplicable con Sublime o cualquier otro editor de texto que permita reemplazar con expresiones regulares.</description>
     </item>
     
     <item>
@@ -303,9 +89,7 @@ El problema era que había un montón de atributos width, cada uno con un númer
       <pubDate>Fri, 09 Sep 2016 10:41:33 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/arbol-de-intervalos-interval-tree-en-javascript/</guid>
-      <description>&lt;p&gt;Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para &lt;strong&gt;optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.&lt;/strong&gt; El problema es el siguiente, se han de encontrar los nodos que pertenecen a un intervalo dado. En este caso en concreto, se dispone de una lista de canales de televisión, para los cuales disponemos de todos los programas, relativos a varios días de programación.&lt;/p&gt;
-
-&lt;p&gt;En los navegadores de hoy en día, como Google Chrome o cualquier navegador medianamente moderno, &lt;strong&gt;no habría excesivos problemas en iterar por fuerza bruta&lt;/strong&gt; hasta encontrar todos los eventos cuya fecha de inicio y fin se encontrase dentro del intervalo (ojo, para nada digo que sea lo más óptimo ni recomendado). Los problemas pueden llegar cuando en el target del proyecto podemos encontrar televisiones Smart TV´s antiguas y/o de gama baja, que vienen &lt;strong&gt;más justas de memoria.&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.</description>
     </item>
     
     <item>
@@ -314,8 +98,7 @@ El problema era que había un montón de atributos width, cada uno con un númer
       <pubDate>Wed, 27 Apr 2016 14:54:10 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/suscribirse-de-manera-segura-a-eventos-con-jquery/</guid>
-      <description>Un truco del que me acabo de enterar, que seguro será de gran utilidad a la hora de desarrollar aplicaciones con Javascript. Sobre todo aplicaciones SPA (Single Page Application). A la hora de suscribirnos a eventos de manera global en nuestras ventanas, escenas, vistas (hay multitud de forma de llamarlas según el framework o el entorno en que trabajes) es algo muy normal suscribirnos a eventos en window.
-Un ejemplo sería el evento resize.</description>
+      <description>Un truco del que me acabo de enterar, que seguro será de gran utilidad a la hora de desarrollar aplicaciones con Javascript.</description>
     </item>
     
     <item>
@@ -324,8 +107,7 @@ Un ejemplo sería el evento resize.</description>
       <pubDate>Fri, 18 Mar 2016 12:22:35 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/obtener-el-valor-de-una-propiedad-css-en-porcentaje/</guid>
-      <description>Un tip rápido, trabajando con jQuery no es posible obtener de un nodo por ejemplo, el valor del ancho en porcentaje. Lo primero y más lógico que se nos ocurre sería invocar al método css y pedirle el width (equivalente sería a otras propiedades como top, left, height, etc):
-var $element = $(&amp;#34;&amp;lt;div id=&amp;#39;nodo&amp;#39; style=&amp;#39;width: 50%&amp;#39;&amp;gt;&amp;lt;/div&amp;gt;&amp;#34;);$(&amp;#34;body&amp;#34;).append( $element );console.log( $(&amp;#34;#nodo&amp;#34;).css(&amp;#34;width&amp;#34;) ); // 683px  Si quisieramos obtener el valor en porcentaje, habría que hacerlo de otra manera, directamente sin jQuery.</description>
+      <description>Un tip rápido, trabajando con jQuery no es posible obtener de un nodo por ejemplo, el valor del ancho en porcentaje.</description>
     </item>
     
     <item>
@@ -334,8 +116,7 @@ var $element = $(&amp;#34;&amp;lt;div id=&amp;#39;nodo&amp;#39; style=&amp;#39;w
       <pubDate>Tue, 15 Mar 2016 16:15:04 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/wordpress-no-carga-despu%C3%A9s-de-actualizar/</guid>
-      <description>Después de meses sin publicar ni tan siquiera una entrada, me dirigí a abrir el blog para escribir algo, realizar actualizaciones, plugins, temas, traducciones&amp;#8230; Tenía la versión de WordPress desactualizada, el propio WordPress te avisa que antes de actualizar realices un respaldo de la base de datos.
-Le dí a actualizar sin más, y de repente el blog comenzó a dar error 500, no cargaba. Comienza el pánico, a pesar de que tengo varios backups hechos del blog, tanto de manera manual desde el panel de administración del hosting, como con un plugin que os animo y recomiendo a probar, Updraftplus, que realiza backups y los envío a alojamientos externos como Dropbox o Google Drive.</description>
+      <description>Después de meses sin publicar ni tan siquiera una entrada, me dirigí a abrir el blog para escribir algo, realizar actualizaciones, plugins, temas, traducciones&amp;#8230; Tenía la versión de WordPress desactualizada, el propio WordPress te avisa que antes de actualizar realices un respaldo de la base de datos.</description>
     </item>
     
     <item>
@@ -344,8 +125,7 @@ Le dí a actualizar sin más, y de repente el blog comenzó a dar error 500, no 
       <pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
-      <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web. Por defecto se instancia en la variable global $, además de jQuery. Esto puede entrar en conflicto con otras librerías que hayan decidido utilizar el $ también. Si estás utilizando el popular cargador de módulos RequireJS, hay una manera muy fácil para evitar que jQuery se instancie globalmente.
-Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que Samsung incluye internamente su propia versión de jQuery, sobreescribiendo la que añadas.</description>
+      <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web.</description>
     </item>
     
     <item>
@@ -354,8 +134,7 @@ Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontr
       <pubDate>Fri, 18 Sep 2015 08:27:17 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/n%C3%BAmero-de-commits-en-git-por-usuario/</guid>
-      <description>Para saber el número de commits realizados por usuario en un repositorio Git, simplemente en el terminal:
-git shortlog -s -n </description>
+      <description>Para saber el número de commits realizados por usuario en un repositorio Git, simplemente en el terminal:</description>
     </item>
     
     <item>
@@ -364,26 +143,7 @@ git shortlog -s -n </description>
       <pubDate>Wed, 09 Sep 2015 13:50:35 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</guid>
-      <description>&lt;img
-    class=&#39;mb-6 &#39;
-    srcset=&#39;
-    /beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png 500w
-    
-      ,/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass_hubefd48497ebd2d6fa2d470b69755af54_17529_500x0_resize_box_2.png 500w
-    
-    
-    
-    &#39;
-    src=&#34;https://javifm.com/beta/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png&#34;
-    width=&#34;500&#34; height=&#34;260&#34;
-    alt=&#39;Grunt y Sass&#39;&gt;
-
-
-&lt;p&gt;A lo largo de los 2 últimos años, he ido poco a poco &lt;strong&gt;mejorando mi nivel de productividad&lt;/strong&gt; en el trabajo. Primero cambié mi editor de toda la vida, &lt;a href=&#34;https://notepad-plus-plus.org/&#34;&gt;Notepad++&lt;/a&gt; por &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;. Y posteriormente, he ido añadiendo diferentes herramientas que proporciona &lt;strong&gt;Node.js&lt;/strong&gt;, para automatizar distintos procesos y tareas, como ejecución de tests, linters de código, minimizado de Javascript y CSS, etc&amp;#8230;&lt;/p&gt;
-
-&lt;p&gt;Para automatizar más aún todos estos procesos, está &lt;a href=&#34;http://gruntjs.com/&#34;&gt;Grunt&lt;/a&gt;, que dispone de plugins fáciles de integrar en nuestros proyectos, para realizar todo tipo de tareas que precisemos en nuestro proyecto. En mi proyecto actual, surgió una necesidad a un compañero de proyecto, que se encarga de la maquetación de la aplicación que estamos desarrollando.&lt;/p&gt;
-
-&lt;p&gt;Para ello está utilizando &lt;a href=&#34;http://sass-lang.com/&#34;&gt;Sass&lt;/a&gt;, uno de los preprocesadores CSS más populares actualmente. Por motivos de simplicidad de código y maximizar la compatibilidad con navegadores no muy modernos (mantenemos soporte a navegadores webKit antiguos, que usan algunas Smart TV anteriores a 2013), a la hora de hacer los elementos reutilizables de la aplicación con Javascript, decidimos que en lugar de que cada widget cargue su hoja de estilos, &lt;strong&gt;tener todo el CSS de todos los widgets unificados en un mismo fichero que esté cargado desde el principio&lt;/strong&gt; (controlar cuando se ha cargado una hoja de estilos, de manera simple y compatible con todos los navegadores es una tarea que &lt;a href=&#34;http://requirejs.org/docs/faq-advanced.html#css&#34;&gt;ni RequireJS ha incluido en su cargador de módulos&lt;/a&gt;).&lt;/p&gt;</description>
+      <description>A lo largo de los 2 últimos años, he ido poco a poco mejorando mi nivel de productividad en el trabajo.</description>
     </item>
     
     <item>
@@ -392,8 +152,7 @@ git shortlog -s -n </description>
       <pubDate>Mon, 07 Sep 2015 09:00:57 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</guid>
-      <description>Ellipsis es simplemente un cáracter compuesto por tres puntos: &amp;#8220;…&amp;#8221;. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis. Con el avance de los estándares css modernos, ya podemos aplicar una solución sin necesidad de echar mano de Javascript:
-.ellipsis {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;-o-text-overflow: ellipsis;} ¿Cual es la limitación?</description>
+      <description>Ellipsis es simplemente un cáracter compuesto por tres puntos: &amp;#8220;…&amp;#8221;. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis.</description>
     </item>
     
     <item>
@@ -402,15 +161,7 @@ git shortlog -s -n </description>
       <pubDate>Thu, 02 Jul 2015 08:15:08 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/</guid>
-      <description>&lt;p&gt;A la hora de trabajar en equipo, tener una guía de estilos definida es de vital importancia. Estoy trabajando en un proyecto en el cual por diversos motivos que no vienen al caso, se podría mejorar bastante en ese aspecto, y mediante el uso de &lt;a href=&#34;https://nodejs.org/&#34;&gt;Node.js&lt;/a&gt; disponemos de herramientas que nos pueden ayudar a tener en un equipo un código más uniforme y estandar.&lt;/p&gt;
-
-&lt;p&gt;Para nuestro proyecto he elegido un linter, en este caso &lt;a href=&#34;https://www.npmjs.com/package/jshint&#34;&gt;JSHint&lt;/a&gt;, y un formateador para el código Javascript, que representa el grueso de los desarrollos de nuestra aplicación, &lt;a href=&#34;https://www.npmjs.com/package/js-beautify&#34;&gt;js-beautify&lt;/a&gt;. Podría incorporarse además una tercera herramienta, muy potente a la hora de definir exactamente los estilos que deseamos aplicar de manera muy minuciosa, &lt;a href=&#34;https://www.npmjs.com/package/jscs&#34;&gt;JSCS&lt;/a&gt;, que se ocupa de muchas opciones de estilo que actualmente mantiene JSHint, pero que pronto &lt;strong&gt;pasarán a estar deprecadas.&lt;/strong&gt;  (Actualización: Parece que &lt;a href=&#34;http://eslint.org/&#34;&gt;ESLint&lt;/a&gt; es una alternativa equilibrada a JSHint y JSCS, tengo que probarlo más a fondo). Por el momento me limitaré a las 2 mencionadas.&lt;/p&gt;
-
-&lt;p&gt;Como control de versiones, utilizamos &lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt;, y aunque la consola es muy completa, en el día a día para según que tareas, es mucho mejor a la hora de seguir un historial de commits, ver cambios y hacer mergeos una herramienta gráfica como &lt;a href=&#34;https://www.sourcetreeapp.com/&#34;&gt;SourceTree&lt;/a&gt;, que es la que uso y recomiendo.&lt;/p&gt;
-
-&lt;p&gt;Para estandarizar nuestro código, he decidido crear una serie de reglas a la hora de validar el código Javascript, y una vez validado, el archivo deberá ser formateado de acuerdo a otra serie de reglas, de manera que en el repositorio siempre dispongamos de archivos libres de errores, con un mismo formato y siguiendo el mismo estilo.&lt;/p&gt;
-
-&lt;p&gt;La idea es simple, quiero que cada vez que alguien vaya a hacer commit de sus cambios al repositorio, se validen los ficheros Javascript de acuerdo a unas reglas comunes de JSHint, y si el archivo no contiene errores será formateado automáticamente antes del commit al repositorio. La idea es hacerlo automático, así nadie tiene ninguna excusa. Veamos primero como instalar a nivel de proyecto las 2 herramientas.&lt;/p&gt;</description>
+      <description>A la hora de trabajar en equipo, tener una guía de estilos definida es de vital importancia.</description>
     </item>
     
     <item>
@@ -419,8 +170,7 @@ git shortlog -s -n </description>
       <pubDate>Tue, 21 Apr 2015 09:10:23 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</guid>
-      <description>Vamos a ver de una manera rápida, como podemos concatenar llamadas a distintos métodos sobre un mismo objeto en Javascript (en inglés, Method Chaining in JavaScript). Este patrón, es utilizado en el popular framework jQuery, en el cual pueden llamarse a varios métodos sobre un selector jQuery. Por ejemplo:
-$(&amp;#34;#selector&amp;#34;).find(&amp;#34;.square&amp;#34;).css(&amp;#34;height&amp;#34;, &amp;#34;100px&amp;#34;).show();// En caso de concatenar muchos métodos$(&amp;#34;#selector&amp;#34;).find(&amp;#34;.square&amp;#34;).css(&amp;#34;height&amp;#34;, &amp;#34;100px&amp;#34;).show(); Que es más corto, o más legible (para gustos los colores) que esto:</description>
+      <description>Vamos a ver de una manera rápida, como podemos concatenar llamadas a distintos métodos sobre un mismo objeto en Javascript (en inglés, Method Chaining in JavaScript).</description>
     </item>
     
     <item>
@@ -429,8 +179,7 @@ $(&amp;#34;#selector&amp;#34;).find(&amp;#34;.square&amp;#34;).css(&amp;#34;heig
       <pubDate>Thu, 26 Feb 2015 10:36:01 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/width-de-jquery-sin-redondeo/</guid>
-      <description>Un tip muy rápido y muy sencillo, pero que no conocía. Por defecto si haces uso de los métodos .width() y .height() de jQuery, los valores devueltos se encuentran redondeados. Si en alguna ocasión necesitas con precisión conocer los decimales, puedes utilizar el método getBoundingClientRect() incorporado en ES4 y soportado por todos los navegadores. Por ejemplo el width se obtendría de la siguiente manera:
-$(&amp;#34;#selector&amp;#34;)[0].getBoundingClientRect().width  </description>
+      <description>Un tip muy rápido y muy sencillo, pero que no conocía.</description>
     </item>
     
     <item>
@@ -439,8 +188,7 @@ $(&amp;#34;#selector&amp;#34;)[0].getBoundingClientRect().width  </description>
       <pubDate>Tue, 27 Jan 2015 16:12:47 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</guid>
-      <description>En mi día a día suelo trabajar en entorno Windows, y hay ciertos atajos de teclado y acciones, como backups de algunos proyectos, que tengo automatizadas con un simple fichero .bat, que ejecuto a través de un comando a través de Autohotkey (algún día escribiré un poco sobre esta utilidad para mejorar la productividad en Windows).
-Por si te resulta molesto que esté la consola abierta mientras se ejecuta el script, hay una manera sencilla de impedirlo, como pude encontrar en esta pregunta de Superuser.</description>
+      <description>En mi día a día suelo trabajar en entorno Windows, y hay ciertos atajos de teclado y acciones, como backups de algunos proyectos, que tengo automatizadas con un simple fichero .</description>
     </item>
     
     <item>
@@ -449,37 +197,7 @@ Por si te resulta molesto que esté la consola abierta mientras se ejecuta el sc
       <pubDate>Tue, 02 Dec 2014 16:14:31 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/trim-trailing-white-space-en-un-shortcut-en-sublime/</guid>
-      <description>&lt;p&gt;Sublime permite definir por medio de sus ficheros de configuración, una opción que cuando trabajo solo suelo tener activada, pero que en ocasiones trabajando en equipo no es muy recomendable.&lt;/p&gt;
-
-&lt;p&gt;La opción es la de &lt;strong&gt;eliminar los espacios sobrantes en un archivo.&lt;/strong&gt; Por defecto en sublime viene desactivada, pero es posible activarla para que Sublime se encargue de eliminar esos innecesarios espacios al guardar un archivo. Si esto es lo que buscas, simplemente abre tu archivo de &lt;em&gt;&lt;strong&gt;Settings &amp;#8211; User,&lt;/strong&gt;&lt;/em&gt; y añade la siguiente opción: &lt;code&gt;&amp;quot;trim_trailing_white_space_on_save&amp;quot;: true&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;¿Por qué no tenerlo siempre activado? Actualmente estoy trabajando en equipo, y cada persona trabaja con su editor favorito configurado a su gusto. De hecho en nuestro proyecto cada uno usamos un editor distinto (NetBeans, Brackets, Notepad++, Eclipse). Puede resultar bastante confuso tocar el fichero de un compañero, guardar y subir con los espacios en blancos eliminados. Quizás cuando ese compañero vaya a hacer commit de sus cambios y necesite mergear, no le haga mucha gracia ver cambios por todos lados y tener que revisar todas las líneas para ver si hay cambios. Hay mecanismos para que al comparar no salten esas diferencias, pero no todo el mundo las conoce ni las quiere conocer.&lt;/p&gt;
-
-&lt;p&gt;Por eso me propuse poder ejecutar el limpiado de espacios, pero en lugar de al guardar, en un atajo de teclado, así podría limpiar mis archivos sin interferir en los del resto. La opción más fácil era instalar una extensión (&lt;a href=&#34;https://github.com/SublimeText/TrailingSpaces&#34; title=&#34;Trailing Spaces&#34;&gt;Trailing Spaces&lt;/a&gt;), pero ya tengo Sublime cargado de extensiones y me parecía innecesario cargarlo con una más, con muchas opciones que probablemente no use y un gasto innecesario de recursos.&lt;/p&gt;
-
-&lt;p&gt;La solución es sencilla, Sublime tiene un plugin por default que realiza la acción, asi que solamente hay que modificarlo para que ejecute la acción en un atajo de teclado en lugar de al guardar el archivo. Podemos ver el plugin en la siguiente ruta: &lt;code&gt;\Sublime\Data\Packages\Default&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;El archivo es _&lt;strong&gt;trim_trailing_white_space.py.&lt;/strong&gt;_&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sublime&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; sublime_plugin
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;TrimTrailingWhiteSpace&lt;/span&gt;(sublime_plugin&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;EventListener):
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;on_pre_save&lt;/span&gt;(self, view):
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;settings()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;trim_trailing_white_space_on_save&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; True:
-            trailing_white_space &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;find_all(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\t&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; ]+$&amp;#34;&lt;/span&gt;)
-            trailing_white_space&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reverse()
-            edit &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;begin_edit()
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; trailing_white_space:
-                view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;erase(edit, r)
-            view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;end_edit(edit)
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;EnsureNewlineAtEof&lt;/span&gt;(sublime_plugin&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;EventListener):
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;on_pre_save&lt;/span&gt;(self, view):
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;settings()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ensure_newline_at_eof_on_save&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; True:
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;substr(view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size() &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;:
-                edit &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;begin_edit()
-                view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;insert(edit, view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size(), &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
-                view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;end_edit(edit)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>Sublime permite definir por medio de sus ficheros de configuración, una opción que cuando trabajo solo suelo tener activada, pero que en ocasiones trabajando en equipo no es muy recomendable.</description>
     </item>
     
     <item>
@@ -488,22 +206,7 @@ Por si te resulta molesto que esté la consola abierta mientras se ejecuta el sc
       <pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid>
-      <description>&lt;p&gt;Hace algún tiempo hablé de &lt;a href=&#34;https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; como opción para &lt;strong&gt;depurar de forma remota nuestras aplicaciones Javascript.&lt;/strong&gt; Era una opción bastante buena para dispositivos Android y Smarts TV de LG, pero cuando fuí a depurar la aplicación que estamos desarrollando en una Smart TV de Samsung, me llevé la sorpresa de que las televisiones Samsung, deben hacer algo por dentro que sobreescribe el método console del navegador, y con Weinre no podía ver ninguno de los logs que había puesto en el código.&lt;/p&gt;
-
-&lt;p&gt;Rapidamente mis compañeros y yo pensamos en elaborar un propio debugger muy simple con un script en PHP, pero pronto comenzaron a surgir los inconvenientes y desechamos la idea. Fue de esta manera como nos topamos con &lt;a href=&#34;http://nkashyap.github.io/console.io/&#34; title=&#34;Console.io&#34;&gt;Console.io,&lt;/a&gt; una consola web remota que cumplía de largo con todas nuestras necesidades. Además &lt;strong&gt;es totalmente compatible con diferentes modelos de Smart TV&lt;/strong&gt; de distintos años, entre ellos la mencionada Samsung que usamos para pruebas. Según su página web:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Toshiba TV (2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;LG NetCast TV (2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;Philips NetTV (2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;Samsung TV (2010, 2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;Panasonic TV (2012, 2013)&lt;/li&gt;
-&lt;li&gt;Technika Avtrex STB&lt;/li&gt;
-&lt;li&gt;Sony (BDP-S4100)&lt;/li&gt;
-&lt;li&gt;Hopper Dish (Hopper)&lt;/li&gt;
-&lt;li&gt;Firefox, Safari, Opera, Chrome, Maple, PhantomJS and IE&lt;/li&gt;
-&lt;li&gt;iPhone, iPod, iPad, Android browser, windows 8 phone etc&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>Hace algún tiempo hablé de Weinre, como opción para depurar de forma remota nuestras aplicaciones Javascript.</description>
     </item>
     
     <item>
@@ -512,8 +215,7 @@ Por si te resulta molesto que esté la consola abierta mientras se ejecuta el sc
       <pubDate>Mon, 13 Oct 2014 11:03:44 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</guid>
-      <description>Llevo aproximadamente 8 años trabajando como desarrollador Javascript principalmente, y la verdad es que cada día uno sigue descubriendo cosas que no dejan de sorprenderle. En este caso, un código de una línea, que sirve para visualizar el layout de todos los elementos CSS de una página.
-Es un código ideal para depurar, ver donde se te descuadra un div, donde se te ha colado un margen, controlar al milímetro todo.</description>
+      <description>Llevo aproximadamente 8 años trabajando como desarrollador Javascript principalmente, y la verdad es que cada día uno sigue descubriendo cosas que no dejan de sorprenderle.</description>
     </item>
     
     <item>
@@ -522,7 +224,7 @@ Es un código ideal para depurar, ver donde se te descuadra un div, donde se te 
       <pubDate>Sat, 12 Jul 2014 18:25:05 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/cambia-el-separador-de-palabras-en-sublime-text/</guid>
-      <description>Una de las cosas más tontas, pero que descubrí hace poco. Por defecto, Sublime Text tiene definido determinados caráceteres como separador de palabras. El punto, la coma, el signo del dólar, etc. En determinadas ocasiones, para determinados lenguajes (o para todos), podemos querer modificar los carácteres considerados como separador de palabra. Por ejemplo, en CSS, es muy común utilizar en las clases nombres separando las palabras con guiones, es una convención bastante extendida.</description>
+      <description>Una de las cosas más tontas, pero que descubrí hace poco.</description>
     </item>
     
     <item>
@@ -531,7 +233,7 @@ Es un código ideal para depurar, ver donde se te descuadra un div, donde se te 
       <pubDate>Sun, 29 Jun 2014 10:06:28 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</guid>
-      <description>Nunca me había visto en la necesidad de detectar cuando una transición CSS3 termina, pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente. Para ello estamos utilizando eventos de teclado, si pulsamos flecha derecha va hacia la derecha, en caso de pulsar la flecha izquierda, hacia la izquierda, muy sencillito.</description>
+      <description>Nunca me había visto en la necesidad de detectar cuando una transición CSS3 termina, pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente.</description>
     </item>
     
     <item>
@@ -540,11 +242,7 @@ Es un código ideal para depurar, ver donde se te descuadra un div, donde se te 
       <pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid>
-      <description>&lt;p&gt;Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para &lt;strong&gt;depurar el código Javascript&lt;/strong&gt; suelo utilizar las herramientas de desarrollador de Chrome. ¿En qué casos podemos necesitar &lt;strong&gt;depurar remotamente&lt;/strong&gt;? La respuesta es sencilla, en dispositivos en los cuales no podemos acceder a herramientas de depuración del navegador. Desde la llegada de HTML5 y sus funcionalidades, es posible desarrollar aplicaciones para móviles, Smart TV&amp;#8230; Actualmente estoy trabajando en desarrollo de aplicaciones para &lt;strong&gt;Smart TV,&lt;/strong&gt; y me ví en la necesidad de depurar remotamente al realizar pruebas en las teles directamente.&lt;/p&gt;
-
-&lt;p&gt;¿Como depurar remotamente? Para ellos podemos utilizar &lt;a href=&#34;http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; que se instala como un módulo de &lt;a href=&#34;http://nodejs.org/&#34; title=&#34;Node.js&#34;&gt;Node.js.&lt;/a&gt; Lo primero de todo, como es lógico será &lt;a href=&#34;http://nodejs.org/download/&#34; title=&#34;Descarga Node.js&#34;&gt;instalar Node.js&lt;/a&gt; si no lo tenemos ya instalado. Una vez lo tenemos, podremos instalar Weinre a través de &lt;a href=&#34;https://www.npmjs.org/doc/README.html&#34; title=&#34;Node Package Manager&#34;&gt;npm,&lt;/a&gt; tan solo debemos ir a la consola y ejecutar el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;npm -g install weinre&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para depurar el código Javascript suelo utilizar las herramientas de desarrollador de Chrome.</description>
     </item>
     
   </channel>

@@ -1,72 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Hugo 0.58.3" />
-    
-    <link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-    
-    
-    <title>Trim trailing white space en un shortcut en Sublime | Frontend developer</title>
-    <style>
-    .testing {
-      max-width: 700px;
-    }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.58.3" />
 
-  </head>
+<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
 
-  <body>
+
+<title>Trim trailing white space en un shortcut en Sublime | Frontend developer</title>
+
+    
+</head>
+
+<body>
     <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex p-6">
-            
-            
-            
-            
+        <nav class="flex flex-wrap justify-end py-6 px-4">
             
             
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+                
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
         </nav>
     </div>
 </div>
 
-    
-      <main id="main">
-       
+    <main id="main">
+        
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
@@ -105,67 +110,68 @@
 
 <p>El archivo es _<strong>trim_trailing_white_space.py.</strong>_</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sublime<span style="color:#f92672">,</span> sublime_plugin
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sublime</span><span class="o">,</span> <span class="nn">sublime_plugin</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace</span>(sublime_plugin<span style="color:#f92672">.</span>EventListener):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_pre_save</span>(self, view):
-        <span style="color:#66d9ef">if</span> view<span style="color:#f92672">.</span>settings()<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;trim_trailing_white_space_on_save&#34;</span>) <span style="color:#f92672">==</span> True:
-            trailing_white_space <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;[</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ]+$&#34;</span>)
-            trailing_white_space<span style="color:#f92672">.</span>reverse()
-            edit <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>begin_edit()
-            <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> trailing_white_space:
-                view<span style="color:#f92672">.</span>erase(edit, r)
-            view<span style="color:#f92672">.</span>end_edit(edit)
+<span class="k">class</span> <span class="nc">TrimTrailingWhiteSpace</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">EventListener</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_pre_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">settings</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;trim_trailing_white_space_on_save&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">trailing_white_space</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;[</span><span class="se">\t</span><span class="s2"> ]+$&#34;</span><span class="p">)</span>
+            <span class="n">trailing_white_space</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+            <span class="n">edit</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">begin_edit</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">trailing_white_space</span><span class="p">:</span>
+                <span class="n">view</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">end_edit</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EnsureNewlineAtEof</span>(sublime_plugin<span style="color:#f92672">.</span>EventListener):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_pre_save</span>(self, view):
-        <span style="color:#66d9ef">if</span> view<span style="color:#f92672">.</span>settings()<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;ensure_newline_at_eof_on_save&#34;</span>) <span style="color:#f92672">==</span> True:
-            <span style="color:#66d9ef">if</span> view<span style="color:#f92672">.</span>size() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> view<span style="color:#f92672">.</span>substr(view<span style="color:#f92672">.</span>size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>:
-                edit <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>begin_edit()
-                view<span style="color:#f92672">.</span>insert(edit, view<span style="color:#f92672">.</span>size(), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
-                view<span style="color:#f92672">.</span>end_edit(edit)</code></pre></div>
+<span class="k">class</span> <span class="nc">EnsureNewlineAtEof</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">EventListener</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_pre_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">settings</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;ensure_newline_at_eof_on_save&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">view</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
+                <span class="n">edit</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">begin_edit</span><span class="p">()</span>
+                <span class="n">view</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+                <span class="n">view</span><span class="o">.</span><span class="n">end_edit</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span></code></pre></div>
 
 <p>Podéis modificar ese mismo fichero, yo preferí crearme otro distinto, por no tocar nada de lo que trae Sublime por defecto, y le puse un nombre super original: </p>
 
 <p>_<strong>trim_trailing_white_space2.py,</strong>_ en la misma carpeta. El código es el siguiente:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sublime<span style="color:#f92672">,</span> sublime_plugin
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sublime</span><span class="o">,</span> <span class="nn">sublime_plugin</span>
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">trim_trailing_white_space2</span>(view):
-    trailing_white_space2 <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;[</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ]+$&#34;</span>)
-    trailing_white_space2<span style="color:#f92672">.</span>reverse()
-    edit <span style="color:#f92672">=</span> view<span style="color:#f92672">.</span>begin_edit()
-    <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> trailing_white_space2:
-        view<span style="color:#f92672">.</span>erase(edit, r)
-    view<span style="color:#f92672">.</span>end_edit(edit)
+<span class="k">def</span> <span class="nf">trim_trailing_white_space2</span><span class="p">(</span><span class="n">view</span><span class="p">):</span>
+    <span class="n">trailing_white_space2</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;[</span><span class="se">\t</span><span class="s2"> ]+$&#34;</span><span class="p">)</span>
+    <span class="n">trailing_white_space2</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">edit</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">begin_edit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">trailing_white_space2</span><span class="p">:</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">end_edit</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace2Command</span>(sublime_plugin<span style="color:#f92672">.</span>TextCommand):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, edit):
-        trim_trailing_white_space2(self<span style="color:#f92672">.</span>view)</code></pre></div>
+<span class="k">class</span> <span class="nc">TrimTrailingWhiteSpace2Command</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">TextCommand</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edit</span><span class="p">):</span>
+        <span class="n">trim_trailing_white_space2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span></code></pre></div>
 
 <p>Para terminar, abrimos el archivo <em><strong>Key Bindings &#8211; User</strong></em> y añadimos el siguiente shortcut:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{ <span style="color:#e6db74">&#34;keys&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;ctrl+alt+shift+t&#34;</span>], <span style="color:#e6db74">&#34;command&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;trim_trailing_white_space2&#34;</span> }
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">{</span> <span class="s2">&#34;keys&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;ctrl+alt+shift+t&#34;</span><span class="p">],</span> <span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;trim_trailing_white_space2&#34;</span> <span class="p">}</span>
 </code></pre></div>
 
 <p>Con la combinación de teclas que os sea más cómoda. Et voilà! Eso es todo.</p>
 
 <p>Lo anterior para la versión 2 de Sublime, si lo queremos funcionando en la 3 el código es el siguiente:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sublime<span style="color:#f92672">,</span> sublime_plugin
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sublime</span><span class="o">,</span> <span class="nn">sublime_plugin</span>
 
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace2Command</span>(sublime_plugin<span style="color:#f92672">.</span>TextCommand):
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, edit):
-            trailing_white_space <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>view<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;[</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74"> ]+$&#34;</span>)
-            trailing_white_space<span style="color:#f92672">.</span>reverse()
-            <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> trailing_white_space:
-                self<span style="color:#f92672">.</span>view<span style="color:#f92672">.</span>erase(edit, r)
+    <span class="k">class</span> <span class="nc">TrimTrailingWhiteSpace2Command</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">TextCommand</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edit</span><span class="p">):</span>
+            <span class="n">trailing_white_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;[</span><span class="se">\t</span><span class="s2"> ]+$&#34;</span><span class="p">)</span>
+            <span class="n">trailing_white_space</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">trailing_white_space</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">edit</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrimTrailingWhiteSpace2</span>(sublime_plugin<span style="color:#f92672">.</span>EventListener):
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, view):
-            view<span style="color:#f92672">.</span>run_command(<span style="color:#e6db74">&#34;trim_trailing_white_space2&#34;</span>)</code></pre></div>
+    <span class="k">class</span> <span class="nc">TrimTrailingWhiteSpace2</span><span class="p">(</span><span class="n">sublime_plugin</span><span class="o">.</span><span class="n">EventListener</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="s2">&#34;trim_trailing_white_space2&#34;</span><span class="p">)</span></code></pre></div>
 
 <p>Solución encontrada en: <a href="http://stackoverflow.com/questions/12297169/sublime-text-2-trim-trailing-white-space-on-demand" title="Stackoverflow">Stackoverflow (3ª respuesta)</a></p>
+
     </div>
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-6 text-center max-w-3xl mx-auto">
@@ -184,9 +190,17 @@
 </div>
 
 
-      </main>
+    </main>
     
+    <footer class="bg-gray-900 text-blue-100 p-4">
+    <div class="container">
+        <div class="text-center">
+            &copy; 2019 Sitio construido con Hugo alojado en Github.
+        </div>
+    </div>
+</footer>
+
     
-    
-  </body>
+</body>
+
 </html>

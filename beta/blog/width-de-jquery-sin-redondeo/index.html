@@ -1,72 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Hugo 0.58.3" />
-    
-    <link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-    
-    
-    <title>Width() de jQuery sin redondeo | Frontend developer</title>
-    <style>
-    .testing {
-      max-width: 700px;
-    }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.58.3" />
 
-  </head>
+<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
 
-  <body>
+
+<title>Width() de jQuery sin redondeo | Frontend developer</title>
+
+    
+</head>
+
+<body>
     <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex p-6">
-            
-            
-            
-            
+        <nav class="flex flex-wrap justify-end py-6 px-4">
             
             
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+                
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
         </nav>
     </div>
 </div>
 
-    
-      <main id="main">
-       
+    <main id="main">
+        
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
@@ -98,7 +103,7 @@
     <div class="single-post-content">
         <p>Un tip muy rápido y muy sencillo, pero que no conocía. Por defecto si haces uso de los métodos <code>.width()</code> y <code>.height()</code> de jQuery, los valores devueltos se encuentran redondeados. Si en alguna ocasión necesitas con precisión conocer los decimales, puedes utilizar el método <strong><code>getBoundingClientRect()</code> incorporado en ES4 y soportado por todos los navegadores.</strong> Por ejemplo el width se obtendría de la siguiente manera:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#selector&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">getBoundingClientRect</span>().<span style="color:#a6e22e">width</span>
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#selector&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getBoundingClientRect</span><span class="p">().</span><span class="nx">width</span>
 </code></pre></div>
 
     </div>
@@ -119,9 +124,17 @@
 </div>
 
 
-      </main>
+    </main>
     
+    <footer class="bg-gray-900 text-blue-100 p-4">
+    <div class="container">
+        <div class="text-center">
+            &copy; 2019 Sitio construido con Hugo alojado en Github.
+        </div>
+    </div>
+</footer>
+
     
-    
-  </body>
+</body>
+
 </html>

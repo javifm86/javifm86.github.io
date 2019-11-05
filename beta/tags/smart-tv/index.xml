@@ -17,22 +17,7 @@
       <pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid>
-      <description>&lt;p&gt;Hace algún tiempo hablé de &lt;a href=&#34;https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; como opción para &lt;strong&gt;depurar de forma remota nuestras aplicaciones Javascript.&lt;/strong&gt; Era una opción bastante buena para dispositivos Android y Smarts TV de LG, pero cuando fuí a depurar la aplicación que estamos desarrollando en una Smart TV de Samsung, me llevé la sorpresa de que las televisiones Samsung, deben hacer algo por dentro que sobreescribe el método console del navegador, y con Weinre no podía ver ninguno de los logs que había puesto en el código.&lt;/p&gt;
-
-&lt;p&gt;Rapidamente mis compañeros y yo pensamos en elaborar un propio debugger muy simple con un script en PHP, pero pronto comenzaron a surgir los inconvenientes y desechamos la idea. Fue de esta manera como nos topamos con &lt;a href=&#34;http://nkashyap.github.io/console.io/&#34; title=&#34;Console.io&#34;&gt;Console.io,&lt;/a&gt; una consola web remota que cumplía de largo con todas nuestras necesidades. Además &lt;strong&gt;es totalmente compatible con diferentes modelos de Smart TV&lt;/strong&gt; de distintos años, entre ellos la mencionada Samsung que usamos para pruebas. Según su página web:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Toshiba TV (2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;LG NetCast TV (2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;Philips NetTV (2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;Samsung TV (2010, 2011, 2012, 2013)&lt;/li&gt;
-&lt;li&gt;Panasonic TV (2012, 2013)&lt;/li&gt;
-&lt;li&gt;Technika Avtrex STB&lt;/li&gt;
-&lt;li&gt;Sony (BDP-S4100)&lt;/li&gt;
-&lt;li&gt;Hopper Dish (Hopper)&lt;/li&gt;
-&lt;li&gt;Firefox, Safari, Opera, Chrome, Maple, PhantomJS and IE&lt;/li&gt;
-&lt;li&gt;iPhone, iPod, iPad, Android browser, windows 8 phone etc&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>Hace algún tiempo hablé de Weinre, como opción para depurar de forma remota nuestras aplicaciones Javascript.</description>
     </item>
     
     <item>
@@ -41,11 +26,7 @@
       <pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid>
-      <description>&lt;p&gt;Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para &lt;strong&gt;depurar el código Javascript&lt;/strong&gt; suelo utilizar las herramientas de desarrollador de Chrome. ¿En qué casos podemos necesitar &lt;strong&gt;depurar remotamente&lt;/strong&gt;? La respuesta es sencilla, en dispositivos en los cuales no podemos acceder a herramientas de depuración del navegador. Desde la llegada de HTML5 y sus funcionalidades, es posible desarrollar aplicaciones para móviles, Smart TV&amp;#8230; Actualmente estoy trabajando en desarrollo de aplicaciones para &lt;strong&gt;Smart TV,&lt;/strong&gt; y me ví en la necesidad de depurar remotamente al realizar pruebas en las teles directamente.&lt;/p&gt;
-
-&lt;p&gt;¿Como depurar remotamente? Para ellos podemos utilizar &lt;a href=&#34;http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html&#34; title=&#34;Weinre&#34;&gt;Weinre,&lt;/a&gt; que se instala como un módulo de &lt;a href=&#34;http://nodejs.org/&#34; title=&#34;Node.js&#34;&gt;Node.js.&lt;/a&gt; Lo primero de todo, como es lógico será &lt;a href=&#34;http://nodejs.org/download/&#34; title=&#34;Descarga Node.js&#34;&gt;instalar Node.js&lt;/a&gt; si no lo tenemos ya instalado. Una vez lo tenemos, podremos instalar Weinre a través de &lt;a href=&#34;https://www.npmjs.org/doc/README.html&#34; title=&#34;Node Package Manager&#34;&gt;npm,&lt;/a&gt; tan solo debemos ir a la consola y ejecutar el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;npm -g install weinre&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para depurar el código Javascript suelo utilizar las herramientas de desarrollador de Chrome.</description>
     </item>
     
   </channel>

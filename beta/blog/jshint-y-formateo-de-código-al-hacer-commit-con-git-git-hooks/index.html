@@ -1,72 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Hugo 0.58.3" />
-    
-    <link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-    
-    
-    <title>JSHint y formateo de código al hacer commit con git (Git hooks) | Frontend developer</title>
-    <style>
-    .testing {
-      max-width: 700px;
-    }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.58.3" />
 
-  </head>
+<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
 
-  <body>
+
+<title>JSHint y formateo de código al hacer commit con git (Git hooks) | Frontend developer</title>
+
+    
+</head>
+
+<body>
     <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex p-6">
-            
-            
-            
-            
+        <nav class="flex flex-wrap justify-end py-6 px-4">
             
             
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+                
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
         </nav>
     </div>
 </div>
 
-    
-      <main id="main">
-       
+    <main id="main">
+        
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
@@ -114,134 +119,134 @@
 
 <p>En primer lugar vamos a <a href="http://jshint.com/install/" target="_blank">instalar JSHint.</a> Podemos instalarlo a nivel global, o a nivel de proyecto, me quedaré con esta última opción, de esa manera podemos disponer en cada proyecto de una configuración especifica de JSHint con las reglas que deseemos aplicar a cada proyecto. Iremos a la consola, y estando en el directorio raíz de nuestro proyecto, ejecutaremos el siguiente comando:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install --save-dev jshint</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install --save-dev jshint</code></pre></div>
 
 <p>Se creará un directorio llamado <code>node_modules</code> donde se instalará JSHint para nuestro proyecto específico. A la hora de definir las reglas para el proyecto, lo mejor será tener un fichero <code>.jshintrc</code>, que contenga todas las reglas y esté también en el repositorio, para que si se modifica alguna cosa, todos se actualicen al hacer pull. Hay muchas opciones, están todas explicadas en la <a href="http://jshint.com/docs/options/" target="_blank">documentación oficial</a>, pongo como ejemplo el archivo que he creado para nuestro proyecto:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
-    <span style="color:#e6db74">&#34;evil&#34;</span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;regexdash&#34;</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;browser&#34;</span>   <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;wsh&#34;</span>       <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;trailing&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;multistr&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;sub&#34;</span>       <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;loopfunc&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, 
-    <span style="color:#e6db74">&#34;expr&#34;</span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, 
-    <span style="color:#e6db74">&#34;jquery&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, 
-    <span style="color:#e6db74">&#34;newcap&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, 
-    <span style="color:#e6db74">&#34;plusplus&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;curly&#34;</span>     <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, 
-    <span style="color:#e6db74">&#34;eqeqeq&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, 
-    <span style="color:#e6db74">&#34;undef&#34;</span>     <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;eqnull&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;globals&#34;</span>   <span style="color:#f92672">:</span> {
-        <span style="color:#e6db74">&#34;jQuery&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-        <span style="color:#e6db74">&#34;console&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-    }
-}
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">{</span>
+    <span class="s2">&#34;evil&#34;</span>      <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;regexdash&#34;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;browser&#34;</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;wsh&#34;</span>       <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;trailing&#34;</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;multistr&#34;</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;sub&#34;</span>       <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;loopfunc&#34;</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="s2">&#34;expr&#34;</span>      <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="s2">&#34;jquery&#34;</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="s2">&#34;newcap&#34;</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="s2">&#34;plusplus&#34;</span>  <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;curly&#34;</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="s2">&#34;eqeqeq&#34;</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="s2">&#34;undef&#34;</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;eqnull&#34;</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;globals&#34;</span>   <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&#34;jQuery&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&#34;console&#34;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>A continuación instalaremos js-beautify, también localmente en el proyecto, desde la consola en la raíz del proyecto:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install --save-dev js-beautify</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install --save-dev js-beautify</code></pre></div>
 
 <p>Igual que en el caso anterior, crearemos un fichero <code>.beautifyrc</code> con las opciones que queremos que se utilicen a nivel de proyecto para formatear los ficheros javascript. Este es el nuestro:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
-    <span style="color:#e6db74">&#34;indent_size&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>,
-    <span style="color:#e6db74">&#34;indent_char&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34; &#34;</span>,
-    <span style="color:#e6db74">&#34;indent_level&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-    <span style="color:#e6db74">&#34;indent_with_tabs&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;preserve_newlines&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;max_preserve_newlines&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>,
-    <span style="color:#e6db74">&#34;jslint_happy&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;space_after_anon_function&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;brace_style&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;end-expand&#34;</span>,
-    <span style="color:#e6db74">&#34;keep_array_indentation&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;keep_function_indentation&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;space_before_conditional&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-    <span style="color:#e6db74">&#34;break_chained_methods&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;eval_code&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;unescape_strings&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-    <span style="color:#e6db74">&#34;wrap_line_length&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-    <span style="color:#e6db74">&#34;wrap_attributes&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;auto&#34;</span>,
-    <span style="color:#e6db74">&#34;wrap_attributes_indent_size&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>,
-    <span style="color:#e6db74">&#34;end_with_newline&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-}
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">{</span>
+    <span class="s2">&#34;indent_size&#34;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&#34;indent_char&#34;</span><span class="o">:</span> <span class="s2">&#34; &#34;</span><span class="p">,</span>
+    <span class="s2">&#34;indent_level&#34;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&#34;indent_with_tabs&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;preserve_newlines&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;max_preserve_newlines&#34;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&#34;jslint_happy&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;space_after_anon_function&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;brace_style&#34;</span><span class="o">:</span> <span class="s2">&#34;end-expand&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;keep_array_indentation&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;keep_function_indentation&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;space_before_conditional&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&#34;break_chained_methods&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;eval_code&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;unescape_strings&#34;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&#34;wrap_line_length&#34;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&#34;wrap_attributes&#34;</span><span class="o">:</span> <span class="s2">&#34;auto&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;wrap_attributes_indent_size&#34;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&#34;end_with_newline&#34;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>Puedes <a href="https://www.npmjs.com/package/js-beautify" target="_blank">consultar el listado</a> de opciones para añadir/modificar según tus preferencias. Ya está todo listo, ahora simplemente hemos de hacer que automáticamente <strong>al hacer commit, se pase el JSHint a todos los ficheros javascript automáticamente,</strong> y si detecta algún error en alguno de los archivos, no será posible hacer commit, ya que git dará error hasta que no se solucionen. ¿Cómo puede automatizarse este proceso?</p>
 
 <p>A través de lo que se llaman <a href="https://git-scm.com/book/es/v2/Customizing-Git-Git-Hooks" target="_blank">hooks</a>, que no son más que scripts que lanza git automáticamente cuando determinadas acciones ocurren. Puedes ir al directorio .git de tu proyecto, y allí encontrarás una carpeta <code>hooks</code> en la que hay scripts de ejemplo con la extensión <code>.sample</code>. El que nos interesa para este ejemplo, es el script ejecutado antes de hacer commit, que realizará tareas en el momento que hagamos commit. Para ello simplemente crearemos un archivo llamado <code>pre-commit</code>, sin extensión, o bien editaremos el archivo <code>pre-commit.sample</code> y modificaremos su nombre. El script que he creado en cuestión es el siguiente:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e"># Solo queremos validar y formatear los ficheros Javascript incluidos en el commit</span>
-files<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>git diff --cached --name-only --diff-filter<span style="color:#f92672">=</span>ACM | grep <span style="color:#e6db74">&#34;.js</span>$<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="c1"># Solo queremos validar y formatear los ficheros Javascript incluidos en el commit</span>
+<span class="nv">files</span><span class="o">=</span><span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span>ACM <span class="p">|</span> grep <span class="s2">&#34;.js</span>$<span class="s2">&#34;</span><span class="k">)</span>
 
-<span style="color:#75715e"># Si no hay ficheros Javascript se continúa normalmente el commit</span>
-<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$files<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> 
-    exit <span style="color:#ae81ff">0</span> 
-<span style="color:#66d9ef">fi</span>
+<span class="c1"># Si no hay ficheros Javascript se continúa normalmente el commit</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$files</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> 
+    <span class="nb">exit</span> <span class="m">0</span> 
+<span class="k">fi</span>
 
-<span style="color:#75715e"># Variable que comprueba si todas las validaciones fueron correctas</span>
-pass<span style="color:#f92672">=</span>true
+<span class="c1"># Variable que comprueba si todas las validaciones fueron correctas</span>
+<span class="nv">pass</span><span class="o">=</span><span class="nb">true</span>
 
-echo <span style="color:#e6db74">&#34;Validando Javascript con JSHint:&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;Validando Javascript con JSHint:&#34;</span>
 
-<span style="color:#75715e"># Recorremos todos los archivos</span>
-<span style="color:#66d9ef">for</span> file in $files; <span style="color:#66d9ef">do</span>
+<span class="c1"># Recorremos todos los archivos</span>
+<span class="k">for</span> file in <span class="nv">$files</span><span class="p">;</span> <span class="k">do</span>
 
-    excluded<span style="color:#f92672">=</span>false
+    <span class="nv">excluded</span><span class="o">=</span><span class="nb">false</span>
 
-    <span style="color:#75715e"># Recorre las líneas del fichero exclude-hook.txt ubicado en el raíz del proyecto</span>
-    <span style="color:#75715e"># en busca de ficheros o patrones a excluir. No interesa formatear y validar por</span>
-    <span style="color:#75715e"># ejemplo, librerías externas como Jasmine, que no tienen por qué seguir la misma</span>
-    <span style="color:#75715e"># guía de estilo de nuestro proyecto.</span>
-    <span style="color:#66d9ef">while</span> read line <span style="color:#f92672">||</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$line<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
-    <span style="color:#66d9ef">do</span>
-        <span style="color:#75715e"># Coincidencia encontrada. Se excluye el fichero.</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>file#*$line<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-            echo <span style="color:#e6db74">&#34;Excluido </span>$file<span style="color:#e6db74">&#34;</span>
-            excluded<span style="color:#f92672">=</span>true
-            break
-        <span style="color:#66d9ef">fi</span>
+    <span class="c1"># Recorre las líneas del fichero exclude-hook.txt ubicado en el raíz del proyecto</span>
+    <span class="c1"># en busca de ficheros o patrones a excluir. No interesa formatear y validar por</span>
+    <span class="c1"># ejemplo, librerías externas como Jasmine, que no tienen por qué seguir la misma</span>
+    <span class="c1"># guía de estilo de nuestro proyecto.</span>
+    <span class="k">while</span> <span class="nb">read</span> line <span class="o">||</span> <span class="o">[</span> -n <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="o">]</span>
+    <span class="k">do</span>
+        <span class="c1"># Coincidencia encontrada. Se excluye el fichero.</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file</span><span class="p">#*</span><span class="nv">$line</span><span class="si">}</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nb">echo</span> <span class="s2">&#34;Excluido </span><span class="nv">$file</span><span class="s2">&#34;</span>
+            <span class="nv">excluded</span><span class="o">=</span><span class="nb">true</span>
+            <span class="nb">break</span>
+        <span class="k">fi</span>
 
-    <span style="color:#75715e"># &#39;&lt; exclude-hook.txt&#39; es el equivalente a &#39;cat exclude-hook.txt&#39;</span>
-    <span style="color:#66d9ef">done</span> &lt; exclude-hook.txt
+    <span class="c1"># &#39;&lt; exclude-hook.txt&#39; es el equivalente a &#39;cat exclude-hook.txt&#39;</span>
+    <span class="k">done</span> &lt; exclude-hook.txt
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$excluded<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> true <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        <span style="color:#66d9ef">continue</span>
-    <span style="color:#66d9ef">fi</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$excluded</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="nb">true</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">continue</span>
+    <span class="k">fi</span>
 
-    result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>jshint $file | egrep <span style="color:#e6db74">&#34;error&#34;</span><span style="color:#66d9ef">)</span>
-    echo $result
+    <span class="nv">result</span><span class="o">=</span><span class="k">$(</span>jshint <span class="nv">$file</span> <span class="p">|</span> egrep <span class="s2">&#34;error&#34;</span><span class="k">)</span>
+    <span class="nb">echo</span> <span class="nv">$result</span>
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$result<span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#e6db74">&#34;JSHint fallido: </span>$file<span style="color:#e6db74">&#34;</span>
-        echo <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>jshint $file<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-        pass<span style="color:#f92672">=</span>false
-    <span style="color:#66d9ef">else</span>
-        echo <span style="color:#e6db74">&#34;JSHint validado: </span>$file<span style="color:#e6db74">&#34;</span>
-        beautify<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>js-beautify $file -r -P --config .beautifyrc<span style="color:#66d9ef">)</span>
-        add<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>git add $file<span style="color:#66d9ef">)</span>
-    <span style="color:#66d9ef">fi</span>
-<span style="color:#66d9ef">done</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$result</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;JSHint fallido: </span><span class="nv">$file</span><span class="s2">&#34;</span>
+        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>jshint <span class="nv">$file</span><span class="k">)</span><span class="s2">&#34;</span>
+        <span class="nv">pass</span><span class="o">=</span><span class="nb">false</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&#34;JSHint validado: </span><span class="nv">$file</span><span class="s2">&#34;</span>
+        <span class="nv">beautify</span><span class="o">=</span><span class="k">$(</span>js-beautify <span class="nv">$file</span> -r -P --config .beautifyrc<span class="k">)</span>
+        <span class="nv">add</span><span class="o">=</span><span class="k">$(</span>git add <span class="nv">$file</span><span class="k">)</span>
+    <span class="k">fi</span>
+<span class="k">done</span>
 
-echo <span style="color:#e6db74">&#34;Validación de Javascript completa&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;Validación de Javascript completa&#34;</span>
 
-<span style="color:#66d9ef">if</span> ! $pass; <span style="color:#66d9ef">then</span>
-    echo <span style="color:#e6db74">&#34;Es necesario corregir los errores mostrados por JSHint. Abortando commit.&#34;</span>
-    exit <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">else</span>
-    echo <span style="color:#e6db74">&#34;Validación y formateado satisfactorios.&#34;</span>
-    exit <span style="color:#ae81ff">0</span>
-<span style="color:#66d9ef">fi</span></code></pre></div>
+<span class="k">if</span> ! <span class="nv">$pass</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Es necesario corregir los errores mostrados por JSHint. Abortando commit.&#34;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Validación y formateado satisfactorios.&#34;</span>
+    <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">fi</span></code></pre></div>
 
 <p>En primer lugar filtraremos los archivos que se están comiteando, y nos quedaremos solo con <strong>los que tienen extensión .js.</strong> Además, en el raíz del repositorio, en un fichero llamado <code>exclude-hook.txt</code>, añadiremos patrones, que si son encontrados en las rutas del fichero, hará que se excluya al fichero del proceso. Ficheros que por ejemplo no queremos que sean validados y formateados, librerías externas de terceros, como Jasmine, jQuery, archivos minimizados, etc. Un ejemplo de fichero:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">.min.js
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">.min.js
 jasmine
 source/lib</code></pre></div>
 
@@ -254,6 +259,7 @@ source/lib</code></pre></div>
 <p>Lo ideal sería que cada desarrollador tuviese configurado su editor para formatear el código, pero bueno, en este caso, por el bien de que todos los ficheros tengan la misma guía de estilos, este aspecto representa un mal menor.</p>
 
 <p>Un script de mucha utilidad, que evitará que subamos archivos con errores de sintáxis o de estilo. Puedes ampliar información sobre hooks en la <a href="http://git-scm.com/docs/githooks">página de Git</a>, o en <a href="http://githooks.com/">Git Hooks</a>.</p>
+
     </div>
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-6 text-center max-w-3xl mx-auto">
@@ -272,9 +278,17 @@ source/lib</code></pre></div>
 </div>
 
 
-      </main>
+    </main>
     
+    <footer class="bg-gray-900 text-blue-100 p-4">
+    <div class="container">
+        <div class="text-center">
+            &copy; 2019 Sitio construido con Hugo alojado en Github.
+        </div>
+    </div>
+</footer>
+
     
-    
-  </body>
+</body>
+
 </html>

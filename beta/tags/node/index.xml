@@ -17,26 +17,7 @@
       <pubDate>Wed, 09 Sep 2015 13:50:35 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/compilando-ficheros-sass-con-grunt/</guid>
-      <description>&lt;img
-    class=&#39;mb-6 &#39;
-    srcset=&#39;
-    /beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png 500w
-    
-      ,/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass_hubefd48497ebd2d6fa2d470b69755af54_17529_500x0_resize_box_2.png 500w
-    
-    
-    
-    &#39;
-    src=&#34;https://javifm.com/beta/beta/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png&#34;
-    width=&#34;500&#34; height=&#34;260&#34;
-    alt=&#39;Grunt y Sass&#39;&gt;
-
-
-&lt;p&gt;A lo largo de los 2 últimos años, he ido poco a poco &lt;strong&gt;mejorando mi nivel de productividad&lt;/strong&gt; en el trabajo. Primero cambié mi editor de toda la vida, &lt;a href=&#34;https://notepad-plus-plus.org/&#34;&gt;Notepad++&lt;/a&gt; por &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;. Y posteriormente, he ido añadiendo diferentes herramientas que proporciona &lt;strong&gt;Node.js&lt;/strong&gt;, para automatizar distintos procesos y tareas, como ejecución de tests, linters de código, minimizado de Javascript y CSS, etc&amp;#8230;&lt;/p&gt;
-
-&lt;p&gt;Para automatizar más aún todos estos procesos, está &lt;a href=&#34;http://gruntjs.com/&#34;&gt;Grunt&lt;/a&gt;, que dispone de plugins fáciles de integrar en nuestros proyectos, para realizar todo tipo de tareas que precisemos en nuestro proyecto. En mi proyecto actual, surgió una necesidad a un compañero de proyecto, que se encarga de la maquetación de la aplicación que estamos desarrollando.&lt;/p&gt;
-
-&lt;p&gt;Para ello está utilizando &lt;a href=&#34;http://sass-lang.com/&#34;&gt;Sass&lt;/a&gt;, uno de los preprocesadores CSS más populares actualmente. Por motivos de simplicidad de código y maximizar la compatibilidad con navegadores no muy modernos (mantenemos soporte a navegadores webKit antiguos, que usan algunas Smart TV anteriores a 2013), a la hora de hacer los elementos reutilizables de la aplicación con Javascript, decidimos que en lugar de que cada widget cargue su hoja de estilos, &lt;strong&gt;tener todo el CSS de todos los widgets unificados en un mismo fichero que esté cargado desde el principio&lt;/strong&gt; (controlar cuando se ha cargado una hoja de estilos, de manera simple y compatible con todos los navegadores es una tarea que &lt;a href=&#34;http://requirejs.org/docs/faq-advanced.html#css&#34;&gt;ni RequireJS ha incluido en su cargador de módulos&lt;/a&gt;).&lt;/p&gt;</description>
+      <description>A lo largo de los 2 últimos años, he ido poco a poco mejorando mi nivel de productividad en el trabajo.</description>
     </item>
     
   </channel>

@@ -17,8 +17,7 @@
       <pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate>
       
       <guid>https://javifm.com/beta/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
-      <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web. Por defecto se instancia en la variable global $, además de jQuery. Esto puede entrar en conflicto con otras librerías que hayan decidido utilizar el $ también. Si estás utilizando el popular cargador de módulos RequireJS, hay una manera muy fácil para evitar que jQuery se instancie globalmente.
-Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que Samsung incluye internamente su propia versión de jQuery, sobreescribiendo la que añadas.</description>
+      <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web.</description>
     </item>
     
   </channel>

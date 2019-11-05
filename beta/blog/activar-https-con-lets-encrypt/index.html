@@ -1,72 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Hugo 0.58.3" />
-    
-    <link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-    
-    
-    <title>Activar https con Let’s Encrypt | Frontend developer</title>
-    <style>
-    .testing {
-      max-width: 700px;
-    }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.58.3" />
 
-  </head>
+<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
 
-  <body>
+
+<title>Activar https con Let’s Encrypt | Frontend developer</title>
+
+    
+</head>
+
+<body>
     <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex p-6">
-            
-            
-            
-            
+        <nav class="flex flex-wrap justify-end py-6 px-4">
             
             
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/">Inicio</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase active" href="/beta/blog/">Blog</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
-            
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/tags/">Tags</a>
-            
-            
-            
-            
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
-
-            <a class="mr-6 p-2 text-gray-700 hover:text-green-500 prefers-dark:hover:text-red-500 prefers-dark:focus:text-white uppercase " href="/beta/sobre-mi/">Sobre mí</a>
+                
+                
+                
+                
+                
+                    
+                
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
         </nav>
     </div>
 </div>
 
-    
-      <main id="main">
-       
+    <main id="main">
+        
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
@@ -96,41 +101,41 @@
 
     </div>
     <div class="single-post-content">
-        <p><a href="https://letsencrypt.org/">Let&#8217;s Encrypt</a> es un proveedor gratuito de <strong>certificados TLS/SSL</strong> que nos brinda la posibilidad de activar <strong>https</strong> en nuestro servidor para nuestros dominio.s El proceso está automatizado tanto para Apache como Nginx, en mi caso voy a utilizar <strong>Cerbot</strong> para instalarlo en mi servidor Nginx.</p>
+        <p><a href="https://letsencrypt.org/">Let&#8217;s Encrypt</a> es un proveedor gratuito de <strong>certificados TLS/SSL</strong> que nos brinda la posibilidad de activar <strong>https</strong> en nuestro servidor para nuestros dominios. El proceso está automatizado tanto para Apache como Nginx, en mi caso voy a utilizar <strong>Cerbot</strong> para instalarlo en mi servidor Nginx.</p>
 
 <p>Certbot es un software que es actualizado bastante amenudo por sus desarrolladores. Si queremos disfrutar de la versión más actualizada, deberemos añadir su repositorio ya que si tiramos de los de Ubuntu, lo más normal es que tengan versiones más antiguas. Para ello:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:certbot/certbot</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:certbot/certbot</code></pre></div>
 
 <p>Aceptaremos las condiciones del servicio para poder actualizar los repositorios del sistema operativo.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get update</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update</code></pre></div>
 
 <p>Y finalmente instalaremos Certbot.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install python-certbot-nginx</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get install python-certbot-nginx</code></pre></div>
 
 <p>Certbot ya está listo, ahora simplemente comprobaremos que tenemos definido en nuestro fichero de configuración de Nginx la clave <code>server_name</code> con el dominio que vamos a utilizar.</p>
 
 <p>Veremos la configuración del servidor por defecto en el fichero default, o si está en otro dominio configurado, iremos a ese fichero.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /etc/nginx/sites-available/default</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/nginx/sites-available/default</code></pre></div>
 
 <pre>server_name <strong>example.com www.example.com</strong>;</pre>
 
 <p>Si ya está configurado, no es necesario hacer nada. En caso contrario añadimos nuestro dominio y ejecutamos los siguientes comandos para comprobar que la configuración de Nginx introducida no da problemas, y si es así recargamos para refrescar la nueva configuración:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nginx -t
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo nginx -t
     sudo systemctl reload nginx</code></pre></div>
 
 <p>Por último antes de obtener el certificado, vamos a añadir en nuestro firewall ufw que permita el trafico https. Para ello podemos ejecutar los siguientes comandos para añadir el perfil <strong>Nginx full</strong>, que incorporta tanto http como https y eliminaremos el http que sobra una vez añadido el anterior:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ufw allow <span style="color:#e6db74">&#39;Nginx Full&#39;</span>
-    sudo ufw delete allow <span style="color:#e6db74">&#39;Nginx HTTP&#39;</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo ufw allow <span class="s1">&#39;Nginx Full&#39;</span>
+    sudo ufw delete allow <span class="s1">&#39;Nginx HTTP&#39;</span></code></pre></div>
 
 <p>Comprobamos:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ufw status</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo ufw status</code></pre></div>
 
 <pre>
 Status: active
@@ -145,7 +150,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 
 <p>Finalmente lanzaremos el proceso para obtener el certificado y que se renueve automaticamente.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo certbot --nginx -d example.com -d www.example.com</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo certbot --nginx -d example.com -d www.example.com</code></pre></div>
 
 <p>Se nos pedirá una dirección de correo electrónico y, si todo va bien, nos saldrá una pregunta solicitandonos elegir entre si queremos redireccionar el tráfico http a https o no. Elegimos la deseada, en mi caso elegí la segunda y pulsamos enter.</p>
 
@@ -189,7 +194,7 @@ IMPORTANT NOTES:
 
 <p>Al volver a ejecutar de nuevo y eligiendo la opción de reinstalar los certificados debería de funcionar. Los certificados son válidos durante 90 días, certbot se encarga de lanzar un proceso que comprueba automáticamente 2 veces por día si quedan menos de 30 días para la expiración, de ser así los certificados serán renovados. Podemos comprobar que todo funciona correctamente ejecutando:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo certbot renew --dry-run</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo certbot renew --dry-run</code></pre></div>
 
 <p>Puedes comprobar en el directorio <strong>/etc/cron.d</strong> que hay un script llamado <strong>certbot</strong> que se encarga de ello. Referencias interesantes:</p>
 
@@ -215,9 +220,17 @@ IMPORTANT NOTES:
 </div>
 
 
-      </main>
+    </main>
     
+    <footer class="bg-gray-900 text-blue-100 p-4">
+    <div class="container">
+        <div class="text-center">
+            &copy; 2019 Sitio construido con Hugo alojado en Github.
+        </div>
+    </div>
+</footer>
+
     
-    
-  </body>
+</body>
+
 </html>
