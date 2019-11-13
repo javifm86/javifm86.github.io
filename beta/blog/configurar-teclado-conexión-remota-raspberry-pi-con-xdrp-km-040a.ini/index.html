@@ -15,11 +15,19 @@
 </head>
 
 <body>
-    <div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
+    <div id="site-wrapper" class="relative overflow-hidden w-full">
+        <div id="site-canvas" class="w-full h-full relative">
+            
+
+
+
+<a id="skiplink" class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-300 rounded-sm p-2 uppercase text-gray-700" href="#main">
+    Saltar al contenido principal
+</a>
+
+<div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
     <div class="container mx-auto">
-        <nav class="flex flex-wrap justify-end py-6 px-4">
-            
-            
+        <nav class="flex flex-wrap justify-end items-center py-6 px-4">
             
                 
                 
@@ -28,7 +36,7 @@
                 
                     
                 
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
             
                 
                 
@@ -37,7 +45,7 @@
                 
                     
                 
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
             
                 
                 
@@ -46,7 +54,7 @@
                 
                     
                 
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
             
                 
                 
@@ -55,7 +63,7 @@
                 
                     
                 
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
             
                 
                 
@@ -64,26 +72,126 @@
                 
                     
                 
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
+                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
             
+            <button type="button" id="sidebar-open" aria-label="Abrir menu" class="sm:hidden text-gray-700 flex items-center uppercase text-xl p-1 -m-1">
+                Menú
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current'  id='open-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current hidden'  id='close-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path></svg>
+
+
+            </button>
         </nav>
     </div>
 </div>
 
-    <main id="main">
+<div id="site-menu" class="h-full absolute top-0 py-6 px-4 bg-gray-800 hidden">
+    <nav class="flex flex-col uppercase text-xl">
+    
         
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/">Inicio</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href="/beta/blog/">Blog</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/tags/">Tags</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/sobre-mi/">Sobre mí</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/search/">Buscar</a>
+    
+    </nav>
+</div>
+
+            <main id="main">
+                
 
 <div class="container mx-auto px-4 single-post">
     <div class="my-6">
         <h1 class="title">Configurar teclado conexión remota Raspberry Pi con XDRP – km-040a.ini</h1>
         
 
-<div class="flex flex-wrap items-center text-gray-600">
+<div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-700">
     <time datetime="2017-03-07">
         Publicado el 7 Mar 2017</time>
     
     <span>
-        <span class="mx-2">&bull;</span>Tiempo de lectura: 2min
+        <span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 2min
     </span>
     
 </div>
@@ -134,12 +242,12 @@
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-6 text-center max-w-3xl mx-auto">
         
-        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="https://javifm.com/beta/blog/direcci%C3%B3n-ip-fija-para-raspberry-en-raspbian/">
+        <a class="outline-none bg-transparent text-green-700 font-semibold hover:text-white hover:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="https://javifm.com/beta/blog/direcci%C3%B3n-ip-fija-para-raspberry-en-raspbian/">
             &laquo; Dirección IP fija para Raspberry en Raspbian
         </a>
         
         
-        <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="https://javifm.com/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/">
+        <a class="outline-none bg-transparent text-green-700 font-semibold hover:text-white hover:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="https://javifm.com/beta/blog/conexi%C3%B3n-remota-a-raspberry-pi/">
             Conexión remota a Raspberry Pi &raquo;
         </a>
         
@@ -148,15 +256,113 @@
 </div>
 
 
-    </main>
-    
-    <footer class="bg-gray-900 text-blue-100 p-4">
+            </main>
+            <footer class="bg-gray-900 text-blue-100 p-4">
     <div class="container">
         <div class="text-center">
             &copy; 2019 Sitio construido con Hugo alojado en Github.
         </div>
     </div>
 </footer>
+
+        </div>
+    </div>
+    
+<script src="https://javifm.com/beta/js/focus-visible.min.js"></script>
+<script>
+    (function() {
+        const $bodyElement = document.getElementsByTagName('body')[0];
+        const $svgOpen = document.getElementById('open-menu');
+        const $svgClose = document.getElementById('close-menu');
+        const $siteCanvas = document.getElementById('site-canvas');
+        const $siteMenu = document.getElementById('site-menu');
+        const $buttonNav = document.getElementById('sidebar-open');
+        const transitionEnd = transitionEndEventName();
+        const CSS_CLASS_NAV = 'show-nav';
+        let stateNav = 'closed';
+
+        const closeMenuOnResize = debounce(function() {
+            if ($bodyElement.classList.contains(CSS_CLASS_NAV) && window.screen.width > 639) {
+                toggleNav();
+            }
+        }, 0);
+
+        
+        $buttonNav.addEventListener('click', toggleNav);
+        window.addEventListener('resize', closeMenuOnResize);
+
+        $siteCanvas.addEventListener(
+            transitionEnd,
+            function() {
+                if (stateNav === 'opening') {
+                    $svgOpen.classList.add('hidden');
+                    $svgClose.classList.remove('hidden');
+                    $buttonNav.setAttribute('aria-label', 'Cerrar menú');
+                    stateNav = 'open';
+                } else {
+                    $svgOpen.classList.remove('hidden');
+                    $svgClose.classList.add('hidden');
+                    $siteMenu.classList.add('hidden');
+                    $buttonNav.setAttribute('aria-label', 'Abrir menú');
+                    stateNav = 'closed';
+                }
+            },
+            false
+        );
+        
+        
+
+        function toggleNav() {
+            if ($bodyElement.classList.contains(CSS_CLASS_NAV)) {
+                $bodyElement.classList.remove(CSS_CLASS_NAV);
+                stateNav = 'closing';
+            } else {
+                $bodyElement.classList.add(CSS_CLASS_NAV);
+                stateNav = 'opening';
+                $siteMenu.classList.remove('hidden');
+            }
+        }
+
+        function debounce(func, wait, immediate) {
+            let timeout;
+            return function() {
+                let context = this;
+                let args = arguments;
+                const later = function() {
+                    timeout = null;
+                    if (!immediate) {
+                        func.apply(context, args);
+                    }
+                };
+                let callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) {
+                    func.apply(context, args);
+                }
+            };
+        }
+
+        function transitionEndEventName() {
+            let i;
+            const el = document.createElement('div');
+            const transitions = {
+                'transition': 'transitionend',
+                'OTransition': 'otransitionend',  
+                'MozTransition': 'transitionend',
+                'WebkitTransition': 'webkitTransitionEnd'
+            };
+
+            for (i in transitions) {
+                if (transitions.hasOwnProperty(i) && el.style[i] !== undefined) {
+                    return transitions[i];
+                }
+            }
+        }
+
+    })();
+
+</script>
 
     
 </body>

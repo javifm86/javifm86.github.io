@@ -71,7 +71,7 @@
             let article = document.createElement('article');
             article.classList.add('mb-8');
             article.innerHTML = `
-                <a href="${result.ref}" class="group">
+                <a href="${result.ref}" class="block group">
                     <h2 class="article-title group-hover:text-green-500 pb-1">${documents[result.ref].title}</h2>
                     <div class="text-gray-700"><p>${documents[result.ref].summary}</p></div>
                 </a>
@@ -102,6 +102,6 @@
             renderSearchResults(results);
         };
 
-        searchInput.placeholder = '';
+        searchInput.placeholder = 'Introduce término de búsqueda';
     }
 })();
