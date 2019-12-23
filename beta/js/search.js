@@ -73,7 +73,7 @@
             article.innerHTML = `
                 <a href="${result.ref}" class="block group">
                     <h2 class="article-title group-hover:text-green-500 pb-1">${documents[result.ref].title}</h2>
-                    <div class="text-gray-700"><p>${documents[result.ref].summary}</p></div>
+                    <div class="text-gray-700 dark:text-gray-300"><p>${documents[result.ref].summary}</p></div>
                 </a>
                 `;
             searchResults.appendChild(article);

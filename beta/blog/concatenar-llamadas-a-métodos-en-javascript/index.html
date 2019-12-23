@@ -1,414 +1,69 @@
-<!doctype html>
-<html lang="en">
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=generator content="Hugo 0.60.0"><link rel=stylesheet href=https://javifm.com/beta/css/styles.css><title>Concatenar llamadas a métodos en Javascript | Frontend developer</title></head><body><div id=site-wrapper class="relative overflow-hidden w-full"><div id=site-canvas class="w-full h-full relative"><a id=skiplink class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-300 dark:bg-gray-700 rounded-sm p-2 uppercase text-gray-700 dark:text-gray-300" href=#main>Saltar al contenido principal</a><div class="bg-gray-100 dark:bg-gray-800 border-t-4 border-green-500"><div class="container mx-auto"><nav class="flex flex-wrap justify-end items-center p-4"><a href=https://javifm.com/beta/ class="mr-auto p-2 -m-2 last:mr-0" aria-hidden=true><span class=sr-only>Inicio</span><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3640 3640" aria-hidden="true" class="w-10 h-10"><path d="M2958 1348l-156-202 69-55c89-70 141-147 147-217 11-127-66-244-181-278-67-19-79-20-139-2-66 21-67 21-228 151-505 408-832 666-840 663-11-4-310-378-310-388 0-9 943-765 1025-822 119-84 245-120 415-121 156 0 305 41 418 116 145 96 269 258 320 417 19 60 39 203 36 255-8 119-39 244-82 327-19 36-96 145-129 183-10 11-54 49-98 84-44 36-87 70-96 78-14 12-35-11-171-189z" id="layer101" fill="#0080b2" stroke="none"/><path d="M671 1839c-227-280-432-541-455-579-115-186-141-441-67-658C264 269 6e2 48 955 73c112 8 193 30 3e2 82 116 56 190 117 293 240 66 80 80 102 70 112-7 7-101 80-208 163l-195 151-40-48c-22-26-61-69-86-94-136-136-365-86-434 94-22 59-17 148 12 204 12 23 205 267 428 543 224 276 405 503 403 504s-91 71-198 156c-107 84-2e2 157-206 161-6 5-163-181-423-502z" id="layer102" fill="#03b8ab" stroke="none"/><path d="M741 3559c-118-23-249-84-345-162-327-262-385-737-132-1074 43-57 94-105 207-196l46-37 153 196c84 108 153 202 154 209 0 7-30 39-69 71-90 76-125 140-125 230 0 187 197 311 365 230 28-14 270-2e2 540-415 269-215 493-390 497-389 4 2 78 90 164 197 109 135 154 198 148 207-15 22-965 774-1034 819-84 55-166 89-262 109-82 17-234 20-307 5z" id="layer103" fill="#ea6675" stroke="none"/><path d="M2605 3556c-191-44-333-137-477-314-51-62-58-76-47-87 8-7 99-79 203-160l189-147 26 34c99 127 165 170 264 171 113 0 207-68 243-176 18-55 15-131-8-182-7-16-192-254-411-529-327-409-396-501-385-511 49-45 373-298 383-299 13-1 750 913 823 1020 84 124 125 262 125 424 0 339-204 620-530 733-75 25-105 30-213 33-83 3-145-1-185-10z" id="layer104" fill="#ffa73d" stroke="none"/></svg></a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href=/beta/>Inicio</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-300 dark:bg-transparent rounded-sm dark:text-green-500 mr-3 md:mr-6" href=/beta/blog/ aria-current=page>Blog</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href=/beta/tags/>Tags</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href=/beta/sobre-mi/>Sobre mí</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href=/beta/search/>Buscar</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500" href=/beta/contact/>Contacto</a>
+<button type=button id=sidebar-open aria-label="Abrir menu" class="sm:hidden text-gray-700 dark:text-gray-300 flex items-center uppercase text-xl p-1 -m-1">
+Menú<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current" id="open-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current hidden" id="close-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586 2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg></button></nav></div></div><div id=site-menu class="h-full absolute top-0 py-6 px-4 bg-gray-800 dark:bg-gray-700 hidden border-l border-transparent dark:border-gray-600"><nav class="flex flex-col uppercase text-xl"><a class="mb-1 px-4 py-2 text-gray-100" href=/beta/>Inicio</a>
+<a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href=/beta/blog/>Blog</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=/beta/tags/>Tags</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=/beta/sobre-mi/>Sobre mí</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=/beta/search/>Buscar</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=/beta/contact/>Contacto</a></nav></div><main id=main><div class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600"></div><article class="container mx-auto px-4 single-post"><div class=my-6><h1 class=title>Concatenar llamadas a métodos en Javascript</h1><div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-700 dark:text-gray-300"><time datetime=2015-04-21>Publicado el 21 Abr 2015</time>
+<span><span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 2min</span></div><div class=mt-4><a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/beta/tags/javascript>javascript</a></div></div><div class=single-post-content><p>Vamos a ver de una manera rápida, como podemos <strong>concatenar llamadas a distintos métodos</strong> sobre un mismo objeto en Javascript (en inglés, <em>Method Chaining in JavaScript</em>). Este patrón, es utilizado en el popular framework jQuery, en el cual pueden llamarse a varios métodos sobre un selector jQuery. Por ejemplo:</p><div class=highlight><pre class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>)</span><span class=p>.</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>)</span><span class=p>.</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>)</span><span class=p>.</span><span class=nx>show</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
 
-<head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.58.3" />
-
-<link rel="stylesheet" href="https://javifm.com/beta/css/styles.css">
-
-
-<title>Concatenar llamadas a métodos en Javascript | Frontend developer</title>
-
+<span class=c1>// En caso de concatenar muchos métodos
+</span><span class=c1></span><span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>)</span>
+    <span class=p>.</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>)</span>
+    <span class=p>.</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>)</span>
+    <span class=p>.</span><span class=nx>show</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
     
-</head>
-
-<body>
-    <div id="site-wrapper" class="relative overflow-hidden w-full">
-        <div id="site-canvas" class="w-full h-full relative">
-            
-
-
-
-<a id="skiplink" class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-300 rounded-sm p-2 uppercase text-gray-700" href="#main">
-    Saltar al contenido principal
-</a>
-
-<div class="bg-gray-100 prefers-dark:bg-gray-900 border-t-4 border-green-500">
-    <div class="container mx-auto">
-        <nav class="flex flex-wrap justify-end items-center py-6 px-4">
-            
-                
-                
-                
-                
-                
-                    
-                
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/">Inicio</a>
-            
-                
-                
-                
-                
-                
-                    
-                
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-300 rounded-sm" href="/beta/blog/">Blog</a>
-            
-                
-                
-                
-                
-                
-                    
-                
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/tags/">Tags</a>
-            
-                
-                
-                
-                
-                
-                    
-                
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/sobre-mi/">Sobre mí</a>
-            
-                
-                
-                
-                
-                
-                    
-                
-                <a class="mr-6 first:-ml-2 p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 hover:rounded-sm" href="/beta/search/">Buscar</a>
-            
-            <button type="button" id="sidebar-open" aria-label="Abrir menu" class="sm:hidden text-gray-700 flex items-center uppercase text-xl p-1 -m-1">
-                Menú
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current'  id='open-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current hidden'  id='close-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path></svg>
-
-
-            </button>
-        </nav>
-    </div>
-</div>
-
-<div id="site-menu" class="h-full absolute top-0 py-6 px-4 bg-gray-800 hidden">
-    <nav class="flex flex-col uppercase text-xl">
-    
-        
-        
-        
-        
-        
-            
-        
-        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/">Inicio</a>
-    
-        
-        
-        
-        
-        
-            
-        
-        <a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href="/beta/blog/">Blog</a>
-    
-        
-        
-        
-        
-        
-            
-        
-        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/tags/">Tags</a>
-    
-        
-        
-        
-        
-        
-            
-        
-        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/sobre-mi/">Sobre mí</a>
-    
-        
-        
-        
-        
-        
-            
-        
-        <a class="mb-1 px-4 py-2 text-gray-100" href="/beta/search/">Buscar</a>
-    
-    </nav>
-</div>
-
-            <main id="main">
-                
-
-<div class="container mx-auto px-4 single-post">
-    <div class="my-6">
-        <h1 class="title">Concatenar llamadas a métodos en Javascript</h1>
-        
-
-<div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-700">
-    <time datetime="2015-04-21">
-        Publicado el 21 Abr 2015</time>
-    
-    <span>
-        <span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 2min
-    </span>
-    
-</div>
-
-    <div class="mt-4">
-        
-            
-            <a class="tag inline-block text-sm mr-2 mb-2" href="https://javifm.com/beta/tags/javascript">javascript</a>
-        
-    </div>
-
-
-    </div>
-    <div class="single-post-content">
-        <p>Vamos a ver de una manera rápida, como podemos <strong>concatenar llamadas a distintos métodos</strong> sobre un mismo objeto en Javascript (en inglés, <em>Method Chaining in JavaScript</em>). Este patrón, es utilizado en el popular framework jQuery, en el cual pueden llamarse a varios métodos sobre un selector jQuery. Por ejemplo:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#selector&#34;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;.square&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;height&#34;</span><span class="p">,</span> <span class="s2">&#34;100px&#34;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
-
-<span class="c1">// En caso de concatenar muchos métodos
-</span><span class="c1"></span><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#selector&#34;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;.square&#34;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;height&#34;</span><span class="p">,</span> <span class="s2">&#34;100px&#34;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">show</span><span class="p">();</span>
-    
-</code></pre></div>
-
-<p>Que es más corto, o más legible (para gustos los colores) que esto:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">var</span> <span class="nx">$selector</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#selector&#34;</span><span class="p">);</span>
-
-<span class="nx">$selector</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;.square&#34;</span><span class="p">);</span>
-<span class="nx">$selector</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;height&#34;</span><span class="p">,</span> <span class="s2">&#34;100px&#34;</span><span class="p">)</span>
-<span class="nx">$selector</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
-</code></pre></div>
-
-<p>Bien, vamos a ver como <strong>implementar este patrón</strong> en Javascript puro, supongamos un objeto tonto, con 2 métodos sencillos como el siguiente:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">var</span> <span class="nx">Widget</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">msg1</span> <span class="o">=</span> <span class="nx">param1</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">msg2</span> <span class="o">=</span> <span class="nx">param2</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="nx">Widget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">method1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">msg1</span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="nx">Widget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">method2</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">msg2</span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="kd">var</span> <span class="nx">instancia</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Widget</span><span class="p">(</span><span class="s2">&#34;Hola&#34;</span><span class="p">,</span> <span class="s2">&#34;Mundo&#34;</span><span class="p">);</span>
-</code></pre></div>
-
-<p>Si quisieramos llamar a los 2 métodos, deberíamos hacerlo de la siguiente manera:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">instancia</span><span class="p">.</span><span class="nx">method1</span><span class="p">();</span>
-<span class="nx">instancia</span><span class="p">.</span><span class="nx">method2</span><span class="p">();</span>
-</code></pre></div>
-
-<p>Y si intentamos concatenar directamente las llamadas, ejecutará el primer método, pero fallará el segundo:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">instancia</span><span class="p">.</span><span class="nx">method1</span><span class="p">().</span><span class="nx">method2</span><span class="p">();</span>
-
-<span class="c1">// Uncaught TypeError: Cannot read property &#39;method2&#39; of undefined
-</span></code></pre></div>
-
-<p>¿Como hacerlo funcionar? Es sencillo, tan solo deberemos añadir en los métodos <code>return this;</code> , de esta manera cuando se llame a <code>method1</code> se devolverá el objeto, y al llamar al siguiente método ya no dará undefined, puesto que al haberse devuelto el objeto en el método anterior, ya encuentra la referencia para poder llamar a <code>method2</code>. Así queda el código:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">var</span> <span class="nx">Widget</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">msg1</span> <span class="o">=</span> <span class="nx">param1</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">msg2</span> <span class="o">=</span> <span class="nx">param2</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="nx">Widget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">method1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">msg1</span><span class="p">);</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="nx">Widget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">method2</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">msg2</span><span class="p">);</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kd">var</span> <span class="nx">instancia</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Widget</span><span class="p">(</span><span class="s2">&#34;Hola&#34;</span><span class="p">,</span> <span class="s2">&#34;Mundo&#34;</span><span class="p">);</span>
-
-<span class="nx">instancia</span><span class="p">.</span><span class="nx">method1</span><span class="p">().</span><span class="nx">method2</span><span class="p">();</span>
-</code></pre></div>
-
-<p>¿Sencillo verdad? Este patrón de diseño se conoce como <a href="http://en.wikipedia.org/wiki/Fluent_interface" title="Fluent Interface">Fluent interface.</a> Usarlo o no ya es cuestión de gustos.</p>
-
-    </div>
-    <div class="my-16 border-b border-gray-400"></div>
-    <div class="mb-6 text-center max-w-3xl mx-auto">
-        
-        <a class="outline-none bg-transparent text-green-700 font-semibold hover:text-white hover:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="https://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/">
-            &laquo; JSHint y formateo de código al hacer commit con git (Git hooks)
-        </a>
-        
-        
-        <a class="outline-none bg-transparent text-green-700 font-semibold hover:text-white hover:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 hover:border-transparent rounded block mb-4" href="https://javifm.com/beta/blog/width-de-jquery-sin-redondeo/">
-            Width() de jQuery sin redondeo &raquo;
-        </a>
-        
-    </div>
-
-</div>
-
-
-            </main>
-            <footer class="bg-gray-900 text-blue-100 p-4">
-    <div class="container">
-        <div class="text-center">
-            &copy; 2019 Sitio construido con Hugo alojado en Github.
-        </div>
-    </div>
-</footer>
-
-        </div>
-    </div>
-    
-<script src="https://javifm.com/beta/js/focus-visible.min.js"></script>
-<script>
-    (function() {
-        const $bodyElement = document.getElementsByTagName('body')[0];
-        const $svgOpen = document.getElementById('open-menu');
-        const $svgClose = document.getElementById('close-menu');
-        const $siteCanvas = document.getElementById('site-canvas');
-        const $siteMenu = document.getElementById('site-menu');
-        const $buttonNav = document.getElementById('sidebar-open');
-        const transitionEnd = transitionEndEventName();
-        const CSS_CLASS_NAV = 'show-nav';
-        let stateNav = 'closed';
-
-        const closeMenuOnResize = debounce(function() {
-            if ($bodyElement.classList.contains(CSS_CLASS_NAV) && window.screen.width > 639) {
-                toggleNav();
-            }
-        }, 0);
-
-        
-        $buttonNav.addEventListener('click', toggleNav);
-        window.addEventListener('resize', closeMenuOnResize);
-
-        $siteCanvas.addEventListener(
-            transitionEnd,
-            function() {
-                if (stateNav === 'opening') {
-                    $svgOpen.classList.add('hidden');
-                    $svgClose.classList.remove('hidden');
-                    $buttonNav.setAttribute('aria-label', 'Cerrar menú');
-                    stateNav = 'open';
-                } else {
-                    $svgOpen.classList.remove('hidden');
-                    $svgClose.classList.add('hidden');
-                    $siteMenu.classList.add('hidden');
-                    $buttonNav.setAttribute('aria-label', 'Abrir menú');
-                    stateNav = 'closed';
-                }
-            },
-            false
-        );
-        
-        
-
-        function toggleNav() {
-            if ($bodyElement.classList.contains(CSS_CLASS_NAV)) {
-                $bodyElement.classList.remove(CSS_CLASS_NAV);
-                stateNav = 'closing';
-            } else {
-                $bodyElement.classList.add(CSS_CLASS_NAV);
-                stateNav = 'opening';
-                $siteMenu.classList.remove('hidden');
-            }
-        }
-
-        function debounce(func, wait, immediate) {
-            let timeout;
-            return function() {
-                let context = this;
-                let args = arguments;
-                const later = function() {
-                    timeout = null;
-                    if (!immediate) {
-                        func.apply(context, args);
-                    }
-                };
-                let callNow = immediate && !timeout;
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-                if (callNow) {
-                    func.apply(context, args);
-                }
-            };
-        }
-
-        function transitionEndEventName() {
-            let i;
-            const el = document.createElement('div');
-            const transitions = {
-                'transition': 'transitionend',
-                'OTransition': 'otransitionend',  
-                'MozTransition': 'transitionend',
-                'WebkitTransition': 'webkitTransitionEnd'
-            };
-
-            for (i in transitions) {
-                if (transitions.hasOwnProperty(i) && el.style[i] !== undefined) {
-                    return transitions[i];
-                }
-            }
-        }
-
-    })();
-
-</script>
-
-    
-</body>
-
-</html>
+</code></pre></div><p>Que es más corto, o más legible (para gustos los colores) que esto:</p><div class=highlight><pre class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>$selector</span> <span class=o>=</span> <span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>)</span><span class=p>;</span>
+
+<span class=nx>$selector</span><span class=p>.</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>)</span><span class=p>;</span>
+<span class=nx>$selector</span><span class=p>.</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>)</span>
+<span class=nx>$selector</span><span class=p>.</span><span class=nx>show</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
+</code></pre></div><p>Bien, vamos a ver como <strong>implementar este patrón</strong> en Javascript puro, supongamos un objeto tonto, con 2 métodos sencillos como el siguiente:</p><div class=highlight><pre class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>Widget</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>param1</span><span class=p>,</span> <span class=nx>param2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>msg1</span> <span class=o>=</span> <span class=nx>param1</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>msg2</span> <span class=o>=</span> <span class=nx>param2</span><span class=p>;</span>
+<span class=p>}</span><span class=p>;</span>
+
+<span class=nx>Widget</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>method1</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nx>alert</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>msg1</span><span class=p>)</span><span class=p>;</span>
+<span class=p>}</span><span class=p>;</span>
+
+<span class=nx>Widget</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>method2</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nx>alert</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>msg2</span><span class=p>)</span><span class=p>;</span>
+<span class=p>}</span><span class=p>;</span>
+
+<span class=kd>var</span> <span class=nx>instancia</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Widget</span><span class=p>(</span><span class=s2>&#34;Hola&#34;</span><span class=p>,</span> <span class=s2>&#34;Mundo&#34;</span><span class=p>)</span><span class=p>;</span>
+</code></pre></div><p>Si quisieramos llamar a los 2 métodos, deberíamos hacerlo de la siguiente manera:</p><div class=highlight><pre class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
+<span class=nx>instancia</span><span class=p>.</span><span class=nx>method2</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
+</code></pre></div><p>Y si intentamos concatenar directamente las llamadas, ejecutará el primer método, pero fallará el segundo:</p><div class=highlight><pre class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>(</span><span class=p>)</span><span class=p>.</span><span class=nx>method2</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
+
+<span class=c1>// Uncaught TypeError: Cannot read property &#39;method2&#39; of undefined
+</span></code></pre></div><p>¿Como hacerlo funcionar? Es sencillo, tan solo deberemos añadir en los métodos <code>return this;</code> , de esta manera cuando se llame a <code>method1</code> se devolverá el objeto, y al llamar al siguiente método ya no dará undefined, puesto que al haberse devuelto el objeto en el método anterior, ya encuentra la referencia para poder llamar a <code>method2</code>. Así queda el código:</p><div class=highlight><pre class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>Widget</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>param1</span><span class=p>,</span> <span class=nx>param2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>msg1</span> <span class=o>=</span> <span class=nx>param1</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>msg2</span> <span class=o>=</span> <span class=nx>param2</span><span class=p>;</span>
+<span class=p>}</span><span class=p>;</span>
+
+<span class=nx>Widget</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>method1</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nx>alert</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>msg1</span><span class=p>)</span><span class=p>;</span>
+    <span class=k>return</span> <span class=k>this</span><span class=p>;</span>
+<span class=p>}</span><span class=p>;</span>
+
+<span class=nx>Widget</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>method2</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nx>alert</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>msg2</span><span class=p>)</span><span class=p>;</span>
+    <span class=k>return</span> <span class=k>this</span><span class=p>;</span>
+<span class=p>}</span><span class=p>;</span>
+
+<span class=kd>var</span> <span class=nx>instancia</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Widget</span><span class=p>(</span><span class=s2>&#34;Hola&#34;</span><span class=p>,</span> <span class=s2>&#34;Mundo&#34;</span><span class=p>)</span><span class=p>;</span>
+
+<span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>(</span><span class=p>)</span><span class=p>.</span><span class=nx>method2</span><span class=p>(</span><span class=p>)</span><span class=p>;</span>
+</code></pre></div><p>¿Sencillo verdad? Este patrón de diseño se conoce como <a href=http://en.wikipedia.org/wiki/Fluent_interface title="Fluent Interface">Fluent interface.</a> Usarlo o no ya es cuestión de gustos.</p></div><div class="my-16 border-b border-gray-400"></div><div class="mb-6 text-center max-w-3xl mx-auto"><a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition-all-100" href=https://javifm.com/beta/blog/jshint-y-formateo-de-c%C3%B3digo-al-hacer-commit-con-git-git-hooks/>&laquo; JSHint y formateo de código al hacer commit con git (Git hooks)</a>
+<a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition-all-100" href=https://javifm.com/beta/blog/width-de-jquery-sin-redondeo/>Width() de jQuery sin redondeo &raquo;</a></div></article></main><footer class="bg-gray-900 text-gray-200 p-4"><div class="container mx-auto flex justify-between items-center"><p>&copy; 2019 Sitio construido con <a class="text-white underline" href=https://gohugo.io/>Hugo</a> alojado en <a class="text-white underline" href=https://github.com/>Github</a>.</p><div class="flex items-center"><a href=https://github.com/javifm86 class="mr-1 p-2 text-gray-300 hover:text-white"><span class=sr-only>Github</span><svg class="w-8 pointer-events-none" viewBox="0 0 256 250" role="img" aria-labelledby="titleId" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Github</title><path role="presentation" class="fill-current" d="M128.001.0C57.317.0.0 57.307.0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158.0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258.0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874.0.0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358.0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704.0 17.126-.148 30.91-.148 35.126.0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691.0 128.001.0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86.0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"/></svg></a>
+<a href=https://twitter.com/javifm86 class="p-2 text-gray-300 hover:text-white"><span class=sr-only>Twitter</span><svg class="w-8 mt-1 pointer-events-none" role="img" aria-labelledby="titleId" viewBox="0 0 256 209" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Twitter</title><path role="presentation" class="fill-current" d="M256 25.45a105.04 105.04.0 0 1-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183.0 0 1-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006.0-52.523 23.516-52.523 52.52.0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404.0 18.222 9.273 34.297 23.365 43.716a52.312 52.312.0 0 1-23.79-6.57c-.003.22-.003.44-.003.661.0 25.447 18.104 46.675 42.13 51.5a52.592 52.592.0 0 1-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24.0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607.0 149.434-80.031 149.434-149.435.0-2.278-.05-4.543-.152-6.795A106.748 106.748.0 0 0 256 25.45"/></svg></a></div></div></footer></div></div><script src=https://javifm.com/beta/js/focus-visible.min.js></script><script>(function(){const $bodyElement=document.getElementsByTagName('body')[0];const $svgOpen=document.getElementById('open-menu');const $svgClose=document.getElementById('close-menu');const $siteCanvas=document.getElementById('site-canvas');const $siteMenu=document.getElementById('site-menu');const $buttonNav=document.getElementById('sidebar-open');const transitionEnd=transitionEndEventName();const CSS_CLASS_NAV='show-nav';let stateNav='closed';const closeMenuOnResize=debounce(function(){if($bodyElement.classList.contains(CSS_CLASS_NAV)&&window.screen.width>639){toggleNav();}},0);$buttonNav.addEventListener('click',toggleNav);window.addEventListener('resize',closeMenuOnResize);$siteCanvas.addEventListener(transitionEnd,function(){if(stateNav==='opening'){$svgOpen.classList.add('hidden');$svgClose.classList.remove('hidden');$buttonNav.setAttribute('aria-label','Cerrar menú');stateNav='open';}else{$svgOpen.classList.remove('hidden');$svgClose.classList.add('hidden');$siteMenu.classList.add('hidden');$buttonNav.setAttribute('aria-label','Abrir menú');stateNav='closed';}},false);function toggleNav(){if($bodyElement.classList.contains(CSS_CLASS_NAV)){$bodyElement.classList.remove(CSS_CLASS_NAV);stateNav='closing';}else{$bodyElement.classList.add(CSS_CLASS_NAV);stateNav='opening';$siteMenu.classList.remove('hidden');}}
+function debounce(func,wait,immediate){let timeout;return function(){let context=this;let args=arguments;const later=function(){timeout=null;if(!immediate){func.apply(context,args);}};let callNow=immediate&&!timeout;clearTimeout(timeout);timeout=setTimeout(later,wait);if(callNow){func.apply(context,args);}};}
+function transitionEndEventName(){let i;const el=document.createElement('div');const transitions={'transition':'transitionend','OTransition':'otransitionend','MozTransition':'transitionend','WebkitTransition':'webkitTransitionEnd'};for(i in transitions){if(transitions.hasOwnProperty(i)&&el.style[i]!==undefined){return transitions[i];}}}})();</script></body></html>
