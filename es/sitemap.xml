@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://javifm.com/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,66 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://javifm.com/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://javifm.com/blog/</loc>
+    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://javifm.com/en/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://javifm.com/blog/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://javifm.com/blog/buscar-en-hugo-con-lunr/</loc>
+    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://javifm.com/en/blog/search-in-hugo-with-lunr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://javifm.com/blog/buscar-en-hugo-con-lunr/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://javifm.com/tags/hugo/</loc>
+    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://javifm.com/en/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://javifm.com/tags/hugo/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://javifm.com/tags/</loc>
+    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://javifm.com/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://javifm.com/tags/"
                 />
   </url>
   
@@ -29,36 +89,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://javifm.com/tags/angular/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://javifm.com/blog/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://javifm.com/en/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://javifm.com/blog/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://javifm.com/tags/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://javifm.com/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://javifm.com/tags/"
                 />
   </url>
   
@@ -89,21 +119,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://javifm.com/blog/usando-tailwindcss-con-angular/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://javifm.com/tags/hugo/</loc>
-    <lastmod>2020-01-21T13:08:01+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://javifm.com/en/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://javifm.com/tags/hugo/"
                 />
   </url>
   

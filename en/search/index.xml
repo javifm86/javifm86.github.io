@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Search on Frontend developer</title>
-    <link>https://javifm.com/en/search/</link>
+    <link>https://javifm.com/en/search/index.json</link>
     <description>Recent content in Search on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     

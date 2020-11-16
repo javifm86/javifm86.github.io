@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.74.3" />
+
+<link rel="stylesheet" href="https://javifm.com/css/styles.css">
+
+
+<title>Search in Hugo with Lunr | Frontend developer</title>
+
+    
+</head>
+
+<body>
+    <div id="site-wrapper" class="relative overflow-hidden w-full">
+        <div id="site-canvas" class="w-full h-full relative">
+            
+
+
+
+<a id="skiplink" class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-300 dark:bg-gray-700 rounded-sm p-2 uppercase text-gray-700 dark:text-gray-300" href="#main">
+    Saltar al contenido principal
+</a>
+
+<div class="bg-gray-100 dark:bg-gray-800 border-t-4 border-green-500">
+    <div class="container mx-auto">
+        <nav class="flex flex-wrap items-center p-4">
+            <a href="https://javifm.com/en/" class="mr-auto p-2 -m-2 last:mr-0" aria-hidden="true">
+                <span class="sr-only">Inicio</span>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3640 3640" aria-hidden="true" class='w-10 h-10'   preserveAspectRatio="xMidYMid meet"><path d="M2958 1348l-156-202 69-55c89-70 141-147 147-217 11-127-66-244-181-278-67-19-79-20-139-2-66 21-67 21-228 151-505 408-832 666-840 663-11-4-310-378-310-388 0-9 943-765 1025-822 119-84 245-120 415-121 156 0 305 41 418 116 145 96 269 258 320 417 19 60 39 203 36 255-8 119-39 244-82 327-19 36-96 145-129 183-10 11-54 49-98 84-44 36-87 70-96 78-14 12-35-11-171-189z" id="layer101" fill="#0080b2" stroke="none"/><path d="M671 1839c-227-280-432-541-455-579-115-186-141-441-67-658C264 269 600 48 955 73c112 8 193 30 300 82 116 56 190 117 293 240 66 80 80 102 70 112-7 7-101 80-208 163l-195 151-40-48c-22-26-61-69-86-94-136-136-365-86-434 94-22 59-17 148 12 204 12 23 205 267 428 543 224 276 405 503 403 504s-91 71-198 156c-107 84-200 157-206 161-6 5-163-181-423-502z" id="layer102" fill="#03b8ab" stroke="none"/><path d="M741 3559c-118-23-249-84-345-162-327-262-385-737-132-1074 43-57 94-105 207-196l46-37 153 196c84 108 153 202 154 209 0 7-30 39-69 71-90 76-125 140-125 230 0 187 197 311 365 230 28-14 270-200 540-415 269-215 493-390 497-389 4 2 78 90 164 197 109 135 154 198 148 207-15 22-965 774-1034 819-84 55-166 89-262 109-82 17-234 20-307 5z" id="layer103" fill="#ea6675" stroke="none"/><path d="M2605 3556c-191-44-333-137-477-314-51-62-58-76-47-87 8-7 99-79 203-160l189-147 26 34c99 127 165 170 264 171 113 0 207-68 243-176 18-55 15-131-8-182-7-16-192-254-411-529-327-409-396-501-385-511 49-45 373-298 383-299 13-1 750 913 823 1020 84 124 125 262 125 424 0 339-204 620-530 733-75 25-105 30-213 33-83 3-145-1-185-10z" id="layer104" fill="#ffa73d" stroke="none"/></svg>
+
+            </a>
+            
+            
+            
+                
+                
+                
+                
+                
+                    
+                
+
+                
+                    
+                
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href="https://javifm.com/en/" >Home</a>
+
+            
+                
+                
+                
+                
+                
+                    
+                    
+                
+
+                
+                    
+                
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-300 dark:bg-transparent rounded-sm dark:text-green-500 mr-3 md:mr-6" href="https://javifm.com/en/blog/"  aria-current="page" >Blog</a>
+
+            
+                
+                
+                
+                
+                
+                    
+                
+
+                
+                    
+                
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href="https://javifm.com/en/tags/" >Tags</a>
+
+            
+                
+                
+                
+                
+                
+                    
+                
+
+                
+                    
+                
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href="https://javifm.com/en/about/" >About</a>
+
+            
+                
+                
+                
+                
+                
+                    
+                
+
+                
+                    
+                
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500 mr-3 md:mr-6" href="https://javifm.com/en/search/" >Search</a>
+
+            
+                
+                
+                
+                
+                
+                    
+                
+
+                
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-300 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-500" href="https://javifm.com/en/contact/" >Contact</a>
+
+            
+            <button type="button" id="sidebar-open" aria-label="Abrir menu" class="sm:hidden text-gray-700 dark:text-gray-300 flex items-center uppercase text-xl p-1 -m-1">
+                Menú
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current'  id='open-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current hidden'  id='close-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+
+            </button>
+        </nav>
+    </div>
+</div>
+
+<div id="site-menu" class="h-full absolute top-0 py-6 px-4 bg-gray-800 dark:bg-gray-700 hidden border-l border-transparent dark:border-gray-600">
+    <nav class="flex flex-col uppercase text-xl">
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/en/">Home</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href="https://javifm.com/en/blog/">Blog</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/en/tags/">Tags</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/en/about/">About</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/en/search/">Search</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/en/contact/">Contact</a>
+    
+    </nav>
+</div>
+
+            <main id="main">
+                
+
+<div class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600"></div>
+<article class="container mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Search in Hugo with Lunr</h1>
+        
+
+
+
+
+
+
+<div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-700 dark:text-gray-300">
+    <time datetime="2020-11-16">
+        Published Nov 16, 2020
+    </time>
+    
+     
+    <span>
+        <span class="mx-2 hidden sm:inline-flex">&bull;</span>Reading time: 6 min
+    </span>
+    
+</div>
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="https://javifm.com/en/tags/hugo">hugo</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        <p>¿What is the best way to make a search engine in Hugo? My first attempt was looking for information in the <a href="https://gohugo.io/tools/search/">official documentation</a>,
+I found some guides and links which helped me, but none of them suited my needs. So I will detail in this guide the solution that
+I have developed.</p>
+<p>Every guide suggest these 2 possibilities:</p>
+<ul>
+<li>
+<p><a href="https://www.algolia.com/">Algolia</a>: It´s a service that provides a set of tools that simplify the process of making and integrating a
+full search experience into our sites and applications. It has <strong>an automated crawler to extract content from web sites</strong>.
+It´s a third party service which allows the integration on a static site easily, we just have to use the provided API in front.
+Algolia is used in a lot of different sites but I decided I didn´t want to use
+a third party service.</p>
+</li>
+<li>
+<p><a href="https://lunrjs.com/">Lunr</a>: Lunr.js is a small, full-text search library for use in the browser. It indexes JSON documents and provides a
+simple search interface for retrieving documents that best match text queries. It allows <a href="https://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> that is the technique
+of finding strings that match a pattern approximately (rather than exactly). This is the approach used in this blog.</p>
+</li>
+</ul>
+<h2 id="defining-the-output-of-our-content-in-json-format">Defining the output of our content in JSON format</h2>
+<p>Having Lunr as Javascript library for fuzzy search we just need the other part in order to complete our search engine: a JSON file
+with posts content from the blog. We can define this behaviour in 2 differents ways:</p>
+<ol>
+<li>In Hugo global config file, <code>config.toml</code> in my case. All the content in Hugo will be available in <strong>HTML</strong> and <strong>RSS</strong> format
+by default if no config is provided. In this site, all the blog articles are under what is called in Hugo as <code>section</code>, in 
+<code>content/blog</code> path. We can set global JSON output for every section on this way:</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template">[outputs]
+section = [&#34;JSON&#34;, &#34;HTML&#34;, &#34;RSS&#34;]</code></pre></div>
+<p>This configuration will output a JSON file for each <strong>section</strong>. For example, if we have another section (<em>courses</em>) in addition
+to <em>blog</em>, each one will have its <code>index.json</code> file with the content of the section. This is very powerful and we will be able to make
+independent searches for each section. But, How can I tell to Hugo the content and format for that JSON file? We have to create
+a <code>list.json</code> template file like we have <code>list.html</code> for HTML files.</p>
+<p>If we want each section file different, inside <code>layouts</code> folder and following with this site as example, in a folder called <code>blog</code> we must
+create a <code>list.json</code> file and inside <code>courses</code> folder we will create another <code>list.json</code> different. However if the format for each
+section is going to be the same, we can create <code>list.json</code> file inside <code>_default</code> folder and it will be used for every section (unless the
+section has a <code>list.json</code> file that would replace the global in <code>_default</code> folder).</p>
+<p>Let´s see <code>list.json</code> content finally. It just generates an array of posts using Hugo syntax.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template">[
+<span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">$index</span><span class="err">,</span><span class="w"> </span><span class="nx">$value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">where</span><span class="w"> </span><span class="na">.Site.Pages</span><span class="w"> </span><span class="s">&#34;Type&#34;</span><span class="w"> </span><span class="s">&#34;post&#34;</span><span class="w"> </span><span class="cp">}}</span>
+<span class="cp">{{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">$index</span><span class="w"> </span><span class="cp">}}</span>, <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+{
+&#34;url&#34;: &#34;<span class="cp">{{</span><span class="w"> </span><span class="na">.RelPermalink</span><span class="w"> </span><span class="cp">}}</span>&#34;,
+&#34;title&#34;: &#34;<span class="cp">{{</span><span class="w"> </span><span class="na">.Title</span><span class="w"> </span><span class="cp">}}</span>&#34;,
+&#34;content&#34;: <span class="cp">{{</span><span class="w"> </span><span class="na">.Content</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">plainify</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">jsonify</span><span class="w"> </span><span class="cp">}}</span>,
+&#34;summary&#34;: &#34;<span class="cp">{{</span><span class="na">.Summary</span><span class="cp">}}</span>&#34;
+}
+<span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+]</code></pre></div>
+<p>Of course the content is completely customizable, and so the name for each field. In my case I have a reduced number of posts,
+so by the moment I put all the content in <code>content</code> field, but in the future because of better performarnce I will try to
+reduce the JSON file size leaving just title and summary for the search.</p>
+<ol start="2">
+<li>Enabling for each <em>section</em> the output format from the front matter. Following with my site as example, I have <code>_index.md</code> and
+<code>_index.en.md</code> (English version) files in <code>content/blog</code> folder. We can enable JSON format on this way:</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown">---
+title: Personal blog
+subtitle: Posts written on a variety of topics related to the world of technology and programming.
+outputs:
+<span class="k">-</span> html
+<span class="k">-</span> rss
+<span class="k">-</span> json
+---</code></pre></div>
+<p>The template <code>list.json</code> part is exactly the same than at point 1. You can read more about
+<a href="https://gohugo.io/templates/output-formats/">custom output formats</a> in Hugo documentation.</p>
+<h2 id="implementing-search-engine-using-lunr-with-javascript">Implementing search engine using lunr with Javascript</h2>
+<p>Let´s see the code that will allow us to search in the JSON file generated. In my case, I have created a <code>search.html</code> file
+in <code>layouts/page</code>. Let´s check step by step the content. First of all we need and input text for the search term, followed by
+a <code>section</code> element where search results will be showed.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;search-input&#34;</span><span class="p">&gt;</span>Término de búsqueda<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;search-input&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;search&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;</span><span class="cp">{{</span><span class="nx">i18n</span><span class="w"> </span><span class="s">&#34;search_loading&#34;</span><span class="cp">}}</span><span class="s">...&#34;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;search-results&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></pre></div>
+<p>Javascript code is also inside the html file so that we can create dinamyc vars in Javascript with Hugo, for example for
+getting translation of strings and getting relative path to <code>index.json</code> for each language.</p>
+<p>Next step is importing Lunr, in my case in <code>static/js/</code> folder:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="cp">{{</span><span class="w"> </span><span class="nx">$lunr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;js/lunr.min.js&#34;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">absURL</span><span class="w"> </span><span class="cp">}}</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;</span><span class="cp">{{</span><span class="w"> </span><span class="nx">$lunr</span><span class="w"> </span><span class="cp">}}</span><span class="s">&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<p>It would be possible importing Lunr via CDN:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/lunr/lunr.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<p>Below is shown the Javascript code that on pageload makes a petition to load <code>index.json</code> file and creates indexed
+document that will be used to return search results. Searchs will be launched when user is typing in the input field.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">idx</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">documents</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kr">const</span> <span class="nx">URL_LIST_POSTS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span><span class="w"> </span><span class="s">&#34;blog/index.json&#34;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">relLangURL</span><span class="w"> </span><span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">searchInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;search-input&#34;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">searchResults</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;search-results&#34;</span><span class="p">);</span>
+
+  <span class="c1">// Request and index documents
+</span><span class="c1"></span>  <span class="nx">fetch</span><span class="p">(</span><span class="nx">URL_LIST_POSTS</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;get&#34;</span><span class="p">,</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Create index document with lunr
+</span><span class="c1"></span>      <span class="nx">idx</span> <span class="o">=</span> <span class="nx">lunr</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">ref</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="s2">&#34;title&#34;</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="s2">&#34;content&#34;</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="s2">&#34;summary&#34;</span><span class="p">);</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">doc</span><span class="p">);</span>
+          <span class="nx">documents</span><span class="p">[</span><span class="nx">doc</span><span class="p">.</span><span class="nx">url</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+            <span class="nx">content</span><span class="o">:</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span>
+            <span class="nx">summary</span><span class="o">:</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">summary</span><span class="p">,</span>
+          <span class="p">};</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Once data is loaded we can register handler
+</span><span class="c1"></span>      <span class="nx">registerSearchHandler</span><span class="p">();</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">({</span> <span class="nx">err</span> <span class="p">});</span>
+      <span class="kr">const</span> <span class="nx">errorMsg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span><span class="w"> </span><span class="nx">i18n</span><span class="w"> </span><span class="s">&#34;search_error&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span>
+      <span class="nx">searchResults</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="sb">`
+</span><span class="sb">        &lt;div class=&#34;bg-red-100 border-l-4 border-red-500 text-red-700 p-4&#34; role=&#34;alert&#34;&gt;
+</span><span class="sb">          &lt;p&gt;</span><span class="si">${</span><span class="nx">errorMsg</span><span class="si">}</span><span class="sb">&lt;/p&gt;
+</span><span class="sb">        &lt;/div&gt;`</span><span class="p">;</span>
+    <span class="p">});</span>
+
+  <span class="c1">///////////////////////////////////////////////////////////
+</span><span class="c1"></span>
+  <span class="kd">function</span> <span class="nx">renderSearchResults</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">noResults</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span><span class="w"> </span><span class="nx">i18n</span><span class="w"> </span><span class="s">&#34;search_noCoincidence&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span>
+    <span class="c1">// If results are empty
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">results</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">searchResults</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="sb">`
+</span><span class="sb">        &lt;div class=&#34;bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4&#34; role=&#34;alert&#34;&gt;
+</span><span class="sb">          &lt;p&gt;</span><span class="si">${</span><span class="nx">noResults</span><span class="si">}</span><span class="sb">&lt;/p&gt;
+</span><span class="sb">        &lt;/div&gt;
+</span><span class="sb">            `</span><span class="p">;</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Show max 10 results
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">results</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">results</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Reset search results
+</span><span class="c1"></span>    <span class="nx">searchResults</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+
+    <span class="c1">// Append results
+</span><span class="c1"></span>    <span class="nx">results</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Create result item
+</span><span class="c1"></span>      <span class="kd">let</span> <span class="nx">article</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;article&#34;</span><span class="p">);</span>
+      <span class="nx">article</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;mb-8&#34;</span><span class="p">);</span>
+      <span class="nx">article</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="sb">`
+</span><span class="sb">        &lt;a href=&#34;</span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">ref</span><span class="si">}</span><span class="sb">&#34; class=&#34;block group&#34;&gt;
+</span><span class="sb">          &lt;h2 class=&#34;article-title group-hover:text-green-500 pb-1&#34;&gt;</span><span class="si">${</span><span class="nx">documents</span><span class="p">[</span><span class="nx">result</span><span class="p">.</span><span class="nx">ref</span><span class="p">].</span><span class="nx">title</span><span class="si">}</span><span class="sb">&lt;/h2&gt;
+</span><span class="sb">          &lt;div class=&#34;text-gray-700 dark:text-gray-300&#34;&gt;&lt;p&gt;</span><span class="si">${</span><span class="nx">documents</span><span class="p">[</span><span class="nx">result</span><span class="p">.</span><span class="nx">ref</span><span class="p">].</span><span class="nx">summary</span><span class="si">}</span><span class="sb">&lt;/p&gt;&lt;/div&gt;
+</span><span class="sb">        &lt;/a&gt;`</span><span class="p">;</span>
+      <span class="nx">searchResults</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">article</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">registerSearchHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Register on input event
+</span><span class="c1"></span>    <span class="nx">searchInput</span><span class="p">.</span><span class="nx">oninput</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">searchResults</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Get input value
+</span><span class="c1"></span>      <span class="kr">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+      <span class="c1">// Run fuzzy search
+</span><span class="c1"></span>      <span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="nx">idx</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">q</span><span class="p">.</span><span class="nx">term</span><span class="p">(</span><span class="nx">lunr</span><span class="p">.</span><span class="nx">tokenizer</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">trim</span><span class="p">()),</span> <span class="p">{</span> <span class="nx">usePipeline</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">boost</span><span class="o">:</span> <span class="mi">100</span> <span class="p">});</span>
+        <span class="nx">q</span><span class="p">.</span><span class="nx">term</span><span class="p">(</span><span class="nx">lunr</span><span class="p">.</span><span class="nx">tokenizer</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">usePipeline</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">boost</span><span class="o">:</span> <span class="mi">10</span> <span class="p">});</span>
+        <span class="nx">q</span><span class="p">.</span><span class="nx">term</span><span class="p">(</span><span class="nx">lunr</span><span class="p">.</span><span class="nx">tokenizer</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">trim</span><span class="p">()),</span> <span class="p">{</span> <span class="nx">usePipeline</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">editDistance</span><span class="o">:</span> <span class="mi">1</span> <span class="p">});</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Render results
+</span><span class="c1"></span>      <span class="nx">renderSearchResults</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="nx">searchInput</span><span class="p">.</span><span class="nx">placeholder</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span><span class="w"> </span><span class="nx">i18n</span><span class="w"> </span><span class="s">&#34;search_inputPlaceholder&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<p>And that´s all. To develop this solution I have followed the guides of <a href="https://www.josephearl.co.uk/post/static-sites-search-hugo/">Joseph Earl</a> and <a href="https://www.mattwalters.net/posts/2018-03-28-hugo-and-lunr/">Matt Walters</a>. I have
+adapted and updated Javascript code and corrected the method for searching with <strong>Lunr</strong>, beacuse it didn´t work
+properly in all cases. This is the most important part, I found <a href="https://github.com/olivernn/lunr.js/issues/273">the solution</a> in an issue in Lunr github:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Run fuzzy search
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="nx">idx</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">q</span><span class="p">.</span><span class="nx">term</span><span class="p">(</span><span class="nx">lunr</span><span class="p">.</span><span class="nx">tokenizer</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">trim</span><span class="p">()),</span> <span class="p">{</span> <span class="nx">usePipeline</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">boost</span><span class="o">:</span> <span class="mi">100</span> <span class="p">});</span>
+  <span class="nx">q</span><span class="p">.</span><span class="nx">term</span><span class="p">(</span><span class="nx">lunr</span><span class="p">.</span><span class="nx">tokenizer</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">usePipeline</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">boost</span><span class="o">:</span> <span class="mi">10</span> <span class="p">});</span>
+  <span class="nx">q</span><span class="p">.</span><span class="nx">term</span><span class="p">(</span><span class="nx">lunr</span><span class="p">.</span><span class="nx">tokenizer</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">trim</span><span class="p">()),</span> <span class="p">{</span> <span class="nx">usePipeline</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">editDistance</span><span class="o">:</span> <span class="mi">1</span> <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>You can <a href="https://github.com/javifm86/hugo-site/blob/master/layouts/page/search.html">take a look to search.html file</a> with the complete code in github and adapt it to your needs.</p>
+
+    </div>
+    <div class="my-16 border-b border-gray-400"></div>
+    <div class="mb-16 text-center max-w-3xl mx-auto">
+        
+        
+        <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/en/blog/using-tailwindcss-with-angular/">
+            Using TailwindCSS with Angular &raquo;
+        </a>
+        
+    </div>
+</article>
+
+
+            </main>
+            <footer class="bg-gray-900 text-gray-200 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <p>
+            &copy; 2019 Sitio construido con <a class="text-white underline" href="https://gohugo.io/">Hugo</a> alojado en <a class="text-white underline" href="https://github.com/">Github</a>.
+        </p>
+        <div class="flex items-center">
+            <a href="https://github.com/javifm86" class="mr-1 p-2 text-gray-300 hover:text-white">
+                <span class="sr-only">Github</span>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg class='w-8 h-8 pointer-events-none'   viewBox="0 0 256 250" role="img" aria-labelledby="titleId" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Github</title><path role="presentation" class="fill-current" d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"/></svg>
+
+            </a>
+            <a href="https://twitter.com/javifm86" class="p-2 text-gray-300 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg class='w-8 h-8 mt-1 pointer-events-none'   role="img" aria-labelledby="titleId" viewBox="0 0 256 209" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Twitter</title><path role="presentation" class="fill-current" d="M256 25.45a105.04 105.04 0 01-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183 0 01-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006 0-52.523 23.516-52.523 52.52 0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404 0 18.222 9.273 34.297 23.365 43.716a52.312 52.312 0 01-23.79-6.57c-.003.22-.003.44-.003.661 0 25.447 18.104 46.675 42.13 51.5a52.592 52.592 0 01-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24 0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607 0 149.434-80.031 149.434-149.435 0-2.278-.05-4.543-.152-6.795A106.748 106.748 0 00256 25.45"/></svg>
+
+            </a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+    
+<script src="https://javifm.com/js/focus-visible.min.js"></script>
+<script>
+    (function() {
+        const $bodyElement = document.getElementsByTagName('body')[0];
+        const $svgOpen = document.getElementById('open-menu');
+        const $svgClose = document.getElementById('close-menu');
+        const $siteMenu = document.getElementById('site-menu');
+        const $buttonNav = document.getElementById('sidebar-open');
+        const CSS_CLASS_NAV = 'show-nav';
+        let stateNav = 'closed';
+
+        const closeMenuOnResize = debounce(function() {
+            if ($bodyElement.classList.contains(CSS_CLASS_NAV) && window.screen.width > 639) {
+                toggleNav();
+            }
+        }, 0);
+
+        
+        $buttonNav.addEventListener('click', toggleNav);
+        window.addEventListener('resize', closeMenuOnResize);
+
+        
+
+
+        function checkHideNav() {
+            if (stateNav === 'opening') {
+                addClassSvg($svgOpen, 'hidden');
+                removeClassSvg($svgClose, 'hidden');
+                $buttonNav.setAttribute('aria-label', 'Cerrar menú');
+                stateNav = 'open';
+            } else {
+                removeClassSvg($svgOpen, 'hidden');
+                addClassSvg($svgClose, 'hidden');
+                $siteMenu.classList.add('hidden');
+                $buttonNav.setAttribute('aria-label', 'Abrir menú');
+                stateNav = 'closed';
+            }
+        }
+
+        function toggleNav() {
+            if ($bodyElement.classList.contains(CSS_CLASS_NAV)) {
+                $bodyElement.classList.remove(CSS_CLASS_NAV);
+                stateNav = 'closing';
+            } else {
+                $bodyElement.classList.add(CSS_CLASS_NAV);
+                stateNav = 'opening';
+                $siteMenu.classList.remove('hidden');
+            }
+            setTimeout(checkHideNav, 300);
+        }
+
+        function debounce(func, wait, immediate) {
+            let timeout;
+            return function() {
+                let context = this;
+                let args = arguments;
+                const later = function() {
+                    timeout = null;
+                    if (!immediate) {
+                        func.apply(context, args);
+                    }
+                };
+                let callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) {
+                    func.apply(context, args);
+                }
+            };
+        }
+
+        
+        function addClassSvg(elem, className) {
+            elem.setAttribute('class', elem.getAttribute('class') + ' ' + className);
+        }
+
+        function removeClassSvg(elem, className) {
+            let removedClass = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + className + '(\\s|$)', 'g'), '$2');
+            elem.setAttribute('class', removedClass);
+        }
+
+    })();
+
+</script>
+
+    
+</body>
+
+</html>

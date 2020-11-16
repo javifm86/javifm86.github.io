@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.72.0" />
+<meta name="generator" content="Hugo 0.74.3" />
 
 <link rel="stylesheet" href="https://javifm.com/css/styles.css">
 
@@ -380,7 +380,36 @@ en una clave <code>path</code> el valor <code>extra-webpack.config.js</code>.</p
 en una clave <code>path</code> el valor <code>extra-webpack.config.js</code>.</p>
 <p>Por último añadiremos nuestra hoja de estilos <code>src/tailwind.scss</code> al array en la ruta <code>architect.build.options.styles</code>. Veamos todos los
 cambios juntos:</p>
-<div class="highlight"><pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="s2">&#34;architect&#34;</span><span class="err">:</span> <span class="p">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="hl"><span class="lnt"> 3
+</span></span><span class="lnt"> 4
+</span><span class="hl"><span class="lnt"> 5
+</span></span><span class="hl"><span class="lnt"> 6
+</span></span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="hl"><span class="lnt">17
+</span></span><span class="lnt">18
+</span><span class="hl"><span class="lnt">19
+</span></span><span class="hl"><span class="lnt">20
+</span></span><span class="hl"><span class="lnt">21
+</span></span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="s2">&#34;architect&#34;</span><span class="err">:</span> <span class="p">{</span>
   <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="p">{</span>
 <span class="hl">    <span class="nt">&#34;builder&#34;</span><span class="p">:</span> <span class="s2">&#34;@angular-builders/custom-webpack:browser&#34;</span><span class="p">,</span>
 </span>    <span class="nt">&#34;options&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -404,7 +433,9 @@ cambios juntos:</p>
 </span>    <span class="err">//</span> <span class="err">...</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>Una vez aplicados estos cambios podremos desarrollar ejecutando <code>ng serve</code>, se lanzará nuestra aplicación en modo desarrollo
 donde dispondremos de todas las clases de Tailwind, lo que nos permitirá ser más ágiles. Al compilar 
 para producción con <code>ng build --prod</code> podremos ver que se generarán solo las clases que hemos utilizado en la carpeta <code>dist</code>.</p>
@@ -446,7 +477,24 @@ de entorno <code>NODE_ENV</code> con valor <code>production</code>. Para poder d
 multiplataforma me gusta utilizar el paquete <code>cross-env</code>. Podemos instalarlo en nuestro proyecto:</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">npm install cross-env --save-dev</code></pre></div>
 <p>Y posteriormente podemos crear un script en el <code>package.json</code> para lanzar el build:</p>
-<div class="highlight"><pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
   <span class="err">//</span> <span class="err">...</span>
   <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;ng&#34;</span><span class="p">:</span> <span class="s2">&#34;ng&#34;</span><span class="p">,</span>
@@ -458,7 +506,9 @@ multiplataforma me gusta utilizar el paquete <code>cross-env</code>. Podemos ins
 <span class="hl">    <span class="nt">&#34;build:prod&#34;</span><span class="p">:</span> <span class="s2">&#34;cross-env NODE_ENV=production ng build --prod&#34;</span>
 </span>  <span class="p">},</span>
   <span class="err">//</span> <span class="err">...</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>Lo ejecutamos para comprobar que todo funciona correctamente:</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">npm run build:prod</code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-plaintext" data-lang="plaintext">chunk {4} styles.847663bf210845648553.css (styles) 5.51 kB [initial] [rendered]</code></pre></div>
@@ -467,6 +517,10 @@ multiplataforma me gusta utilizar el paquete <code>cross-env</code>. Podemos ins
     </div>
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-16 text-center max-w-3xl mx-auto">
+        
+        <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/blog/buscar-en-hugo-con-lunr/">
+            &laquo; Buscar en Hugo con Lunr
+        </a>
         
         
         <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/blog/integrar-tailwindcss-con-hugo/">

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Contact on Frontend developer</title>
-    <link>https://javifm.com/en/contact/</link>
+    <link>https://javifm.com/en/contact/index.json</link>
     <description>Recent content in Contact on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
     
