@@ -4,10 +4,6 @@
     <title>Categories on Frontend developer</title>
     <link>https://javifm.com/en/categories/</link>
     <description>Recent content in Categories on Frontend developer</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://javifm.com/en/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://javifm.com/en/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

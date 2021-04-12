@@ -4,10 +4,6 @@
     <title>Contacto on Frontend developer</title>
     <link>https://javifm.com/contact/index.json</link>
     <description>Recent content in Contacto on Frontend developer</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://javifm.com/contact/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://javifm.com/contact/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

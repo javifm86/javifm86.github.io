@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 <link rel="stylesheet" href="https://javifm.com/css/styles.css">
 
@@ -404,7 +404,7 @@ Nginx HTTP (v6)            ALLOW       Anywhere (v6)
     '
     src="/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/img/nginx_default.png"
     width="577" height="212"
-    alt='ágina de bienvenida de Nginx'>
+    alt='Página de bienvenida de Nginx'>
 
 <h2 id="instalar-mysql">Instalar MySQL</h2>
 <p>Para instalarlo simplemente ejecutamos:</p>
@@ -459,10 +459,10 @@ Nginx HTTP (v6)            ALLOW       Anywhere (v6)
 <p>Si no hay errores, reiniciamos el servicio para que pueda aplicarse la nueva configuración:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl reload nginx</code></pre></div>
 <p>Para finalizar, iremos a la carpeta /var/www/html y crearemos un fichero index.php, con el siguiente contenido:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nx">phpinfo</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
-</code></pre></div>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div>
 <p>Ahora simplemente accediendo a nuestra dirección IP pública o dominio, deberemos ver una página con toda la configuración de PHP. Cuando hayamos verificado que está funcionando, borraremos el fichero y ya tendremos nuestro servidor LEMP con la configuración inicial para poder hacer cosas.</p>
 
     </div>

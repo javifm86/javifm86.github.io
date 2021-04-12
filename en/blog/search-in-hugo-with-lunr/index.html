@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 <link rel="stylesheet" href="https://javifm.com/css/styles.css">
 
@@ -342,7 +342,7 @@ section is going to be the same, we can create <code>list.json</code> file insid
 section has a <code>list.json</code> file that would replace the global in <code>_default</code> folder).</p>
 <p>Let´s see <code>list.json</code> content finally. It just generates an array of posts using Hugo syntax.</p>
 <div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template">[
-<span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">$index</span><span class="err">,</span><span class="w"> </span><span class="nx">$value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">where</span><span class="w"> </span><span class="na">.Site.Pages</span><span class="w"> </span><span class="s">&#34;Type&#34;</span><span class="w"> </span><span class="s">&#34;post&#34;</span><span class="w"> </span><span class="cp">}}</span>
+<span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">$index</span><span class="o">,</span><span class="w"> </span><span class="nx">$value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">where</span><span class="w"> </span><span class="na">.Site.Pages</span><span class="w"> </span><span class="s">&#34;Type&#34;</span><span class="w"> </span><span class="s">&#34;post&#34;</span><span class="w"> </span><span class="cp">}}</span>
 <span class="cp">{{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">$index</span><span class="w"> </span><span class="cp">}}</span>, <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
 {
 &#34;url&#34;: &#34;<span class="cp">{{</span><span class="w"> </span><span class="na">.RelPermalink</span><span class="w"> </span><span class="cp">}}</span>&#34;,
@@ -507,6 +507,10 @@ properly in all cases. This is the most important part, I found <a href="https:/
     </div>
     <div class="my-16 border-b border-gray-400"></div>
     <div class="mb-16 text-center max-w-3xl mx-auto">
+        
+        <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/en/blog/responsive-images-in-hugo/">
+            &laquo; Responsive images in Hugo
+        </a>
         
         
         <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/en/blog/using-tailwindcss-with-angular/">

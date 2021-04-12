@@ -5,11 +5,7 @@
     <link>https://javifm.com/tags/requirejs/</link>
     <description>Recent content in RequireJS on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 03 Nov 2015 12:56:17 +0000</lastBuildDate>
-    
-	<atom:link href="https://javifm.com/tags/requirejs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 03 Nov 2015 12:56:17 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/requirejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evitar que jQuery sea global con RequireJS</title>
       <link>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</link>

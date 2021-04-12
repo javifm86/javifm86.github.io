@@ -5,11 +5,7 @@
     <link>https://javifm.com/tags/angular/</link>
     <description>Recent content in angular on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://javifm.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Usando TailwindCSS con Angular</title>
       <link>https://javifm.com/blog/usando-tailwindcss-con-angular/</link>

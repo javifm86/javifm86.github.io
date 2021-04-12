@@ -5,10 +5,15 @@
     <link>https://javifm.com/en/tags/hugo/</link>
     <description>Recent content in hugo on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://javifm.com/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Responsive images in Hugo</title>
+      <link>https://javifm.com/en/blog/responsive-images-in-hugo/</link>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://javifm.com/en/blog/responsive-images-in-hugo/</guid>
+      <description>In this post I will share a very useful shortcode that will allow us processing images automatically with Hugo.</description>
+    </item>
     
     <item>
       <title>Search in Hugo with Lunr</title>

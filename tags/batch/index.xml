@@ -5,11 +5,7 @@
     <link>https://javifm.com/tags/batch/</link>
     <description>Recent content in batch on Frontend developer</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 27 Jan 2015 16:12:47 +0000</lastBuildDate>
-    
-	<atom:link href="https://javifm.com/tags/batch/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 27 Jan 2015 16:12:47 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/batch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lanzar fichero batch (.bat) sin mostrar la consola en Windows</title>
       <link>https://javifm.com/blog/lanzar-fichero-batch-.bat-sin-mostrar-la-consola-en-windows/</link>
