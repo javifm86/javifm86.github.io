@@ -1,0 +1,466 @@
+<!doctype html><html lang=es>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.0">
+<link rel=stylesheet href=https://javifm.com/css/styles.css>
+<title>Flujo de trabajo sencillo para un monorepo | Javier Fernández</title>
+</head>
+<body>
+<div id=site-wrapper class="relative overflow-hidden w-full">
+<div id=site-canvas class="w-full h-full relative">
+<a id=skiplink class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-sm p-2 uppercase" href=#main>
+Saltar al contenido principal
+</a>
+<div class="bg-gray-50 dark:bg-gray-800 border-t-4 border-green-500">
+<div class="max-w-7xl mx-auto">
+<nav class="flex flex-wrap items-center p-4">
+<a href=https://javifm.com class="mr-auto p-2 -m-2 last:mr-0" aria-hidden=true>
+<span class=sr-only>Inicio</span><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3640 3640" aria-hidden="true" class="w-10 h-10"><path d="M2958 1348l-156-202 69-55c89-70 141-147 147-217 11-127-66-244-181-278-67-19-79-20-139-2-66 21-67 21-228 151-505 408-832 666-840 663-11-4-310-378-310-388 0-9 943-765 1025-822 119-84 245-120 415-121 156 0 305 41 418 116 145 96 269 258 320 417 19 60 39 203 36 255-8 119-39 244-82 327-19 36-96 145-129 183-10 11-54 49-98 84-44 36-87 70-96 78-14 12-35-11-171-189z" id="layer101" fill="#0080b2" stroke="none"/><path d="M671 1839c-227-280-432-541-455-579-115-186-141-441-67-658C264 269 6e2 48 955 73c112 8 193 30 3e2 82 116 56 190 117 293 240 66 80 80 102 70 112-7 7-101 80-208 163l-195 151-40-48c-22-26-61-69-86-94-136-136-365-86-434 94-22 59-17 148 12 204 12 23 205 267 428 543 224 276 405 503 403 504s-91 71-198 156c-107 84-2e2 157-206 161-6 5-163-181-423-502z" id="layer102" fill="#03b8ab" stroke="none"/><path d="M741 3559c-118-23-249-84-345-162-327-262-385-737-132-1074 43-57 94-105 207-196l46-37 153 196c84 108 153 202 154 209 0 7-30 39-69 71-90 76-125 140-125 230 0 187 197 311 365 230 28-14 270-2e2 540-415 269-215 493-390 497-389 4 2 78 90 164 197 109 135 154 198 148 207-15 22-965 774-1034 819-84 55-166 89-262 109-82 17-234 20-307 5z" id="layer103" fill="#ea6675" stroke="none"/><path d="M2605 3556c-191-44-333-137-477-314-51-62-58-76-47-87 8-7 99-79 203-160l189-147 26 34c99 127 165 170 264 171 113 0 207-68 243-176 18-55 15-131-8-182-7-16-192-254-411-529-327-409-396-501-385-511 49-45 373-298 383-299 13-1 750 913 823 1020 84 124 125 262 125 424 0 339-204 620-530 733-75 25-105 30-213 33-83 3-145-1-185-10z" id="layer104" fill="#ffa73d" stroke="none"/></svg>
+</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/>Inicio</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-200 dark:bg-transparent rounded-sm dark:text-green-400 mr-3 md:mr-6" href=https://javifm.com/blog/ aria-current=page>Blog</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/about/>Sobre mí</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/search/>Buscar</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400" href=https://javifm.com/contact/>Contacto</a>
+<button type=button id=sidebar-open aria-label="Abrir menu" class="sm:hidden text-gray-700 dark:text-gray-300 flex items-center uppercase text-xl p-1 -m-1">
+Menú<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current" id="open-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current hidden" id="close-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586 2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+</button>
+</nav>
+</div>
+</div>
+<div id=site-menu class="h-full absolute top-0 py-6 px-4 bg-gray-800 dark:bg-gray-800 hidden border-l border-transparent dark:border-gray-700">
+<nav class="flex flex-col uppercase text-xl">
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/>Inicio</a>
+<a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href=https://javifm.com/blog/>Blog</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/about/>Sobre mí</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/search/>Buscar</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/contact/>Contacto</a>
+</nav>
+</div>
+<main id=main>
+<div class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600"></div>
+<article class="max-w-7xl mx-auto px-4 single-post">
+<div class=my-6>
+<h1 class=title>Flujo de trabajo sencillo para un monorepo</h1>
+<div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-600 dark:text-gray-300">
+<time datetime=2022-04-05>
+Publicado el 5 Abr 2022
+</time>
+<span>
+<span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 10 min
+</span>
+</div>
+<div class=mt-4>
+<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/git>git</a>
+<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/hook>hook</a>
+<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/react>react</a>
+<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/nestjs>nestJS</a>
+</div>
+</div>
+<div class=single-post-content>
+<div class=table-of-content>
+<h2>Tabla de contenido</h2>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#inicialización-del-backend-con-nestjs>Inicialización del backend con NestJS</a></li>
+<li><a href=#inicialización-del-frontend>Inicialización del frontend</a></li>
+<li><a href=#instalar-prettier>Instalar prettier</a></li>
+<li><a href=#configurando-eslint>Configurando ESLint</a></li>
+<li><a href=#git-pre-commit-hook>Git pre-commit hook</a>
+<ol>
+<li><a href=#instalando-husky>Instalando husky</a></li>
+<li><a href=#añadiendo-scripts-npm-en-el-packagejson-raíz>Añadiendo scripts npm en el package.json raíz</a></li>
+<li><a href=#instalando-tsc-files>Instalando tsc-files</a></li>
+<li><a href=#lint-staged-para-backend-y-frontend>lint-staged para backend y frontend</a></li>
+<li><a href=#resumen-pre-commit>Resumen pre-commit</a></li>
+</ol>
+</li>
+<li><a href=#git-pre-push-hook>Git pre-push hook</a>
+<ol>
+<li><a href=#añadiendo-scripts-npm-en-el-packagejson-raíz-1>Añadiendo scripts npm en el package.json raíz</a></li>
+<li><a href=#prepush-if-changed-para-backend-y-frontend>prepush-if-changed para backend y frontend</a></li>
+</ol>
+</li>
+</ol>
+</nav>
+</div>
+<p>En mi trabajo actual, me ha tocado configurar un monorepo con hooks de git, ESLint, Prettier y algunas acciones propias. Quiero dejar constancia del proceso de cara a poder volver a consultar en el futuro. Este es el caso de uso:</p>
+<ul>
+<li>Directorio <code>backend</code>, con proyecto de <a href=https://nestjs.com/>NestJS</a>. NestJS es un framework para backend en Node, utiliza Typescript.</li>
+<li>Directorio <code>frontend</code>, con un proyecto <strong>React + Typescript</strong>.</li>
+<li>Configuración global de <strong>Prettier</strong>, compartida entre ambos proyectos.</li>
+<li><strong>ESLint</strong> para linting, cada proyecto tendrá su propia configuración.</li>
+<li>Además de ESLint, <strong>tsc</strong> para las comprobaciones de tipo.</li>
+<li>Hook <strong>pre-commit</strong> para git: ejecutará <code>eslint --fix</code> y <code>prettier --write</code> en los archivos que se incluyan en los commit. Si ESLint o tsc detectan algún error, <strong>el commit será abortado</strong>.</li>
+<li>Git <strong>pre-push hook</strong>: ejecutará los tests unitarios, si los ficheros cambiados corresponden al proyecto de backend, ejecutará solo los tests de backend. Hará lo mismo para frontend y, en caso de haber cambios en ambos directorios ejecutará ambos. <strong>Git push será abortado si se encuentra algún error</strong>.</li>
+</ul>
+<p>Empecemos explicando paso a paso.</p>
+<h2 id=inicialización-del-backend-con-nestjs>Inicialización del backend con NestJS</h2>
+<p>Como he mencionado al comienzo, utilizaremos NestJS para el backend. El primer paso será instalar el CLI de Nest para iniciar el proyecto. Por tanto, crearemos un nuevo proyecto:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm i -g @nestjs/cli
+nest new backend
+</code></pre></div><p>Ya que esta será parte backend del monorepo, eliminaremos la carpeta <code>.git</code> creada dentro del directorio backend.</p>
+<h2 id=inicialización-del-frontend>Inicialización del frontend</h2>
+<p>Una vez creado el backend, procederemos a crear el frontend con React + Typescript utilizando create-react-app:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npx create-react-app frontend --template typescript
+</code></pre></div><h2 id=instalar-prettier>Instalar prettier</h2>
+<p>Ambos proyectos utilizarán Prettier. Lo instalaremos tanto en el directorio de frontend como en el de backend.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> backend
+npm install --save-dev --save-exact prettier
+
+<span class=nb>cd</span> ../frontend
+npm install --save-dev --save-exact prettier
+</code></pre></div><p>Ahora podemos crear el fichero de configuración <code>.prettierrc</code> en el directorio raíz (será compartido por ambos proyectos). Podemos añadir nuestras reglas preferidas, un ejemplo:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;printWidth&#34;</span><span class=p>:</span> <span class=mi>80</span><span class=p>,</span>
+  <span class=nt>&#34;tabWidth&#34;</span><span class=p>:</span> <span class=mi>2</span><span class=p>,</span>
+  <span class=nt>&#34;trailingComma&#34;</span><span class=p>:</span> <span class=s2>&#34;all&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;singleQuote&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
+  <span class=nt>&#34;semi&#34;</span><span class=p>:</span> <span class=kc>true</span>
+<span class=p>}</span>
+</code></pre></div><p>A continuación crearemos scripts npm para ejecutar prettier. En <code>frontend/package.json</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;format&#34;</span><span class=p>:</span> <span class=s2>&#34;prettier --write &#39;src/**/*.{js,jsx,ts,tsx,json,css,scss,md}&#39;&#34;</span>
+<span class=p>}</span><span class=err>,</span>
+</code></pre></div><p>En <code>backend/package.json</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;format&#34;</span><span class=p>:</span> <span class=s2>&#34;prettier --write &#39;src/**/*.ts\&#39; &#39;test/**/*.ts&#39;&#34;</span><span class=p>,</span>
+<span class=p>}</span><span class=err>,</span>
+</code></pre></div><h2 id=configurando-eslint>Configurando ESLint</h2>
+<p>En este momento configuraremos ESLint para el linting. Como estamos usando Prettier, instalaremos un paquete que desactivará reglas que son innecesarias o pudieran entrar en conflicto con ESLint. Después de eso, instalaremos un plugin para auto ordenar los imports, pero veamos la configuración básica primero.</p>
+<p>Vamos con frontend primero:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> frontend
+npm i -D eslint eslint-config-prettier @typescript-eslint/parser
+</code></pre></div><p>Además, crearemos un fichero <code>.eslintrc.js</code> en el directorio frontend:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+  <span class=kr>extends</span><span class=o>:</span> <span class=p>[</span>
+    <span class=s1>&#39;react-app&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;react-app/jest&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;prettier&#39;</span><span class=p>,</span>
+  <span class=p>],</span>
+  <span class=nx>parser</span><span class=o>:</span> <span class=s1>&#39;@typescript-eslint/parser&#39;</span><span class=p>,</span>
+  <span class=nx>ignorePatterns</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;.eslintrc.js&#39;</span><span class=p>],</span>
+  <span class=nx>rules</span><span class=o>:</span> <span class=p>{</span>
+    <span class=s1>&#39;no-console&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;no-debugger&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;no-alert&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+  <span class=p>},</span>
+<span class=p>};</span>
+</code></pre></div><p>Ésta es la configuración más básica para React con Typescript. Se evitan los conflictos con Prettier y es un estupendo punto de inicio para personalizar o extender con otro tipo de configuraciones.</p>
+<p>Como bonus, en nuestro proyecto añadimos el plugin <a href=https://github.com/import-js/eslint-plugin-import>eslint-plugin-import</a> para ordenar los imports siguiendo siempre el mismo criterio. Si no te interesa puedes saltarte esta parte. Debemos instalar los siguientes paquetes:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm i -D eslint-import-resolver-typescript eslint-plugin-import 
+</code></pre></div><p>Y finalmente la configuración (hay multitud de reglas que pueden ser personalizadas):</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+  <span class=kr>extends</span><span class=o>:</span> <span class=p>[</span>
+    <span class=s1>&#39;react-app&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;react-app/jest&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;plugin:import/recommended&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;plugin:import/typescript&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;prettier&#39;</span><span class=p>,</span>
+  <span class=p>],</span>
+  <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;import&#39;</span><span class=p>],</span>
+  <span class=nx>parser</span><span class=o>:</span> <span class=s1>&#39;@typescript-eslint/parser&#39;</span><span class=p>,</span>
+  <span class=nx>ignorePatterns</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;.eslintrc.js&#39;</span><span class=p>],</span>
+  <span class=nx>rules</span><span class=o>:</span> <span class=p>{</span>
+    <span class=s1>&#39;no-console&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;no-debugger&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;no-alert&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;import/order&#39;</span><span class=o>:</span> <span class=p>[</span>
+      <span class=s1>&#39;error&#39;</span><span class=p>,</span>
+      <span class=p>{</span>
+        <span class=nx>groups</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;builtin&#39;</span><span class=p>,</span> <span class=s1>&#39;external&#39;</span><span class=p>,</span> <span class=s1>&#39;parent&#39;</span><span class=p>,</span> <span class=s1>&#39;sibling&#39;</span><span class=p>,</span> <span class=s1>&#39;index&#39;</span><span class=p>],</span>
+        <span class=nx>pathGroups</span><span class=o>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nx>pattern</span><span class=o>:</span> <span class=s1>&#39;react**&#39;</span><span class=p>,</span>
+            <span class=nx>group</span><span class=o>:</span> <span class=s1>&#39;builtin&#39;</span><span class=p>,</span>
+            <span class=nx>position</span><span class=o>:</span> <span class=s1>&#39;after&#39;</span><span class=p>,</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nx>pattern</span><span class=o>:</span> <span class=s1>&#39;*.scss&#39;</span><span class=p>,</span>
+            <span class=nx>patternOptions</span><span class=o>:</span> <span class=p>{</span> <span class=nx>matchBase</span><span class=o>:</span> <span class=kc>true</span> <span class=p>},</span>
+            <span class=nx>group</span><span class=o>:</span> <span class=s1>&#39;index&#39;</span><span class=p>,</span>
+            <span class=nx>position</span><span class=o>:</span> <span class=s1>&#39;after&#39;</span><span class=p>,</span>
+          <span class=p>},</span>
+        <span class=p>],</span>
+        <span class=nx>pathGroupsExcludedImportTypes</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;react&#39;</span><span class=p>],</span>
+        <span class=s1>&#39;newlines-between&#39;</span><span class=o>:</span> <span class=s1>&#39;always&#39;</span><span class=p>,</span>
+        <span class=nx>alphabetize</span><span class=o>:</span> <span class=p>{</span>
+          <span class=nx>order</span><span class=o>:</span> <span class=s1>&#39;asc&#39;</span><span class=p>,</span>
+          <span class=nx>caseInsensitive</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+        <span class=p>},</span>
+        <span class=nx>warnOnUnassignedImports</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+      <span class=p>},</span>
+    <span class=p>],</span>
+  <span class=p>},</span>
+  <span class=nx>settings</span><span class=o>:</span> <span class=p>{</span>
+    <span class=s1>&#39;import/parsers&#39;</span><span class=o>:</span> <span class=p>{</span>
+      <span class=s1>&#39;@typescript-eslint/parser&#39;</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;.ts&#39;</span><span class=p>,</span> <span class=s1>&#39;.tsx&#39;</span><span class=p>],</span>
+    <span class=p>},</span>
+  <span class=p>},</span>
+<span class=p>};</span>
+</code></pre></div><p>Ahora, cuando ejecutemos <code>eslint --fix</code>, todos los imports deberían formatearse automáticamente.</p>
+<blockquote>
+<p><strong>NOTA:</strong> Los imports que no son nombrados no pueden ser ordenados automáticamente porque, en este tipo de imports, el orden importa. Este tipo de imports serán marcados como error, pero <strong>deben ser ordenados manualmente</strong>.</p>
+<p><strong>Ejemplo</strong>: import &lsquo;./App.scss&rsquo;;</p>
+</blockquote>
+<p>Finalmente, podemos eliminar del <code>package.json</code> la configuración de ESLint que fue creada por create-react-app:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json>  <span class=s2>&#34;eslintConfig&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;extends&#34;</span><span class=p>:</span> <span class=p>[</span>
+      <span class=s2>&#34;react-app&#34;</span><span class=p>,</span>
+      <span class=s2>&#34;react-app/jest&#34;</span>
+    <span class=p>]</span>
+  <span class=p>}</span><span class=err>,</span>
+</code></pre></div><p>Una vez tenemos ESLint funcionando en el frontend, vayamos a por el backend. NestJS viene con una configuración por defecto que es un buen punto de partida. Vamos a modificarla e instalar <a href=https://github.com/import-js/eslint-plugin-import>eslint-plugin-import</a>.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> backend
+npm i -D eslint-import-resolver-typescript eslint-plugin-import 
+</code></pre></div><p>El fichero <code>.eslintrc.js</code> final, con el plugin de Prettier y la configuración para los imports:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+  <span class=nx>parser</span><span class=o>:</span> <span class=s1>&#39;@typescript-eslint/parser&#39;</span><span class=p>,</span>
+  <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;@typescript-eslint/eslint-plugin&#39;</span><span class=p>,</span> <span class=s1>&#39;import&#39;</span><span class=p>],</span>
+  <span class=kr>extends</span><span class=o>:</span> <span class=p>[</span>
+    <span class=s1>&#39;plugin:@typescript-eslint/recommended&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;plugin:import/recommended&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;plugin:import/typescript&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;prettier&#39;</span><span class=p>,</span>
+  <span class=p>],</span>
+  <span class=nx>root</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+  <span class=nx>env</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>node</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+    <span class=nx>jest</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+  <span class=p>},</span>
+  <span class=nx>ignorePatterns</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;.eslintrc.js&#39;</span><span class=p>],</span>
+  <span class=nx>rules</span><span class=o>:</span> <span class=p>{</span>
+    <span class=s1>&#39;no-console&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;no-debugger&#39;</span><span class=o>:</span> <span class=s1>&#39;warn&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;@typescript-eslint/interface-name-prefix&#39;</span><span class=o>:</span> <span class=s1>&#39;off&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;@typescript-eslint/explicit-function-return-type&#39;</span><span class=o>:</span> <span class=s1>&#39;off&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;@typescript-eslint/explicit-module-boundary-types&#39;</span><span class=o>:</span> <span class=s1>&#39;off&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;@typescript-eslint/no-explicit-any&#39;</span><span class=o>:</span> <span class=s1>&#39;off&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;@typescript-eslint/ban-ts-comment&#39;</span><span class=o>:</span> <span class=s1>&#39;off&#39;</span><span class=p>,</span>
+    <span class=s1>&#39;import/order&#39;</span><span class=o>:</span> <span class=p>[</span>
+      <span class=s1>&#39;error&#39;</span><span class=p>,</span>
+      <span class=p>{</span>
+        <span class=nx>groups</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;builtin&#39;</span><span class=p>,</span> <span class=s1>&#39;external&#39;</span><span class=p>,</span> <span class=s1>&#39;parent&#39;</span><span class=p>,</span> <span class=s1>&#39;sibling&#39;</span><span class=p>,</span> <span class=s1>&#39;index&#39;</span><span class=p>],</span>
+        <span class=nx>pathGroups</span><span class=o>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nx>pattern</span><span class=o>:</span> <span class=s1>&#39;@nestjs**&#39;</span><span class=p>,</span>
+            <span class=nx>group</span><span class=o>:</span> <span class=s1>&#39;builtin&#39;</span><span class=p>,</span>
+            <span class=nx>position</span><span class=o>:</span> <span class=s1>&#39;after&#39;</span><span class=p>,</span>
+          <span class=p>},</span>
+        <span class=p>],</span>
+        <span class=nx>pathGroupsExcludedImportTypes</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;@nestjs&#39;</span><span class=p>],</span>
+        <span class=s1>&#39;newlines-between&#39;</span><span class=o>:</span> <span class=s1>&#39;always&#39;</span><span class=p>,</span>
+        <span class=nx>alphabetize</span><span class=o>:</span> <span class=p>{</span>
+          <span class=nx>order</span><span class=o>:</span> <span class=s1>&#39;asc&#39;</span><span class=p>,</span>
+          <span class=nx>caseInsensitive</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+        <span class=p>},</span>
+        <span class=nx>warnOnUnassignedImports</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+      <span class=p>},</span>
+    <span class=p>],</span>
+  <span class=p>},</span>
+  <span class=nx>settings</span><span class=o>:</span> <span class=p>{</span>
+    <span class=s1>&#39;import/parsers&#39;</span><span class=o>:</span> <span class=p>{</span>
+      <span class=s1>&#39;@typescript-eslint/parser&#39;</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;.ts&#39;</span><span class=p>,</span> <span class=s1>&#39;.tsx&#39;</span><span class=p>],</span>
+    <span class=p>},</span>
+  <span class=p>},</span>
+<span class=p>};</span>
+</code></pre></div><h2 id=git-pre-commit-hook>Git pre-commit hook</h2>
+<p>Queremos ejecutar ciertas operaciones en los ficheros que hacemos commit, tales como <strong>formatear con prettier y lanzar el lint con <code>eslint --fix</code></strong>. Para conseguir esto, utilizaremos <a href=https://github.com/typicode/husky>Husky</a> que se encargará de ejecutar estas acciones como hooks de git.</p>
+<h3 id=instalando-husky>Instalando husky</h3>
+<p>Debemos crear un fichero <code>package.json</code> en el raíz de nuestro proyecto para poder instalar Husky como dependencia. Ejecutaremos:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm init -y
+</code></pre></div><p>Acto seguido, rellenamos los campos con la información que queramos, y procederemos a <strong>instalar Husky y crear y ejecutar el script <code>prepare</code></strong>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm i -D husky
+npm set-script prepare <span class=s2>&#34;husky install&#34;</span>
+npm run prepare
+</code></pre></div><p><code>prepare</code> es un script que forma parte del ciclo de vida, y será ejecutado justo después de hacer <code>npm install</code> en un repositorio. Si estás utilizando <strong>Yarn</strong>, quizás <strong>husky</strong> no se instala automáticamente después del install. En ese caso, debemos ejecutarlo manualmente:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm run prepare
+</code></pre></div><p>Finalmente podemos añadir el hook <code>pre-commit</code>. Ejecutaremos <code>npm run lint</code> en el pre-commit (en breve definiremos este script).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npx husky add .husky/pre-commit <span class=s2>&#34;npm run lint&#34;</span>
+</code></pre></div><p>Un fichero llamado <code>pre-commit</code> aparecerá bajo el directorio <code>.husky</code>, con el siguiente contenido:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/sh
+</span><span class=cp></span>. <span class=s2>&#34;</span><span class=k>$(</span>dirname <span class=s2>&#34;</span><span class=nv>$0</span><span class=s2>&#34;</span><span class=k>)</span><span class=s2>/_/husky.sh&#34;</span>
+
+npm run lint
+</code></pre></div><blockquote>
+<p><strong>NOTA:</strong> Si utilizas un cliente para Git como Sourcetree, y obtienes el error <code>command not found</code>, es necesario crear un fichero <code>~/.huskyrc</code> para cargar lo necesario antes de ejecutar el hook (descrito <a href="https://typicode.github.io/husky/#/?id=command-not-found">aquí</a>). Por ejemplo, para <code>nvm</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># ~/.huskyrc</span>
+<span class=c1># This loads nvm.sh and sets the correct PATH before running hook</span>
+<span class=nb>export</span> <span class=nv>NVM_DIR</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$HOME</span><span class=s2>/.nvm&#34;</span>
+<span class=o>[</span> -s <span class=s2>&#34;</span><span class=nv>$NVM_DIR</span><span class=s2>/nvm.sh&#34;</span> <span class=o>]</span> <span class=o>&amp;&amp;</span> <span class=se>\.</span> <span class=s2>&#34;</span><span class=nv>$NVM_DIR</span><span class=s2>/nvm.sh&#34;</span>
+</code></pre></div></blockquote>
+<h3 id=añadiendo-scripts-npm-en-el-packagejson-raíz>Añadiendo scripts npm en el package.json raíz</h3>
+<p>Una vez definidos el hook, debemos crear el script <code>lint</code> en el <code>package.json</code>. Este script ejecutará a su vez 2 scripts, uno para el lint en el backend, y otro para el frontend. Añadimos estas líneas:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;lint&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all lint:backend lint:frontend&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint:backend&#34;</span><span class=p>:</span> <span class=s2>&#34;cd backend &amp;&amp; npm run lint:staged&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint:frontend&#34;</span><span class=p>:</span> <span class=s2>&#34;cd frontend &amp;&amp; npm run lint:staged&#34;</span><span class=p>,</span>
+<span class=p>}</span><span class=err>,</span>
+</code></pre></div><p>Estamos utilizando <a href=https://github.com/mysticatea/npm-run-all>npm-run-all</a> en el script lint para ejecutar los otros 2 scripts, por tanto debemos instalar esta dependencia en el package.json del raíz:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm i -D npm-run-all
+</code></pre></div><p>El siguiente paso es definir el script <code>lint:staged</code> en <code>backend/package.json</code> y en <code>frontend/package.json</code>, pero antes, instalaremos otra dependencia para el linting.</p>
+<h3 id=instalando-tsc-files>Instalando tsc-files</h3>
+<p><a href=https://github.com/gustavopch/tsc-files>tsc-files</a> es una pequeña herramienta para ejecutar <code>tsc</code> en determinados ficheros sin ignorar el <code>tsconfig.json</code>. Este paquete fue creado <a href=https://github.com/microsoft/TypeScript/issues/27379>porque pasar ficheros específicos</a> de esta manera <code>tsc --noEmit file1.ts file2.ts</code> propicia que Typescript simplemente ignora el <code>tsconfig.json</code>.</p>
+<p>Instalamos tsc-files, que se necesitará en pasos posteriores:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> backend
+npm i -D tsc-files
+<span class=nb>cd</span> ../frontend
+npm i -D tsc-files
+</code></pre></div><h3 id=lint-staged-para-backend-y-frontend>lint-staged para backend y frontend</h3>
+<p><a href=https://github.com/okonet/lint-staged>lint-staged</a> es un paquete que nos permite ejecutar linters en los ficheros staged en git. De esta manera, no permitiremos que entren bus en nuestro código, y aprovecharemos la oportunidad para formatear los ficheros.</p>
+<p>Instalaremos esta dependencia de desarrollo tanto en backend como en frontend:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> backend
+npm i -D lint-staged
+<span class=nb>cd</span> ../frontend
+npm i -D lint-staged
+</code></pre></div><p>Ahora <a href=https://github.com/okonet/lint-staged#configuration>definiremos la configuración para lint-staged</a> que se aplicará al ejecutar nuestras tareas. Podemos definir esta configuración en el fichero <code>package.json</code> o en un archivo separado. Para ambos proyectos, ejecutaremos <code>eslint --fix</code>, <code>tsc</code> para comprobaciones de tipo y <code>prettier</code> para formateo.</p>
+<p>Adicionalmente, tenemos que añadir un script <code>lint:staged</code>, que será invocado desde el <code>package.json</code> raíz.</p>
+<p>Vayamos por el primero:</p>
+<p><code>backend/package.json</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;lint:staged&#34;</span><span class=p>:</span> <span class=s2>&#34;lint-staged&#34;</span><span class=p>,</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+<span class=c1>// ...
+</span><span class=c1></span><span class=s2>&#34;lint-staged&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=nt>&#34;src/**/*.+(ts)&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=s2>&#34;eslint --fix&#34;</span><span class=p>,</span>
+    <span class=s2>&#34;tsc-files --noEmit&#34;</span>
+  <span class=p>],</span>
+  <span class=nt>&#34;src/**/*.{ts,json,md}&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=s2>&#34;prettier --write&#34;</span>
+  <span class=p>]</span>
+<span class=p>}</span>
+</code></pre></div><p><code>frontend/package.json</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;lint:staged&#34;</span><span class=p>:</span> <span class=s2>&#34;lint-staged&#34;</span><span class=p>,</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+<span class=c1>// ...
+</span><span class=c1></span><span class=s2>&#34;lint-staged&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=nt>&#34;src/**/*.+(ts|tsx)&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=s2>&#34;eslint --fix&#34;</span><span class=p>,</span>
+    <span class=s2>&#34;tsc-files --noEmit&#34;</span>
+  <span class=p>],</span>
+  <span class=nt>&#34;src/**/*.{js,jsx,ts,tsx,json,css,scss,md}&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=s2>&#34;prettier --write&#34;</span>
+  <span class=p>],</span>
+  <span class=nt>&#34;*.js&#34;</span><span class=p>:</span> <span class=s2>&#34;eslint --cache --fix&#34;</span>
+<span class=p>}</span>
+</code></pre></div><h3 id=resumen-pre-commit>Resumen pre-commit</h3>
+<p>Con todos estos pasos completados, <strong>hemos terminado la configuración del hook pre-commit</strong>. Este será el flujo ejecutado cuando hagamos commit:</p>
+<ol>
+<li>El script <code>pre-commit</code> de husky ejecutará <code>npm run lint</code> que se encuentra definido en el <code>package.json</code> raíz.</li>
+<li>El script <code>lint</code> acudirá tanto a los directorios de <strong>backend</strong> como de <strong>frontend</strong> y ejecutará <code>npm run lint:staged</code>.</li>
+<li><strong>lint-staged</strong> será invocada y recibirá la lista de archivos involucrados en el commit. Si no encuentra ningún fichero definido en la configuración no hará nada. En caso de encontrar un error el commit es abortado hasta que se resuelva el problema.</li>
+</ol>
+<h2 id=git-pre-push-hook>Git pre-push hook</h2>
+<p>Con este hook, queremos asegurarnos de que no hacemos push de código que pueda romper nuestros tests unitarios. Nuevamente utilizaremos husky, utilizando la misma estrategia seguida en el hook pre-commit using the same strategy as pre-commit hook. Vayamos directamente al lío. En el directorio raíz del proyecto:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npx husky add .husky/pre-push <span class=s2>&#34;npm run pre-push&#34;</span>
+</code></pre></div><p>Un fichero <code>pre-push</code> dentro del directorio <code>.husky</code> aparecerá con este contenido:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/sh
+</span><span class=cp></span>. <span class=s2>&#34;</span><span class=k>$(</span>dirname <span class=s2>&#34;</span><span class=nv>$0</span><span class=s2>&#34;</span><span class=k>)</span><span class=s2>/_/husky.sh&#34;</span>
+
+npm run pre-push
+</code></pre></div><h3 id=añadiendo-scripts-npm-en-el-packagejson-raíz-1>Añadiendo scripts npm en el package.json raíz</h3>
+<p>Con el hook ya definido, debemos crear un script <code>pre-push</code> en el <code>package.json</code> raíz. Este script invocará a otros 2 scripts, uno para backend y otro para frontend. Añadimos estas líneas:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;pre-push&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all pre-push:backend pre-push:frontend&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;pre-push:frontend&#34;</span><span class=p>:</span> <span class=s2>&#34;cd frontend &amp;&amp; npm run pre-push&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;pre-push:backend&#34;</span><span class=p>:</span> <span class=s2>&#34;cd backend &amp;&amp; npm run pre-push&#34;</span><span class=p>,</span>
+<span class=p>}</span><span class=err>,</span>
+</code></pre></div><p>El siguiente objetivo es definir el script <code>pre-push</code> en <code>backend/package.json</code> y en <code>frontend/package.json</code>.</p>
+<h3 id=prepush-if-changed-para-backend-y-frontend>prepush-if-changed para backend y frontend</h3>
+<p><a href=https://github.com/dprovodnikov/prepush-if-changed>prepush-if-changed</a> es un paquete similar a <code>lint-staged</code> pero para git push. No es tan popular como lint-staged, pero lo he probado yo mismo y funciona correctamente. <strong>Queremos lanzar los test unitarios y el linting</strong>, pero solo si algún fichero de backend o frontend está involucrado en los ficheros que vamos a hacer push.</p>
+<p>Por ejemplo, si estamos haciendo push de cambios en frontend, solo queremos ejecutar los test de la parte de front y su lint. Lo mismo aplica para backend, y en caso de tener cambios de ambos proyectos, se comprobarán ambos.</p>
+<p>Instalaremos esta dependencia de desarrollo tanto en backend como en frontend:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> backend
+npm i -D prepush-if-changed
+<span class=nb>cd</span> ../frontend
+npm i -D prepush-if-changed
+</code></pre></div><p><a href=https://github.com/dprovodnikov/prepush-if-changed#configuration>Definiremos la configuración utilizad para prepush-if-changed</a>. Podemos definirla en el <code>package.json</code> o en un fichero aparte.</p>
+<p>Además, tenemos que añadir un script llamado <code>pre-push</code> (y sus tareas dependientes), que será ejecutado desde el <code>package.json</code> raíz. <strong>Si algún test o el proceso de lint fallan, el git push será abortado</strong>.</p>
+<p>Vamos con el primero:</p>
+<p><code>backend/package.json</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;pre-push&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all pre-push:test lint&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;pre-push:test&#34;</span><span class=p>:</span> <span class=s2>&#34;prepush-if-changed&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all lint:eslint lint:tsc&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint:eslint&#34;</span><span class=p>:</span> <span class=s2>&#34;eslint &#39;src/**/*.ts&#39;&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint:tsc&#34;</span><span class=p>:</span> <span class=s2>&#34;tsc -p tsconfig.json&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;npm run test:unit &amp;&amp; npm run test:e2e&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;test:unit&#34;</span><span class=p>:</span> <span class=s2>&#34;jest --runInBand&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;test:e2e&#34;</span><span class=p>:</span> <span class=s2>&#34;jest --config ./test/jest-e2e.json&#34;</span><span class=p>,</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+<span class=c1>// ...
+</span><span class=c1></span>  <span class=s2>&#34;prepush-if-changed&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;src/**/*.+(ts)&#34;</span><span class=p>:</span> <span class=s2>&#34;echo &#39;Files changed on backend. Launching tests.&#39; &amp;&amp; npm run test&#34;</span>
+  <span class=p>}</span><span class=err>,</span>
+</code></pre></div><p>Breve explicación del proceso:</p>
+<ul>
+<li>El script <code>pre-push</code> lanzará <code>pre-push:test</code> que a su vez ejecuta <code>prepush-if-changed</code> con la configuración mostrada, y después de eso, <code>lint</code>.</li>
+<li>Si la configuración de <code>prepush-if-changed</code> encuentra algún resultado, ejecutará el script <code>test</code>.</li>
+<li>El script <code>test</code> ejecutará <code>test:unit</code> y <code>test:e2e</code>.</li>
+<li>Por último, el script <code>lint</code> ejecuta <code>lint:eslint</code> y <code>lint:tsc</code>.</li>
+</ul>
+<p><code>frontend/package.json</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span>  <span class=nt>&#34;pre-push&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all pre-push:test lint&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;pre-push:test&#34;</span><span class=p>:</span> <span class=s2>&#34;prepush-if-changed&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all lint:eslint lint:tsc&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint:eslint&#34;</span><span class=p>:</span> <span class=s2>&#34;eslint &#39;src/**/*.{ts,tsx}&#39;&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;lint:tsc&#34;</span><span class=p>:</span> <span class=s2>&#34;tsc -p tsconfig.json&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;react-scripts test&#34;</span><span class=p>,</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+<span class=c1>// ...
+</span><span class=c1></span>  <span class=s2>&#34;prepush-if-changed&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;src/**/*.+(ts|tsx)&#34;</span><span class=p>:</span> <span class=s2>&#34;echo &#39;Files changed on frontend. Launching tests.&#39; &amp;&amp; npm run test -- --watchAll=false&#34;</span>
+  <span class=p>}</span><span class=err>,</span>
+</code></pre></div><p>Nota para frontend:</p>
+<ul>
+<li>El script <code>pre-push</code> ejecuta <code>pre-push:test</code> que a su vez lanza <code>prepush-if-changed</code> con la configuración mostrada, y después de eso, <code>lint</code>.</li>
+<li>Si la configuración de <code>prepush-if-changed</code> encuentra algún resultado, procederá a lanzar <code>npm run test -- --watchAll=false</code>.</li>
+<li>Finalmente, el script <code>lint</code> ejecuta <code>lint:eslint</code> y <code>lint:tsc</code>.</li>
+</ul>
+<p>Vaya este post ha sido largo, muy interesante como futura referencia. Toca un montón de temas, he publicado <a href=https://github.com/javifm86/monorepo-starter-react-nest>el resultado final en Github</a>. En mi equipo hemos estado utilizando esta configuración los últimos 3 meses sin problemas, estamos contentos con los resultados. Gracias por leerme.</p>
+</div>
+<div class="my-16 border-b border-gray-300"></div>
+<div class="mb-16 text-center max-w-3xl mx-auto">
+<a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href=https://javifm.com/blog/resumen-de-2021/>
+Resumen de 2021 &#187;
+</a>
+</div>
+</article>
+</main>
+<footer class="bg-gray-800 text-gray-200 p-4">
+<div class="container mx-auto flex justify-between items-center">
+<p>
+&copy; 2021 Sitio construido con <a class="text-white underline" href=https://gohugo.io/>Hugo</a> alojado en <a class="text-white underline" href=https://github.com/>Github</a>.
+</p>
+<div class="flex items-center">
+<a href=https://github.com/javifm86 class="mr-1 p-2 text-gray-300 hover:text-white">
+<span class=sr-only>Github</span><svg class="w-8 h-8 pointer-events-none" viewBox="0 0 256 250" role="img" aria-labelledby="titleId" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Github</title><path role="presentation" class="fill-current" d="M128.001.0C57.317.0.0 57.307.0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158.0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258.0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874.0.0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358.0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704.0 17.126-.148 30.91-.148 35.126.0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691.0 128.001.0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86.0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"/></svg>
+</a>
+<a href=https://twitter.com/javifm86 class="p-2 text-gray-300 hover:text-white">
+<span class=sr-only>Twitter</span><svg class="w-8 h-8 mt-1 pointer-events-none" role="img" aria-labelledby="titleId" viewBox="0 0 256 209" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Twitter</title><path role="presentation" class="fill-current" d="M256 25.45a105.04 105.04.0 01-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183.0 01-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006.0-52.523 23.516-52.523 52.52.0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404.0 18.222 9.273 34.297 23.365 43.716a52.312 52.312.0 01-23.79-6.57c-.003.22-.003.44-.003.661.0 25.447 18.104 46.675 42.13 51.5a52.592 52.592.0 01-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24.0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607.0 149.434-80.031 149.434-149.435.0-2.278-.05-4.543-.152-6.795A106.748 106.748.0 00256 25.45"/></svg>
+</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<script src=https://javifm.com/js/focus-visible.min.js></script>
+<script>(function(){const c=document.getElementsByTagName('body')[0],g=document.getElementById('open-menu'),f=document.getElementById('close-menu'),e=document.getElementById('site-menu'),d=document.getElementById('sidebar-open'),b='show-nav';let a='closed';const k=m(function(){c.classList.contains(b)&&window.screen.width>639&&h()},0);d.addEventListener('click',h),window.addEventListener('resize',k);function l(){a==='opening'?(i(g,'hidden'),j(f,'hidden'),d.setAttribute('aria-label','Cerrar menú'),a='open'):(j(g,'hidden'),i(f,'hidden'),e.classList.add('hidden'),d.setAttribute('aria-label','Abrir menú'),a='closed')}function h(){c.classList.contains(b)?(c.classList.remove(b),a='closing'):(c.classList.add(b),a='opening',e.classList.remove('hidden')),setTimeout(l,300)}function m(b,d,c){let a;return function(){let e=this,f=arguments;const g=function(){a=null,c||b.apply(e,f)};let h=c&&!a;clearTimeout(a),a=setTimeout(g,d),h&&b.apply(e,f)}}function i(a,b){a.setAttribute('class',a.getAttribute('class')+' '+b)}function j(a,b){let c=a.getAttribute('class').replace(new RegExp('(\\s|^)'+b+'(\\s|$)','g'),'$2');a.setAttribute('class',c)}})()</script>
+</body>
+</html>
