@@ -80,7 +80,7 @@ responsive-images-hugo
   - img1.jpg
   - ...
 </pre>
-<p>The next step is creating a file for the shortcode, I created in <code>layouts/shortcodes/img.html</code> with this code:
+<p>The next step is creating a file for the shortcode, I created in <code>layouts/shortcodes/img.html</code> with this code:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-go-html-template data-lang=go-html-template><span class=cm>{{/* Get file that matches the filename as specified as src=&#34;&#34; in shortcode */}}</span>
 <span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=na>.Page.Resources.GetMatch</span><span class=w> </span><span class=o>(</span><span class=k>printf</span><span class=w> </span><span class=s>&#34;*%s*&#34;</span><span class=w> </span><span class=o>(</span><span class=na>.Get</span><span class=w> </span><span class=s>&#34;src&#34;</span><span class=o>))</span><span class=w> </span><span class=cp>}}</span>
 
@@ -132,11 +132,12 @@ responsive-images-hugo
 </span><span class=s>    </span><span class=cp>{{</span><span class=w> </span><span class=k>end</span><span class=w> </span><span class=cp>}}</span><span class=s>&#39;</span>
     <span class=na>src</span><span class=o>=</span><span class=s>&#34;</span><span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=na>.RelPermalink</span><span class=w> </span><span class=cp>}}</span><span class=s>&#34;</span>
     <span class=na>width</span><span class=o>=</span><span class=s>&#34;</span><span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=na>.Width</span><span class=w> </span><span class=cp>}}</span><span class=s>&#34;</span> <span class=na>height</span><span class=o>=</span><span class=s>&#34;</span><span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=na>.Height</span><span class=w> </span><span class=cp>}}</span><span class=s>&#34;</span>
-    <span class=cp>{{</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=na>.Get</span><span class=w> </span><span class=s>&#34;alt&#34;</span><span class=w> </span><span class=cp>}}</span><span class=na>alt</span><span class=o>=</span><span class=s>&#39;</span><span class=cp>{{</span><span class=na>.</span><span class=cp>}}</span><span class=s>&#39;</span><span class=cp>{{</span><span class=w> </span><span class=k>end</span><span class=w> </span><span class=cp>}}</span><span class=p>&gt;</span></code></pre></div></p>
-<p>This way we will be able to use in markdown files the shortcode:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-go-html-template data-lang=go-html-template><span class=cp>{{</span><span class=err>&lt;</span><span class=w> </span><span class=nx>img</span><span class=w> </span><span class=nx>src</span><span class=o>=</span><span class=s>&#34;img/img1.jpg&#34;</span><span class=w> </span><span class=nx>alt</span><span class=o>=</span><span class=s>&#34;Description for image&#34;</span><span class=w> </span><span class=err>&gt;</span><span class=cp>}}</span></code></pre></div></p>
-<p>And that´s all, you use the image as if you were in html and the shortcode and Hugo will generate images smaller when necessary. This
-solution comes from <a href=https://laurakalbag.com/processing-responsive-images-with-hugo/>Laura Kalbag</a>, I just modified a little bit her code. I take this opportunity to recomendate her
+    <span class=cp>{{</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=na>.Get</span><span class=w> </span><span class=s>&#34;alt&#34;</span><span class=w> </span><span class=cp>}}</span><span class=na>alt</span><span class=o>=</span><span class=s>&#39;</span><span class=cp>{{</span><span class=na>.</span><span class=cp>}}</span><span class=s>&#39;</span><span class=cp>{{</span><span class=w> </span><span class=k>end</span><span class=w> </span><span class=cp>}}</span><span class=p>&gt;</span>
+
+</code></pre></div><p>This way we will be able to use in markdown files the shortcode:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-go-html-template data-lang=go-html-template><span class=cp>{{</span><span class=err>&lt;</span><span class=w> </span><span class=nx>img</span><span class=w> </span><span class=nx>src</span><span class=o>=</span><span class=s>&#34;img/img1.jpg&#34;</span><span class=w> </span><span class=nx>alt</span><span class=o>=</span><span class=s>&#34;Description for image&#34;</span><span class=w> </span><span class=err>&gt;</span><span class=cp>}}</span>
+</code></pre></div><p>And that´s all, you use the image as if you were in html and the shortcode and Hugo will generate images smaller when necessary. This
+solution comes from <a href=https://laurakalbag.com/processing-responsive-images-with-hugo/>Laura Kalbag</a>, I just modified a little bit her code. I take this opportunity to recommend her
 book <a href=https://abookapart.com/products/accessibility-for-everyone>Accessibility For Everyone</a>.</p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>

@@ -63,12 +63,12 @@ y configurar ESLint y Prettier para que funcionen correctamente en Visual Studio
 <h2 id=vue-cli>Vue CLI</h2>
 <p>Para crear un nuevo proyecto la opción más rápida y sencilla es utilizar <a href=https://cli.vuejs.org/guide/creating-a-project.html#vue-create>Vue CLI</a>. Nos permitirá configurar nuestro proyecto
 con diferentes workflows predefinidos. El primer paso es instalar Vue CLI:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>yarn global add @vue/cli
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>yarn global add @vue/cli
 <span class=c1># OR</span>
-npm install -g @vue/cli</code></pre></div>
-<p>Y una vez instalado ya podemos crear un nuevo proyecto:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>vue create hello-world</code></pre></div>
-<p>Nos saldrá un listado de opciones donde seleccionaremos la última opción:</p>
+npm install -g @vue/cli
+</code></pre></div><p>Y una vez instalado ya podemos crear un nuevo proyecto:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>vue create hello-world
+</code></pre></div><p>Nos saldrá un listado de opciones donde seleccionaremos la última opción:</p>
 <pre>
 Vue CLI v4.5.13
 ? Please pick a preset: (Use arrow keys)
@@ -183,10 +183,10 @@ de manera que no haya conflicto entre ellos. Si abrimos el fichero <code>.eslint
       <span class=p>},</span>
     <span class=p>},</span>
   <span class=p>],</span>
-<span class=p>};</span></code></pre></td></tr></table>
+<span class=p>};</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>De esta manera Prettier no entrará en conflicto con las reglas de ESLint. En las líneas 19-20 hay unas reglas que he
+</div><p>De esta manera Prettier no entrará en conflicto con las reglas de ESLint. En las líneas 19-20 hay unas reglas que he
 añadido yo. Se puede añadir todo lo que deseemos para personalizarlo a nuestro gusto.</p>
 <h2 id=vscode>VSCode</h2>
 <p>Como último paso, vamos a ver lo que tenemos que configurar para que todo funcione correctamente en
@@ -200,16 +200,16 @@ marcado <strong>prettier-eslint</strong>, en el resto yo tengo la opción por de
 <img class=mb-6 srcset="/blog/vue-3-con-typescript-eslint-y-prettier/img/vetur.png 729w
 ,/blog/vue-3-con-typescript-eslint-y-prettier/img/vetur_hu0aaf66ffd893ffbd32df9b925c78b91d_27770_500x0_resize_box_3.png 500w" src=/blog/vue-3-con-typescript-eslint-y-prettier/img/vetur.png width=729 height=539 alt="Configuración de formateadores en Vetur">
 <p>En la configuración de VSCode tenemos que decir que los ficheros de tipo Vue utilicen
-como formateador por defecto Vetur:
+como formateador por defecto Vetur:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=s2>&#34;[vue]&#34;</span><span class=o>:</span> <span class=p>{</span>
   <span class=s2>&#34;editor.defaultFormatter&#34;</span><span class=o>:</span> <span class=s2>&#34;octref.vetur&#34;</span>
-<span class=p>}</span></code></pre></div></p>
-<p>De esta manera VSCode delega en Vetur, y es Vetur el que a cada parte que encuentre en los ficheros <code>.vue</code> aplicará el
+<span class=p>}</span>
+</code></pre></div><p>De esta manera VSCode delega en Vetur, y es Vetur el que a cada parte que encuentre en los ficheros <code>.vue</code> aplicará el
 formateador adecuado. Tan solo hay una cosa que Vetur no hace correctamente en el autoformateo de los ficheros <code>.vue</code>, y
 es el <strong>insertar una línea en blanco al final del archivo</strong>. Si tienes esta opción, la única forma que he encontrado es
-delegar esa tarea en VSCode mediante esta configuración:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=s2>&#34;files.insertFinalNewline&#34;</span><span class=o>:</span> <span class=kc>false</span></code></pre></div></p>
-<p>En ocasiones tener <a href=https://vuejs.github.io/vetur/guide/FAQ.html#install-an-old-version-of-vetur>la última versión de Vetur puede ser problemático</a>, recientemente en un proyecto me he encontrado
+delegar esa tarea en VSCode mediante esta configuración:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=s2>&#34;files.insertFinalNewline&#34;</span><span class=o>:</span> <span class=kc>false</span>
+</code></pre></div><p>En ocasiones tener <a href=https://vuejs.github.io/vetur/guide/FAQ.html#install-an-old-version-of-vetur>la última versión de Vetur puede ser problemático</a>, recientemente en un proyecto me he encontrado
 que Vetur comenzaba a formatear el HTML de manera distinta. Después de unas horas volviéndome loco, instalé una
 versión anterior de Vetur y todo volvió a funcionar correctamente. <a href=https://github.com/vuejs/vetur/issues/3067>He reportado el bug</a> y he aprovechado a comentar
 lo de la línea en blanco al final del archivo, aún estoy a la espera de la respuesta. Quizás sea un error mío, pero he

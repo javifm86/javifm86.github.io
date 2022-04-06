@@ -67,12 +67,12 @@ I have created a VSCode dark theme called <strong>Oceanic Wind</strong>, but, wh
 <p>If you want to create your own theme you can follow <a href=https://code.visualstudio.com/api/extension-guides/color-theme#create-a-new-color-theme>the steps from Visual Studio Code guide</a>. This is what I did:</p>
 <p>First, you have to install Yeoman extension generator and run it:</p>
 <img class=mb-6 srcset="/en/blog/oceanic-wind-for-vscode/img/yo.png 410w" src=/en/blog/oceanic-wind-for-vscode/img/yo.png width=410 height=349 alt="Yeoman generator options.">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm install -g yo generator-code
-yo code</code></pre></div>
-<p>Select <code>New color theme</code> and <code>No, start fresh</code>. Give a name and identifier for your extension, and select a base theme to be used as starting point. Now you can open the folder with VSCode.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>cd</span> your-theme
-code .</code></pre></div>
-<p>If you want to test your theme, just press <code>F5</code> and a new window will be open where you will be able to see the result.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install -g yo generator-code
+yo code
+</code></pre></div><p>Select <code>New color theme</code> and <code>No, start fresh</code>. Give a name and identifier for your extension, and select a base theme to be used as starting point. Now you can open the folder with VSCode.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> your-theme
+code .
+</code></pre></div><p>If you want to test your theme, just press <code>F5</code> and a new window will be open where you will be able to see the result.</p>
 <p>The <a href=https://code.visualstudio.com/api/references/theme-color>official documentation</a> is the perfect starting point. As you can see, there are dozens of colors available, sometimes finding the color for a setting can be difficult despite the description, there are a few I couldn&rsquo;t find.</p>
 <h2 id=finding-colors>Finding colors</h2>
 <p>Press <code>Ctrl + Shift + P</code> to get the command palette and type <code>Inspect Editor Tokens and Scopes</code>. Now you can click anywhere, and you will see a pop-up with color, font type and scope to target. You have also information about contrast ratio, <strong>I always try getting 4.5 as minimum value</strong>.</p>

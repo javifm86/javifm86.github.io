@@ -64,29 +64,29 @@ Publicado el 9 Sep 2015
 <p>A lo largo de los 2 últimos años, he ido poco a poco <strong>mejorando mi nivel de productividad</strong> en el trabajo. Primero cambié mi editor de toda la vida, <a href=https://notepad-plus-plus.org/>Notepad++</a> por <a href=http://www.sublimetext.com/>Sublime Text</a>. Y posteriormente, he ido añadiendo diferentes herramientas que proporciona <strong>Node.js</strong>, para automatizar distintos procesos y tareas, como ejecución de tests, linters de código, minimizado de Javascript y CSS, etc…</p>
 <p>Para automatizar más aún todos estos procesos, está <a href=http://gruntjs.com/>Grunt</a>, que dispone de plugins fáciles de integrar en nuestros proyectos, para realizar todo tipo de tareas que precisemos en nuestro proyecto. En mi proyecto actual, surgió una necesidad a un compañero de proyecto, que se encarga de la maquetación de la aplicación que estamos desarrollando.</p>
 <p>Para ello está utilizando <a href=http://sass-lang.com/>Sass</a>, uno de los preprocesadores CSS más populares actualmente. Por motivos de simplicidad de código y maximizar la compatibilidad con navegadores no muy modernos (mantenemos soporte a navegadores webKit antiguos, que usan algunas Smart TV anteriores a 2013), a la hora de hacer los elementos reutilizables de la aplicación con Javascript, decidimos que en lugar de que cada widget cargue su hoja de estilos, <strong>tener todo el CSS de todos los widgets unificados en un mismo fichero que esté cargado desde el principio</strong> (controlar cuando se ha cargado una hoja de estilos, de manera simple y compatible con todos los navegadores es una tarea que <a href=http://requirejs.org/docs/faq-advanced.html#css>ni RequireJS ha incluido en su cargador de módulos</a>).</p>
-<p>Grunt y sus plugins son instalados y gestionados a través de <strong>NPM</strong>, el gestor de paquetes por consola para <a href=https://nodejs.org/>Node.js</a>. Asi que si no lo tienes ya, el primer paso es instalar <a href=https://nodejs.org/en/download/>Node.js</a>. Acto seguido, nos dirigiremos a la consola, e instalaramos Grunt globalmente (seguramente necesites sudo en Linux):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install -g grunt-cli</code></pre></div>
-<p>Ya podemos ir a la carpeta donde está nuestro proyecto (<code>cd ruta/proyecto/</code>). Deberemos tener nuestro fichero <code>package.json</code> creado, con el nombre del proyecto, descripción y otros datos importantes. Si no lo tienes creado, desde consola, estando en el directorio raíz del proyecto, puedes ejecutar <code>npm init</code>, y se irán pidiendo datos para crear el fichero, o puedes crearlo directamente con tu editor de texto, con esto bastaría a priori:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=p>{</span>
+<p>Grunt y sus plugins son instalados y gestionados a través de <strong>NPM</strong>, el gestor de paquetes por consola para <a href=https://nodejs.org/>Node.js</a>. Asi que si no lo tienes ya, el primer paso es instalar <a href=https://nodejs.org/en/download/>Node.js</a>. Acto seguido, nos dirigiremos a la consola, e instalaremos Grunt globalmente (seguramente necesites sudo en Linux):</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install -g grunt-cli
+</code></pre></div><p>Ya podemos ir a la carpeta donde está nuestro proyecto (<code>cd ruta/proyecto/</code>). Deberemos tener nuestro fichero <code>package.json</code> creado, con el nombre del proyecto, descripción y otros datos importantes. Si no lo tienes creado, desde consola, estando en el directorio raíz del proyecto, puedes ejecutar <code>npm init</code>, y se irán pidiendo datos para crear el fichero, o puedes crearlo directamente con tu editor de texto, con esto bastaría a priori:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span>
   <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=s2>&#34;Nombre del proyecto&#34;</span><span class=p>,</span>
   <span class=s2>&#34;version&#34;</span><span class=o>:</span> <span class=s2>&#34;1.0.0&#34;</span>
-<span class=p>}</span></code></pre></div>
-<p>Una vez hecho esto, ya podemos proceder a instalar grunt de manera local en nuestro proyecto. Simplemente iremos a la carpeta de nuestro proyecto, y en ella ejecutaremos el siguiente comando:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install grunt --save-dev</code></pre></div>
-<p>Observaremos que se instala correctamente, y veremos que en el fichero <code>package.json</code> aparece una nueva clave llamada <code>devDependencies</code>, y aparece grunt:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=p>{</span>
+<span class=p>}</span>
+</code></pre></div><p>Una vez hecho esto, ya podemos proceder a instalar grunt de manera local en nuestro proyecto. Simplemente iremos a la carpeta de nuestro proyecto, y en ella ejecutaremos el siguiente comando:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install grunt --save-dev
+</code></pre></div><p>Observaremos que se instala correctamente, y veremos que en el fichero <code>package.json</code> aparece una nueva clave llamada <code>devDependencies</code>, y aparece grunt:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span>
   <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=s2>&#34;Nombre del proyecto&#34;</span><span class=p>,</span>
   <span class=s2>&#34;version&#34;</span><span class=o>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
   <span class=s2>&#34;devDependencies&#34;</span><span class=o>:</span> <span class=p>{</span>
     <span class=s2>&#34;grunt&#34;</span><span class=o>:</span> <span class=s2>&#34;^0.4.5&#34;</span>
   <span class=p>}</span>
-<span class=p>}</span></code></pre></div>
-<p>Además, en la raíz, está la carpeta <code>node_modules</code>, donde se irán instalando todos los módulos que tenemos como dependencias para nuestro proyecto. Esto facilita que si nos llevamos el proyecto a otro ordenador, o se lo enviamos a alguien, simplemente situándonos en consola en la raíz del proyecto, podremos ejecutar <code>npm</code> e inmediatamente se instalarán todas las dependencias necesarias para el proyecto. ¿Interesante no?</p>
+<span class=p>}</span>
+</code></pre></div><p>Además, en la raíz, está la carpeta <code>node_modules</code>, donde se irán instalando todos los módulos que tenemos como dependencias para nuestro proyecto. Esto facilita que si nos llevamos el proyecto a otro ordenador, o se lo enviamos a alguien, simplemente situándonos en consola en la raíz del proyecto, podremos ejecutar <code>npm</code> e inmediatamente se instalarán todas las dependencias necesarias para el proyecto. ¿Interesante no?</p>
 <p>Una vez aclarado como instalar grunt, y como funcionan de manera básica las dependencias, procederemos a instalar dos plugins para grunt, <a href=https://github.com/gruntjs/grunt-contrib-sass>grunt-contrib-sass</a>, para compilar Sass y <a href=https://github.com/gruntjs/grunt-contrib-watch>grunt-contrib-watch</a>, que nos permite tener una tarea activa, vigilando que determinados ficheros (en este caso los que tienen extensión <code>.scss</code>) cambien, para, en ese momento, ejecutar una determinada tarea. Ejecutamos, sin importar el orden estos comandos para instalar las nuevas dependencias:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install grunt-contrib-sass --save-dev
-npm install grunt-contrib-watch --save-dev</code></pre></div>
-<p>Ya está todo listo, ahora solo tenemos que crear nuestras tareas grunt. Para ello, en el raíz del proyecto, junto al fichero <code>package.json</code>, crearemos un fichero llamado <code>gruntfile.js</code>, donde definiremos la configuración de las distintas tareas, luego cargaremos los paquetes a usar en las tareas y por último registraremos las tareas. Para nuestro propósito, el fichero quedaría así:</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=c1>// Función contenedora
+npm install grunt-contrib-watch --save-dev
+</code></pre></div><p>Ya está todo listo, ahora solo tenemos que crear nuestras tareas grunt. Para ello, en el raíz del proyecto, junto al fichero <code>package.json</code>, crearemos un fichero llamado <code>gruntfile.js</code>, donde definiremos la configuración de las distintas tareas, luego cargaremos los paquetes a usar en las tareas y por último registraremos las tareas. Para nuestro propósito, el fichero quedaría así:</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=c1>// Función contenedora
 </span><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span> <span class=nx>grunt</span> <span class=p>)</span> <span class=p>{</span>
 
     <span class=c1>// Configuración de las tareas
@@ -119,7 +119,7 @@ npm install grunt-contrib-watch --save-dev</code></pre></div>
         <span class=cm>/*
 </span><span class=cm>         *  Dentro de la tarea sass, tenemos dos subtareas:
 </span><span class=cm>         *  - dist: compila el fichero main.scss siempre
-</span><span class=cm>         *    que se produza un cambio en cualquier scss. El
+</span><span class=cm>         *    que se produzca un cambio en cualquier scss. El
 </span><span class=cm>         *    fichero main.scss, contiene imports del resto de
 </span><span class=cm>         *    ficheros, cada vez que se toca alguno debe de
 </span><span class=cm>         *    actualizarse este.
@@ -163,7 +163,7 @@ npm install grunt-contrib-watch --save-dev</code></pre></div>
             <span class=nx>_file</span> <span class=o>=</span> <span class=p>{};</span>
 
         <span class=cm>/*
-</span><span class=cm>         *  Creamos un pobjeto, para sobreescribir el parámetro file de
+</span><span class=cm>         *  Creamos un objeto, para sobrescribir el parámetro file de
 </span><span class=cm>         *  la subtarea changed.
 </span><span class=cm>         */</span>
         <span class=nx>_file</span><span class=p>[</span> <span class=nx>_destiny</span> <span class=p>]</span> <span class=o>=</span> <span class=nx>filepath</span><span class=p>;</span>
@@ -171,7 +171,7 @@ npm install grunt-contrib-watch --save-dev</code></pre></div>
         <span class=nx>grunt</span><span class=p>.</span><span class=nx>log</span><span class=p>.</span><span class=nx>writeln</span><span class=p>(</span> <span class=s1>&#39;Compilando Sass del fichero cambiado: &#39;</span> <span class=o>+</span> <span class=nx>filepath</span> <span class=p>);</span>
 
         <span class=cm>/*
-</span><span class=cm>         *  Sobreescribimos el parámetro de configuración, para que solo
+</span><span class=cm>         *  Sobrescribimos el parámetro de configuración, para que solo
 </span><span class=cm>         *  se compile el fichero modificado.
 </span><span class=cm>         */</span>
         <span class=nx>grunt</span><span class=p>.</span><span class=nx>config</span><span class=p>(</span> <span class=s1>&#39;sass.changed.files&#39;</span><span class=p>,</span> <span class=nx>_file</span> <span class=p>);</span>
@@ -191,9 +191,9 @@ npm install grunt-contrib-watch --save-dev</code></pre></div>
 </span><span class=cm>     */</span>
     <span class=nx>grunt</span><span class=p>.</span><span class=nx>registerTask</span><span class=p>(</span> <span class=s1>&#39;default&#39;</span><span class=p>,</span> <span class=p>[</span> <span class=s1>&#39;watch&#39;</span> <span class=p>]</span> <span class=p>);</span>
 
-<span class=p>};</span></code></pre></div>
-<p>Ya simplemento hemos de dirigirnos a la consola, y ejecutar <strong><code>grunt</code></strong>, ya que la tarea watch ha sido añadida por defecto, o bien <code>grunt watch</code> y se lanzará el proceso que estará observando los cambios producidos en los ficheros scss de nuestro proyecto, para acto seguido lanzar la tarea.</p>
-<p>De esta manera <strong>nuestros ficheros Sass son compilados automaticamente</strong>, muy útil si nuestro editor de texto no dispone de un plugin que automatice el proceso y queremos evitar tener que estar compilando manualmente desde la consola.</p>
+<span class=p>};</span>
+</code></pre></div><p>Ya simplemente hemos de dirigirnos a la consola, y ejecutar <strong><code>grunt</code></strong>, ya que la tarea watch ha sido añadida por defecto, o bien <code>grunt watch</code> y se lanzará el proceso que estará observando los cambios producidos en los ficheros scss de nuestro proyecto, para acto seguido lanzar la tarea.</p>
+<p>De esta manera <strong>nuestros ficheros Sass son compilados automáticamente</strong>, muy útil si nuestro editor de texto no dispone de un plugin que automatice el proceso y queremos evitar tener que estar compilando manualmente desde la consola.</p>
 <ul>
 <li><a href=http://gruntjs.com/getting-started>Primeros pasos con grunt</a></li>
 <li><a href=http://gruntjs.com/configuring-tasks>Configurando tareas</a></li>

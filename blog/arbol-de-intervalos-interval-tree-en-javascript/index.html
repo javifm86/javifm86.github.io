@@ -59,10 +59,10 @@ Publicado el 9 Sep 2016
 <div class=single-post-content>
 <p>Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para <strong>optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.</strong> El problema es el siguiente, se han de encontrar los nodos que pertenecen a un intervalo dado. En este caso en concreto, se dispone de una lista de canales de televisión, para los cuales disponemos de todos los programas, relativos a varios días de programación.</p>
 <p>En los navegadores de hoy en día, como Google Chrome o cualquier navegador medianamente moderno, <strong>no habría excesivos problemas en iterar por fuerza bruta</strong> hasta encontrar todos los eventos cuya fecha de inicio y fin se encontrase dentro del intervalo (ojo, para nada digo que sea lo más óptimo ni recomendado). Los problemas pueden llegar cuando en el target del proyecto podemos encontrar televisiones Smart TV´s antiguas y/o de gama baja, que vienen <strong>más justas de memoria.</strong></p>
-<p>Además, no es un escenario normal, en mi caso los datos se encuentran en formato binario, y es necesario realizar una descodificación antes de saber si un determinado programa de un canal está dentro del rango horario buscado o no. Para ello podemos elaborar un <a href=https://es.wikipedia.org/wiki/%C3%81rbol_de_intervalo>árbol de intervalos,</a> algo bastante sencillo de hacer en lenguajes como Java, pero más díficil en Javascript. Por suerte, siempre <strong>podemos encontrar librerías y código de terceros</strong> que ya haya resuelto este y otros algoritmos para Javascript, en este caso yo he utilizado ésta librería, <a href=https://github.com/shinout/interval-tree2>interval-tree2.</a></p>
+<p>Además, no es un escenario normal, en mi caso los datos se encuentran en formato binario, y es necesario realizar una descodificación antes de saber si un determinado programa de un canal está dentro del rango horario buscado o no. Para ello podemos elaborar un <a href=https://es.wikipedia.org/wiki/%C3%81rbol_de_intervalo>árbol de intervalos,</a> algo bastante sencillo de hacer en lenguajes como Java, pero más difícil en Javascript. Por suerte, siempre <strong>podemos encontrar librerías y código de terceros</strong> que ya haya resuelto este y otros algoritmos para Javascript, en este caso yo he utilizado ésta librería, <a href=https://github.com/shinout/interval-tree2>interval-tree2.</a></p>
 <p>Su uso es muy sencillo, tal y como describen en su sitio de Github. En nuestro proyecto utilizamos <strong>RequireJS</strong> como cargador de módulos, asi que adapté los distintos ficheros y los convertí en módulos. Si no tienes ni idea de <a href=http://coffeescript.org/>CoffeeScript</a> (lenguaje que compila a Javascript), ni de como compilarlo, puedes instalarte el paquete por npm, que es lo que hice yo y de ahí cogí los ficheros js.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install interval-tree2</code></pre></div>
-<p>En la carpeta <em>dist</em> se encuentran los ficheros necesarios:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install interval-tree2
+</code></pre></div><p>En la carpeta <em>dist</em> se encuentran los ficheros necesarios:</p>
 <ul>
 <li>interval.js</li>
 <li>interval-tree.js</li>
@@ -72,7 +72,7 @@ Publicado el 9 Sep 2016
 <li>util.js</li>
 </ul>
 <p>Yo he cogido todos, los he modificado para usarlos en entorno web, pongo el código al final de la entrada. Siguiendo el ejemplo puesto por el autor. Para crear un árbol y añadir intervalos:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>itree</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>IntervalTree</span><span class=p>(</span><span class=mi>300</span><span class=p>);</span> <span class=c1>// 300 : Centro del árbol
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>itree</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>IntervalTree</span><span class=p>(</span><span class=mi>300</span><span class=p>);</span> <span class=c1>// 300 : Centro del árbol
 </span><span class=c1></span>
 <span class=c1>// &#39;foo&#39; es el identificador del intervalo
 </span><span class=c1></span><span class=nx>itree</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>22</span><span class=p>,</span> <span class=mi>56</span><span class=p>,</span> <span class=s1>&#39;foo&#39;</span><span class=p>);</span>
@@ -80,27 +80,27 @@ Publicado el 9 Sep 2016
 <span class=c1>// &#39;bar&#39; es el identificador del intervalo
 </span><span class=c1></span><span class=nx>itree</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>44</span><span class=p>,</span> <span class=mi>199</span><span class=p>,</span> <span class=s1>&#39;bar&#39;</span><span class=p>);</span>
 
-<span class=c1>// Si no se pone id, se asigna automaticamente uno
-</span><span class=c1></span><span class=nx>itree</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>38</span><span class=p>);</span></code></pre></div>
-<p>Una vez insertados los intervalos, a la hora de buscar disponemos de 2 métodos:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=c1>// Intervalos que coinciden con un punto
+<span class=c1>// Si no se pone id, se asigna automáticamente uno
+</span><span class=c1></span><span class=nx>itree</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>38</span><span class=p>);</span>
+</code></pre></div><p>Una vez insertados los intervalos, a la hora de buscar disponemos de 2 métodos:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=c1>// Intervalos que coinciden con un punto
 </span><span class=c1></span><span class=kd>var</span> <span class=nx>intervals</span> <span class=o>=</span> <span class=nx>itree</span><span class=p>.</span><span class=nx>pointSearch</span><span class=p>(</span><span class=mi>103</span><span class=p>);</span>
 
 <span class=c1>// Intervalos que entran en el rango solicitado
-</span><span class=c1></span><span class=kd>var</span> <span class=nx>intervals2</span> <span class=o>=</span> <span class=nx>itree</span><span class=p>.</span><span class=nx>rangeSearch</span><span class=p>(</span><span class=mi>103</span><span class=p>,</span> <span class=mi>400</span><span class=p>);</span></code></pre></div>
-<p>Una vez obtenidos, se pueden recorrer todos los intervalos:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>intervals2</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>interval</span><span class=p>)</span> <span class=p>{</span>
+</span><span class=c1></span><span class=kd>var</span> <span class=nx>intervals2</span> <span class=o>=</span> <span class=nx>itree</span><span class=p>.</span><span class=nx>rangeSearch</span><span class=p>(</span><span class=mi>103</span><span class=p>,</span> <span class=mi>400</span><span class=p>);</span>
+</code></pre></div><p>Una vez obtenidos, se pueden recorrer todos los intervalos:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>intervals2</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>interval</span><span class=p>)</span> <span class=p>{</span>
 <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>interval</span><span class=p>.</span><span class=nx>start</span><span class=p>);</span> <span class=c1>// Posición de inicio
 </span><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>interval</span><span class=p>.</span><span class=nx>end</span><span class=p>);</span> <span class=c1>// Posición de fin
 </span><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>interval</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span> <span class=c1>// ID
-</span><span class=c1></span><span class=p>});</span></code></pre></div>
-<p>Por último, se puede eliminar un intervalo dado su id:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>itree</span><span class=p>.</span><span class=nx>remove</span><span class=p>(</span><span class=s1>&#39;foo&#39;</span><span class=p>);</span></code></pre></div>
-<p>En mi caso, encontré especialmente útil el id de cada intervalo, pues lo usaba para obtener información de la posición dentro del binario donde poder buscar la información de cada programa. Cada canal de televisión dispone de su árbol, y cada evento tenía un id de este estilo:</p>
+</span><span class=c1></span><span class=p>});</span>
+</code></pre></div><p>Por último, se puede eliminar un intervalo dado su id:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>itree</span><span class=p>.</span><span class=nx>remove</span><span class=p>(</span><span class=s1>&#39;foo&#39;</span><span class=p>);</span>
+</code></pre></div><p>En mi caso, encontré especialmente útil el id de cada intervalo, pues lo usaba para obtener información de la posición dentro del binario donde poder buscar la información de cada programa. Cada canal de televisión dispone de su árbol, y cada evento tenía un id de este estilo:</p>
 <p>dia_deprogramacion|posicion_binario</p>
 <p>Ejemplo: “5|250”</p>
 <p>Aquí está todo el código de seguido, en formato módulos de Javascript, listo para importar y comenzar a usarse en entorno web.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>Node</span> <span class=o>=</span> <span class=p>(</span> <span class=kd>function</span><span class=p>()</span> <span class=p>{</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>Node</span> <span class=o>=</span> <span class=p>(</span> <span class=kd>function</span><span class=p>()</span> <span class=p>{</span>
 
        <span class=cm>/**
 </span><span class=cm>       @constructor
@@ -346,7 +346,7 @@ Publicado el 9 Sep 2016
 </span><span class=cm>       @public
 </span><span class=cm>       @param {Number} start start of the interval to create
 </span><span class=cm>       @param {Number} end   end of the interval to create
-</span><span class=cm>       @param {String|Number} [id] identifier to distinguish intervals. Automatically defiend when not set.
+</span><span class=cm>       @param {String|Number} [id] identifier to distinguish intervals. Automatically defined when not set.
 </span><span class=cm>       @return {Interval}
 </span><span class=cm>        */</span>
 
@@ -837,8 +837,9 @@ Publicado el 9 Sep 2016
 
        <span class=k>return</span> <span class=nx>Point</span><span class=p>;</span>
 
-   <span class=p>}</span> <span class=p>)();</span></code></pre></div>
-<p> </p>
+   <span class=p>}</span> <span class=p>)();</span>
+
+</code></pre></div><p> </p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

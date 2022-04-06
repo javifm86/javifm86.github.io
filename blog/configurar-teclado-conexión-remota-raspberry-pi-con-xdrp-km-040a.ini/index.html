@@ -57,17 +57,17 @@ Publicado el 7 Mar 2017
 </div>
 </div>
 <div class=single-post-content>
-<p>Si te conectas de manera remota a tu raspberry, a través de la aplicación de <strong>Conexión a escritorio remoto de Windows</strong> por ejemplo, tarde o temprano te darás cuentas que si no utilizas un teclado inglés, muchos de los símbolos y teclas están cambiados. Puede convertirse en una odisea el simple hecho de introducir el password de conexión si este tiene algún caracter especial.</p>
-<p>¿Pero cómo es esto posible? Si al configurar mi raspberry me preocupé de cambiar la configuración de teclado a español (o el idioma que sea). Bien esto  sucede por tener el teclado conectado fisicamente, pero si desconectas teclado y ratón y te conectas remotamente, <strong>la raspberry tomará por defecto que utilizas un teclado inglés americano.</strong> Veamos como solucionarlo.</p>
-<p>Si estás conectado en remoto, ten en cuenta que <strong>te deberás conectar fisicamente (con un teclado)</strong> a la raspberry, de lo contrario los comandos necesarios para iniciar la configuración no funcionarán. Una vez conectado físicamente, veamos paso a paso como proceder:</p>
+<p>Si te conectas de manera remota a tu raspberry, a través de la aplicación de <strong>Conexión a escritorio remoto de Windows</strong> por ejemplo, tarde o temprano te darás cuentas que si no utilizas un teclado inglés, muchos de los símbolos y teclas están cambiados. Puede convertirse en una odisea el simple hecho de introducir el password de conexión si este tiene algún carácter especial.</p>
+<p>¿Pero cómo es esto posible? Si al configurar mi raspberry me preocupé de cambiar la configuración de teclado a español (o el idioma que sea). Bien esto  sucede por tener el teclado conectado físicamente, pero si desconectas teclado y ratón y te conectas remotamente, <strong>la raspberry tomará por defecto que utilizas un teclado inglés americano.</strong> Veamos como solucionarlo.</p>
+<p>Si estás conectado en remoto, ten en cuenta que <strong>te deberás conectar físicamente (con un teclado)</strong> a la raspberry, de lo contrario los comandos necesarios para iniciar la configuración no funcionarán. Una vez conectado físicamente, veamos paso a paso como proceder:</p>
 <ol>
-<li>Ejecuta el siguiente comando, con el cual indicamos que queremos usar un teclado español de españa.</li>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>setxkbmap -layout <span class=s1>&#39;es,es&#39;</span> </code></pre></div>
+<li>Ejecuta el siguiente comando, con el cual indicamos que queremos usar un teclado español de España.</li>
+```bashsetxkbmap -layout 'es,es' ```
 <li>Navega al directorio _/etc/xrdp_, haz `ls` y comprueba que no haya un fichero **km-040a.ini**, que es el correspondiente al teclado español. Si lo hay, no está de más de hacer un backup por si acaso. Lo normal es que no lo haya, asi que a través del siguiente comando lo crearemos.</li>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>xrdp-genkeymap /etc/xrdp/km-040a.ini </code></pre></div>
+```bashxrdp-genkeymap /etc/xrdp/km-040a.ini ```
 <li>Este es el fichero que se encarga de establecer los mapeos a las teclas. Crearemos un backup de él antes de modificarlo. Desde la consola, con sudo ejecutaremos:</li>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo cp km-040a.ini km-040a.ini.backup </code></pre></div>
-<li>Con esto tendríamos ya funcionando el teclado, pero no del todo. Seguramente muchos símbolos ya se hayan corregido, pero combinaciones con la tecla _AltGr_, y las flechas arriba, abajo, derecha, izquierda puede que no funcionen. Si este es el caso, hay que editar el fichero **km-040a.ini** y terminar de mapear todo correctamente. Por suerte <a href=https://github.com/javifm86/km-041a.ini/blob/master/km-040a.ini>pude encontrar por internet un fichero que funcionaba bien</a> con mi teclado, y simplemente lo sobreescribí.</li>
+```bashsudo cp km-040a.ini km-040a.ini.backup ```
+<li>Con esto tendríamos ya funcionando el teclado, pero no del todo. Seguramente muchos símbolos ya se hayan corregido, pero combinaciones con la tecla _AltGr_, y las flechas arriba, abajo, derecha, izquierda puede que no funcionen. Si este es el caso, hay que editar el fichero **km-040a.ini** y terminar de mapear todo correctamente. Por suerte <a href=https://github.com/javifm86/km-041a.ini/blob/master/km-040a.ini>pude encontrar por internet un fichero que funcionaba bien</a> con mi teclado, y simplemente lo sobrescribí.</li>
 </ol>
 <p>Si estás buscando algún otro fichero de configuración para otro teclado, puedes probar a ver si lo encuentras desde <a href=https://github.com/neutrinolabs/xrdp/tree/master/instfiles>este repositorio</a>. Si no está, deberás averiguar el nombre de fichero para tu teclado en función del país, y seguramente buscando en Google alguien haya encontrado la solución.</p>
 <p>Yo pude solucionarlo gracias a dos artículos en inglés:</p>

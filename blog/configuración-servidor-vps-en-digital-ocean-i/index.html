@@ -59,31 +59,31 @@ Publicado el 1 May 2018
 <div class=single-post-content>
 <p>Me he decidido a contratar un VPS en Digital Ocean, a ver si de una vez por todas en mi escaso tiempo libre, puedo ir desarrollando un portfolio y aprendiendo cosas nuevas. Vamos a ver un listado de la configuración de un VPS desde cero, partiendo de una instalación limpia de Ubuntu 16.04. Vayamos por partes:</p>
 <h2 id=configuración-inicial-del-servidor>Configuración inicial del servidor</h2>
-<p>En este apartado hablaremos de la configuración incial básica para que nuestro VPS sea más seguro. Lo primero de todo es conectarnos a nuestro servidor, para ello utilizaremos ssh para establecer conexión remota por consola, con el usuario root, hasta que creemos otro usuario. Podemos conectarnos desde la consola de nuestro sistema operativo (Mac, Linux), o utilizar alguna utilidad como <a href=http://www.putty.org/>Putty</a>, que es un cliente SSH gratuito y archiconocido para Windows. Para conectarnos deberemos saber la dirección IP pública de nuestro servidor y ejecutar el siguiente comando:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>ssh root@your_server_ip</code></pre></div>
-<p>Al ser la primera conexión, veremos un mensaje informándonos que no se puede asegurar la autenticidad de la conexión, escribiremos yes para establecer conexión:</p>
+<p>En este apartado hablaremos de la configuración inicial básica para que nuestro VPS sea más seguro. Lo primero de todo es conectarnos a nuestro servidor, para ello utilizaremos ssh para establecer conexión remota por consola, con el usuario root, hasta que creemos otro usuario. Podemos conectarnos desde la consola de nuestro sistema operativo (Mac, Linux), o utilizar alguna utilidad como <a href=http://www.putty.org/>Putty</a>, que es un cliente SSH gratuito y archiconocido para Windows. Para conectarnos deberemos saber la dirección IP pública de nuestro servidor y ejecutar el siguiente comando:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>ssh root@your_server_ip
+</code></pre></div><p>Al ser la primera conexión, veremos un mensaje informándonos que no se puede asegurar la autenticidad de la conexión, escribiremos yes para establecer conexión:</p>
 <pre>The authenticity of host '1XX.XXX.XXX.XXX' can't be established.
 ECDSA key fingerprint is SHA256:71mD5o12895hg7tu85lPFDY1khktRcuPnsfCQFrTaK0.
 Are you sure you want to continue connecting (yes/no)?</pre>
 <p>Y se nos solicitará cambiar la contraseña root por seguridad. El usuario root tiene todos los privilegios y no es una buena idea hacer un uso regular de él ya que por accidente podemos ejecutar acciones destructivas e irreversibles. Por este motivo, el siguiente paso será crear otro usuario para conectarnos normalmente con él, para ello ejecutamos el siguiente comando y contestamos unas sencillas preguntas:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>adduser mike</code></pre></div>
-<p>Tras crear nuestro nuevo usuario, le otorgaremos permisos de superusuario para poder ejecutar comandos con privilegios de root anteponiendo la palabra sudo.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>usermod -aG sudo mike</code></pre></div>
-<p>Abriremos una nueva terminal, y probaremos a conectar con nuestro nuevo usuario para verificar que podemos hacer login correctamente:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>ssh mike@your_server_ip</code></pre></div>
-<p>Todo servidor web que se precie debe contar con un Firewall, hay muchas opciones, una de las más sencillas y que viene ya incluida en Ubuntu es UFW. Con UFW podremos controlar qué servicios tienen acceso a la conexión. Para ver la lista de aplicaciones registradas en el firewall, ejecutamos el siguiente comando:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw app list</code></pre></div>
-<p>Obteniendo como resultado:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>adduser mike
+</code></pre></div><p>Tras crear nuestro nuevo usuario, le otorgaremos permisos de super usuario para poder ejecutar comandos con privilegios de root anteponiendo la palabra sudo.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>usermod -aG sudo mike
+</code></pre></div><p>Abriremos una nueva terminal, y probaremos a conectar con nuestro nuevo usuario para verificar que podemos hacer login correctamente:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>ssh mike@your_server_ip
+</code></pre></div><p>Todo servidor web que se precie debe contar con un Firewall, hay muchas opciones, una de las más sencillas y que viene ya incluida en Ubuntu es UFW. Con UFW podremos controlar qué servicios tienen acceso a la conexión. Para ver la lista de aplicaciones registradas en el firewall, ejecutamos el siguiente comando:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw app list
+</code></pre></div><p>Obteniendo como resultado:</p>
 <pre>
 Available applications:
   OpenSSH
 </pre>
 <p>Es muy importante que permitamos el acceso a OpenSSH, de lo contrario la próxima vez que vayamos a conectarnos no podremos, algo que no debe ocurrir. Para ello añadimos OpenSSH:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw allow OpenSSH</code></pre></div>
-<p>Y sólo después de esto activaremos el firewall:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw enable</code></pre></div>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw allow OpenSSH
+</code></pre></div><p>Y sólo después de esto activaremos el firewall:</p>
+<p><code>bashsudo ufw enable</code></p>
 <p>En cualquier momento podemos comprobar los aplicaciones que hemos permitido o denegado a través del comando:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw status</code></pre></div>
+<p><code>bashsudo ufw status</code></p>
 <pre>
 Status: active
 
@@ -92,17 +92,17 @@ To                         Action      From
 OpenSSH                    ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 </pre>
-<p>A partir de ahora será necesario que en futuras aplicaciones y/o servicios instalados, permitamos que realice conexiones añadiendolas a ufw.</p>
+<p>A partir de ahora será necesario que en futuras aplicaciones y/o servicios instalados, permitamos que realice conexiones añadiéndolas a ufw.</p>
 <h2 id=instalación-de-lemp>Instalación de LEMP</h2>
 <p>LEMP son las siglas que indican un servidor con sistema operativo Linux, Nginx como servidor web, PHP como procesador dinámico y MySQL como base de datos para el backend. Algo muy común por ejemplo a la hora de tener una página en WordPress. Vamos a ver como instalar en nuestro VPS estos paquetes:</p>
 <h2 id=instalar-nginx>Instalar Nginx</h2>
 <p>Nginx es un servidor web de código abierto, uno de los más usados en el mundo junto con Apache. Cada uno tiene sus pros y sus contras, yo he optado por Nginx. Antes de nada, actualizaremos el repositorio apt de nuestro servidor, y posteriormente instalaremos nginx:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo apt-get update
-sudo apt-get install nginx</code></pre></div>
-<p>Una vez instalado se inicia el servicio automaticamente, acto seguido deberemos registrar nginx en ufw:</p>
+sudo apt-get install nginx
+</code></pre></div><p>Una vez instalado se inicia el servicio automáticamente, acto seguido deberemos registrar nginx en ufw:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ufw allow <span class=s1>&#39;Nginx HTTP&#39;</span>
-sudo ufw status </code></pre></div>
-<pre>Status: active
+sudo ufw status 
+</code></pre></div><pre>Status: active
 
 To                         Action      From
 --                         ------      ----
@@ -116,21 +116,21 @@ Nginx HTTP (v6)            ALLOW       Anywhere (v6)
 ,/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/img/nginx_default_huee9d45cb35db37ccdb89666a8a7566a8_10811_500x0_resize_box_3.png 500w" src=/blog/configuraci%C3%B3n-servidor-vps-en-digital-ocean-i/img/nginx_default.png width=577 height=212 alt="Página de bienvenida de Nginx">
 <h2 id=instalar-mysql>Instalar MySQL</h2>
 <p>Para instalarlo simplemente ejecutamos:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo apt-get install mysql-server</code></pre></div>
-<p>Nos pedirá una contraseña para el usuario root. Una vez instalado es altamente recomendable ejecutar un script de seguridad para eliminar configuraciones inseguras, usuarios de ejemplo y bases de datos de prueba.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo mysql_secure_installation</code></pre></div>
-<p>Tan sólo hay que seguir el asistente introduciendo el carácter <strong><code>y</code></strong> para contestar que sí.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo apt-get install mysql-server
+</code></pre></div><p>Nos pedirá una contraseña para el usuario root. Una vez instalado es altamente recomendable ejecutar un script de seguridad para eliminar configuraciones inseguras, usuarios de ejemplo y bases de datos de prueba.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo mysql_secure_installation
+</code></pre></div><p>Tan sólo hay que seguir el asistente introduciendo el carácter <strong><code>y</code></strong> para contestar que sí.</p>
 <h2 id=instalar-php>Instalar PHP</h2>
 <p>Nginx por defecto no cuenta con procesamiento para PHP. Para ello deberemos instalar <code>php-fpm</code>. Tecleamos en la terminal:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo apt-get install php-fpm php-mysql</code></pre></div>
-<p>A continuación editaremos la configuración de PHP para hacerla más segura:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo nano /etc/php/7.0/fpm/php.ini</code></pre></div>
-<p>Pulsando F6, buscaremos la siguiente cadena: “cgi.fix_pathinfo”. Pondremos su valor en 0 para desactivarlo, ya que con esta configuración activada podría permitirse a un usuario malintencionado ejecutar scripts a los que normalmente no debería tener acceso. Cerramos, guardamos y reiniciamos el servicio:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo systemctl restart php7.0-fpm</code></pre></div>
-<h2 id=habilitar-php-en-nginx>Habilitar PHP en Nginx</h2>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo apt-get install php-fpm php-mysql
+</code></pre></div><p>A continuación editaremos la configuración de PHP para hacerla más segura:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo nano /etc/php/7.0/fpm/php.ini
+</code></pre></div><p>Pulsando F6, buscaremos la siguiente cadena: “cgi.fix_pathinfo”. Pondremos su valor en 0 para desactivarlo, ya que con esta configuración activada podría permitirse a un usuario malintencionado ejecutar scripts a los que normalmente no debería tener acceso. Cerramos, guardamos y reiniciamos el servicio:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo systemctl restart php7.0-fpm
+</code></pre></div><h2 id=habilitar-php-en-nginx>Habilitar PHP en Nginx</h2>
 <p>Con Nginx podemos tener distintas configuraciones de servidor para distintos sitios (dominios, subdominios…). Inicialmente solo tendremos un sitio, llamado default. Vamos a habilitar PHP editando el fichero default, además de algunas configuraciones de seguridad:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo nano /etc/nginx/sites-available/default</code></pre></div>
-<p>Añadiremos <code>index.php</code> como posible entrada por defecto de un directorio, podremos modificar <code>server_name</code>, para poder acceder a través de dominio en lugar de nuestra IP pública, que es la que vendrá por defecto. Habilitaremos PHP con las líneas marcadas en rojo y evitaremos el procesamiento de archivos <code>.htaccess</code> por motivos de seguridad.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo nano /etc/nginx/sites-available/default
+</code></pre></div><p>Añadiremos <code>index.php</code> como posible entrada por defecto de un directorio, podremos modificar <code>server_name</code>, para poder acceder a través de dominio en lugar de nuestra IP pública, que es la que vendrá por defecto. Habilitaremos PHP con las líneas marcadas en rojo y evitaremos el procesamiento de archivos <code>.htaccess</code> por motivos de seguridad.</p>
 <pre>server {
         listen 80 default_server;
         listen [::]:80 default_server;
@@ -162,16 +162,15 @@ Nginx HTTP (v6)            ALLOW       Anywhere (v6)
         }</strong>
 }
 </pre>
-<p>Cerramos, guardamos el fichero y haremos un test para verificar que no hay ningún error de sintáxis en la configuración de Nginx:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo nginx -t</code></pre></div>
+<p>Cerramos, guardamos el fichero y haremos un test para verificar que no hay ningún error de sintaxis en la configuración de Nginx:</p>
+<p><code>bashsudo nginx -t</code></p>
 <p>Si no hay errores, reiniciamos el servicio para que pueda aplicarse la nueva configuración:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo systemctl reload nginx</code></pre></div>
+<p><code>bashsudo systemctl reload nginx</code></p>
 <p>Para finalizar, iremos a la carpeta /var/www/html y crearemos un fichero index.php, con el siguiente contenido:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
 <span class=nx>phpinfo</span><span class=p>();</span>
 <span class=cp>?&gt;</span><span class=err>
-</span></code></pre></div>
-<p>Ahora simplemente accediendo a nuestra dirección IP pública o dominio, deberemos ver una página con toda la configuración de PHP. Cuando hayamos verificado que está funcionando, borraremos el fichero y ya tendremos nuestro servidor LEMP con la configuración inicial para poder hacer cosas.</p>
+</span></code></pre></div><p>Ahora simplemente accediendo a nuestra dirección IP pública o dominio, deberemos ver una página con toda la configuración de PHP. Cuando hayamos verificado que está funcionando, borraremos el fichero y ya tendremos nuestro servidor LEMP con la configuración inicial para poder hacer cosas.</p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

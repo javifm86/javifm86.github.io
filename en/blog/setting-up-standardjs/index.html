@@ -72,11 +72,11 @@ formatter). Here are some of the advantages:</p>
 <h2 id=setting-up-standardjs>Setting up StandardJS</h2>
 <p>The first is step is installing the package. You can do it globally or locally in a project. I always try using the last
 one in order to have under control all the dependencies.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm install standard --save-dev</code></pre></div>
-<p>You can fix at any moment all the problems founds automatically (some errors can&rsquo;t be auto-fixed, you must fix it on
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install standard --save-dev
+</code></pre></div><p>You can fix at any moment all the problems founds automatically (some errors can&rsquo;t be auto-fixed, you must fix it on
 your own) with:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>standard --fix</code></pre></div>
-<p>You can create a npm script to run the command, but in my opinion integrating into the editor is much better.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>standard --fix
+</code></pre></div><p>You can create a npm script to run the command, but in my opinion integrating into the editor is much better.</p>
 <h2 id=autoformat-in-vscode>Autoformat in VSCode</h2>
 <p>I have used StandardJS for the first time in a job mate project, and at the beginning it was driving me crazy. I had
 <strong>Prettier</strong> as default formatter and when I was saving a file I had different kind of formats because Prettier was
@@ -111,7 +111,7 @@ enabling auto-fix, but it&rsquo;s necessary adding the highlighted lines to make
 </span><span class=lnt>18
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-JSON data-lang=JSON><span class=p>{</span>
+<pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
   <span class=nt>&#34;standard.enable&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
   <span class=nt>&#34;standard.run&#34;</span><span class=p>:</span> <span class=s2>&#34;onSave&#34;</span><span class=p>,</span>
   <span class=nt>&#34;standard.autoFixOnSave&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
@@ -128,10 +128,10 @@ enabling auto-fix, but it&rsquo;s necessary adding the highlighted lines to make
 </span>  <span class=nt>&#34;[javascript]&#34;</span><span class=p>:</span> <span class=p>{</span>
     <span class=nt>&#34;editor.defaultFormatter&#34;</span><span class=p>:</span> <span class=kc>null</span>
   <span class=p>}</span>
-<span class=p>}</span></code></pre></td></tr></table>
+<span class=p>}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Let&rsquo;s check that everything is working as expected. We just have to open a Javascript file and save it. File must be
+</div><p>Let&rsquo;s check that everything is working as expected. We just have to open a Javascript file and save it. File must be
 auto-formatted and all the error should disappear.</p>
 <p>As conclusion, I prefer Prettier for formatting because I can use the same tool as well for HTML and CSS. I can define and apply rules
 directly with ESLint, but StandardJS is a superb tool that can avoid long discussions about opinionated things.</p>

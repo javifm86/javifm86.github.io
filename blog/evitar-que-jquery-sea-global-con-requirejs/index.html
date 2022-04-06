@@ -59,9 +59,9 @@ Publicado el 3 Nov 2015
 </div>
 <div class=single-post-content>
 <p>El popular framework de Javascript <a href=https://jquery.com/ title=jQuery>jQuery</a>, es utilizado ampliamente en el mundo del desarrollo web. Por defecto se instancia en la variable global <code>$</code>, además de <code>jQuery</code>. Esto puede entrar en conflicto con otras librerías que hayan decidido utilizar el $ también. Si estás utilizando el popular cargador de módulos <a href=http://requirejs.org/ title=RequireJS>RequireJS</a>, hay una manera muy fácil para <strong>evitar que jQuery se instancie globalmente.</strong></p>
-<p>Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que <strong>Samsung incluye internamente su propia versión de jQuery</strong>, sobreescribiendo la que añadas. De manera que haciendo uso del método <code>noConflict</code> de jQuery, junto con la opción <code>map</code> de RequireJS, podemos hacer que se guarde la referencia a jQuery, y que solo tengan acceso a ella los módulos que declaren nuestra versión de jQuery como dependencia.</p>
+<p>Por ejemplo, desarrollando para las televisiones SmartTV de Samsung, me encontré con ese problema, ya que <strong>Samsung incluye internamente su propia versión de jQuery</strong>, sobrescribiendo la que añadas. De manera que haciendo uso del método <code>noConflict</code> de jQuery, junto con la opción <code>map</code> de RequireJS, podemos hacer que se guarde la referencia a jQuery, y que solo tengan acceso a ella los módulos que declaren nuestra versión de jQuery como dependencia.</p>
 <p>Veamos como quedaría nuestra configuración de RequireJS:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>require</span><span class=p>.</span><span class=nx>config</span><span class=p>(</span> <span class=p>{</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>require</span><span class=p>.</span><span class=nx>config</span><span class=p>(</span> <span class=p>{</span>
 
     <span class=nx>baseUrl</span><span class=o>:</span> <span class=s2>&#34;./&#34;</span><span class=p>,</span>
 
@@ -79,14 +79,14 @@ Publicado el 3 Nov 2015
         <span class=p>}</span>
     <span class=p>}</span>
 
-<span class=p>}</span> <span class=p>);</span></code></pre></div>
-<p>Y luego simplemente añadiríamos el siguiente código en el módulo <strong>noConflict</strong>:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>define</span><span class=p>(</span> <span class=p>[</span> <span class=s2>&#34;jquery&#34;</span> <span class=p>],</span> <span class=kd>function</span><span class=p>(</span> <span class=nx>$</span> <span class=p>)</span> <span class=p>{</span>
+<span class=p>}</span> <span class=p>);</span>
+</code></pre></div><p>Y luego simplemente añadiríamos el siguiente código en el módulo <strong>noConflict</strong>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>define</span><span class=p>(</span> <span class=p>[</span> <span class=s2>&#34;jquery&#34;</span> <span class=p>],</span> <span class=kd>function</span><span class=p>(</span> <span class=nx>$</span> <span class=p>)</span> <span class=p>{</span>
     <span class=k>return</span> <span class=nx>$</span><span class=p>.</span><span class=nx>noConflict</span><span class=p>(</span> <span class=kc>true</span> <span class=p>);</span>
-<span class=p>}</span> <span class=p>);</span></code></pre></div>
-<p>Pasándole true al método noConflict de jQuery, además de eliminar jQuery de la variable global <code>$</code>, se elimina además de la global <code>jQuery</code>. De esta manera, podríamos tener varias versiones de jQuery de manera privada, o una pública y otra solo usada como dependencia en los módulos que se necesite.</p>
+<span class=p>}</span> <span class=p>);</span>
+</code></pre></div><p>Pasándole true al método noConflict de jQuery, además de eliminar jQuery de la variable global <code>$</code>, se elimina además de la global <code>jQuery</code>. De esta manera, podríamos tener varias versiones de jQuery de manera privada, o una pública y otra solo usada como dependencia en los módulos que se necesite.</p>
 <p>Para usarlo, se require jQuery como una dependencia, y se le asigna a la variable que solo estará disponible en ese módulo el nombre que queramos:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>define</span><span class=p>(</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>define</span><span class=p>(</span>
 
     <span class=c1>// Módulos requeridos
 </span><span class=c1></span>    <span class=p>[</span> <span class=s2>&#34;jquery&#34;</span><span class=p>,</span> <span class=p>],</span>
@@ -95,8 +95,8 @@ Publicado el 3 Nov 2015
 
     <span class=p>}</span>
     
-<span class=p>);</span></code></pre></div>
-<p>Si aún no conoces RequireJS, o no utilizas un cargador de módulos en tus desarrollos Javascript, te recomiendo que aprendas, ya que ayuda a mantener separadas las distintas funcionalidades de una aplicación, evitando crear un monstruo que a la larga sea difícil de mantener.</p>
+<span class=p>);</span>
+</code></pre></div><p>Si aún no conoces RequireJS, o no utilizas un cargador de módulos en tus desarrollos Javascript, te recomiendo que aprendas, ya que ayuda a mantener separadas las distintas funcionalidades de una aplicación, evitando crear un monstruo que a la larga sea difícil de mantener.</p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

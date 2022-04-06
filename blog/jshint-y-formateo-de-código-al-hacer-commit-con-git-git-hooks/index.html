@@ -59,15 +59,15 @@ Publicado el 2 Jul 2015
 </div>
 </div>
 <div class=single-post-content>
-<p>A la hora de trabajar en equipo, tener una guía de estilos definida es de vital importancia. Estoy trabajando en un proyecto en el cual por diversos motivos que no vienen al caso, se podría mejorar bastante en ese aspecto, y mediante el uso de <a href=https://nodejs.org/>Node.js</a> disponemos de herramientas que nos pueden ayudar a tener en un equipo un código más uniforme y estandar.</p>
+<p>A la hora de trabajar en equipo, tener una guía de estilos definida es de vital importancia. Estoy trabajando en un proyecto en el cual por diversos motivos que no vienen al caso, se podría mejorar bastante en ese aspecto, y mediante el uso de <a href=https://nodejs.org/>Node.js</a> disponemos de herramientas que nos pueden ayudar a tener en un equipo un código más uniforme y estándar.</p>
 <p>Para nuestro proyecto he elegido un linter, en este caso <a href=https://www.npmjs.com/package/jshint>JSHint</a>, y un formateador para el código Javascript, que representa el grueso de los desarrollos de nuestra aplicación, <a href=https://www.npmjs.com/package/js-beautify>js-beautify</a>. Podría incorporarse además una tercera herramienta, muy potente a la hora de definir exactamente los estilos que deseamos aplicar de manera muy minuciosa, <a href=https://www.npmjs.com/package/jscs>JSCS</a>, que se ocupa de muchas opciones de estilo que actualmente mantiene JSHint, pero que pronto <strong>pasarán a estar deprecadas.</strong>  (Actualización: Parece que <a href=http://eslint.org/>ESLint</a> es una alternativa equilibrada a JSHint y JSCS, tengo que probarlo más a fondo). Por el momento me limitaré a las 2 mencionadas.</p>
 <p>Como control de versiones, utilizamos <a href=https://git-scm.com/>Git</a>, y aunque la consola es muy completa, en el día a día para según que tareas, es mucho mejor a la hora de seguir un historial de commits, ver cambios y hacer mergeos una herramienta gráfica como <a href=https://www.sourcetreeapp.com/>SourceTree</a>, que es la que uso y recomiendo.</p>
 <p>Para estandarizar nuestro código, he decidido crear una serie de reglas a la hora de validar el código Javascript, y una vez validado, el archivo deberá ser formateado de acuerdo a otra serie de reglas, de manera que en el repositorio siempre dispongamos de archivos libres de errores, con un mismo formato y siguiendo el mismo estilo.</p>
 <p>La idea es simple, quiero que cada vez que alguien vaya a hacer commit de sus cambios al repositorio, se validen los ficheros Javascript de acuerdo a unas reglas comunes de JSHint, y si el archivo no contiene errores será formateado automáticamente antes del commit al repositorio. La idea es hacerlo automático, así nadie tiene ninguna excusa. Veamos primero como instalar a nivel de proyecto las 2 herramientas.</p>
 <p>En primer lugar vamos a <a href=http://jshint.com/install/ target=_blank>instalar JSHint.</a> Podemos instalarlo a nivel global, o a nivel de proyecto, me quedaré con esta última opción, de esa manera podemos disponer en cada proyecto de una configuración especifica de JSHint con las reglas que deseemos aplicar a cada proyecto. Iremos a la consola, y estando en el directorio raíz de nuestro proyecto, ejecutaremos el siguiente comando:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install --save-dev jshint</code></pre></div>
-<p>Se creará un directorio llamado <code>node_modules</code> donde se instalará JSHint para nuestro proyecto específico. A la hora de definir las reglas para el proyecto, lo mejor será tener un fichero <code>.jshintrc</code>, que contenga todas las reglas y esté también en el repositorio, para que si se modifica alguna cosa, todos se actualicen al hacer pull. Hay muchas opciones, están todas explicadas en la <a href=http://jshint.com/docs/options/ target=_blank>documentación oficial</a>, pongo como ejemplo el archivo que he creado para nuestro proyecto:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=p>{</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install --save-dev jshint
+</code></pre></div><p>Se creará un directorio llamado <code>node_modules</code> donde se instalará JSHint para nuestro proyecto específico. A la hora de definir las reglas para el proyecto, lo mejor será tener un fichero <code>.jshintrc</code>, que contenga todas las reglas y esté también en el repositorio, para que si se modifica alguna cosa, todos se actualicen al hacer pull. Hay muchas opciones, están todas explicadas en la <a href=http://jshint.com/docs/options/ target=_blank>documentación oficial</a>, pongo como ejemplo el archivo que he creado para nuestro proyecto:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span>
     <span class=s2>&#34;evil&#34;</span>      <span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
     <span class=s2>&#34;regexdash&#34;</span> <span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
     <span class=s2>&#34;browser&#34;</span>   <span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
@@ -88,11 +88,11 @@ Publicado el 2 Jul 2015
         <span class=s2>&#34;jQuery&#34;</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
         <span class=s2>&#34;console&#34;</span><span class=o>:</span> <span class=kc>true</span>
     <span class=p>}</span>
-<span class=p>}</span></code></pre></div>
-<p>A continuación instalaremos js-beautify, también localmente en el proyecto, desde la consola en la raíz del proyecto:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install --save-dev js-beautify</code></pre></div>
-<p>Igual que en el caso anterior, crearemos un fichero <code>.beautifyrc</code> con las opciones que queremos que se utilicen a nivel de proyecto para formatear los ficheros javascript. Este es el nuestro:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=p>{</span>
+<span class=p>}</span>
+</code></pre></div><p>A continuación instalaremos js-beautify, también localmente en el proyecto, desde la consola en la raíz del proyecto:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install --save-dev js-beautify
+</code></pre></div><p>Igual que en el caso anterior, crearemos un fichero <code>.beautifyrc</code> con las opciones que queremos que se utilicen a nivel de proyecto para formatear los ficheros javascript. Este es el nuestro:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span>
     <span class=s2>&#34;indent_size&#34;</span><span class=o>:</span> <span class=mi>4</span><span class=p>,</span>
     <span class=s2>&#34;indent_char&#34;</span><span class=o>:</span> <span class=s2>&#34; &#34;</span><span class=p>,</span>
     <span class=s2>&#34;indent_level&#34;</span><span class=o>:</span> <span class=mi>0</span><span class=p>,</span>
@@ -112,8 +112,8 @@ Publicado el 2 Jul 2015
     <span class=s2>&#34;wrap_attributes&#34;</span><span class=o>:</span> <span class=s2>&#34;auto&#34;</span><span class=p>,</span>
     <span class=s2>&#34;wrap_attributes_indent_size&#34;</span><span class=o>:</span> <span class=mi>4</span><span class=p>,</span>
     <span class=s2>&#34;end_with_newline&#34;</span><span class=o>:</span> <span class=kc>true</span>
-<span class=p>}</span></code></pre></div>
-<p>Puedes <a href=https://www.npmjs.com/package/js-beautify target=_blank>consultar el listado</a> de opciones para añadir/modificar según tus preferencias. Ya está todo listo, ahora simplemente hemos de hacer que automáticamente <strong>al hacer commit, se pase el JSHint a todos los ficheros javascript automáticamente,</strong> y si detecta algún error en alguno de los archivos, no será posible hacer commit, ya que git dará error hasta que no se solucionen. ¿Cómo puede automatizarse este proceso?</p>
+<span class=p>}</span>
+</code></pre></div><p>Puedes <a href=https://www.npmjs.com/package/js-beautify target=_blank>consultar el listado</a> de opciones para añadir/modificar según tus preferencias. Ya está todo listo, ahora simplemente hemos de hacer que automáticamente <strong>al hacer commit, se pase el JSHint a todos los ficheros javascript automáticamente,</strong> y si detecta algún error en alguno de los archivos, no será posible hacer commit, ya que git dará error hasta que no se solucionen. ¿Cómo puede automatizarse este proceso?</p>
 <p>A través de lo que se llaman <a href=https://git-scm.com/book/es/v2/Customizing-Git-Git-Hooks target=_blank>hooks</a>, que no son más que scripts que lanza git automáticamente cuando determinadas acciones ocurren. Puedes ir al directorio .git de tu proyecto, y allí encontrarás una carpeta <code>hooks</code> en la que hay scripts de ejemplo con la extensión <code>.sample</code>. El que nos interesa para este ejemplo, es el script ejecutado antes de hacer commit, que realizará tareas en el momento que hagamos commit. Para ello simplemente crearemos un archivo llamado <code>pre-commit</code>, sin extensión, o bien editaremos el archivo <code>pre-commit.sample</code> y modificaremos su nombre. El script que he creado en cuestión es el siguiente:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/sh
 </span><span class=cp></span>
@@ -177,16 +177,16 @@ Publicado el 2 Jul 2015
 <span class=k>else</span>
     <span class=nb>echo</span> <span class=s2>&#34;Validación y formateado satisfactorios.&#34;</span>
     <span class=nb>exit</span> <span class=m>0</span>
-<span class=k>fi</span></code></pre></div>
-<p>En primer lugar filtraremos los archivos que se están comiteando, y nos quedaremos solo con <strong>los que tienen extensión .js.</strong> Además, en el raíz del repositorio, en un fichero llamado <code>exclude-hook.txt</code>, añadiremos patrones, que si son encontrados en las rutas del fichero, hará que se excluya al fichero del proceso. Ficheros que por ejemplo no queremos que sean validados y formateados, librerías externas de terceros, como Jasmine, jQuery, archivos minimizados, etc. Un ejemplo de fichero:</p>
+<span class=k>fi</span>
+</code></pre></div><p>En primer lugar filtraremos los archivos que se están commiteando, y nos quedaremos solo con <strong>los que tienen extensión .js.</strong> Además, en el raíz del repositorio, en un fichero llamado <code>exclude-hook.txt</code>, añadiremos patrones, que si son encontrados en las rutas del fichero, hará que se excluya al fichero del proceso. Ficheros que por ejemplo no queremos que sean validados y formateados, librerías externas de terceros, como Jasmine, jQuery, archivos minimizados, etc. Un ejemplo de fichero:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text>.min.js
 jasmine
-source/lib</code></pre></div>
-<p>De esta manera ignoraremos todo lo que esté en <code>source/lib</code>, contenga la palabra <code>jasmine</code> o contenga los caracteres <code>.min.js</code>.</p>
+source/lib
+</code></pre></div><p>De esta manera ignoraremos todo lo que esté en <code>source/lib</code>, contenga la palabra <code>jasmine</code> o contenga los caracteres <code>.min.js</code>.</p>
 <p>Iremos pasando fichero por fichero JSHint, si hay algún error se mostrará en la consola, si no hay ningún error en el fichero este se formatea automáticamente, y se hace git add para añadir los cambios hechos en el fichero. Una vez validados todos, comprobaremos si hubo algún error en alguno, si lo hubo saldremos con código 1, que impide que se haga el commit. En caso de que todo esté bien, se sale con código 0 y nuestro commit será enviado al repositorio correctamente.</p>
 <p>Debo decir que formatear el código Javascript no es para lo que está pensado el hook <code>pre-commit</code>, en él, siendo estrictos, solo deberían llevarse a cabo tareas que no modificasen el código, como son validar el código, ejecución de pruebas unitarias, etc. Por ejemplo este script no funcionaría correctamente, en un caso más avanzado, como sería commitear sólo una parte de un fichero.</p>
 <p>Lo ideal sería que cada desarrollador tuviese configurado su editor para formatear el código, pero bueno, en este caso, por el bien de que todos los ficheros tengan la misma guía de estilos, este aspecto representa un mal menor.</p>
-<p>Un script de mucha utilidad, que evitará que subamos archivos con errores de sintáxis o de estilo. Puedes ampliar información sobre hooks en la <a href=http://git-scm.com/docs/githooks>página de Git</a>, o en <a href=http://githooks.com/>Git Hooks</a>.</p>
+<p>Un script de mucha utilidad, que evitará que subamos archivos con errores de sintaxis o de estilo. Puedes ampliar información sobre hooks en la <a href=http://git-scm.com/docs/githooks>página de Git</a>, o en <a href=http://githooks.com/>Git Hooks</a>.</p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

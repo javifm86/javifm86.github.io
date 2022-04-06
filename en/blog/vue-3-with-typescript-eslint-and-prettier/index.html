@@ -63,12 +63,12 @@ Typescript and setting up ESLint and Prettier for working properly together in V
 <h2 id=vue-cli>Vue CLI</h2>
 <p>The easiest and fastest way for creating a new project is using <a href=https://cli.vuejs.org/guide/creating-a-project.html#vue-create>Vue CLI</a>. It will allow us to set up the project
 using different predefined workflows. First of all we will install Vue CLI:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>yarn global add @vue/cli
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>yarn global add @vue/cli
 <span class=c1># OR</span>
-npm install -g @vue/cli</code></pre></div>
-<p>Once installed we can create a new project:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>vue create hello-world</code></pre></div>
-<p>We will select the last option from the list:</p>
+npm install -g @vue/cli
+</code></pre></div><p>Once installed we can create a new project:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>vue create hello-world
+</code></pre></div><p>We will select the last option from the list:</p>
 <pre>
 Vue CLI v4.5.13
 ? Please pick a preset: (Use arrow keys)
@@ -183,10 +183,10 @@ new application will launch in development mode.</p>
       <span class=p>},</span>
     <span class=p>},</span>
   <span class=p>],</span>
-<span class=p>};</span></code></pre></td></tr></table>
+<span class=p>};</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>This way Prettier won&rsquo;t conflict with ESLint rules. At lines 19-20 there are custom rules added by me, we can add what
+</div><p>This way Prettier won&rsquo;t conflict with ESLint rules. At lines 19-20 there are custom rules added by me, we can add what
 we want in order to customize it.</p>
 <h2 id=vscode>VSCode</h2>
 <p>Last but not least, we will configure VSCode in order to have everything working properly. The most important thing
@@ -200,13 +200,13 @@ option in the rest including Typescript, with just Prettier instead of <strong>p
 <p>In VSCode settings we must add Vetur as default formatter for Vue:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=s2>&#34;[vue]&#34;</span><span class=o>:</span> <span class=p>{</span>
   <span class=s2>&#34;editor.defaultFormatter&#34;</span><span class=o>:</span> <span class=s2>&#34;octref.vetur&#34;</span>
-<span class=p>}</span></code></pre></div>
-<p>This way VSCode delegates in Vetur, and Vetur will format each different language that finds inside <code>.vue</code> files with
+<span class=p>}</span>
+</code></pre></div><p>This way VSCode delegates in Vetur, and Vetur will format each different language that finds inside <code>.vue</code> files with
 a proper formatter. In my experience, there is only one thing wrong with auto format in <code>.vue</code> files,
 <strong>inserting the final new line at the end of the file</strong>. If you use this rule (which is the default), the only way I
 could find is delegating this task in VSCode with this setting:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=s2>&#34;files.insertFinalNewline&#34;</span><span class=o>:</span> <span class=kc>false</span></code></pre></div>
-<p>Sometimes using <a href=https://vuejs.github.io/vetur/guide/FAQ.html#install-an-old-version-of-vetur>the last version of Vetur can be problematic</a>, recently in a project Vetur started formatting HTML
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=s2>&#34;files.insertFinalNewline&#34;</span><span class=o>:</span> <span class=kc>false</span>
+</code></pre></div><p>Sometimes using <a href=https://vuejs.github.io/vetur/guide/FAQ.html#install-an-old-version-of-vetur>the last version of Vetur can be problematic</a>, recently in a project Vetur started formatting HTML
 in a different way. After struggling for some hours I realized Vetur had been updated and after downgrading Vetur version
 everything started working as expected. <a href=https://github.com/vuejs/vetur/issues/3067>I reported the bug</a> and took the opportunity to comment on the problem with
 the final new line. Maybe I made a mistake, but I couldn&rsquo;t find the problem after several hours.</p>

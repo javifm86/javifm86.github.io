@@ -62,7 +62,7 @@ Publicado el 2 Dic 2014
 <p>Por eso me propuse poder ejecutar el limpiado de espacios, pero en lugar de al guardar, en un atajo de teclado, así podría limpiar mis archivos sin interferir en los del resto. La opción más fácil era instalar una extensión (<a href=https://github.com/SublimeText/TrailingSpaces title="Trailing Spaces">Trailing Spaces</a>), pero ya tengo Sublime cargado de extensiones y me parecía innecesario cargarlo con una más, con muchas opciones que probablemente no use y un gasto innecesario de recursos.</p>
 <p>La solución es sencilla, Sublime tiene un plugin por default que realiza la acción, asi que solamente hay que modificarlo para que ejecute la acción en un atajo de teclado en lugar de al guardar el archivo. Podemos ver el plugin en la siguiente ruta: <code>\Sublime\Data\Packages\Default</code></p>
 <p>El archivo es <em><strong>trim_trailing_white_space.py.</strong></em></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>sublime</span><span class=o>,</span> <span class=nn>sublime_plugin</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>sublime</span><span class=o>,</span> <span class=nn>sublime_plugin</span>
 
 <span class=k>class</span> <span class=nc>TrimTrailingWhiteSpace</span><span class=p>(</span><span class=n>sublime_plugin</span><span class=o>.</span><span class=n>EventListener</span><span class=p>):</span>
     <span class=k>def</span> <span class=nf>on_pre_save</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>view</span><span class=p>):</span>
@@ -80,10 +80,10 @@ Publicado el 2 Dic 2014
             <span class=k>if</span> <span class=n>view</span><span class=o>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&gt;</span> <span class=mi>0</span> <span class=ow>and</span> <span class=n>view</span><span class=o>.</span><span class=n>substr</span><span class=p>(</span><span class=n>view</span><span class=o>.</span><span class=n>size</span><span class=p>()</span> <span class=o>-</span> <span class=mi>1</span><span class=p>)</span> <span class=o>!=</span> <span class=s1>&#39;</span><span class=se>\n</span><span class=s1>&#39;</span><span class=p>:</span>
                 <span class=n>edit</span> <span class=o>=</span> <span class=n>view</span><span class=o>.</span><span class=n>begin_edit</span><span class=p>()</span>
                 <span class=n>view</span><span class=o>.</span><span class=n>insert</span><span class=p>(</span><span class=n>edit</span><span class=p>,</span> <span class=n>view</span><span class=o>.</span><span class=n>size</span><span class=p>(),</span> <span class=s2>&#34;</span><span class=se>\n</span><span class=s2>&#34;</span><span class=p>)</span>
-                <span class=n>view</span><span class=o>.</span><span class=n>end_edit</span><span class=p>(</span><span class=n>edit</span><span class=p>)</span></code></pre></div>
-<p>Podéis modificar ese mismo fichero, yo preferí crearme otro distinto, por no tocar nada de lo que trae Sublime por defecto, y le puse un nombre super original: </p>
+                <span class=n>view</span><span class=o>.</span><span class=n>end_edit</span><span class=p>(</span><span class=n>edit</span><span class=p>)</span>
+</code></pre></div><p>Podéis modificar ese mismo fichero, yo preferí crearme otro distinto, por no tocar nada de lo que trae Sublime por defecto, y le puse un nombre super original: </p>
 <p><em><strong>trim_trailing_white_space2.py,</strong></em> en la misma carpeta. El código es el siguiente:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>sublime</span><span class=o>,</span> <span class=nn>sublime_plugin</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>sublime</span><span class=o>,</span> <span class=nn>sublime_plugin</span>
 
 <span class=k>def</span> <span class=nf>trim_trailing_white_space2</span><span class=p>(</span><span class=n>view</span><span class=p>):</span>
     <span class=n>trailing_white_space2</span> <span class=o>=</span> <span class=n>view</span><span class=o>.</span><span class=n>find_all</span><span class=p>(</span><span class=s2>&#34;[</span><span class=se>\t</span><span class=s2> ]+$&#34;</span><span class=p>)</span>
@@ -95,12 +95,12 @@ Publicado el 2 Dic 2014
 
 <span class=k>class</span> <span class=nc>TrimTrailingWhiteSpace2Command</span><span class=p>(</span><span class=n>sublime_plugin</span><span class=o>.</span><span class=n>TextCommand</span><span class=p>):</span>
     <span class=k>def</span> <span class=nf>run</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>edit</span><span class=p>):</span>
-        <span class=n>trim_trailing_white_space2</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=p>)</span></code></pre></div>
-<p>Para terminar, abrimos el archivo <em><strong>Key Bindings – User</strong></em> y añadimos el siguiente shortcut:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=p>{</span> <span class=s2>&#34;keys&#34;</span><span class=o>:</span> <span class=p>[</span><span class=s2>&#34;ctrl+alt+shift+t&#34;</span><span class=p>],</span> <span class=s2>&#34;command&#34;</span><span class=o>:</span> <span class=s2>&#34;trim_trailing_white_space2&#34;</span> <span class=p>}</span></code></pre></div>
-<p>Con la combinación de teclas que os sea más cómoda. Et voilà! Eso es todo.</p>
+        <span class=n>trim_trailing_white_space2</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=p>)</span>
+</code></pre></div><p>Para terminar, abrimos el archivo <em><strong>Key Bindings – User</strong></em> y añadimos el siguiente shortcut:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span> <span class=s2>&#34;keys&#34;</span><span class=o>:</span> <span class=p>[</span><span class=s2>&#34;ctrl+alt+shift+t&#34;</span><span class=p>],</span> <span class=s2>&#34;command&#34;</span><span class=o>:</span> <span class=s2>&#34;trim_trailing_white_space2&#34;</span> <span class=p>}</span>
+</code></pre></div><p>Con la combinación de teclas que os sea más cómoda. Et voilà! Eso es todo.</p>
 <p>Lo anterior para la versión 2 de Sublime, si lo queremos funcionando en la 3 el código es el siguiente:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>sublime</span><span class=o>,</span> <span class=nn>sublime_plugin</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>sublime</span><span class=o>,</span> <span class=nn>sublime_plugin</span>
 
     <span class=k>class</span> <span class=nc>TrimTrailingWhiteSpace2Command</span><span class=p>(</span><span class=n>sublime_plugin</span><span class=o>.</span><span class=n>TextCommand</span><span class=p>):</span>
         <span class=k>def</span> <span class=nf>run</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>edit</span><span class=p>):</span>
@@ -111,8 +111,8 @@ Publicado el 2 Dic 2014
 
     <span class=k>class</span> <span class=nc>TrimTrailingWhiteSpace2</span><span class=p>(</span><span class=n>sublime_plugin</span><span class=o>.</span><span class=n>EventListener</span><span class=p>):</span>
         <span class=k>def</span> <span class=nf>run</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>view</span><span class=p>):</span>
-            <span class=n>view</span><span class=o>.</span><span class=n>run_command</span><span class=p>(</span><span class=s2>&#34;trim_trailing_white_space2&#34;</span><span class=p>)</span></code></pre></div>
-<p>Solución encontrada en: <a href=http://stackoverflow.com/questions/12297169/sublime-text-2-trim-trailing-white-space-on-demand title=Stackoverflow>Stackoverflow (3ª respuesta)</a></p>
+            <span class=n>view</span><span class=o>.</span><span class=n>run_command</span><span class=p>(</span><span class=s2>&#34;trim_trailing_white_space2&#34;</span><span class=p>)</span>
+</code></pre></div><p>Solución encontrada en: <a href=http://stackoverflow.com/questions/12297169/sublime-text-2-trim-trailing-white-space-on-demand title=Stackoverflow>Stackoverflow (3ª respuesta)</a></p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

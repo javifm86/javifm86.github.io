@@ -56,7 +56,7 @@ Publicado el 12 Abr 2021
 </div>
 </div>
 <div class=single-post-content>
-<p>En este post voy a compartir un shortcode muy útil que nos permitirá <strong>procesar automaticamente las imágenes con Hugo</strong>. Antes de nada
+<p>En este post voy a compartir un shortcode muy útil que nos permitirá <strong>procesar automáticamente las imágenes con Hugo</strong>. Antes de nada
 debemos asegurarnos de que nuestro contenido se encuentra estructurado con <a href=https://gohugo.io/content-management/page-bundles/>Hugo´s page bundles</a>. Al crear este blog, lo migré de
 un Wordpress y todos los artículos estaban estructurados de la siguiente manera:</p>
 <pre>
@@ -81,7 +81,7 @@ responsive-images-hugo
   - img1.jpg
   - ...
 </pre>
-<p>El siguiente paso es crear un archivo para el shortcode, yo lo creé en <code>layouts/shortcodes/img.html</code> con el siguiente código:
+<p>El siguiente paso es crear un archivo para el shortcode, yo lo creé en <code>layouts/shortcodes/img.html</code> con el siguiente código:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-go-html-template data-lang=go-html-template><span class=cm>{{/* Get file that matches the filename as specified as src=&#34;&#34; in shortcode */}}</span>
 <span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=na>.Page.Resources.GetMatch</span><span class=w> </span><span class=o>(</span><span class=k>printf</span><span class=w> </span><span class=s>&#34;*%s*&#34;</span><span class=w> </span><span class=o>(</span><span class=na>.Get</span><span class=w> </span><span class=s>&#34;src&#34;</span><span class=o>))</span><span class=w> </span><span class=cp>}}</span>
 
@@ -133,10 +133,11 @@ responsive-images-hugo
 </span><span class=s>    </span><span class=cp>{{</span><span class=w> </span><span class=k>end</span><span class=w> </span><span class=cp>}}</span><span class=s>&#39;</span>
     <span class=na>src</span><span class=o>=</span><span class=s>&#34;</span><span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=na>.RelPermalink</span><span class=w> </span><span class=cp>}}</span><span class=s>&#34;</span>
     <span class=na>width</span><span class=o>=</span><span class=s>&#34;</span><span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=na>.Width</span><span class=w> </span><span class=cp>}}</span><span class=s>&#34;</span> <span class=na>height</span><span class=o>=</span><span class=s>&#34;</span><span class=cp>{{</span><span class=w> </span><span class=nx>$src</span><span class=na>.Height</span><span class=w> </span><span class=cp>}}</span><span class=s>&#34;</span>
-    <span class=cp>{{</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=na>.Get</span><span class=w> </span><span class=s>&#34;alt&#34;</span><span class=w> </span><span class=cp>}}</span><span class=na>alt</span><span class=o>=</span><span class=s>&#39;</span><span class=cp>{{</span><span class=na>.</span><span class=cp>}}</span><span class=s>&#39;</span><span class=cp>{{</span><span class=w> </span><span class=k>end</span><span class=w> </span><span class=cp>}}</span><span class=p>&gt;</span></code></pre></div></p>
-<p>De esta manera seremos capaces de usar en los archivos markdown para los artículos el shortcode:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-go-html-template data-lang=go-html-template><span class=cp>{{</span><span class=err>&lt;</span><span class=w> </span><span class=nx>img</span><span class=w> </span><span class=nx>src</span><span class=o>=</span><span class=s>&#34;img/img1.jpg&#34;</span><span class=w> </span><span class=nx>alt</span><span class=o>=</span><span class=s>&#34;Description for image&#34;</span><span class=w> </span><span class=err>&gt;</span><span class=cp>}}</span></code></pre></div></p>
-<p>Y eso es todo, usas la imagen como si estuvieras en html y gracias al shortcode y Hugo se generarán imágenes más pequeñas
+    <span class=cp>{{</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=na>.Get</span><span class=w> </span><span class=s>&#34;alt&#34;</span><span class=w> </span><span class=cp>}}</span><span class=na>alt</span><span class=o>=</span><span class=s>&#39;</span><span class=cp>{{</span><span class=na>.</span><span class=cp>}}</span><span class=s>&#39;</span><span class=cp>{{</span><span class=w> </span><span class=k>end</span><span class=w> </span><span class=cp>}}</span><span class=p>&gt;</span>
+
+</code></pre></div><p>De esta manera seremos capaces de usar en los archivos markdown para los artículos el shortcode:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-go-html-template data-lang=go-html-template><span class=cp>{{</span><span class=err>&lt;</span><span class=w> </span><span class=nx>img</span><span class=w> </span><span class=nx>src</span><span class=o>=</span><span class=s>&#34;img/img1.jpg&#34;</span><span class=w> </span><span class=nx>alt</span><span class=o>=</span><span class=s>&#34;Description for image&#34;</span><span class=w> </span><span class=err>&gt;</span><span class=cp>}}</span>
+</code></pre></div><p>Y eso es todo, usas la imagen como si estuvieras en html y gracias al shortcode y Hugo se generarán imágenes más pequeñas
 cuando sea necesario. El crédito de esta solución es de <a href=https://laurakalbag.com/processing-responsive-images-with-hugo/>Laura Kalbag</a>, yo simplemente modifiqué un poco su código. Aprovecho
 para recomendar su libro <a href=https://abookapart.com/products/accessibility-for-everyone>Accessibility For Everyone</a>, es una buena introducción para accesibilidad.</p>
 </div>

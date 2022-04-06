@@ -57,16 +57,16 @@ Publicado el 7 Sep 2015
 </div>
 </div>
 <div class=single-post-content>
-<p>Ellipsis es simplemente un cáracter compuesto por tres puntos: “…”. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis. Con el avance de los estándares css modernos, ya podemos aplicar una solución sin necesidad de echar mano de Javascript:</p>
+<p>Ellipsis es simplemente un carácter compuesto por tres puntos: “…”. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis. Con el avance de los estándares css modernos, ya podemos aplicar una solución sin necesidad de echar mano de Javascript:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=p>.</span><span class=nc>ellipsis</span> <span class=p>{</span>
     <span class=k>white-space</span><span class=p>:</span> <span class=kc>nowrap</span><span class=p>;</span>
     <span class=k>overflow</span><span class=p>:</span> <span class=kc>hidden</span><span class=p>;</span>
     <span class=k>text-overflow</span><span class=p>:</span> <span class=kc>ellipsis</span><span class=p>;</span>
     <span class=kp>-o-</span><span class=k>text-overflow</span><span class=p>:</span> <span class=kc>ellipsis</span><span class=p>;</span>
-<span class=p>}</span></code></pre></div>
-<p>¿Cual es la limitación? Que sólo funciona en textos con una línea, si tenemos más de una línea no funciona, y es ahí donde entra en juego Javascript. He creado una sencilla función, simplemente es necesario que en css el elemento disponga de un line-height definido para funcionar.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=cm>/**
-</span><span class=cm> *  Acorta strings multilinea añadiendo el símbolo ellipsis.
+<span class=p>}</span>
+</code></pre></div><p>¿Cual es la limitación? Que sólo funciona en textos con una línea, si tenemos más de una línea no funciona, y es ahí donde entra en juego Javascript. He creado una sencilla función, simplemente es necesario que en css el elemento disponga de un line-height definido para funcionar.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=cm>/**
+</span><span class=cm> *  Acorta strings multilínea añadiendo el símbolo ellipsis.
 </span><span class=cm> *  @param  {jQuery}  $obj     : Objeto jQuery a aplicar si es necesario.
 </span><span class=cm> *                               Importante, debe tener line-height definido.
 </span><span class=cm> *  @param  {String}  val      : Texto a insertar.
@@ -104,8 +104,8 @@ Publicado el 7 Sep 2015
 
     <span class=p>}</span>
 
-<span class=p>}</span></code></pre></div>
-<p>También hay <a href=http://dotdotdot.frebsite.nl/>plugins en jQuery,</a> para un uso más avanzado y complejo no está de más echarle un ojo. Para más información, o una implementación más optimizada, <a href=http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide>hay un hilo en Stackoverflow donde hablan del tema.</a></p>
+<span class=p>}</span>
+</code></pre></div><p>También hay <a href=http://dotdotdot.frebsite.nl/>plugins en jQuery,</a> para un uso más avanzado y complejo no está de más echarle un ojo. Para más información, o una implementación más optimizada, <a href=http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide>hay un hilo en Stackoverflow donde hablan del tema.</a></p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

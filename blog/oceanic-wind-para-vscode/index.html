@@ -67,12 +67,12 @@ He creado un theme oscuro para VSCode llamado <strong>Oceanic Wind</strong>, per
 <p>Si quieres crear tu propio tema puedes seguir <a href=https://code.visualstudio.com/api/extension-guides/color-theme#create-a-new-color-theme>los pasos de la guía oficial de Visual Studio Code</a>. Esto es lo que hice:</p>
 <p>Primero, instalar la extensión para Yeoman para generar extensiones de VSCode, y ejecutarla:</p>
 <img class=mb-6 srcset="/blog/oceanic-wind-para-vscode/img/yo.png 410w" src=/blog/oceanic-wind-para-vscode/img/yo.png width=410 height=349 alt="Opciones del generador de Yeoman.">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm install -g yo generator-code
-yo code</code></pre></div>
-<p>Selecciona <code>New color theme</code> y <code>No, start fresh</code>. Rellena los campos que te pide como nombre e identificador, y selecciona un punto de partida para crear tu theme, en mi caso <strong>Dark theme</strong>. Ya puedes abrir el directorio con VSCode:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>cd</span> your-theme
-code .</code></pre></div>
-<p>Para probar el tema, simplemente pulsa <code>F5</code> y se abrirá una nueva ventana en la que puedes ver el resultado.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install -g yo generator-code
+yo code
+</code></pre></div><p>Selecciona <code>New color theme</code> y <code>No, start fresh</code>. Rellena los campos que te pide como nombre e identificador, y selecciona un punto de partida para crear tu theme, en mi caso <strong>Dark theme</strong>. Ya puedes abrir el directorio con VSCode:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> your-theme
+code .
+</code></pre></div><p>Para probar el tema, simplemente pulsa <code>F5</code> y se abrirá una nueva ventana en la que puedes ver el resultado.</p>
 <p>La <a href=https://code.visualstudio.com/api/references/theme-color>documentación oficial</a> es la perfecta guía de referencia. Como podrás comprobar, hay montones de colores disponibles, en ocasiones encontrar el color al que se refieren puede ser difícil a pesar de la descripción. Hay unos cuantos que no pude encontrar.</p>
 <h2 id=encontrando-colores>Encontrando colores</h2>
 <p>Pulsa <code>Ctrl + Shift + P</code> y teclea <code>Inspect Editor Tokens and Scopes</code>. Ahora puedes pulsar en cualquier parte del código y aparecerá un pop-up donde aparece información útil como tipo de fuente y scope de la regla seleccionada. También puedes consultar el ratio de contraste del color, <strong>yo siempre intento obtener 4.5 como mínimo</strong>.</p>
@@ -80,12 +80,12 @@ code .</code></pre></div>
 ,/blog/oceanic-wind-para-vscode/img/scopes_hu761922e156770e7c57091c50063466d8_30290_500x0_resize_box_3.png 500w" src=/blog/oceanic-wind-para-vscode/img/scopes.png width=774 height=501 alt="VSCode información del scope del nodo seleccionado: lenguaje, tipo de token, color foreground, background, ratio de contraste.">
 <p>VSCode dispone de developer tools que puedes utilizar para inspeccionar elementos. Pulsa <code>Ctrl + Shift + P</code> y teclea <code>Toggle Developer Tools</code> para abrirlas.</p>
 <img class=mb-6 srcset="/blog/oceanic-wind-para-vscode/img/devtools.png 582w
-,/blog/oceanic-wind-para-vscode/img/devtools_hue24ab3cff802750cbd2de229d395e7f3_46298_500x0_resize_box_3.png 500w" src=/blog/oceanic-wind-para-vscode/img/devtools.png width=582 height=819 alt="Inspeiccionando con VSCode devtools para obtener un color.">
-<p>Muy útil si quieres obtener rapidamente un color de algún tema que estás consultando para obtener inspiración. Al comenzar a crear el tema éste era el método que utilizaba para obtener el color por defecto de cualquier cosa en VSCode, pero hay algunos elementos que son díficiles de inspeccionar como el minimapa.</p>
+,/blog/oceanic-wind-para-vscode/img/devtools_hue24ab3cff802750cbd2de229d395e7f3_46298_500x0_resize_box_3.png 500w" src=/blog/oceanic-wind-para-vscode/img/devtools.png width=582 height=819 alt="Inspeccionando con VSCode devtools para obtener un color.">
+<p>Muy útil si quieres obtener rápidamente un color de algún tema que estás consultando para obtener inspiración. Al comenzar a crear el tema éste era el método que utilizaba para obtener el color por defecto de cualquier cosa en VSCode, pero hay algunos elementos que son difíciles de inspeccionar como el mini mapa.</p>
 <p>Finalmente, opté por buscar los colores por defecto en el <a href=https://github.com/microsoft/vscode>repositorio de VSCode en Github</a>. Simplemente busca el color que quieras en el buscador (sin poner el punto), por ejemplo <code>activityBar inactiveForeground</code>, e indaga entre los distintos resultados hasta obtener el color que usan.</p>
 <p>He creado un <a href=https://gist.github.com/javifm86/073d8e05942a8849dd11fa6996955fc0>gist con todos los colores oscuros por defecto en VSCode</a>, algunos valores no son 100% exactos ya que en el código fuente se ve que usan las funciones <code>darken</code> o <code>lighten</code>, o también pueden aplicar transparencia a un color que ya tenía transparencia. Te ahorrará mucho tiempo, no encontré en un ningún sitio un listado con los colores por defecto utilizados.</p>
 <h2 id=color-de-acento>Color de acento</h2>
-<p>Se pueden sobreescribir colores para un terma en las settings de VSCode. He creado differentes esquemas de colores para cambiar el color de acento en VSCode. Si alguien desea probar con otro color en lugar del azul por defecto, puede utilizar estas combinaciones:</p>
+<p>Se pueden sobrescribir colores para un tema en las settings de VSCode. He creado differentes esquemas de colores para cambiar el color de acento en VSCode. Si alguien desea probar con otro color en lugar del azul por defecto, puede utilizar estas combinaciones:</p>
 <ul>
 <li><a href=https://github.com/javifm86/oceanic-wind/blob/main/customize/indigo.md>Indigo</a></li>
 <li><a href=https://github.com/javifm86/oceanic-wind/blob/main/customize/green.md>Green</a></li>
@@ -98,14 +98,14 @@ code .</code></pre></div>
 </ul>
 <p>He realizado pruebas de contraste de color para los distintos esquemas, no debería haber ningún gran problema de contraste. Tengo pendiente revisarlo porque no he comprobado con las versiones <strong>Warm</strong> y <strong>Cool</strong> del tema.</p>
 <h2 id=creando-a-partir-de-una-paleta-de-colores-definida>Creando a partir de una paleta de colores definida</h2>
-<p>Una vez terminé el tema, <strong>podía facilmente generar numerosas variantes</strong>. Simplemente reemplazando el gris con los 5 distintos tipos de gris de Tailwind, podría generar 40 distintas variantes (8 colores de acento x 5 tipos de gris = 40). Esto es solo una posibilidad, decidí utilizar el gris neutro para la versión por defecto, el gris cálido para la versión cálida y el gris azul para la fría.</p>
+<p>Una vez terminé el tema, <strong>podía fácilmente generar numerosas variantes</strong>. Simplemente reemplazando el gris con los 5 distintos tipos de gris de Tailwind, podría generar 40 distintas variantes (8 colores de acento x 5 tipos de gris = 40). Esto es solo una posibilidad, decidí utilizar el gris neutro para la versión por defecto, el gris cálido para la versión cálida y el gris azul para la fría.</p>
 <p>He querido evitar ensuciar el selector de themes de VSCode con más de 40 distintas versiones, había que elegir asi que finalmente dejé 3 versiones con el azul como color de acento, y si alguien desea personalizar más puede copiar y pegar la configuración de los distintos colores de acento. ¡Es tan fácil generar variantes cuando dispones de una paleta de colores!</p>
 <h2 id=testeando>Testeando</h2>
 <p>La forma por defecto de testear un theme puede resultar insuficiente en algunos casos. Para ello puedes utilizar un truco: <strong>Copia tu directorio con todos los archivos de la extensión en el directorio <code>.vscode</code></strong>. Por ejemplo en Windows:</p>
 <pre tabindex=0><code>C:\Users\your-user\.vscode
 </code></pre><p>De esta forma puedes activar localmente tu tema y probarlo en el workspace que desees.</p>
 <p>Puedes hacer cambios directamente en el directorio del tema, pero <strong>necesitarás reiniciar la instancia de VSCode</strong> para poder ver los cambios (puedes pulsar <code>Ctrl + Shift + P</code> y escribir <code>Reload window</code>).</p>
-<p>Además puedes modificar las settings de usuario, y sobreescribir los colores de tu tema para poder ver en caliente los cambios realizados. ¡Esto ahorra mucho tiempo!</p>
+<p>Además puedes modificar las settings de usuario, y sobrescribir los colores de tu tema para poder ver en caliente los cambios realizados. ¡Esto ahorra mucho tiempo!</p>
 <h2 id=conclusión>Conclusión</h2>
 <p>Cuando termines puedes <a href=https://code.visualstudio.com/api/working-with-extensions/publishing-extension>seguir la guía oficial</a> para publicar tu theme.</p>
 <p>He basado y probado este tema en mi workflow diario, con HTML, CSS, Javascript, Typescript y desarrollando con los principales frameworks, Angular, Vue y React. Adicionalmente he probado con los ficheros que se pueden encontrar en el <a href=https://github.com/javifm86/oceanic-wind/tree/main/demo>directorio demo</a> (gracias a <a href=https://twitter.com/wesbos>Wes Bos</a> y <a href=https://twitter.com/sarah_edo>Sarah Drasner</a>).</p>

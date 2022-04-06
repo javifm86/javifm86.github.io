@@ -61,23 +61,23 @@ Publicado el 29 Jun 2014
 <p>Nunca me había visto en la necesidad de <strong>detectar cuando una transición CSS3 termina,</strong> pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente. Para ello estamos utilizando eventos de teclado, si pulsamos flecha derecha va hacia la derecha, en caso de pulsar la flecha izquierda, hacia la izquierda, muy sencillito.</p>
 <p>¿Y qué pasa si pulsamos varias veces antes de que la animación termine? Pues que parece que va a tirones, y lo que es un efecto de transición muy elegante se convierte en un efecto muy desagradable. No estaba al tanto, pero cuando un elemento presenta una animación puramente en CSS3, en función del navegador, <strong>podemos suscribirnos a un evento que nos informará cuando la transición ha terminado.</strong> En este proyecto estamos utilizando jQuery, asi que la solución es bien sencilla:</p>
 <p>Solución para transiciones:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>ended</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>ended</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
 <span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>).</span><span class=nx>bind</span><span class=p>(</span><span class=s2>&#34;transitionend
 </span><span class=s2>                     webkitTransitionEnd 
 </span><span class=s2>                     oTransitionEnd 
 </span><span class=s2>                     MSTransitionEnd&#34;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(){</span> 
                         <span class=nx>ended</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
-                    <span class=p>});</span></code></pre></div>
-<p>Solución para animaciones:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>ended</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+                    <span class=p>});</span>
+</code></pre></div><p>Solución para animaciones:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>ended</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
 <span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#someSelector&#34;</span><span class=p>).</span><span class=nx>bind</span><span class=p>(</span><span class=s2>&#34;animationend 
 </span><span class=s2>                         webkitAnimationEnd 
 </span><span class=s2>                         oAnimationEnd 
 </span><span class=s2>                         MSAnimationEnd&#34;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(){</span>
                         <span class=nx>ended</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
-                    <span class=p>});</span></code></pre></div>
-<p>Si no deseas usar jQuery, en Modernizr tienen esto:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>function</span> <span class=nx>transitionEndEventName</span> <span class=p>()</span> <span class=p>{</span>
+                    <span class=p>});</span>
+</code></pre></div><p>Si no deseas usar jQuery, en Modernizr tienen esto:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>function</span> <span class=nx>transitionEndEventName</span> <span class=p>()</span> <span class=p>{</span>
     <span class=kd>var</span> <span class=nx>i</span><span class=p>,</span>
         <span class=kc>undefined</span><span class=p>,</span>
         <span class=nx>el</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s1>&#39;div&#39;</span><span class=p>),</span>
@@ -95,11 +95,11 @@ Publicado el 29 Jun 2014
     <span class=p>}</span>
 
     <span class=c1>//TODO: throw &#39;TransitionEnd event is not supported in this browser&#39;; 
-</span><span class=c1></span><span class=p>}</span></code></pre></div>
-<p>Y se utiliza de la siguiente manera:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>transitionEnd</span> <span class=o>=</span> <span class=nx>transitionEndEventName</span><span class=p>();</span>
-<span class=nx>element</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=nx>transitionEnd</span><span class=p>,</span> <span class=nx>theFunctionToInvoke</span><span class=p>,</span> <span class=kc>false</span><span class=p>);</span></code></pre></div>
-<p>Encontré la solución en StackOverflow:</p>
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></div><p>Y se utiliza de la siguiente manera:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>transitionEnd</span> <span class=o>=</span> <span class=nx>transitionEndEventName</span><span class=p>();</span>
+<span class=nx>element</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=nx>transitionEnd</span><span class=p>,</span> <span class=nx>theFunctionToInvoke</span><span class=p>,</span> <span class=kc>false</span><span class=p>);</span>
+</code></pre></div><p>Encontré la solución en StackOverflow:</p>
 <ul>
 <li><a href=http://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes title="Callback when CSS3 transition finishes">Callback when CSS3 transition finishes</a></li>
 <li><a href=http://stackoverflow.com/questions/5023514/how-do-i-normalize-css3-transition-functions-across-browsers title="How do I normalize CSS3 Transition functions across browsers?">How do I normalize CSS3 Transition functions across browsers?</a></li>

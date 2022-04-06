@@ -57,12 +57,12 @@ Publicado el 27 Ene 2015
 </div>
 <div class=single-post-content>
 <p>En mi día a día suelo trabajar en entorno Windows, y hay ciertos atajos de teclado y acciones, como backups de algunos proyectos, que tengo automatizadas con un simple fichero <code>.bat</code>, que ejecuto a través de un comando a través de <a href=http://www.autohotkey.com/ title=Autohotkey>Autohotkey</a> (algún día escribiré un poco sobre esta utilidad para mejorar la productividad en Windows).</p>
-<p>Por si te resulta molesto que esté la consola abierta mientras se ejecuta el script, hay una manera sencilla de impedirlo, como pude encontrar en esta pregunta de <a href=http://superuser.com/questions/140047/how-to-run-a-batch-file-without-launching-a-command-window>Superuser.</a> Copia el siguiente miniscript en un fichero con extensión <code>.vbs</code> en la misma carpeta que tu bat, y ejecutalo en lugar del <code>.bat</code></p>
+<p>Por si te resulta molesto que esté la consola abierta mientras se ejecuta el script, hay una manera sencilla de impedirlo, como pude encontrar en esta pregunta de <a href=http://superuser.com/questions/140047/how-to-run-a-batch-file-without-launching-a-command-window>Superuser.</a> Copia el siguiente mini script en un fichero con extensión <code>.vbs</code> en la misma carpeta que tu bat, y ejecutalo en lugar del <code>.bat</code></p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-vb data-lang=vb><span class=k>Set</span> <span class=n>oShell</span> <span class=o>=</span> <span class=n>CreateObject</span> <span class=p>(</span><span class=s>&#34;Wscript.Shell&#34;</span><span class=p>)</span> 
 <span class=k>Dim</span> <span class=n>strArgs</span>
 <span class=n>strArgs</span> <span class=o>=</span> <span class=s>&#34;cmd /c testing.bat&#34;</span>
-<span class=n>oShell</span><span class=p>.</span><span class=n>Run</span> <span class=n>strArgs</span><span class=p>,</span> <span class=n>0</span><span class=p>,</span> <span class=k>false</span></code></pre></div>
-<p>Simplemente cambia <code>testing.bat</code> por el nombre de tu fichero y listo.</p>
+<span class=n>oShell</span><span class=p>.</span><span class=n>Run</span> <span class=n>strArgs</span><span class=p>,</span> <span class=n>0</span><span class=p>,</span> <span class=k>false</span>
+</code></pre></div><p>Simplemente cambia <code>testing.bat</code> por el nombre de tu fichero y listo.</p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

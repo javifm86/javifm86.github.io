@@ -57,23 +57,25 @@ Publicado el 21 Abr 2015
 </div>
 <div class=single-post-content>
 <p>Vamos a ver de una manera rápida, como podemos <strong>concatenar llamadas a distintos métodos</strong> sobre un mismo objeto en Javascript (en inglés, <em>Method Chaining in JavaScript</em>). Este patrón, es utilizado en el popular framework jQuery, en el cual pueden llamarse a varios métodos sobre un selector jQuery. Por ejemplo:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>).</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>).</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>).</span><span class=nx>show</span><span class=p>();</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>).</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>).</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>).</span><span class=nx>show</span><span class=p>();</span>
 
 <span class=c1>// En caso de concatenar muchos métodos
 </span><span class=c1></span><span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>)</span>
     <span class=p>.</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>)</span>
     <span class=p>.</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>)</span>
     <span class=p>.</span><span class=nx>show</span><span class=p>();</span>
-    
-</code></pre></div>
-<p>Que es más corto, o más legible (para gustos los colores) que esto:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>$selector</span> <span class=o>=</span> <span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>);</span>
+    <span class=sb>```
+</span><span class=sb>
+</span><span class=sb>Que es más corto, o más legible (para gustos los colores) que esto:
+</span><span class=sb>
+</span><span class=sb>```</span><span class=nx>js</span>
+<span class=kd>var</span> <span class=nx>$selector</span> <span class=o>=</span> <span class=nx>$</span><span class=p>(</span><span class=s2>&#34;#selector&#34;</span><span class=p>);</span>
 
 <span class=nx>$selector</span><span class=p>.</span><span class=nx>find</span><span class=p>(</span><span class=s2>&#34;.square&#34;</span><span class=p>);</span>
 <span class=nx>$selector</span><span class=p>.</span><span class=nx>css</span><span class=p>(</span><span class=s2>&#34;height&#34;</span><span class=p>,</span> <span class=s2>&#34;100px&#34;</span><span class=p>)</span>
-<span class=nx>$selector</span><span class=p>.</span><span class=nx>show</span><span class=p>();</span></code></pre></div>
-<p>Bien, vamos a ver como <strong>implementar este patrón</strong> en Javascript puro, supongamos un objeto tonto, con 2 métodos sencillos como el siguiente:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>Widget</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>param1</span><span class=p>,</span> <span class=nx>param2</span><span class=p>)</span> <span class=p>{</span>
+<span class=nx>$selector</span><span class=p>.</span><span class=nx>show</span><span class=p>();</span>
+</code></pre></div><p>Bien, vamos a ver como <strong>implementar este patrón</strong> en Javascript puro, supongamos un objeto tonto, con 2 métodos sencillos como el siguiente:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>Widget</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>param1</span><span class=p>,</span> <span class=nx>param2</span><span class=p>)</span> <span class=p>{</span>
     <span class=k>this</span><span class=p>.</span><span class=nx>msg1</span> <span class=o>=</span> <span class=nx>param1</span><span class=p>;</span>
     <span class=k>this</span><span class=p>.</span><span class=nx>msg2</span> <span class=o>=</span> <span class=nx>param2</span><span class=p>;</span>
 <span class=p>};</span>
@@ -86,17 +88,16 @@ Publicado el 21 Abr 2015
     <span class=nx>alert</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>msg2</span><span class=p>);</span>
 <span class=p>};</span>
 
-<span class=kd>var</span> <span class=nx>instancia</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Widget</span><span class=p>(</span><span class=s2>&#34;Hola&#34;</span><span class=p>,</span> <span class=s2>&#34;Mundo&#34;</span><span class=p>);</span></code></pre></div>
-<p>Si quisieramos llamar a los 2 métodos, deberíamos hacerlo de la siguiente manera:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>();</span>
-<span class=nx>instancia</span><span class=p>.</span><span class=nx>method2</span><span class=p>();</span></code></pre></div>
-<p>Y si intentamos concatenar directamente las llamadas, ejecutará el primer método, pero fallará el segundo:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>().</span><span class=nx>method2</span><span class=p>();</span>
+<span class=kd>var</span> <span class=nx>instancia</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Widget</span><span class=p>(</span><span class=s2>&#34;Hola&#34;</span><span class=p>,</span> <span class=s2>&#34;Mundo&#34;</span><span class=p>);</span>
+</code></pre></div><p>Si quisiéramos llamar a los 2 métodos, deberíamos hacerlo de la siguiente manera:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>();</span>
+<span class=nx>instancia</span><span class=p>.</span><span class=nx>method2</span><span class=p>();</span>
+</code></pre></div><p>Y si intentamos concatenar directamente las llamadas, ejecutará el primer método, pero fallará el segundo:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>().</span><span class=nx>method2</span><span class=p>();</span>
 
 <span class=c1>// Uncaught TypeError: Cannot read property &#39;method2&#39; of undefined
-</span></code></pre></div>
-<p>¿Como hacerlo funcionar? Es sencillo, tan solo deberemos añadir en los métodos <code>return this;</code> , de esta manera cuando se llame a <code>method1</code> se devolverá el objeto, y al llamar al siguiente método ya no dará undefined, puesto que al haberse devuelto el objeto en el método anterior, ya encuentra la referencia para poder llamar a <code>method2</code>. Así queda el código:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-JavaScript data-lang=JavaScript><span class=kd>var</span> <span class=nx>Widget</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>param1</span><span class=p>,</span> <span class=nx>param2</span><span class=p>)</span> <span class=p>{</span>
+</span></code></pre></div><p>¿Como hacerlo funcionar? Es sencillo, tan solo deberemos añadir en los métodos <code>return this;</code> , de esta manera cuando se llame a <code>method1</code> se devolverá el objeto, y al llamar al siguiente método ya no dará undefined, puesto que al haberse devuelto el objeto en el método anterior, ya encuentra la referencia para poder llamar a <code>method2</code>. Así queda el código:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>Widget</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>param1</span><span class=p>,</span> <span class=nx>param2</span><span class=p>)</span> <span class=p>{</span>
     <span class=k>this</span><span class=p>.</span><span class=nx>msg1</span> <span class=o>=</span> <span class=nx>param1</span><span class=p>;</span>
     <span class=k>this</span><span class=p>.</span><span class=nx>msg2</span> <span class=o>=</span> <span class=nx>param2</span><span class=p>;</span>
 <span class=p>};</span>
@@ -113,8 +114,8 @@ Publicado el 21 Abr 2015
 
 <span class=kd>var</span> <span class=nx>instancia</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Widget</span><span class=p>(</span><span class=s2>&#34;Hola&#34;</span><span class=p>,</span> <span class=s2>&#34;Mundo&#34;</span><span class=p>);</span>
 
-<span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>().</span><span class=nx>method2</span><span class=p>();</span></code></pre></div>
-<p>¿Sencillo verdad? Este patrón de diseño se conoce como <a href=http://en.wikipedia.org/wiki/Fluent_interface title="Fluent Interface">Fluent interface.</a> Usarlo o no ya es cuestión de gustos.</p>
+<span class=nx>instancia</span><span class=p>.</span><span class=nx>method1</span><span class=p>().</span><span class=nx>method2</span><span class=p>();</span>
+</code></pre></div><p>¿Sencillo verdad? Este patrón de diseño se conoce como <a href=http://en.wikipedia.org/wiki/Fluent_interface title="Fluent Interface">Fluent interface.</a> Usarlo o no ya es cuestión de gustos.</p>
 </div>
 <div class="my-16 border-b border-gray-300"></div>
 <div class="mb-16 text-center max-w-3xl mx-auto">

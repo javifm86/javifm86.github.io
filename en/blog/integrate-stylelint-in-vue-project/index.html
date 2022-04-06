@@ -68,25 +68,25 @@ Published Nov 12, 2021
 <li><code>stylelint-config-recommended-vue</code>: Vue config with some rules, it adds support for some vue custom CSS selectors, for example <code>::v-slotted</code>. It automatically <strong>adds an override for vue files using <code>postcss-html</code> as custom syntax</strong>.</li>
 <li><code>postcss-html</code>: Necessary to be able to lint <code>.vue</code> files.</li>
 </ul>
-<p>Therefore, we install them:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm install stylelint stylelint-config-standard stylelint-config-recommended-vue postcss-html --save-dev</code></pre></div></p>
-<h2 id=stylelint-in-vscode>Stylelint in VSCode</h2>
+<p>Therefore, we install them:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install stylelint stylelint-config-standard stylelint-config-recommended-vue postcss-html --save-dev
+</code></pre></div><h2 id=stylelint-in-vscode>Stylelint in VSCode</h2>
 <p>The next step is installing <a href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint">official Stylelint extension for VSCode</a>.</p>
 <p>We will add the following settings in our VSCode workspace settings (or global) in order to <strong>disable CSS built-in lint</strong>. If we are using <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">Vetur</a>, we also need to disable style validation.</p>
 <p>Moreover, since Stylelint version 14, <strong>we must specify different styling languages to be linted</strong>, in our case <code>vue</code>.</p>
 <p>Additionally, I have <code>fixAll</code> to be executed on save.</p>
-<pre tabindex=0><code class=language-jsonc data-lang=jsonc>{
-  &#34;css.validate&#34;: false, // Disable built-in lint
-  &#34;less.validate&#34;: false, // Disable built-in lint
-  &#34;scss.validate&#34;: false, // Disable built-in lint
-  &#34;stylelint.enable&#34;: true, // Enable stylelint
-  &#34;stylelint.validate&#34;: [&#34;css&#34;, &#34;less&#34;, &#34;postcss&#34;, &#34;vue&#34;], // Add vue files
-  &#34;vetur.validation.style&#34;: false, // Disable vetur style validation
-  &#34;editor.codeActionsOnSave&#34;: {
-    &#34;source.fixAll.stylelint&#34;: true
-  },
-}</code></pre>
-<h2 id=stylelint-config-file>Stylelint config file</h2>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;css.validate&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span> <span class=c1>// Disable built-in lint
+</span><span class=c1></span>  <span class=nt>&#34;less.validate&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span> <span class=c1>// Disable built-in lint
+</span><span class=c1></span>  <span class=nt>&#34;scss.validate&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span> <span class=c1>// Disable built-in lint
+</span><span class=c1></span>  <span class=nt>&#34;stylelint.enable&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=c1>// Enable stylelint
+</span><span class=c1></span>  <span class=nt>&#34;stylelint.validate&#34;</span><span class=p>:</span> <span class=p>[</span><span class=s2>&#34;css&#34;</span><span class=p>,</span> <span class=s2>&#34;less&#34;</span><span class=p>,</span> <span class=s2>&#34;postcss&#34;</span><span class=p>,</span> <span class=s2>&#34;vue&#34;</span><span class=p>],</span> <span class=c1>// Add vue files
+</span><span class=c1></span>  <span class=nt>&#34;vetur.validation.style&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span> <span class=c1>// Disable vetur style validation
+</span><span class=c1></span>  <span class=nt>&#34;editor.codeActionsOnSave&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;source.fixAll.stylelint&#34;</span><span class=p>:</span> <span class=kc>true</span>
+  <span class=p>},</span>
+<span class=p>}</span>
+</code></pre></div><h2 id=stylelint-config-file>Stylelint config file</h2>
 <p>Last but not least, we must create Stylelint config file at our project root. <code>.stylelintrc</code>:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
   <span class=nt>&#34;extends&#34;</span><span class=p>:</span> <span class=p>[</span>
@@ -96,8 +96,8 @@ Published Nov 12, 2021
   <span class=nt>&#34;rules&#34;</span><span class=p>:</span> <span class=p>{</span>
 
   <span class=p>}</span>
-<span class=p>}</span></code></pre></div>
-<p>If we don&rsquo;t add <code>stylelint-config-recommended-vue</code>, we will have to put the override to lint <code>vue</code> files:</p>
+<span class=p>}</span>
+</code></pre></div><p>If we don&rsquo;t add <code>stylelint-config-recommended-vue</code>, we will have to put the override to lint <code>vue</code> files:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
   <span class=nt>&#34;extends&#34;</span><span class=p>:</span> <span class=p>[</span>
     <span class=s2>&#34;stylelint-config-standard&#34;</span><span class=p>,</span>
@@ -114,8 +114,8 @@ Published Nov 12, 2021
   <span class=nt>&#34;rules&#34;</span><span class=p>:</span> <span class=p>{</span>
 
   <span class=p>}</span>
-<span class=p>}</span></code></pre></div>
-<p>With all this configuration, our project is ready to use Stylelint for CSS linting.</p>
+<span class=p>}</span>
+</code></pre></div><p>With all this configuration, our project is ready to use Stylelint for CSS linting.</p>
 <h2 id=adding-own-rules>Adding own rules</h2>
 <p>We can specify our custom rules. For example, in a project where we are using Tailwind CSS, we avoid the following warning when using @apply: <code>Unknown at rule @applycss(unknownAtRules)</code>. This crucial if we are working with PostCSS plugins and want to avoid some warnings. Example for Tailwind CSS syntax:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
@@ -140,8 +140,8 @@ Published Nov 12, 2021
     <span class=nt>&#34;declaration-block-trailing-semicolon&#34;</span><span class=p>:</span> <span class=kc>null</span><span class=p>,</span>
     <span class=nt>&#34;no-descending-specificity&#34;</span><span class=p>:</span> <span class=kc>null</span>
   <span class=p>}</span>
-<span class=p>}</span></code></pre></div>
-<p>Useful links:</p>
+<span class=p>}</span>
+</code></pre></div><p>Useful links:</p>
 <ul>
 <li><a href=https://stylelint.io/>Stylelint</a></li>
 <li><a href=https://github.com/ota-meshi/stylelint-config-recommended-vue>stylelint-config-recommended-vue</a></li>
