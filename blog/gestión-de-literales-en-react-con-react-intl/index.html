@@ -1,0 +1,394 @@
+<!doctype html><html lang=es>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.92.0">
+<link rel=stylesheet href=https://javifm.com/css/styles.css>
+<title>Gestión de literales en react con react-intl | Javier Fernández</title>
+</head>
+<body>
+<div id=site-wrapper class="relative overflow-hidden w-full">
+<div id=site-canvas class="w-full h-full relative">
+<a id=skiplink class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-sm p-2 uppercase" href=#main>
+Saltar al contenido principal
+</a>
+<div class="bg-gray-50 dark:bg-gray-800 border-t-4 border-green-500">
+<div class="max-w-7xl mx-auto">
+<nav class="flex flex-wrap items-center p-4">
+<a href=https://javifm.com class="mr-auto p-2 -m-2 last:mr-0" aria-hidden=true>
+<span class=sr-only>Inicio</span><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3640 3640" aria-hidden="true" class="w-10 h-10"><path d="M2958 1348l-156-202 69-55c89-70 141-147 147-217 11-127-66-244-181-278-67-19-79-20-139-2-66 21-67 21-228 151-505 408-832 666-840 663-11-4-310-378-310-388 0-9 943-765 1025-822 119-84 245-120 415-121 156 0 305 41 418 116 145 96 269 258 320 417 19 60 39 203 36 255-8 119-39 244-82 327-19 36-96 145-129 183-10 11-54 49-98 84-44 36-87 70-96 78-14 12-35-11-171-189z" id="layer101" fill="#0080b2" stroke="none"/><path d="M671 1839c-227-280-432-541-455-579-115-186-141-441-67-658C264 269 6e2 48 955 73c112 8 193 30 3e2 82 116 56 190 117 293 240 66 80 80 102 70 112-7 7-101 80-208 163l-195 151-40-48c-22-26-61-69-86-94-136-136-365-86-434 94-22 59-17 148 12 204 12 23 205 267 428 543 224 276 405 503 403 504s-91 71-198 156c-107 84-2e2 157-206 161-6 5-163-181-423-502z" id="layer102" fill="#03b8ab" stroke="none"/><path d="M741 3559c-118-23-249-84-345-162-327-262-385-737-132-1074 43-57 94-105 207-196l46-37 153 196c84 108 153 202 154 209 0 7-30 39-69 71-90 76-125 140-125 230 0 187 197 311 365 230 28-14 270-2e2 540-415 269-215 493-390 497-389 4 2 78 90 164 197 109 135 154 198 148 207-15 22-965 774-1034 819-84 55-166 89-262 109-82 17-234 20-307 5z" id="layer103" fill="#ea6675" stroke="none"/><path d="M2605 3556c-191-44-333-137-477-314-51-62-58-76-47-87 8-7 99-79 203-160l189-147 26 34c99 127 165 170 264 171 113 0 207-68 243-176 18-55 15-131-8-182-7-16-192-254-411-529-327-409-396-501-385-511 49-45 373-298 383-299 13-1 750 913 823 1020 84 124 125 262 125 424 0 339-204 620-530 733-75 25-105 30-213 33-83 3-145-1-185-10z" id="layer104" fill="#ffa73d" stroke="none"/></svg>
+</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/>Inicio</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-200 dark:bg-transparent rounded-sm dark:text-green-400 mr-3 md:mr-6" href=https://javifm.com/blog/ aria-current=page>Blog</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/about/>Sobre mí</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/search/>Buscar</a>
+<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/contact/>Contacto</a>
+<span class="hidden sm:inline"><div>
+<label id=listbox-label class=sr-only>Language</label>
+<div class="mt-1 relative" id=desktopContainerLanguageSelector>
+<button type=button id=desktopButtonLanguageSelector class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm" aria-haspopup=listbox aria-expanded=true aria-labelledby=listbox-label>
+<span class="flex items-center">
+<span>🇪🇸</span>
+<span class="ml-3 block truncate">ES</span>
+</span>
+<span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"><svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 016.293 6.293l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414.0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414.0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</span>
+</button>
+<ul id=desktopLanguageList class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden" tabindex=-1 role=listbox aria-labelledby=listbox-label aria-activedescendant=listbox-option-ES>
+<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-ES tabindex=-1 role=option data-url=https://javifm.com/>
+<div class="flex items-center">
+<span>🇪🇸</span>
+<span class="font-semibold ml-3 block truncate">ES</span>
+</div>
+<span class="text-green-600 absolute inset-y-0 right-0 flex items-center pr-4"><svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414.0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414.0z" clip-rule="evenodd"/></svg>
+</span>
+</li>
+<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-EN tabindex=-1 role=option data-url=https://javifm.com/en/>
+<div class="flex items-center">
+<span>🇬🇧</span>
+<span class="font-normal ml-3 block truncate">EN</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</span>
+<button type=button id=sidebar-open aria-label="Abrir menu" class="sm:hidden text-gray-700 dark:text-gray-300 flex items-center uppercase text-xl p-1 -m-1">
+Menú<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current" id="open-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current hidden" id="close-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586 2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+</button>
+</nav>
+</div>
+</div>
+<div id=site-menu class="h-full absolute top-0 py-6 px-4 bg-gray-800 dark:bg-gray-800 hidden border-l border-transparent dark:border-gray-700">
+<nav class="flex flex-col uppercase text-xl">
+<span class="inline sm:hidden mb-4"><div>
+<label id=listbox-label class=sr-only>Language</label>
+<div class="mt-1 relative" id=mobileContainerLanguageSelector>
+<button type=button id=mobileButtonLanguageSelector class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm" aria-haspopup=listbox aria-expanded=true aria-labelledby=listbox-label>
+<span class="flex items-center">
+<span>🇪🇸</span>
+<span class="ml-3 block truncate">ES</span>
+</span>
+<span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"><svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 016.293 6.293l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414.0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414.0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+</span>
+</button>
+<ul id=mobileLanguageList class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden" tabindex=-1 role=listbox aria-labelledby=listbox-label aria-activedescendant=listbox-option-ES>
+<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-ES tabindex=-1 role=option data-url=https://javifm.com/>
+<div class="flex items-center">
+<span>🇪🇸</span>
+<span class="font-semibold ml-3 block truncate">ES</span>
+</div>
+<span class="text-green-600 absolute inset-y-0 right-0 flex items-center pr-4"><svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414.0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414.0z" clip-rule="evenodd"/></svg>
+</span>
+</li>
+<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-EN tabindex=-1 role=option data-url=https://javifm.com/en/>
+<div class="flex items-center">
+<span>🇬🇧</span>
+<span class="font-normal ml-3 block truncate">EN</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</span>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/>Inicio</a>
+<a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href=https://javifm.com/blog/>Blog</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/about/>Sobre mí</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/search/>Buscar</a>
+<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/contact/>Contacto</a>
+</nav>
+</div>
+<main id=main>
+<div class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600"></div>
+<article class="max-w-7xl mx-auto px-4 single-post">
+<div class=my-6>
+<h1 class=title>Gestión de literales en react con react-intl</h1>
+<div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-600 dark:text-gray-300">
+<time datetime=2023-03-24>
+Publicado el 24 Mar 2023
+</time>
+<span>
+<span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 6 min
+</span>
+</div>
+<div class=mt-4>
+<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/react>react</a>
+</div>
+</div>
+<div class=single-post-content>
+<div class=table-of-content>
+<h2>Tabla de contenido</h2>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#configurando-un-nuevo-proyecto-con-create-react-app>Configurando un nuevo proyecto con create-react-app</a></li>
+<li><a href=#instalando-react-intl>Instalando <code>react-intl</code></a></li>
+<li><a href=#usando-react-intl-en-una-aplicación-de-react>Usando <code>react-intl</code> en una aplicación de React</a></li>
+<li><a href=#extrayendo-y-compilando-literales-con-formatjs>Extrayendo y compilando literales con <code>formatJS</code></a></li>
+</ol>
+</nav>
+</div>
+<p>En esta publicación, vamos a adentrarnos en un enfoque para la gestión de literales de un proyecto de React utilizando <a href=https://formatjs.io/docs/react-intl/>react-intl</a>.</p>
+<h2 id=configurando-un-nuevo-proyecto-con-create-react-app>Configurando un nuevo proyecto con create-react-app</h2>
+<p>Iniciamos un nuevo proyecto de React con <a href=https://create-react-app.dev/>CRA</a>, una de las formas más fáciles de hacerlo sin tener que lidiar con la configuración de webpack.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npx create-react-app react-intl-example --template typescript
+<span class=nb>cd</span> react-intl-example
+npm start
+</code></pre></div><h2 id=instalando-react-intl>Instalando <code>react-intl</code></h2>
+<p>El siguiente paso es instalar <code>react-intl</code> como una dependencia:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm i react-intl
+</code></pre></div><p>También necesitaremos una dependencia de desarrollo para extraer y compilar los literales:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm i -D @formatjs/cli
+</code></pre></div><h2 id=usando-react-intl-en-una-aplicación-de-react>Usando <code>react-intl</code> en una aplicación de React</h2>
+<p>Comencemos a usar <code>react-intl</code> en nuestra aplicación de React de prueba.</p>
+<p>Crea una carpeta <code>lang</code> en <code>src</code> con un archivo JSON vacío llamado <code>en.json</code>. Este archivo contendrá más tarde el resultado de la compilación para cada literal en la aplicación. Explicaremos más adelante en detalle cómo lograr esto.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{}</span>
+</code></pre></div><p>Editamos <code>index.tsx</code> en la carpeta <code>src</code>. Tenemos que importar <code>IntlProvider</code> de <code>react-intl</code> y envolver nuestra aplicación con él. Estamos creando algunos componentes para rich elements que por defecto se usarán globalmente en los literales de la aplicación.</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=hl><span class=lnt> 6
+</span></span><span class=hl><span class=lnt> 7
+</span></span><span class=lnt> 8
+</span><span class=hl><span class=lnt> 9
+</span></span><span class=hl><span class=lnt>10
+</span></span><span class=hl><span class=lnt>11
+</span></span><span class=hl><span class=lnt>12
+</span></span><span class=hl><span class=lnt>13
+</span></span><span class=hl><span class=lnt>14
+</span></span><span class=hl><span class=lnt>15
+</span></span><span class=hl><span class=lnt>16
+</span></span><span class=hl><span class=lnt>17
+</span></span><span class=hl><span class=lnt>18
+</span></span><span class=hl><span class=lnt>19
+</span></span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=hl><span class=lnt>24
+</span></span><span class=hl><span class=lnt>25
+</span></span><span class=hl><span class=lnt>26
+</span></span><span class=hl><span class=lnt>27
+</span></span><span class=hl><span class=lnt>28
+</span></span><span class=hl><span class=lnt>29
+</span></span><span class=hl><span class=lnt>30
+</span></span><span class=hl><span class=lnt>31
+</span></span><span class=hl><span class=lnt>32
+</span></span><span class=hl><span class=lnt>33
+</span></span><span class=hl><span class=lnt>34
+</span></span><span class=hl><span class=lnt>35
+</span></span><span class=hl><span class=lnt>36
+</span></span><span class=hl><span class=lnt>37
+</span></span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-tsx data-lang=tsx><span class=kr>import</span> <span class=nx>React</span> <span class=kr>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>ReactDOM</span> <span class=kr>from</span> <span class=s2>&#34;react-dom/client&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=s2>&#34;./index.css&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>App</span> <span class=kr>from</span> <span class=s2>&#34;./App&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>reportWebVitals</span> <span class=kr>from</span> <span class=s2>&#34;./reportWebVitals&#34;</span><span class=p>;</span>
+<span class=hl><span class=kr>import</span> <span class=p>{</span> <span class=nx>IntlProvider</span> <span class=p>}</span> <span class=kr>from</span> <span class=s2>&#34;react-intl&#34;</span><span class=p>;</span>
+</span><span class=hl><span class=kr>import</span> <span class=nx>literals</span> <span class=kr>from</span> <span class=s2>&#34;./lang/en.json&#34;</span><span class=p>;</span>
+</span>
+<span class=hl><span class=kr>interface</span> <span class=nx>Props</span> <span class=p>{</span>
+</span><span class=hl>  <span class=nx>children?</span>: <span class=kt>React.ReactNode</span><span class=p>;</span>
+</span><span class=hl><span class=p>}</span>
+</span><span class=hl>
+</span><span class=hl><span class=kr>const</span> <span class=nx>Bold</span> <span class=o>=</span> <span class=p>(</span><span class=nx>props</span>: <span class=kt>Props</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>{</span>
+</span><span class=hl>  <span class=k>return</span> <span class=p>(</span>
+</span><span class=hl>    <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+</span><span class=hl>      <span class=p>&lt;</span><span class=nt>strong</span><span class=p>&gt;{</span><span class=nx>props</span><span class=p>.</span><span class=nx>children</span><span class=p>}&lt;/</span><span class=nt>strong</span><span class=p>&gt;</span>
+</span><span class=hl>    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span><span class=hl>  <span class=p>);</span>
+</span><span class=hl><span class=p>};</span>
+</span>
+<span class=kr>const</span> <span class=nx>root</span> <span class=o>=</span> <span class=nx>ReactDOM</span><span class=p>.</span><span class=nx>createRoot</span><span class=p>(</span>
+  <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s2>&#34;root&#34;</span><span class=p>)</span> <span class=kr>as</span> <span class=nx>HTMLElement</span>
+<span class=p>);</span>
+<span class=hl><span class=nx>root</span><span class=p>.</span><span class=nx>render</span><span class=p>(</span>
+</span><span class=hl>  <span class=p>&lt;</span><span class=nt>IntlProvider</span>
+</span><span class=hl>    <span class=na>locale</span><span class=o>=</span><span class=s>&#34;en&#34;</span>
+</span><span class=hl>    <span class=na>defaultLocale</span><span class=o>=</span><span class=s>&#34;en&#34;</span>
+</span><span class=hl>    <span class=na>messages</span><span class=o>=</span><span class=p>{</span><span class=nx>literals</span><span class=p>}</span>
+</span><span class=hl>    <span class=na>defaultRichTextElements</span><span class=o>=</span><span class=p>{{</span>
+</span><span class=hl>      <span class=nx>bold</span><span class=o>:</span> <span class=p>(</span><span class=nx>chunks</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>&lt;</span><span class=nt>Bold</span><span class=p>&gt;{</span><span class=nx>chunks</span><span class=p>}&lt;/</span><span class=nt>Bold</span><span class=p>&gt;,</span>
+</span><span class=hl>    <span class=p>}}</span>
+</span><span class=hl>  <span class=p>&gt;</span>
+</span><span class=hl>    <span class=p>&lt;</span><span class=nt>React.StrictMode</span><span class=p>&gt;</span>
+</span><span class=hl>      <span class=p>&lt;</span><span class=nt>App</span> <span class=p>/&gt;</span>
+</span><span class=hl>    <span class=p>&lt;/</span><span class=nt>React.StrictMode</span><span class=p>&gt;</span>
+</span><span class=hl>  <span class=p>&lt;/</span><span class=nt>IntlProvider</span><span class=p>&gt;</span>
+</span><span class=hl><span class=p>);</span>
+</span>
+<span class=c1>// If you want to start measuring performance in your app, pass a function
+</span><span class=c1>// to log results (for example: reportWebVitals(console.log))
+</span><span class=c1>// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+</span><span class=c1></span><span class=nx>reportWebVitals</span><span class=p>();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>El siguiente paso es crear una nueva carpeta con un archivo <code>example.ts</code> donde definiremos algunos literales. Por ejemplo, uno usando un rich element global definido anteriormente (usado como una etiqueta HTML, <code>&lt;bold>&lt;/bold></code> en este ejemplo), y otro literal regular simple. Lo haremos utilizando la función <code>defineMessages</code> de <code>react-intl</code>.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=kr>import</span> <span class=p>{</span> <span class=nx>defineMessages</span> <span class=p>}</span> <span class=kr>from</span> <span class=s2>&#34;react-intl&#34;</span><span class=p>;</span>
+
+<span class=kr>export</span> <span class=k>default</span> <span class=nx>defineMessages</span><span class=p>({</span>
+  <span class=nx>hello</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>id</span><span class=o>:</span> <span class=s2>&#34;a.hello&#34;</span><span class=p>,</span>
+    <span class=nx>defaultMessage</span><span class=o>:</span> <span class=s2>&#34;&lt;bold&gt;hello&lt;/bold&gt;&#34;</span><span class=p>,</span>
+  <span class=p>},</span>
+  <span class=nx>world</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>id</span><span class=o>:</span> <span class=s2>&#34;a.world&#34;</span><span class=p>,</span>
+    <span class=nx>defaultMessage</span><span class=o>:</span> <span class=s2>&#34;world&#34;</span><span class=p>,</span>
+  <span class=p>},</span>
+<span class=p>});</span>
+</code></pre></div><p>Podemos crear otro archivo de literales llamado <code>other.ts</code> dentro de la carpeta <code>messages</code>. Esto es solo un ejemplo, puedes crear tantos archivos de literales como desees y colocarlos donde quieras, esa decisión está en tus manos y es subjetiva.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=kr>import</span> <span class=p>{</span> <span class=nx>defineMessages</span> <span class=p>}</span> <span class=kr>from</span> <span class=s2>&#34;react-intl&#34;</span><span class=p>;</span>
+
+<span class=kr>export</span> <span class=k>default</span> <span class=nx>defineMessages</span><span class=p>({</span>
+  <span class=nx>other</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>id</span><span class=o>:</span> <span class=s2>&#34;a.richtext&#34;</span><span class=p>,</span>
+    <span class=nx>defaultMessage</span><span class=o>:</span> <span class=s2>&#34;I have &lt;test&gt;{num}&lt;/test&gt;&#34;</span><span class=p>,</span>
+  <span class=p>},</span>
+<span class=p>});</span>
+</code></pre></div><p>Ahora podemos comenzar a importar nuestros literales en la aplicación. Para simplificar, mostraré cómo hacerlo editando directamente el archivo <code>App.tsx</code> de la siguiente manera:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-tsx data-lang=tsx><span class=kr>import</span> <span class=nx>React</span> <span class=kr>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>FormattedMessage</span> <span class=p>}</span> <span class=kr>from</span> <span class=s2>&#34;react-intl&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>exampleMessages</span> <span class=kr>from</span> <span class=s2>&#34;./messages/example&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>otherMessages</span> <span class=kr>from</span> <span class=s2>&#34;./messages/other&#34;</span><span class=p>;</span>
+
+<span class=kd>function</span> <span class=nx>App() {</span>
+  <span class=k>return</span> <span class=p>(</span>
+    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>className</span><span class=o>=</span><span class=s>&#34;App&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>FormattedMessage</span> <span class=p>{</span><span class=na>...exampleMessages.hello</span><span class=p>}</span> <span class=p>/&gt;{</span><span class=s2>&#34; &#34;</span><span class=p>}</span>
+      <span class=p>&lt;</span><span class=nt>FormattedMessage</span> <span class=p>{</span><span class=na>...exampleMessages.world</span><span class=p>}</span> <span class=p>/&gt;</span>
+      <span class=p>&lt;</span><span class=nt>FormattedMessage</span>
+        <span class=na>id</span><span class=o>=</span><span class=p>{</span><span class=nx>otherMessages</span><span class=p>.</span><span class=nx>other</span><span class=p>.</span><span class=nx>id</span><span class=p>}</span>
+        <span class=na>defaultMessage</span><span class=o>=</span><span class=p>{</span><span class=nx>otherMessages</span><span class=p>.</span><span class=nx>other</span><span class=p>.</span><span class=nx>defaultMessage</span><span class=p>}</span>
+        <span class=na>values</span><span class=o>=</span><span class=p>{{</span> <span class=nx>num</span>: <span class=kt>99</span><span class=p>,</span> <span class=nx>test</span><span class=o>:</span> <span class=p>(</span><span class=nx>chunks</span>: <span class=kt>any</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>&lt;</span><span class=nt>strong</span><span class=p>&gt;{</span><span class=nx>chunks</span><span class=p>}</span><span class=o>!!</span><span class=p>&lt;/</span><span class=nt>strong</span><span class=p>&gt;</span> <span class=p>}}</span>
+      <span class=p>/&gt;</span>
+    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+  <span class=p>);</span>
+<span class=p>}</span>
+
+<span class=kr>export</span> <span class=k>default</span> <span class=nx>App</span><span class=p>;</span>
+</code></pre></div><p>En este ejemplo, estamos cargando nuestros literales desde dos archivos diferentes y utilizando el componente <code>FormattedMessage</code> de la biblioteca <code>react-intl</code>. Puedes consultar en la <a href=https://formatjs.io/docs/getting-started/message-declaration>documentación oficial diferentes formas de declarar mensajes</a>.</p>
+<p>Por lo tanto, cada vez que deseemos usar un literal en la aplicación, podemos definirlo en un archivo separado e importarlo para usarlo. Si no se encuentra un literal en el archivo compilado <code>lang/en.json</code>, se utilizará el valor proporcionado en <code>defaultMessage</code>. Esto es muy útil porque no es necesario compilar los literales cada vez que necesitemos un nuevo literal mientras desarrollamos.</p>
+<h2 id=extrayendo-y-compilando-literales-con-formatjs>Extrayendo y compilando literales con <code>formatJS</code></h2>
+<p>Crearemos algunos scripts en el archivo <code>package.json</code> para automatizar el proceso de extracción y compilación de literales. Podemos consultar <a href=https://formatjs.io/docs/getting-started/message-extraction>la documentación oficial para obtener más detalles</a>. Utilizaremos un comando muy largo de la documentación y lo dividiremos en algunos scripts para una mejor legibilidad. Veamos los scripts y luego la explicación de los comandos ejecutados:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=c1>// ---- scripts section from package.json
+</span><span class=c1></span><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;literals:extract&#34;</span><span class=p>:</span> <span class=s2>&#34;formatjs extract &#39;src/**/*.ts*&#39; --ignore=&#39;**/*.d.ts&#39; --out-file temp.json --flatten --id-interpolation-pattern &#39;[sha512:contenthash:base64:6]&#39;&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;literals:compile&#34;</span><span class=p>:</span> <span class=s2>&#34;formatjs compile &#39;temp.json&#39;&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;postliterals:compile&#34;</span><span class=p>:</span> <span class=s2>&#34;rm temp.json&#34;</span><span class=p>,</span>
+<span class=p>}</span>
+<span class=c1>// ----
+</span></code></pre></div><p>El primer comando extraerá cada una de los literales definidos en la aplicación bajo la carpeta <code>src</code> a un archivo temporal llamado <code>temp.json</code>.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>formatjs extract <span class=s1>&#39;src/**/*.ts*&#39;</span> --ignore<span class=o>=</span><span class=s1>&#39;**/*.d.ts&#39;</span> --out-file temp.json --flatten --id-interpolation-pattern <span class=s1>&#39;[sha512:contenthash:base64:6]&#39;</span>
+</code></pre></div><blockquote>
+<p><strong>Advertencias</strong>: El comando incluye una opción para generar ids, pero con la configuración de <code>create-react-app</code>, esta característica no funcionará porque es necesario editar la configuración de webpack y babel.</p>
+</blockquote>
+<p>Una vez extraídos los literales a un archivo, los compilaremos especificando el archivo de destino (destacar los parámetros adicionales utilizados en el comando, no están presentes en el script anterior, agregaremos más scripts al final):</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>formatjs compile <span class=s1>&#39;temp.json&#39;</span> --out-file src/lang/en.json
+</code></pre></div><p>Con este comando, el archivo generado (<code>src/lang/en.json</code>) será el siguiente:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;a.hello&#34;</span><span class=p>:</span> <span class=s2>&#34;&lt;bold&gt;hello&lt;/bold&gt;&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;a.richtext&#34;</span><span class=p>:</span> <span class=s2>&#34;I have &lt;test&gt;{num}&lt;/test&gt;&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;a.world&#34;</span><span class=p>:</span> <span class=s2>&#34;world&#34;</span>
+<span class=p>}</span>
+</code></pre></div><blockquote>
+<p>Si deseamos traducir nuestros literales a otro idioma, este archivo debe ser utilizado como punto de partida, y se deben traducir cada uno de los literales. Luego, debemos crear un nuevo archivo, por ejemplo <code>es.json</code>, y agregar lógica en <code>index.tsx</code> para cargar el archivo <code>en.json</code> o <code>es.json</code> dependiendo del idioma seleccionado en la aplicación.</p>
+</blockquote>
+<p>Si iniciamos nuestra aplicación con este archivo, todo funcionará según lo esperado, pero en las DevTools se puede leer esta advertencia:</p>
+<p><code>[@formatjs/intl] "defaultRichTextElements" was specified but "message" was not pre-compiled. Please consider using "@formatjs/cli" to pre-compile your messages for performance. For more details see https://formatjs.io/docs/getting-started/message-distribution</code>.</p>
+<p>Esto se debe a que estamos usando la opción <code>defaultRichTextElements</code> globalmente para los literales, y cada vez que se carga un literal, la biblioteca no sabe si el literal está utilizando <code>defaultRichTextElements</code> o no. Por esta razón, debemos compilar utilizando el flag <code>ast</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>formatjs compile <span class=s1>&#39;temp.json&#39;</span> --ast --out-file src/lang/en.json
+</code></pre></div><p>Después de esto, el resultado será diferente:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;a.hello&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;children&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span>
+          <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;hello&#34;</span>
+        <span class=p>}</span>
+      <span class=p>],</span>
+      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=mi>8</span><span class=p>,</span>
+      <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;bold&#34;</span>
+    <span class=p>}</span>
+  <span class=p>],</span>
+  <span class=nt>&#34;a.richtext&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span>
+      <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;I have &#34;</span>
+    <span class=p>},</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;children&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+          <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;num&#34;</span>
+        <span class=p>}</span>
+      <span class=p>],</span>
+      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=mi>8</span><span class=p>,</span>
+      <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;test&#34;</span>
+    <span class=p>}</span>
+  <span class=p>],</span>
+  <span class=nt>&#34;a.world&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span>
+      <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;world&#34;</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>}</span>
+</code></pre></div><p>Y si iniciamos la aplicación con este archivo, la advertencia desaparecerá. Finalmente, podemos agregar más scripts con los flags necesarios para cada caso. Extracto final de los scripts:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=c1>// ---- scripts section from package.json
+</span><span class=c1></span><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;literals:extract&#34;</span><span class=p>:</span> <span class=s2>&#34;formatjs extract &#39;src/**/*.ts*&#39; --ignore=&#39;**/*.d.ts&#39; --out-file temp.json --flatten --id-interpolation-pattern &#39;[sha512:contenthash:base64:6]&#39;&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;literals:compile&#34;</span><span class=p>:</span> <span class=s2>&#34;formatjs compile &#39;temp.json&#39;&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;postliterals:compile&#34;</span><span class=p>:</span> <span class=s2>&#34;rm temp.json&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;literals:en&#34;</span><span class=p>:</span> <span class=s2>&#34;npm run literals:compile -- --out-file src/lang/en.json&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;literals:en:ast&#34;</span><span class=p>:</span> <span class=s2>&#34;npm run literals:compile -- --ast --out-file src/lang/en.json&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;literals:extract:compile&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all literals:extract literals:en&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;literals:extract:compile:ast&#34;</span><span class=p>:</span> <span class=s2>&#34;npm-run-all literals:extract literals:en:ast&#34;</span>
+<span class=p>}</span>
+<span class=c1>// ----
+</span></code></pre></div><blockquote>
+<p>Los últimos 2 scripts están utilizando <code>npm-run-all</code> como una dependencia de desarrollo, puedes instalarla usando: <code>npm i -D npm-run-all</code>.</p>
+</blockquote>
+<p>Para generar los literales en la aplicación, podemos ejecutar <code>literals:extract:compile</code> para generar un archivo listo para ser traducido, o <code>literals:extract:compile:ast</code> para un archivo listo para producción.</p>
+<p>Se puede revisar un repositorio con este ejemplo de aplicación <a href=https://github.com/javifm86/react-intl-example>en mi cuenta de Github</a>.</p>
+</div>
+<div class="my-16 border-b border-gray-300"></div>
+<div class="mb-16 text-center max-w-3xl mx-auto">
+<a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href=https://javifm.com/blog/flujo-de-trabajo-sencillo-para-un-monorepo/>
+&#171; Flujo de trabajo sencillo para un monorepo
+</a>
+</div>
+</article>
+</main>
+<footer class="bg-gray-800 text-gray-200 p-4">
+<div class="container mx-auto flex justify-between items-center">
+<p>
+&copy; 2021 Sitio construido con <a class="text-white underline" href=https://gohugo.io/>Hugo</a> alojado en <a class="text-white underline" href=https://github.com/>Github</a>.
+</p>
+<div class="flex items-center">
+<a href=https://github.com/javifm86 class="mr-1 p-2 text-gray-300 hover:text-white">
+<span class=sr-only>Github</span><svg class="w-8 h-8 pointer-events-none" viewBox="0 0 256 250" role="img" aria-labelledby="titleId" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Github</title><path role="presentation" class="fill-current" d="M128.001.0C57.317.0.0 57.307.0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158.0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258.0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874.0.0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358.0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704.0 17.126-.148 30.91-.148 35.126.0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691.0 128.001.0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86.0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"/></svg>
+</a>
+<a href=https://twitter.com/javifm86 class="p-2 text-gray-300 hover:text-white">
+<span class=sr-only>Twitter</span><svg class="w-8 h-8 mt-1 pointer-events-none" role="img" aria-labelledby="titleId" viewBox="0 0 256 209" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Twitter</title><path role="presentation" class="fill-current" d="M256 25.45a105.04 105.04.0 01-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183.0 01-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006.0-52.523 23.516-52.523 52.52.0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404.0 18.222 9.273 34.297 23.365 43.716a52.312 52.312.0 01-23.79-6.57c-.003.22-.003.44-.003.661.0 25.447 18.104 46.675 42.13 51.5a52.592 52.592.0 01-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24.0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607.0 149.434-80.031 149.434-149.435.0-2.278-.05-4.543-.152-6.795A106.748 106.748.0 00256 25.45"/></svg>
+</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<script src=https://javifm.com/js/focus-visible.min.js></script>
+<script type=text/javascript>(function(){const c=document.getElementsByTagName('body')[0],g=document.getElementById('open-menu'),f=document.getElementById('close-menu'),e=document.getElementById('site-menu'),d=document.getElementById('sidebar-open'),b='show-nav';let a='closed';const k=m(function(){c.classList.contains(b)&&window.screen.width>639&&h()},0);d.addEventListener('click',h),window.addEventListener('resize',k);function l(){a==='opening'?(i(g,'hidden'),j(f,'hidden'),d.setAttribute('aria-label','Cerrar menú'),a='open'):(j(g,'hidden'),i(f,'hidden'),e.classList.add('hidden'),d.setAttribute('aria-label','Abrir menú'),a='closed')}function h(){c.classList.contains(b)?(c.classList.remove(b),a='closing'):(c.classList.add(b),a='opening',e.classList.remove('hidden')),setTimeout(l,300)}function m(b,d,c){let a;return function(){let e=this,f=arguments;const g=function(){a=null,c||b.apply(e,f)};let h=c&&!a;clearTimeout(a),a=setTimeout(g,d),h&&b.apply(e,f)}}function i(a,b){a.setAttribute('class',a.getAttribute('class')+' '+b)}function j(a,b){let c=a.getAttribute('class').replace(new RegExp('(\\s|^)'+b+'(\\s|$)','g'),'$2');a.setAttribute('class',c)}})()</script>
+<script type=text/javascript>(function(){const h=document.getElementById('desktopContainerLanguageSelector'),o=document.getElementById('mobileContainerLanguageSelector'),a=document.getElementById('desktopLanguageList'),b=document.getElementById('mobileLanguageList'),c=document.getElementById('desktopButtonLanguageSelector'),d=document.getElementById('mobileButtonLanguageSelector'),k=document.querySelectorAll('#desktopLanguageList li, #mobileLanguageList li'),j=document.querySelectorAll('#desktopLanguageList li'),i=document.querySelectorAll('#mobileLanguageList li');c.addEventListener('click',function(b){a.classList.toggle('hidden')}),d.addEventListener('click',function(a){b.classList.toggle('hidden')}),k.forEach(a=>{a.addEventListener('click',function(a){window.location.href=this.dataset.url}),a.addEventListener('keypress',function({key:a}){(a==='Enter'||a==='Space')&&(window.location.href=this.dataset.url)})}),document.addEventListener('click',function(c){!h.contains(c.target)&&e()&&a.classList.add('hidden'),!o.contains(c.target)&&g()&&b.classList.add('hidden')}),document.addEventListener('keydown',function(b){const{key:a}=b,c=e(),d=g();if(!c&&!d)return;if(a==='Escape'||a==='Tab'){l(c);return}if(a==='ArrowUp'){b.preventDefault(),document.activeElement.previousElementSibling!==null&&document.activeElement.previousElementSibling.focus();return}if(a==='ArrowDown'){b.preventDefault(),m()?j[0].focus():n()?i[0].focus():f()&&document.activeElement.nextElementSibling!==null&&document.activeElement.nextElementSibling.focus();return}});function e(){return!a.classList.contains('hidden')}function g(){return!b.classList.contains('hidden')}function l(h){let e=null,g=null;h?(e=a,g=c):(e=b,g=d),e.classList.add('hidden'),f()&&g.focus()}function m(){return document.activeElement.isSameNode(c)}function n(){return document.activeElement.isSameNode(d)}function f(){return document.activeElement.getAttribute('id').includes('listbox-option-')}function p(a){return a.getAttribute('id').includes('listbox-option-')}})()</script>
+</body>
+</html>
