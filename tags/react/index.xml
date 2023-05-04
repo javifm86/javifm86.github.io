@@ -1,1 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>react on Javier Fernández</title><link>https://javifm.com/tags/react/</link><description>Recent content in react on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 24 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/react/index.xml" rel="self" type="application/rss+xml"/><item><title>Gestión de literales en react con react-intl</title><link>https://javifm.com/blog/gesti%C3%B3n-de-literales-en-react-con-react-intl/</link><pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate><guid>https://javifm.com/blog/gesti%C3%B3n-de-literales-en-react-con-react-intl/</guid><description>En esta publicación, vamos a adentrarnos en un enfoque para la gestión de literales de un proyecto de React utilizando react-intl.</description></item><item><title>Flujo de trabajo sencillo para un monorepo</title><link>https://javifm.com/blog/flujo-de-trabajo-sencillo-para-un-monorepo/</link><pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate><guid>https://javifm.com/blog/flujo-de-trabajo-sencillo-para-un-monorepo/</guid><description>En mi trabajo actual, me ha tocado configurar un monorepo con hooks de git, ESLint, Prettier y algunas acciones propias.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>react on Javier Fernández</title>
+    <link>https://javifm.com/tags/react/</link>
+    <description>Recent content in react on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 24 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gestión de literales en react con react-intl</title>
+      <link>https://javifm.com/blog/gesti%C3%B3n-de-literales-en-react-con-react-intl/</link>
+      <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/gesti%C3%B3n-de-literales-en-react-con-react-intl/</guid>
+      <description>En esta publicación, vamos a adentrarnos en un enfoque para la gestión de literales de un proyecto de React utilizando react-intl.</description>
+    </item>
+    
+    <item>
+      <title>Flujo de trabajo sencillo para un monorepo</title>
+      <link>https://javifm.com/blog/flujo-de-trabajo-sencillo-para-un-monorepo/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/flujo-de-trabajo-sencillo-para-un-monorepo/</guid>
+      <description>En mi trabajo actual, me ha tocado configurar un monorepo con hooks de git, ESLint, Prettier y algunas acciones propias.</description>
+    </item>
+    
+  </channel>
+</rss>

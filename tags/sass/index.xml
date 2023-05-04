@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sass on Javier Fernández</title><link>https://javifm.com/tags/sass/</link><description>Recent content in sass on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 09 Sep 2015 13:50:35 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/sass/index.xml" rel="self" type="application/rss+xml"/><item><title>Compilando ficheros Sass con grunt</title><link>https://javifm.com/blog/compilando-ficheros-sass-con-grunt/</link><pubDate>Wed, 09 Sep 2015 13:50:35 +0000</pubDate><guid>https://javifm.com/blog/compilando-ficheros-sass-con-grunt/</guid><description>A lo largo de los 2 últimos años, he ido poco a poco mejorando mi nivel de productividad en el trabajo.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sass on Javier Fernández</title>
+    <link>https://javifm.com/tags/sass/</link>
+    <description>Recent content in sass on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 09 Sep 2015 13:50:35 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/sass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compilando ficheros Sass con grunt</title>
+      <link>https://javifm.com/blog/compilando-ficheros-sass-con-grunt/</link>
+      <pubDate>Wed, 09 Sep 2015 13:50:35 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/compilando-ficheros-sass-con-grunt/</guid>
+      <description>A lo largo de los 2 últimos años, he ido poco a poco mejorando mi nivel de productividad en el trabajo.</description>
+    </item>
+    
+  </channel>
+</rss>

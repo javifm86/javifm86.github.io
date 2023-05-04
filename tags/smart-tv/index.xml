@@ -1,1 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>smart TV on Javier Fernández</title><link>https://javifm.com/tags/smart-tv/</link><description>Recent content in smart TV on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 05 Nov 2014 16:03:56 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/smart-tv/index.xml" rel="self" type="application/rss+xml"/><item><title>Depuración remota en Smart TV con console.io</title><link>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</link><pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate><guid>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid><description>Hace algún tiempo hablé de Weinre, como opción para depurar de forma remota nuestras aplicaciones Javascript.</description></item><item><title>Depurar remotamente aplicaciones HTML con Weinre</title><link>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</link><pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate><guid>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid><description>Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para depurar el código Javascript suelo utilizar las herramientas de desarrollador de Chrome.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>smart TV on Javier Fernández</title>
+    <link>https://javifm.com/tags/smart-tv/</link>
+    <description>Recent content in smart TV on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 05 Nov 2014 16:03:56 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/smart-tv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Depuración remota en Smart TV con console.io</title>
+      <link>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</link>
+      <pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid>
+      <description>Hace algún tiempo hablé de Weinre, como opción para depurar de forma remota nuestras aplicaciones Javascript.</description>
+    </item>
+    
+    <item>
+      <title>Depurar remotamente aplicaciones HTML con Weinre</title>
+      <link>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</link>
+      <pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid>
+      <description>Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para depurar el código Javascript suelo utilizar las herramientas de desarrollador de Chrome.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>git on Javier Fernández</title><link>https://javifm.com/en/tags/git/</link><description>Recent content in git on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/en/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Monorepo simple starter workflow</title><link>https://javifm.com/en/blog/monorepo-simple-starter-workflow/</link><pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate><guid>https://javifm.com/en/blog/monorepo-simple-starter-workflow/</guid><description>In my current job, I have had to configure a monorepo with git hooks, ESLint, Prettier and some custom actions.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Javier Fernández</title>
+    <link>https://javifm.com/en/tags/git/</link>
+    <description>Recent content in git on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/en/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Monorepo simple starter workflow</title>
+      <link>https://javifm.com/en/blog/monorepo-simple-starter-workflow/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://javifm.com/en/blog/monorepo-simple-starter-workflow/</guid>
+      <description>In my current job, I have had to configure a monorepo with git hooks, ESLint, Prettier and some custom actions.</description>
+    </item>
+    
+  </channel>
+</rss>

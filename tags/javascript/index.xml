@@ -1,1 +1,100 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>javascript on Javier Fernández</title><link>https://javifm.com/tags/javascript/</link><description>Recent content in javascript on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 10 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Configurando StandardJS</title><link>https://javifm.com/blog/configurando-standardjs/</link><pubDate>Tue, 10 Aug 2021 00:00:00 +0000</pubDate><guid>https://javifm.com/blog/configurando-standardjs/</guid><description>En este post vamos a ver como configurar StandardJS en VSCode para poder corregir todos los errores al guardar un archivo automáticamente.</description></item><item><title>Arbol de intervalos (interval tree) en Javascript</title><link>https://javifm.com/blog/arbol-de-intervalos-interval-tree-en-javascript/</link><pubDate>Fri, 09 Sep 2016 10:41:33 +0000</pubDate><guid>https://javifm.com/blog/arbol-de-intervalos-interval-tree-en-javascript/</guid><description>Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.</description></item><item><title>Evitar que jQuery sea global con RequireJS</title><link>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</link><pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate><guid>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</guid><description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web.</description></item><item><title>Ellipsis de múltiples líneas con Javascript</title><link>https://javifm.com/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</link><pubDate>Mon, 07 Sep 2015 09:00:57 +0000</pubDate><guid>https://javifm.com/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</guid><description>Ellipsis es simplemente un carácter compuesto por tres puntos: “…”. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis.</description></item><item><title>Concatenar llamadas a métodos en Javascript</title><link>https://javifm.com/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</link><pubDate>Tue, 21 Apr 2015 09:10:23 +0000</pubDate><guid>https://javifm.com/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</guid><description>Vamos a ver de una manera rápida, como podemos concatenar llamadas a distintos métodos sobre un mismo objeto en Javascript (en inglés, Method Chaining in JavaScript).</description></item><item><title>Width() de jQuery sin redondeo</title><link>https://javifm.com/blog/width-de-jquery-sin-redondeo/</link><pubDate>Thu, 26 Feb 2015 10:36:01 +0000</pubDate><guid>https://javifm.com/blog/width-de-jquery-sin-redondeo/</guid><description>Un tip muy rápido y muy sencillo, pero que no conocía.</description></item><item><title>Depuración remota en Smart TV con console.io</title><link>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</link><pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate><guid>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid><description>Hace algún tiempo hablé de Weinre, como opción para depurar de forma remota nuestras aplicaciones Javascript.</description></item><item><title>Depurar maquetación CSS con una línea de código</title><link>https://javifm.com/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</link><pubDate>Mon, 13 Oct 2014 11:03:44 +0000</pubDate><guid>https://javifm.com/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</guid><description>Llevo aproximadamente 8 años trabajando como desarrollador Javascript principalmente, y la verdad es que cada día uno sigue descubriendo cosas que no dejan de sorprenderle.</description></item><item><title>Detectar fin de una transición/animación CSS3 con Javascript</title><link>https://javifm.com/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</link><pubDate>Sun, 29 Jun 2014 10:06:28 +0000</pubDate><guid>https://javifm.com/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</guid><description>Nunca me había visto en la necesidad de detectar cuando una transición CSS3 termina, pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente.</description></item><item><title>Depurar remotamente aplicaciones HTML con Weinre</title><link>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</link><pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate><guid>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid><description>Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para depurar el código Javascript suelo utilizar las herramientas de desarrollador de Chrome.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Javier Fernández</title>
+    <link>https://javifm.com/tags/javascript/</link>
+    <description>Recent content in javascript on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 10 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configurando StandardJS</title>
+      <link>https://javifm.com/blog/configurando-standardjs/</link>
+      <pubDate>Tue, 10 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/configurando-standardjs/</guid>
+      <description>En este post vamos a ver como configurar StandardJS en VSCode para poder corregir todos los errores al guardar un archivo automáticamente.</description>
+    </item>
+    
+    <item>
+      <title>Arbol de intervalos (interval tree) en Javascript</title>
+      <link>https://javifm.com/blog/arbol-de-intervalos-interval-tree-en-javascript/</link>
+      <pubDate>Fri, 09 Sep 2016 10:41:33 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/arbol-de-intervalos-interval-tree-en-javascript/</guid>
+      <description>Continúo aprendiendo cosas en mi proyecto laboral actual. En este caso, para optimizar el rendimiento de una búsqueda en un objeto enorme en Javascript.</description>
+    </item>
+    
+    <item>
+      <title>Evitar que jQuery sea global con RequireJS</title>
+      <link>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</link>
+      <pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
+      <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web.</description>
+    </item>
+    
+    <item>
+      <title>Ellipsis de múltiples líneas con Javascript</title>
+      <link>https://javifm.com/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</link>
+      <pubDate>Mon, 07 Sep 2015 09:00:57 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/</guid>
+      <description>Ellipsis es simplemente un carácter compuesto por tres puntos: “…”. En desarrollo web, se aplica a textos muy largos que son más grandes que su contenedor, y por tanto queremos que sean recortados agregando al final el carácter ellipsis.</description>
+    </item>
+    
+    <item>
+      <title>Concatenar llamadas a métodos en Javascript</title>
+      <link>https://javifm.com/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</link>
+      <pubDate>Tue, 21 Apr 2015 09:10:23 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/concatenar-llamadas-a-m%C3%A9todos-en-javascript/</guid>
+      <description>Vamos a ver de una manera rápida, como podemos concatenar llamadas a distintos métodos sobre un mismo objeto en Javascript (en inglés, Method Chaining in JavaScript).</description>
+    </item>
+    
+    <item>
+      <title>Width() de jQuery sin redondeo</title>
+      <link>https://javifm.com/blog/width-de-jquery-sin-redondeo/</link>
+      <pubDate>Thu, 26 Feb 2015 10:36:01 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/width-de-jquery-sin-redondeo/</guid>
+      <description>Un tip muy rápido y muy sencillo, pero que no conocía.</description>
+    </item>
+    
+    <item>
+      <title>Depuración remota en Smart TV con console.io</title>
+      <link>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</link>
+      <pubDate>Wed, 05 Nov 2014 16:03:56 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/depuraci%C3%B3n-remota-en-smart-tv-con-console.io/</guid>
+      <description>Hace algún tiempo hablé de Weinre, como opción para depurar de forma remota nuestras aplicaciones Javascript.</description>
+    </item>
+    
+    <item>
+      <title>Depurar maquetación CSS con una línea de código</title>
+      <link>https://javifm.com/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</link>
+      <pubDate>Mon, 13 Oct 2014 11:03:44 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/depurar-maquetaci%C3%B3n-css-con-una-l%C3%ADnea-de-c%C3%B3digo/</guid>
+      <description>Llevo aproximadamente 8 años trabajando como desarrollador Javascript principalmente, y la verdad es que cada día uno sigue descubriendo cosas que no dejan de sorprenderle.</description>
+    </item>
+    
+    <item>
+      <title>Detectar fin de una transición/animación CSS3 con Javascript</title>
+      <link>https://javifm.com/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</link>
+      <pubDate>Sun, 29 Jun 2014 10:06:28 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/detectar-fin-de-una-transici%C3%B3n/animaci%C3%B3n-css3-con-javascript/</guid>
+      <description>Nunca me había visto en la necesidad de detectar cuando una transición CSS3 termina, pero el otro día en el trabajo, para desplegar cierta información, estamos utilizando 2 contenedores, y al añadir una clase se activa una animación CSS3 que va aumentando el margen izquierdo del div hasta que aparece el siguiente.</description>
+    </item>
+    
+    <item>
+      <title>Depurar remotamente aplicaciones HTML con Weinre</title>
+      <link>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</link>
+      <pubDate>Sun, 15 Jun 2014 17:43:44 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/depurar-remotamente-aplicaciones-html-con-weinre/</guid>
+      <description>Nunca me había visto en la necesidad de hacer uso de esta funcionalidad, normalmente desarrollo aplicaciones y páginas web y las pruebo directamente en el navegador, para depurar el código Javascript suelo utilizar las herramientas de desarrollador de Chrome.</description>
+    </item>
+    
+  </channel>
+</rss>

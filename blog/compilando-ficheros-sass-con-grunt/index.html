@@ -1,294 +1,902 @@
-<!doctype html><html lang=es>
+<!doctype html>
+<html lang="es">
+
 <head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=generator content="Hugo 0.92.0">
-<link rel=stylesheet href=https://javifm.com/css/styles.css>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.92.0" />
+
+<link rel="stylesheet" href="https://javifm.com/css/styles.css">
+
+
 <title>Compilando ficheros Sass con grunt | Javier Fernández</title>
+
+    
 </head>
+
 <body>
-<div id=site-wrapper class="relative overflow-hidden w-full">
-<div id=site-canvas class="w-full h-full relative">
-<a id=skiplink class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-sm p-2 uppercase" href=#main>
-Saltar al contenido principal
+    <div id="site-wrapper" class="relative overflow-hidden w-full">
+        <div id="site-canvas" class="w-full h-full relative">
+            
+
+
+
+<a id="skiplink" class="sr-only absolute top-0 left-0 mt-2 ml-1 font-semibold bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-sm p-2 uppercase" href="#main">
+    Saltar al contenido principal
 </a>
+
 <div class="bg-gray-50 dark:bg-gray-800 border-t-4 border-green-500">
-<div class="max-w-7xl mx-auto">
-<nav class="flex flex-wrap items-center p-4">
-<a href=https://javifm.com class="mr-auto p-2 -m-2 last:mr-0" aria-hidden=true>
-<span class=sr-only>Inicio</span><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3640 3640" aria-hidden="true" class="w-10 h-10"><path d="M2958 1348l-156-202 69-55c89-70 141-147 147-217 11-127-66-244-181-278-67-19-79-20-139-2-66 21-67 21-228 151-505 408-832 666-840 663-11-4-310-378-310-388 0-9 943-765 1025-822 119-84 245-120 415-121 156 0 305 41 418 116 145 96 269 258 320 417 19 60 39 203 36 255-8 119-39 244-82 327-19 36-96 145-129 183-10 11-54 49-98 84-44 36-87 70-96 78-14 12-35-11-171-189z" id="layer101" fill="#0080b2" stroke="none"/><path d="M671 1839c-227-280-432-541-455-579-115-186-141-441-67-658C264 269 6e2 48 955 73c112 8 193 30 3e2 82 116 56 190 117 293 240 66 80 80 102 70 112-7 7-101 80-208 163l-195 151-40-48c-22-26-61-69-86-94-136-136-365-86-434 94-22 59-17 148 12 204 12 23 205 267 428 543 224 276 405 503 403 504s-91 71-198 156c-107 84-2e2 157-206 161-6 5-163-181-423-502z" id="layer102" fill="#03b8ab" stroke="none"/><path d="M741 3559c-118-23-249-84-345-162-327-262-385-737-132-1074 43-57 94-105 207-196l46-37 153 196c84 108 153 202 154 209 0 7-30 39-69 71-90 76-125 140-125 230 0 187 197 311 365 230 28-14 270-2e2 540-415 269-215 493-390 497-389 4 2 78 90 164 197 109 135 154 198 148 207-15 22-965 774-1034 819-84 55-166 89-262 109-82 17-234 20-307 5z" id="layer103" fill="#ea6675" stroke="none"/><path d="M2605 3556c-191-44-333-137-477-314-51-62-58-76-47-87 8-7 99-79 203-160l189-147 26 34c99 127 165 170 264 171 113 0 207-68 243-176 18-55 15-131-8-182-7-16-192-254-411-529-327-409-396-501-385-511 49-45 373-298 383-299 13-1 750 913 823 1020 84 124 125 262 125 424 0 339-204 620-530 733-75 25-105 30-213 33-83 3-145-1-185-10z" id="layer104" fill="#ffa73d" stroke="none"/></svg>
-</a>
-<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/>Inicio</a>
-<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-200 dark:bg-transparent rounded-sm dark:text-green-400 mr-3 md:mr-6" href=https://javifm.com/blog/ aria-current=page>Blog</a>
-<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/about/>Sobre mí</a>
-<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/search/>Buscar</a>
-<a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href=https://javifm.com/contact/>Contacto</a>
-<span class="hidden sm:inline"><div>
-<label id=listbox-label class=sr-only>Language</label>
-<div class="mt-1 relative" id=desktopContainerLanguageSelector>
-<button type=button id=desktopButtonLanguageSelector class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm" aria-haspopup=listbox aria-expanded=true aria-labelledby=listbox-label>
-<span class="flex items-center">
-<span>🇪🇸</span>
-<span class="ml-3 block truncate">ES</span>
+    <div class="max-w-7xl mx-auto">
+        <nav class="flex flex-wrap items-center p-4">
+            <a href="https://javifm.com" class="mr-auto p-2 -m-2 last:mr-0" aria-hidden="true">
+                <span class="sr-only">Inicio</span>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3640 3640" aria-hidden="true" class='w-10 h-10'   preserveAspectRatio="xMidYMid meet"><path d="M2958 1348l-156-202 69-55c89-70 141-147 147-217 11-127-66-244-181-278-67-19-79-20-139-2-66 21-67 21-228 151-505 408-832 666-840 663-11-4-310-378-310-388 0-9 943-765 1025-822 119-84 245-120 415-121 156 0 305 41 418 116 145 96 269 258 320 417 19 60 39 203 36 255-8 119-39 244-82 327-19 36-96 145-129 183-10 11-54 49-98 84-44 36-87 70-96 78-14 12-35-11-171-189z" id="layer101" fill="#0080b2" stroke="none"/><path d="M671 1839c-227-280-432-541-455-579-115-186-141-441-67-658C264 269 600 48 955 73c112 8 193 30 300 82 116 56 190 117 293 240 66 80 80 102 70 112-7 7-101 80-208 163l-195 151-40-48c-22-26-61-69-86-94-136-136-365-86-434 94-22 59-17 148 12 204 12 23 205 267 428 543 224 276 405 503 403 504s-91 71-198 156c-107 84-200 157-206 161-6 5-163-181-423-502z" id="layer102" fill="#03b8ab" stroke="none"/><path d="M741 3559c-118-23-249-84-345-162-327-262-385-737-132-1074 43-57 94-105 207-196l46-37 153 196c84 108 153 202 154 209 0 7-30 39-69 71-90 76-125 140-125 230 0 187 197 311 365 230 28-14 270-200 540-415 269-215 493-390 497-389 4 2 78 90 164 197 109 135 154 198 148 207-15 22-965 774-1034 819-84 55-166 89-262 109-82 17-234 20-307 5z" id="layer103" fill="#ea6675" stroke="none"/><path d="M2605 3556c-191-44-333-137-477-314-51-62-58-76-47-87 8-7 99-79 203-160l189-147 26 34c99 127 165 170 264 171 113 0 207-68 243-176 18-55 15-131-8-182-7-16-192-254-411-529-327-409-396-501-385-511 49-45 373-298 383-299 13-1 750 913 823 1020 84 124 125 262 125 424 0 339-204 620-530 733-75 25-105 30-213 33-83 3-145-1-185-10z" id="layer104" fill="#ffa73d" stroke="none"/></svg>
+
+            </a>
+            
+            
+            
+                
+                
+                
+                
+                
+                    
+                
+                
+
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href="https://javifm.com/" >Inicio</a>
+                
+                
+                
+                
+                
+                
+                    
+                    
+                
+                
+
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex font-semibold bg-gray-200 dark:bg-transparent rounded-sm dark:text-green-400 mr-3 md:mr-6" href="https://javifm.com/blog/"  aria-current="page" >Blog</a>
+                
+                
+                
+                
+                
+                
+                    
+                
+                
+
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href="https://javifm.com/about/" >Sobre mí</a>
+                
+                
+                
+                
+                
+                
+                    
+                
+                
+
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href="https://javifm.com/search/" >Buscar</a>
+                
+                
+                
+                
+                
+                
+                    
+                
+                
+
+                <a class="p-2 uppercase text-gray-700 hidden sm:inline-flex hover:bg-gray-200 dark:hover:bg-transparent hover:rounded-sm dark:text-gray-200 dark:hover:text-green-400 mr-3 md:mr-6" href="https://javifm.com/contact/" >Contacto</a>
+                
+            <span class="hidden sm:inline"><div>
+
+    
+    
+    
+
+    <label id="listbox-label" class="sr-only">Language</label>
+    <div class="mt-1 relative" id="desktopContainerLanguageSelector">
+      <button type="button" id="desktopButtonLanguageSelector" class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
+        <span class="flex items-center">
+            <span>🇪🇸</span>
+          <span class="ml-3 block truncate">ES</span>
+        </span>
+        <span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+          
+          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </span>
+      </button>
+
+      <ul id="desktopLanguageList" class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-ES">
+        
+        
+        <li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id="listbox-option-ES" tabindex="-1" role="option" data-url="https://javifm.com/">
+            <div class="flex items-center">
+                <span>🇪🇸</span>
+                
+                
+                <span class="font-semibold ml-3 block truncate">ES</span>
+                
+            </div>
+            
+            <span class="text-green-600 absolute inset-y-0 right-0 flex items-center pr-4">
+                
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </span>
+            
+        </li>
+        
+        
+        <li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id="listbox-option-EN" tabindex="-1" role="option" data-url="https://javifm.com/en/">
+            <div class="flex items-center">
+                <span>🇬🇧</span>
+                
+                
+                <span class="font-normal ml-3 block truncate">EN</span>
+                
+            </div>
+            
+        </li>
+        
+      </ul>
+    </div>
+</div>
 </span>
-<span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"><svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 016.293 6.293l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414.0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414.0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            <button type="button" id="sidebar-open" aria-label="Abrir menu" class="sm:hidden text-gray-700 dark:text-gray-300 flex items-center uppercase text-xl p-1 -m-1">
+                Menú
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current'  id='open-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class='ml-2 w-6 h-6 fill-current hidden'  id='close-menu' role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+
+            </button>
+        </nav>
+
+    </div>
+</div>
+
+<div id="site-menu" class="h-full absolute top-0 py-6 px-4 bg-gray-800 dark:bg-gray-800 hidden border-l border-transparent dark:border-gray-700">
+    <nav class="flex flex-col uppercase text-xl">
+    <span class="inline sm:hidden mb-4"><div>
+
+    
+    
+    
+
+    <label id="listbox-label" class="sr-only">Language</label>
+    <div class="mt-1 relative" id="mobileContainerLanguageSelector">
+      <button type="button" id="mobileButtonLanguageSelector" class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
+        <span class="flex items-center">
+            <span>🇪🇸</span>
+          <span class="ml-3 block truncate">ES</span>
+        </span>
+        <span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+          
+          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </span>
+      </button>
+
+      <ul id="mobileLanguageList" class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-ES">
+        
+        
+        <li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id="listbox-option-ES" tabindex="-1" role="option" data-url="https://javifm.com/">
+            <div class="flex items-center">
+                <span>🇪🇸</span>
+                
+                
+                <span class="font-semibold ml-3 block truncate">ES</span>
+                
+            </div>
+            
+            <span class="text-green-600 absolute inset-y-0 right-0 flex items-center pr-4">
+                
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </span>
+            
+        </li>
+        
+        
+        <li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id="listbox-option-EN" tabindex="-1" role="option" data-url="https://javifm.com/en/">
+            <div class="flex items-center">
+                <span>🇬🇧</span>
+                
+                
+                <span class="font-normal ml-3 block truncate">EN</span>
+                
+            </div>
+            
+        </li>
+        
+      </ul>
+    </div>
+</div>
 </span>
-</button>
-<ul id=desktopLanguageList class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden" tabindex=-1 role=listbox aria-labelledby=listbox-label aria-activedescendant=listbox-option-ES>
-<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-ES tabindex=-1 role=option data-url=https://javifm.com/>
-<div class="flex items-center">
-<span>🇪🇸</span>
-<span class="font-semibold ml-3 block truncate">ES</span>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/">Inicio</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href="https://javifm.com/blog/">Blog</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/about/">Sobre mí</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/search/">Buscar</a>
+    
+        
+        
+        
+        
+        
+            
+        
+        <a class="mb-1 px-4 py-2 text-gray-100" href="https://javifm.com/contact/">Contacto</a>
+    
+    </nav>
 </div>
-<span class="text-green-600 absolute inset-y-0 right-0 flex items-center pr-4"><svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414.0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414.0z" clip-rule="evenodd"/></svg>
-</span>
-</li>
-<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-EN tabindex=-1 role=option data-url=https://javifm.com/en/>
-<div class="flex items-center">
-<span>🇬🇧</span>
-<span class="font-normal ml-3 block truncate">EN</span>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</span>
-<button type=button id=sidebar-open aria-label="Abrir menu" class="sm:hidden text-gray-700 dark:text-gray-300 flex items-center uppercase text-xl p-1 -m-1">
-Menú<svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current" id="open-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Menú</title><path role="presentation" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 fill-current hidden" id="close-menu" role="img" aria-labelledby="titleId" viewBox="0 0 20 20"><title id="titleId">Cerrar</title><path role="presentation" d="M10 8.586 2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
-</button>
-</nav>
-</div>
-</div>
-<div id=site-menu class="h-full absolute top-0 py-6 px-4 bg-gray-800 dark:bg-gray-800 hidden border-l border-transparent dark:border-gray-700">
-<nav class="flex flex-col uppercase text-xl">
-<span class="inline sm:hidden mb-4"><div>
-<label id=listbox-label class=sr-only>Language</label>
-<div class="mt-1 relative" id=mobileContainerLanguageSelector>
-<button type=button id=mobileButtonLanguageSelector class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm" aria-haspopup=listbox aria-expanded=true aria-labelledby=listbox-label>
-<span class="flex items-center">
-<span>🇪🇸</span>
-<span class="ml-3 block truncate">ES</span>
-</span>
-<span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"><svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 016.293 6.293l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414.0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414.0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-</span>
-</button>
-<ul id=mobileLanguageList class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm hidden" tabindex=-1 role=listbox aria-labelledby=listbox-label aria-activedescendant=listbox-option-ES>
-<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-ES tabindex=-1 role=option data-url=https://javifm.com/>
-<div class="flex items-center">
-<span>🇪🇸</span>
-<span class="font-semibold ml-3 block truncate">ES</span>
-</div>
-<span class="text-green-600 absolute inset-y-0 right-0 flex items-center pr-4"><svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414.0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414.0z" clip-rule="evenodd"/></svg>
-</span>
-</li>
-<li class="text-gray-900 hover:bg-gray-100 cursor-pointer select-none relative py-2 pl-3 pr-9" id=listbox-option-EN tabindex=-1 role=option data-url=https://javifm.com/en/>
-<div class="flex items-center">
-<span>🇬🇧</span>
-<span class="font-normal ml-3 block truncate">EN</span>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</span>
-<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/>Inicio</a>
-<a class="mb-1 px-4 py-2 bg-green-600 rounded text-white font-semibold outline-none focus:bg-white focus:text-green-600" href=https://javifm.com/blog/>Blog</a>
-<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/about/>Sobre mí</a>
-<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/search/>Buscar</a>
-<a class="mb-1 px-4 py-2 text-gray-100" href=https://javifm.com/contact/>Contacto</a>
-</nav>
-</div>
-<main id=main>
+
+            <main id="main">
+                
+
 <div class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600"></div>
-<article class="max-w-7xl mx-auto px-4 single-post">
-<div class=my-6>
-<h1 class=title>Compilando ficheros Sass con grunt</h1>
+<article class="max-w-3xl mx-auto px-4 single-post">
+    <div class="my-6">
+        <h1 class="title">Compilando ficheros Sass con grunt</h1>
+        
+
+
+
+
+
+
+
+
+
 <div class="flex flex-wrap flex-col sm:flex-row sm:items-center text-gray-600 dark:text-gray-300">
-<time datetime=2015-09-09>
-Publicado el 9 Sep 2015
-</time>
-<span>
-<span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 6 min
-</span>
+    <time datetime="2015-09-09">
+        Publicado el 9 Sep 2015
+    </time>
+    
+     
+    <span>
+        <span class="mx-2 hidden sm:inline-flex">&bull;</span>Tiempo de lectura: 6 min
+    </span>
+    
 </div>
-<div class=mt-4>
-<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/css>css</a>
-<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/grunt>grunt</a>
-<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/node>node</a>
-<a class="tag inline-block text-sm mr-2 mb-2" href=https://javifm.com/tags/sass>sass</a>
-</div>
-</div>
-<div class=single-post-content>
-<img class=mb-6 srcset="/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png 500w
-,/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass_hubefd48497ebd2d6fa2d470b69755af54_17529_500x0_resize_box_3.png 500w" src=/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png width=500 height=260 alt="Grunt y Sass">
-<p>A lo largo de los 2 últimos años, he ido poco a poco <strong>mejorando mi nivel de productividad</strong> en el trabajo. Primero cambié mi editor de toda la vida, <a href=https://notepad-plus-plus.org/>Notepad++</a> por <a href=http://www.sublimetext.com/>Sublime Text</a>. Y posteriormente, he ido añadiendo diferentes herramientas que proporciona <strong>Node.js</strong>, para automatizar distintos procesos y tareas, como ejecución de tests, linters de código, minimizado de Javascript y CSS, etc…</p>
-<p>Para automatizar más aún todos estos procesos, está <a href=http://gruntjs.com/>Grunt</a>, que dispone de plugins fáciles de integrar en nuestros proyectos, para realizar todo tipo de tareas que precisemos en nuestro proyecto. En mi proyecto actual, surgió una necesidad a un compañero de proyecto, que se encarga de la maquetación de la aplicación que estamos desarrollando.</p>
-<p>Para ello está utilizando <a href=http://sass-lang.com/>Sass</a>, uno de los preprocesadores CSS más populares actualmente. Por motivos de simplicidad de código y maximizar la compatibilidad con navegadores no muy modernos (mantenemos soporte a navegadores webKit antiguos, que usan algunas Smart TV anteriores a 2013), a la hora de hacer los elementos reutilizables de la aplicación con Javascript, decidimos que en lugar de que cada widget cargue su hoja de estilos, <strong>tener todo el CSS de todos los widgets unificados en un mismo fichero que esté cargado desde el principio</strong> (controlar cuando se ha cargado una hoja de estilos, de manera simple y compatible con todos los navegadores es una tarea que <a href=http://requirejs.org/docs/faq-advanced.html#css>ni RequireJS ha incluido en su cargador de módulos</a>).</p>
-<p>Grunt y sus plugins son instalados y gestionados a través de <strong>NPM</strong>, el gestor de paquetes por consola para <a href=https://nodejs.org/>Node.js</a>. Asi que si no lo tienes ya, el primer paso es instalar <a href=https://nodejs.org/en/download/>Node.js</a>. Acto seguido, nos dirigiremos a la consola, e instalaremos Grunt globalmente (seguramente necesites sudo en Linux):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install -g grunt-cli
+
+    <div class="mt-4">
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="https://javifm.com/tags/css">css</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="https://javifm.com/tags/grunt">grunt</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="https://javifm.com/tags/node">node</a>
+        
+            
+            <a class="tag inline-block text-sm mr-2 mb-2" href="https://javifm.com/tags/sass">sass</a>
+        
+    </div>
+
+
+    </div>
+    <div class="single-post-content">
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    class='mb-6 '
+    srcset='
+    /blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png 500w
+    
+      ,/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass_hubefd48497ebd2d6fa2d470b69755af54_17529_500x0_resize_box_3.png 500w
+    
+    
+    
+    '
+    src="/blog/compilando-ficheros-sass-con-grunt/img/grunt-sass.png"
+    width="500" height="260"
+    alt='Grunt y Sass'>
+
+<p>A lo largo de los 2 últimos años, he ido poco a poco <strong>mejorando mi nivel de productividad</strong> en el trabajo. Primero cambié mi editor de toda la vida, <a href="https://notepad-plus-plus.org/">Notepad++</a> por <a href="http://www.sublimetext.com/">Sublime Text</a>. Y posteriormente, he ido añadiendo diferentes herramientas que proporciona <strong>Node.js</strong>, para automatizar distintos procesos y tareas, como ejecución de tests, linters de código, minimizado de Javascript y CSS, etc…</p>
+<p>Para automatizar más aún todos estos procesos, está <a href="http://gruntjs.com/">Grunt</a>, que dispone de plugins fáciles de integrar en nuestros proyectos, para realizar todo tipo de tareas que precisemos en nuestro proyecto. En mi proyecto actual, surgió una necesidad a un compañero de proyecto, que se encarga de la maquetación de la aplicación que estamos desarrollando.</p>
+<p>Para ello está utilizando <a href="http://sass-lang.com/">Sass</a>, uno de los preprocesadores CSS más populares actualmente. Por motivos de simplicidad de código y maximizar la compatibilidad con navegadores no muy modernos (mantenemos soporte a navegadores webKit antiguos, que usan algunas Smart TV anteriores a 2013), a la hora de hacer los elementos reutilizables de la aplicación con Javascript, decidimos que en lugar de que cada widget cargue su hoja de estilos, <strong>tener todo el CSS de todos los widgets unificados en un mismo fichero que esté cargado desde el principio</strong> (controlar cuando se ha cargado una hoja de estilos, de manera simple y compatible con todos los navegadores es una tarea que <a href="http://requirejs.org/docs/faq-advanced.html#css">ni RequireJS ha incluido en su cargador de módulos</a>).</p>
+<p>Grunt y sus plugins son instalados y gestionados a través de <strong>NPM</strong>, el gestor de paquetes por consola para <a href="https://nodejs.org/">Node.js</a>. Asi que si no lo tienes ya, el primer paso es instalar <a href="https://nodejs.org/en/download/">Node.js</a>. Acto seguido, nos dirigiremos a la consola, e instalaremos Grunt globalmente (seguramente necesites sudo en Linux):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install -g grunt-cli
 </code></pre></div><p>Ya podemos ir a la carpeta donde está nuestro proyecto (<code>cd ruta/proyecto/</code>). Deberemos tener nuestro fichero <code>package.json</code> creado, con el nombre del proyecto, descripción y otros datos importantes. Si no lo tienes creado, desde consola, estando en el directorio raíz del proyecto, puedes ejecutar <code>npm init</code>, y se irán pidiendo datos para crear el fichero, o puedes crearlo directamente con tu editor de texto, con esto bastaría a priori:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span>
-  <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=s2>&#34;Nombre del proyecto&#34;</span><span class=p>,</span>
-  <span class=s2>&#34;version&#34;</span><span class=o>:</span> <span class=s2>&#34;1.0.0&#34;</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;Nombre del proyecto&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;version&#34;</span><span class="o">:</span> <span class="s2">&#34;1.0.0&#34;</span>
+<span class="p">}</span>
 </code></pre></div><p>Una vez hecho esto, ya podemos proceder a instalar grunt de manera local en nuestro proyecto. Simplemente iremos a la carpeta de nuestro proyecto, y en ella ejecutaremos el siguiente comando:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install grunt --save-dev
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install grunt --save-dev
 </code></pre></div><p>Observaremos que se instala correctamente, y veremos que en el fichero <code>package.json</code> aparece una nueva clave llamada <code>devDependencies</code>, y aparece grunt:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>{</span>
-  <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=s2>&#34;Nombre del proyecto&#34;</span><span class=p>,</span>
-  <span class=s2>&#34;version&#34;</span><span class=o>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
-  <span class=s2>&#34;devDependencies&#34;</span><span class=o>:</span> <span class=p>{</span>
-    <span class=s2>&#34;grunt&#34;</span><span class=o>:</span> <span class=s2>&#34;^0.4.5&#34;</span>
-  <span class=p>}</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;Nombre del proyecto&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;version&#34;</span><span class="o">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;devDependencies&#34;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&#34;grunt&#34;</span><span class="o">:</span> <span class="s2">&#34;^0.4.5&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div><p>Además, en la raíz, está la carpeta <code>node_modules</code>, donde se irán instalando todos los módulos que tenemos como dependencias para nuestro proyecto. Esto facilita que si nos llevamos el proyecto a otro ordenador, o se lo enviamos a alguien, simplemente situándonos en consola en la raíz del proyecto, podremos ejecutar <code>npm</code> e inmediatamente se instalarán todas las dependencias necesarias para el proyecto. ¿Interesante no?</p>
-<p>Una vez aclarado como instalar grunt, y como funcionan de manera básica las dependencias, procederemos a instalar dos plugins para grunt, <a href=https://github.com/gruntjs/grunt-contrib-sass>grunt-contrib-sass</a>, para compilar Sass y <a href=https://github.com/gruntjs/grunt-contrib-watch>grunt-contrib-watch</a>, que nos permite tener una tarea activa, vigilando que determinados ficheros (en este caso los que tienen extensión <code>.scss</code>) cambien, para, en ese momento, ejecutar una determinada tarea. Ejecutamos, sin importar el orden estos comandos para instalar las nuevas dependencias:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>npm install grunt-contrib-sass --save-dev
+<p>Una vez aclarado como instalar grunt, y como funcionan de manera básica las dependencias, procederemos a instalar dos plugins para grunt, <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a>, para compilar Sass y <a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a>, que nos permite tener una tarea activa, vigilando que determinados ficheros (en este caso los que tienen extensión <code>.scss</code>) cambien, para, en ese momento, ejecutar una determinada tarea. Ejecutamos, sin importar el orden estos comandos para instalar las nuevas dependencias:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install grunt-contrib-sass --save-dev
 npm install grunt-contrib-watch --save-dev
 </code></pre></div><p>Ya está todo listo, ahora solo tenemos que crear nuestras tareas grunt. Para ello, en el raíz del proyecto, junto al fichero <code>package.json</code>, crearemos un fichero llamado <code>gruntfile.js</code>, donde definiremos la configuración de las distintas tareas, luego cargaremos los paquetes a usar en las tareas y por último registraremos las tareas. Para nuestro propósito, el fichero quedaría así:</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=c1>// Función contenedora
-</span><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span> <span class=nx>grunt</span> <span class=p>)</span> <span class=p>{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Función contenedora
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">grunt</span> <span class="p">)</span> <span class="p">{</span>
 
-    <span class=c1>// Configuración de las tareas
-</span><span class=c1></span>    <span class=nx>grunt</span><span class=p>.</span><span class=nx>initConfig</span><span class=p>(</span> <span class=p>{</span>
+    <span class="c1">// Configuración de las tareas
+</span><span class="c1"></span>    <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">(</span> <span class="p">{</span>
 
-        <span class=cm>/*
-</span><span class=cm>         *  Se observan dentro de la carpeta source,
-</span><span class=cm>         *  todos los ficheros con extensión scss.
-</span><span class=cm>         *  Cuando se produzca un cambio en alguno de
-</span><span class=cm>         *  ellos se ejecutará la tarea sass, definida
-</span><span class=cm>         *  más abajo.
-</span><span class=cm>         */</span>
-        <span class=nx>watch</span><span class=o>:</span> <span class=p>{</span>
-            <span class=nx>scripts</span><span class=o>:</span> <span class=p>{</span>
-                <span class=nx>files</span><span class=o>:</span> <span class=s1>&#39;source/**/*.scss&#39;</span><span class=p>,</span>
-                <span class=nx>tasks</span><span class=o>:</span> <span class=p>[</span> <span class=s1>&#39;sass&#39;</span> <span class=p>],</span>
-                <span class=nx>options</span><span class=o>:</span> <span class=p>{</span>
-                    <span class=nx>interrupt</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+        <span class="cm">/*
+</span><span class="cm">         *  Se observan dentro de la carpeta source,
+</span><span class="cm">         *  todos los ficheros con extensión scss.
+</span><span class="cm">         *  Cuando se produzca un cambio en alguno de
+</span><span class="cm">         *  ellos se ejecutará la tarea sass, definida
+</span><span class="cm">         *  más abajo.
+</span><span class="cm">         */</span>
+        <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">scripts</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="s1">&#39;source/**/*.scss&#39;</span><span class="p">,</span>
+                <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;sass&#39;</span> <span class="p">],</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">interrupt</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 
-                    <span class=cm>/*
-</span><span class=cm>                     *  Importante la opción spawn a false,
-</span><span class=cm>                     *  para permitir cambiar el contexto de
-</span><span class=cm>                     *  la tarea.
-</span><span class=cm>                     */</span>
-                    <span class=nx>spawn</span><span class=o>:</span> <span class=kc>false</span>
-                <span class=p>},</span>
-            <span class=p>},</span>
-        <span class=p>},</span>
+                    <span class="cm">/*
+</span><span class="cm">                     *  Importante la opción spawn a false,
+</span><span class="cm">                     *  para permitir cambiar el contexto de
+</span><span class="cm">                     *  la tarea.
+</span><span class="cm">                     */</span>
+                    <span class="nx">spawn</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
 
-        <span class=cm>/*
-</span><span class=cm>         *  Dentro de la tarea sass, tenemos dos subtareas:
-</span><span class=cm>         *  - dist: compila el fichero main.scss siempre
-</span><span class=cm>         *    que se produzca un cambio en cualquier scss. El
-</span><span class=cm>         *    fichero main.scss, contiene imports del resto de
-</span><span class=cm>         *    ficheros, cada vez que se toca alguno debe de
-</span><span class=cm>         *    actualizarse este.
-</span><span class=cm>         *    
-</span><span class=cm>         *  - changed: Tal cual está definida, compilaría todos
-</span><span class=cm>         *    los ficheros del proyecto, pero posteriormente con
-</span><span class=cm>         *    un evento vamos a modificar el parámetro files, y
-</span><span class=cm>         *    es indiferente lo que contenga inicialmente.
-</span><span class=cm>         */</span>
-        <span class=nx>sass</span><span class=o>:</span> <span class=p>{</span>
-            <span class=nx>dist</span><span class=o>:</span> <span class=p>{</span>
-                <span class=nx>files</span><span class=o>:</span> <span class=p>{</span>
-                    <span class=s1>&#39;source/styles/main.css&#39;</span><span class=o>:</span> <span class=s1>&#39;source/styles/main.scss&#39;</span>
-                <span class=p>},</span>
-                <span class=nx>options</span><span class=o>:</span> <span class=p>{</span>
-                    <span class=nx>noCache</span><span class=o>:</span> <span class=kc>true</span>
-                <span class=p>}</span>
-            <span class=p>},</span>
-            <span class=nx>changed</span><span class=o>:</span> <span class=p>{</span>
-                <span class=nx>files</span><span class=o>:</span> <span class=p>[</span> <span class=p>{</span>
-                    <span class=nx>src</span><span class=o>:</span> <span class=p>[</span> <span class=s1>&#39;source/**/*.scss&#39;</span> <span class=p>],</span>
-                    <span class=nx>ext</span><span class=o>:</span> <span class=s1>&#39;.css&#39;</span>
-                <span class=p>}</span> <span class=p>],</span>
-                <span class=nx>options</span><span class=o>:</span> <span class=p>{</span>
-                    <span class=nx>noCache</span><span class=o>:</span> <span class=kc>true</span>
-                <span class=p>}</span>
-            <span class=p>}</span>
+        <span class="cm">/*
+</span><span class="cm">         *  Dentro de la tarea sass, tenemos dos subtareas:
+</span><span class="cm">         *  - dist: compila el fichero main.scss siempre
+</span><span class="cm">         *    que se produzca un cambio en cualquier scss. El
+</span><span class="cm">         *    fichero main.scss, contiene imports del resto de
+</span><span class="cm">         *    ficheros, cada vez que se toca alguno debe de
+</span><span class="cm">         *    actualizarse este.
+</span><span class="cm">         *    
+</span><span class="cm">         *  - changed: Tal cual está definida, compilaría todos
+</span><span class="cm">         *    los ficheros del proyecto, pero posteriormente con
+</span><span class="cm">         *    un evento vamos a modificar el parámetro files, y
+</span><span class="cm">         *    es indiferente lo que contenga inicialmente.
+</span><span class="cm">         */</span>
+        <span class="nx">sass</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;source/styles/main.css&#39;</span><span class="o">:</span> <span class="s1">&#39;source/styles/main.scss&#39;</span>
+                <span class="p">},</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">noCache</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">changed</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
+                    <span class="nx">src</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;source/**/*.scss&#39;</span> <span class="p">],</span>
+                    <span class="nx">ext</span><span class="o">:</span> <span class="s1">&#39;.css&#39;</span>
+                <span class="p">}</span> <span class="p">],</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">noCache</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
 
-        <span class=p>}</span>
+        <span class="p">}</span>
 
-    <span class=p>}</span> <span class=p>);</span>
+    <span class="p">}</span> <span class="p">);</span>
 
-    <span class=cm>/*
-</span><span class=cm>     *  A continuación, podemos escuchar el evento watch, que recibe
-</span><span class=cm>     *  información acerca del fichero que ha sido modificado.
-</span><span class=cm>     */</span>
-    <span class=nx>grunt</span><span class=p>.</span><span class=nx>event</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span> <span class=s1>&#39;watch&#39;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span> <span class=nx>action</span><span class=p>,</span> <span class=nx>filepath</span><span class=p>,</span> <span class=nx>target</span> <span class=p>)</span> <span class=p>{</span>
+    <span class="cm">/*
+</span><span class="cm">     *  A continuación, podemos escuchar el evento watch, que recibe
+</span><span class="cm">     *  información acerca del fichero que ha sido modificado.
+</span><span class="cm">     */</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="s1">&#39;watch&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">action</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">target</span> <span class="p">)</span> <span class="p">{</span>
 
-        <span class=c1>// Reemplazamos .scss por .css, para indicar el destino
-</span><span class=c1></span>        <span class=kd>var</span> <span class=nx>_destiny</span> <span class=o>=</span> <span class=nx>filepath</span><span class=p>.</span><span class=nx>replace</span><span class=p>(</span> <span class=s2>&#34;.scss&#34;</span><span class=p>,</span> <span class=s2>&#34;.css&#34;</span> <span class=p>),</span>
-            <span class=nx>_file</span> <span class=o>=</span> <span class=p>{};</span>
+        <span class="c1">// Reemplazamos .scss por .css, para indicar el destino
+</span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">_destiny</span> <span class="o">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span> <span class="s2">&#34;.scss&#34;</span><span class="p">,</span> <span class="s2">&#34;.css&#34;</span> <span class="p">),</span>
+            <span class="nx">_file</span> <span class="o">=</span> <span class="p">{};</span>
 
-        <span class=cm>/*
-</span><span class=cm>         *  Creamos un objeto, para sobrescribir el parámetro file de
-</span><span class=cm>         *  la subtarea changed.
-</span><span class=cm>         */</span>
-        <span class=nx>_file</span><span class=p>[</span> <span class=nx>_destiny</span> <span class=p>]</span> <span class=o>=</span> <span class=nx>filepath</span><span class=p>;</span>
+        <span class="cm">/*
+</span><span class="cm">         *  Creamos un objeto, para sobrescribir el parámetro file de
+</span><span class="cm">         *  la subtarea changed.
+</span><span class="cm">         */</span>
+        <span class="nx">_file</span><span class="p">[</span> <span class="nx">_destiny</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">filepath</span><span class="p">;</span>
 
-        <span class=nx>grunt</span><span class=p>.</span><span class=nx>log</span><span class=p>.</span><span class=nx>writeln</span><span class=p>(</span> <span class=s1>&#39;Compilando Sass del fichero cambiado: &#39;</span> <span class=o>+</span> <span class=nx>filepath</span> <span class=p>);</span>
+        <span class="nx">grunt</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span> <span class="s1">&#39;Compilando Sass del fichero cambiado: &#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="p">);</span>
 
-        <span class=cm>/*
-</span><span class=cm>         *  Sobrescribimos el parámetro de configuración, para que solo
-</span><span class=cm>         *  se compile el fichero modificado.
-</span><span class=cm>         */</span>
-        <span class=nx>grunt</span><span class=p>.</span><span class=nx>config</span><span class=p>(</span> <span class=s1>&#39;sass.changed.files&#39;</span><span class=p>,</span> <span class=nx>_file</span> <span class=p>);</span>
+        <span class="cm">/*
+</span><span class="cm">         *  Sobrescribimos el parámetro de configuración, para que solo
+</span><span class="cm">         *  se compile el fichero modificado.
+</span><span class="cm">         */</span>
+        <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span> <span class="s1">&#39;sass.changed.files&#39;</span><span class="p">,</span> <span class="nx">_file</span> <span class="p">);</span>
 
-    <span class=p>}</span> <span class=p>);</span>
+    <span class="p">}</span> <span class="p">);</span>
 
-    <span class=c1>// Cargamos los plugins grunts necesarios
-</span><span class=c1></span>    <span class=nx>grunt</span><span class=p>.</span><span class=nx>loadNpmTasks</span><span class=p>(</span> <span class=s1>&#39;grunt-contrib-watch&#39;</span> <span class=p>);</span>
-    <span class=nx>grunt</span><span class=p>.</span><span class=nx>loadNpmTasks</span><span class=p>(</span> <span class=s1>&#39;grunt-contrib-sass&#39;</span> <span class=p>);</span>
+    <span class="c1">// Cargamos los plugins grunts necesarios
+</span><span class="c1"></span>    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span> <span class="s1">&#39;grunt-contrib-watch&#39;</span> <span class="p">);</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span> <span class="s1">&#39;grunt-contrib-sass&#39;</span> <span class="p">);</span>
 
-    <span class=cm>/*
-</span><span class=cm>     *  Registramos como tarea por defecto la tarea watch. Cuando en la
-</span><span class=cm>     *  consola, estando en el proyecto, pongamos grunt, por defecto se
-</span><span class=cm>     *  lanzará la tarea que registremos como default. Podríamos registrar
-</span><span class=cm>     *  otra, en cuyo caso tendríamos que poner el comando grunt watch,
-</span><span class=cm>     *  para decirle a grunt que ejecuta la tarea watch.
-</span><span class=cm>     */</span>
-    <span class=nx>grunt</span><span class=p>.</span><span class=nx>registerTask</span><span class=p>(</span> <span class=s1>&#39;default&#39;</span><span class=p>,</span> <span class=p>[</span> <span class=s1>&#39;watch&#39;</span> <span class=p>]</span> <span class=p>);</span>
+    <span class="cm">/*
+</span><span class="cm">     *  Registramos como tarea por defecto la tarea watch. Cuando en la
+</span><span class="cm">     *  consola, estando en el proyecto, pongamos grunt, por defecto se
+</span><span class="cm">     *  lanzará la tarea que registremos como default. Podríamos registrar
+</span><span class="cm">     *  otra, en cuyo caso tendríamos que poner el comando grunt watch,
+</span><span class="cm">     *  para decirle a grunt que ejecuta la tarea watch.
+</span><span class="cm">     */</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span> <span class="s1">&#39;watch&#39;</span> <span class="p">]</span> <span class="p">);</span>
 
-<span class=p>};</span>
+<span class="p">};</span>
 </code></pre></div><p>Ya simplemente hemos de dirigirnos a la consola, y ejecutar <strong><code>grunt</code></strong>, ya que la tarea watch ha sido añadida por defecto, o bien <code>grunt watch</code> y se lanzará el proceso que estará observando los cambios producidos en los ficheros scss de nuestro proyecto, para acto seguido lanzar la tarea.</p>
 <p>De esta manera <strong>nuestros ficheros Sass son compilados automáticamente</strong>, muy útil si nuestro editor de texto no dispone de un plugin que automatice el proceso y queremos evitar tener que estar compilando manualmente desde la consola.</p>
 <ul>
-<li><a href=http://gruntjs.com/getting-started>Primeros pasos con grunt</a></li>
-<li><a href=http://gruntjs.com/configuring-tasks>Configurando tareas</a></li>
+<li><a href="http://gruntjs.com/getting-started">Primeros pasos con grunt</a></li>
+<li><a href="http://gruntjs.com/configuring-tasks">Configurando tareas</a></li>
 </ul>
-</div>
-<div class="my-16 border-b border-gray-300"></div>
-<div class="mb-16 text-center max-w-3xl mx-auto">
-<a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href=https://javifm.com/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/>
-&#171; Ellipsis de múltiples líneas con Javascript
-</a>
-<a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href=https://javifm.com/blog/n%C3%BAmero-de-commits-en-git-por-usuario/>
-Número de commits en Git por usuario &#187;
-</a>
-</div>
+
+    </div>
+    <div class="my-16 border-b border-gray-300"></div>
+    <div class="mb-16 text-center max-w-3xl mx-auto">
+        
+        <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/blog/ellipsis-de-m%C3%BAltiples-l%C3%ADneas-con-javascript/">
+            &laquo; Ellipsis de múltiples líneas con Javascript
+        </a>
+        
+        
+        <a class="outline-none bg-transparent dark:bg-gray-800 text-green-700 dark:text-green-500 font-semibold hover:text-white dark:hover:text-gray-800 dark:focus:text-gray-800 hover:bg-green-500 dark:hover:bg-green-500 dark:focus:bg-green-500 focus:text-white focus:bg-green-500 py-2 px-4 border border-green-500 dark:border-none hover:border-transparent rounded block mb-4 transition duration-100" href="https://javifm.com/blog/n%C3%BAmero-de-commits-en-git-por-usuario/">
+            Número de commits en Git por usuario &raquo;
+        </a>
+        
+    </div>
 </article>
-</main>
-<footer class="bg-gray-800 text-gray-200 p-4">
-<div class="container mx-auto flex justify-between items-center">
-<p>
-&copy; 2021 Sitio construido con <a class="text-white underline" href=https://gohugo.io/>Hugo</a> alojado en <a class="text-white underline" href=https://github.com/>Github</a>.
-</p>
-<div class="flex items-center">
-<a href=https://github.com/javifm86 class="mr-1 p-2 text-gray-300 hover:text-white">
-<span class=sr-only>Github</span><svg class="w-8 h-8 pointer-events-none" viewBox="0 0 256 250" role="img" aria-labelledby="titleId" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Github</title><path role="presentation" class="fill-current" d="M128.001.0C57.317.0.0 57.307.0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158.0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258.0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874.0.0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358.0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704.0 17.126-.148 30.91-.148 35.126.0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691.0 128.001.0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86.0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"/></svg>
-</a>
-<a href=https://twitter.com/javifm86 class="p-2 text-gray-300 hover:text-white">
-<span class=sr-only>Twitter</span><svg class="w-8 h-8 mt-1 pointer-events-none" role="img" aria-labelledby="titleId" viewBox="0 0 256 209" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Twitter</title><path role="presentation" class="fill-current" d="M256 25.45a105.04 105.04.0 01-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183.0 01-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006.0-52.523 23.516-52.523 52.52.0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404.0 18.222 9.273 34.297 23.365 43.716a52.312 52.312.0 01-23.79-6.57c-.003.22-.003.44-.003.661.0 25.447 18.104 46.675 42.13 51.5a52.592 52.592.0 01-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24.0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607.0 149.434-80.031 149.434-149.435.0-2.278-.05-4.543-.152-6.795A106.748 106.748.0 00256 25.45"/></svg>
-</a>
-</div>
-</div>
+
+
+            </main>
+            <footer class="bg-gray-800 text-gray-200 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <p>
+            &copy; 2021 Sitio construido con <a class="text-white underline" href="https://gohugo.io/">Hugo</a> alojado en <a class="text-white underline" href="https://github.com/">Github</a>.
+        </p>
+        <div class="flex items-center">
+            <a href="https://github.com/javifm86" class="mr-1 p-2 text-gray-300 hover:text-white">
+                <span class="sr-only">Github</span>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg class='w-8 h-8 pointer-events-none'   viewBox="0 0 256 250" role="img" aria-labelledby="titleId" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Github</title><path role="presentation" class="fill-current" d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"/></svg>
+
+            </a>
+            <a href="https://twitter.com/javifm86" class="p-2 text-gray-300 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg class='w-8 h-8 mt-1 pointer-events-none'   role="img" aria-labelledby="titleId" viewBox="0 0 256 209" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><title id="titleId">Twitter</title><path role="presentation" class="fill-current" d="M256 25.45a105.04 105.04 0 01-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183 0 01-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006 0-52.523 23.516-52.523 52.52 0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404 0 18.222 9.273 34.297 23.365 43.716a52.312 52.312 0 01-23.79-6.57c-.003.22-.003.44-.003.661 0 25.447 18.104 46.675 42.13 51.5a52.592 52.592 0 01-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24 0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607 0 149.434-80.031 149.434-149.435 0-2.278-.05-4.543-.152-6.795A106.748 106.748 0 00256 25.45"/></svg>
+
+            </a>
+        </div>
+    </div>
 </footer>
-</div>
-</div>
-<script src=https://javifm.com/js/focus-visible.min.js></script>
-<script type=text/javascript>(function(){const c=document.getElementsByTagName('body')[0],g=document.getElementById('open-menu'),f=document.getElementById('close-menu'),e=document.getElementById('site-menu'),d=document.getElementById('sidebar-open'),b='show-nav';let a='closed';const k=m(function(){c.classList.contains(b)&&window.screen.width>639&&h()},0);d.addEventListener('click',h),window.addEventListener('resize',k);function l(){a==='opening'?(i(g,'hidden'),j(f,'hidden'),d.setAttribute('aria-label','Cerrar menú'),a='open'):(j(g,'hidden'),i(f,'hidden'),e.classList.add('hidden'),d.setAttribute('aria-label','Abrir menú'),a='closed')}function h(){c.classList.contains(b)?(c.classList.remove(b),a='closing'):(c.classList.add(b),a='opening',e.classList.remove('hidden')),setTimeout(l,300)}function m(b,d,c){let a;return function(){let e=this,f=arguments;const g=function(){a=null,c||b.apply(e,f)};let h=c&&!a;clearTimeout(a),a=setTimeout(g,d),h&&b.apply(e,f)}}function i(a,b){a.setAttribute('class',a.getAttribute('class')+' '+b)}function j(a,b){let c=a.getAttribute('class').replace(new RegExp('(\\s|^)'+b+'(\\s|$)','g'),'$2');a.setAttribute('class',c)}})()</script>
-<script type=text/javascript>(function(){const h=document.getElementById('desktopContainerLanguageSelector'),o=document.getElementById('mobileContainerLanguageSelector'),a=document.getElementById('desktopLanguageList'),b=document.getElementById('mobileLanguageList'),c=document.getElementById('desktopButtonLanguageSelector'),d=document.getElementById('mobileButtonLanguageSelector'),k=document.querySelectorAll('#desktopLanguageList li, #mobileLanguageList li'),j=document.querySelectorAll('#desktopLanguageList li'),i=document.querySelectorAll('#mobileLanguageList li');c.addEventListener('click',function(b){a.classList.toggle('hidden')}),d.addEventListener('click',function(a){b.classList.toggle('hidden')}),k.forEach(a=>{a.addEventListener('click',function(a){window.location.href=this.dataset.url}),a.addEventListener('keypress',function({key:a}){(a==='Enter'||a==='Space')&&(window.location.href=this.dataset.url)})}),document.addEventListener('click',function(c){!h.contains(c.target)&&e()&&a.classList.add('hidden'),!o.contains(c.target)&&g()&&b.classList.add('hidden')}),document.addEventListener('keydown',function(b){const{key:a}=b,c=e(),d=g();if(!c&&!d)return;if(a==='Escape'||a==='Tab'){l(c);return}if(a==='ArrowUp'){b.preventDefault(),document.activeElement.previousElementSibling!==null&&document.activeElement.previousElementSibling.focus();return}if(a==='ArrowDown'){b.preventDefault(),m()?j[0].focus():n()?i[0].focus():f()&&document.activeElement.nextElementSibling!==null&&document.activeElement.nextElementSibling.focus();return}});function e(){return!a.classList.contains('hidden')}function g(){return!b.classList.contains('hidden')}function l(h){let e=null,g=null;h?(e=a,g=c):(e=b,g=d),e.classList.add('hidden'),f()&&g.focus()}function m(){return document.activeElement.isSameNode(c)}function n(){return document.activeElement.isSameNode(d)}function f(){return document.activeElement.getAttribute('id').includes('listbox-option-')}function p(a){return a.getAttribute('id').includes('listbox-option-')}})()</script>
+
+        </div>
+    </div>
+    
+<script src="https://javifm.com/js/focus-visible.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    const $bodyElement = document.getElementsByTagName('body')[0];
+    const $svgOpen = document.getElementById('open-menu');
+    const $svgClose = document.getElementById('close-menu');
+    const $siteMenu = document.getElementById('site-menu');
+    const $buttonNav = document.getElementById('sidebar-open');
+    const CSS_CLASS_NAV = 'show-nav';
+    let stateNav = 'closed';
+
+    const closeMenuOnResize = debounce(function() {
+      if ($bodyElement.classList.contains(CSS_CLASS_NAV) && window.screen.width > 639) {
+        toggleNav();
+      }
+    }, 0);
+
+    
+    $buttonNav.addEventListener('click', toggleNav);
+    window.addEventListener('resize', closeMenuOnResize);
+
+    
+
+    function checkHideNav() {
+      if (stateNav === 'opening') {
+        addClassSvg($svgOpen, 'hidden');
+        removeClassSvg($svgClose, 'hidden');
+        $buttonNav.setAttribute('aria-label', 'Cerrar menú');
+        stateNav = 'open';
+      } else {
+        removeClassSvg($svgOpen, 'hidden');
+        addClassSvg($svgClose, 'hidden');
+        $siteMenu.classList.add('hidden');
+        $buttonNav.setAttribute('aria-label', 'Abrir menú');
+        stateNav = 'closed';
+      }
+    }
+
+    function toggleNav() {
+      if ($bodyElement.classList.contains(CSS_CLASS_NAV)) {
+        $bodyElement.classList.remove(CSS_CLASS_NAV);
+        stateNav = 'closing';
+      } else {
+        $bodyElement.classList.add(CSS_CLASS_NAV);
+        stateNav = 'opening';
+        $siteMenu.classList.remove('hidden');
+      }
+      setTimeout(checkHideNav, 300);
+    }
+
+    function debounce(func, wait, immediate) {
+      let timeout;
+      return function() {
+        let context = this;
+        let args = arguments;
+        const later = function() {
+          timeout = null;
+          if (!immediate) {
+            func.apply(context, args);
+          }
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) {
+          func.apply(context, args);
+        }
+      };
+    }
+
+    
+    function addClassSvg(elem, className) {
+      elem.setAttribute('class', elem.getAttribute('class') + ' ' + className);
+    }
+
+    function removeClassSvg(elem, className) {
+      let removedClass = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + className + '(\\s|$)', 'g'), '$2');
+      elem.setAttribute('class', removedClass);
+    }
+  })();
+</script>
+
+<script type="text/javascript">
+  (function() {
+    const $containerSelector = document.getElementById(
+      'desktopContainerLanguageSelector'
+    );
+    const $containerSelectorMobile = document.getElementById(
+      'mobileContainerLanguageSelector'
+    );
+    const $languageList = document.getElementById('desktopLanguageList');
+    const $languageListMobile = document.getElementById('mobileLanguageList');
+    const $buttonLanguageSelector = document.getElementById(
+      'desktopButtonLanguageSelector'
+    );
+    const $buttonLanguageSelectorMobile = document.getElementById(
+      'mobileButtonLanguageSelector'
+    );
+    const $languageItemsAll = document.querySelectorAll(
+      '#desktopLanguageList li, #mobileLanguageList li'
+    );
+    const $languageItems = document.querySelectorAll('#desktopLanguageList li');
+    const $languageItemsMobile = document.querySelectorAll(
+      '#mobileLanguageList li'
+    );
+
+    $buttonLanguageSelector.addEventListener('click', function(e) {
+      $languageList.classList.toggle('hidden');
+    });
+
+    $buttonLanguageSelectorMobile.addEventListener('click', function(e) {
+      $languageListMobile.classList.toggle('hidden');
+    });
+
+    $languageItemsAll.forEach(item => {
+      item.addEventListener('click', function(e) {
+        window.location.href = this.dataset.url;
+      });
+      item.addEventListener('keypress', function({ key }) {
+        if (key === 'Enter' || key === 'Space') {
+          window.location.href = this.dataset.url;
+        }
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!$containerSelector.contains(event.target) && isOpenSelector()) {
+        $languageList.classList.add('hidden');
+      }
+
+      if (
+        !$containerSelectorMobile.contains(event.target) &&
+        isOpenSelectorMobile()
+      ) {
+        $languageListMobile.classList.add('hidden');
+      }
+    });
+
+    document.addEventListener('keydown', function(event) {
+      const { key } = event;
+      const isOpen = isOpenSelector();
+      const isOpenMobile = isOpenSelectorMobile();
+
+      if (!isOpen && !isOpenMobile) {
+        return;
+      }
+
+      if (key === 'Escape' || key === 'Tab') {
+        closeSelector(isOpen);
+        return;
+      }
+
+      if (key === 'ArrowUp') {
+        event.preventDefault();
+
+        if (document.activeElement.previousElementSibling !== null) {
+          document.activeElement.previousElementSibling.focus();
+        }
+        return;
+      }
+
+      if (key === 'ArrowDown') {
+        event.preventDefault();
+
+        if (selectorHasFocus()) {
+          $languageItems[0].focus();
+        } else if (selectorHasFocusMobile()) {
+          $languageItemsMobile[0].focus();
+        } else if (
+          focusedIsLanguageOption() &&
+          document.activeElement.nextElementSibling !== null
+        ) {
+          document.activeElement.nextElementSibling.focus();
+        }
+        return;
+      }
+    });
+
+    function isOpenSelector() {
+      return !$languageList.classList.contains('hidden');
+    }
+
+    function isOpenSelectorMobile() {
+      return !$languageListMobile.classList.contains('hidden');
+    }
+
+    function closeSelector(isOpenDesktop) {
+      let $languageListOpen = null;
+      let $buttonLanguageOpen = null;
+
+      if (isOpenDesktop) {
+        $languageListOpen = $languageList;
+        $buttonLanguageOpen = $buttonLanguageSelector;
+      } else {
+        $languageListOpen = $languageListMobile;
+        $buttonLanguageOpen = $buttonLanguageSelectorMobile;
+      }
+
+      $languageListOpen.classList.add('hidden');
+      if (focusedIsLanguageOption()) {
+        $buttonLanguageOpen.focus();
+      }
+    }
+
+    function selectorHasFocus() {
+      return document.activeElement.isSameNode($buttonLanguageSelector);
+    }
+
+    function selectorHasFocusMobile() {
+      return document.activeElement.isSameNode($buttonLanguageSelectorMobile);
+    }
+
+    function focusedIsLanguageOption() {
+      return document.activeElement
+        .getAttribute('id')
+        .includes('listbox-option-');
+    }
+
+    function isLanguageOption(node) {
+      return node.getAttribute('id').includes('listbox-option-');
+    }
+  })();
+</script>
+
+
+    
 </body>
+
 </html>

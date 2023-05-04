@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>xdrp on Javier Fernández</title><link>https://javifm.com/tags/xdrp/</link><description>Recent content in xdrp on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 07 Mar 2017 10:24:28 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/xdrp/index.xml" rel="self" type="application/rss+xml"/><item><title>Configurar teclado conexión remota Raspberry Pi con XDRP – km-040a.ini</title><link>https://javifm.com/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/</link><pubDate>Tue, 07 Mar 2017 10:24:28 +0000</pubDate><guid>https://javifm.com/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/</guid><description>Si te conectas de manera remota a tu raspberry, a través de la aplicación de Conexión a escritorio remoto de Windows por ejemplo, tarde o temprano te darás cuentas que si no utilizas un teclado inglés, muchos de los símbolos y teclas están cambiados.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xdrp on Javier Fernández</title>
+    <link>https://javifm.com/tags/xdrp/</link>
+    <description>Recent content in xdrp on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 07 Mar 2017 10:24:28 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/xdrp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configurar teclado conexión remota Raspberry Pi con XDRP – km-040a.ini</title>
+      <link>https://javifm.com/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/</link>
+      <pubDate>Tue, 07 Mar 2017 10:24:28 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/configurar-teclado-conexi%C3%B3n-remota-raspberry-pi-con-xdrp-km-040a.ini/</guid>
+      <description>Si te conectas de manera remota a tu raspberry, a través de la aplicación de Conexión a escritorio remoto de Windows por ejemplo, tarde o temprano te darás cuentas que si no utilizas un teclado inglés, muchos de los símbolos y teclas están cambiados.</description>
+    </item>
+    
+  </channel>
+</rss>

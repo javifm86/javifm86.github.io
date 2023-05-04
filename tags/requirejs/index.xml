@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RequireJS on Javier Fernández</title><link>https://javifm.com/tags/requirejs/</link><description>Recent content in RequireJS on Javier Fernández</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 03 Nov 2015 12:56:17 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/requirejs/index.xml" rel="self" type="application/rss+xml"/><item><title>Evitar que jQuery sea global con RequireJS</title><link>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</link><pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate><guid>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</guid><description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RequireJS on Javier Fernández</title>
+    <link>https://javifm.com/tags/requirejs/</link>
+    <description>Recent content in RequireJS on Javier Fernández</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 03 Nov 2015 12:56:17 +0000</lastBuildDate><atom:link href="https://javifm.com/tags/requirejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evitar que jQuery sea global con RequireJS</title>
+      <link>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</link>
+      <pubDate>Tue, 03 Nov 2015 12:56:17 +0000</pubDate>
+      
+      <guid>https://javifm.com/blog/evitar-que-jquery-sea-global-con-requirejs/</guid>
+      <description>El popular framework de Javascript jQuery, es utilizado ampliamente en el mundo del desarrollo web.</description>
+    </item>
+    
+  </channel>
+</rss>
